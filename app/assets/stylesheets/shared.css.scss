@@ -1,0 +1,13 @@
+a {
+  color: #09297c;
+
+  &:hover,
+  &:focus {
+    color: #2b55c2;
+  }
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: #444;
+}

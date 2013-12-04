@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-md-9">
+
+  </div>
+
+  <div class="col-md-3 mundodastrevas-sidebar">
+    <section class="facebook-like">
+      <div class="fb-like-box"
+        data-href="http://www.facebook.com/mundodastrevas"
+        data-width="260"
+        data-height="260"
+        data-colorscheme="light"
+        data-show-faces="true"
+        data-header="false"
+        data-stream="false"
+        data-show-border="true">
+      </div>
+    </section>
+
+    <section class="twitter-widget">
+      <a class="twitter-timeline"
+        href="https://twitter.com/WoDBrasil"
+        data-widget-id="252101067221893120">
+        Tweets de @WoDBrasil
+      </a>
+    </section>
+
+    <section class="new-users">
+      <h1>Novos membros</h1>
+
+      <% Raddar::User.order('confirmed_at DESC').limit(9).each do |user| %>
+        <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle'), user %>
+      <% end %>
+    </section>
+
+    <section class="partners">
+      <h1>Parceiros</h1>
+
+      <ul class="list-unstyled">
+        <li>
+          <%= link_to 'Livro dos Espelhos', 'http://livrodosespelhos.com/', target: '_blank' %>
+        </li>
+
+        <li>
+          <%= link_to 'RPG Pará', 'http://www.rpgpara.com/', target: '_blank' %>
+        </li>
+
+        <li>
+          <%= link_to 'Trevas de Vitória', 'http://wod-vix.blogspot.com.br/', target: '_blank' %>
+        </li>
+
+        <li>
+          <%= link_to 'Escudo do Mestre', 'http://escudo-do-mestre.blogspot.com.br/', target: '_blank' %>
+        </li>
+
+        <li>
+          <%= link_to 'Instinct Alternative', 'http://instinctalternative.blogspot.com.br/', target: '_blank' %>
+        </li>
+
+        <li>
+          <%= link_to 'RPG Blogs', 'http://www.rpg.net.br/blogs', target: '_blank' %>
+        </li>
+      </ul>
+    </section>
+
+    <section class="recommended">
+      <h1>Recomendados</h1>
+
+      <ul class="list-unstyled">
+        <li>
+          <%= link_to 'Mundo das Trevas - Oficial', 'http://www.devir.com.br/mundodastrevas', target: '_blank' %>
+        </li>
+
+        <li>
+          <%= link_to 'The Onyx Path - World of Darkness', 'http://theonyxpath.com/games/wod', target: '_blank' %>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>
