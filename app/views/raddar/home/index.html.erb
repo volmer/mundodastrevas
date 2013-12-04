@@ -25,56 +25,48 @@
       </a>
     </section>
 
-    <section class="new-users">
-      <h1>Novos membros</h1>
+    <section class="panel panel-default">
+      <div class="panel-heading">
+        <h1 class="panel-title">Novos membros</h1>
+      </div>
 
-      <% Raddar::User.order('confirmed_at DESC').limit(9).each do |user| %>
-        <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle'), user %>
-      <% end %>
+      <div class="panel-body">
+        <% Raddar::User.order('confirmed_at DESC').limit(9).each do |user| %>
+          <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle'), user %>
+        <% end %>
+      </div>
     </section>
 
-    <section class="partners">
-      <h1>Parceiros</h1>
+    <section class="panel panel-default">
+      <div class="panel-heading">
+        <h1 class="panel-title">Parceiros</h1>
+      </div>
 
-      <ul class="list-unstyled">
-        <li>
-          <%= link_to 'Livro dos Espelhos', 'http://livrodosespelhos.com/', target: '_blank' %>
-        </li>
+      <div class="list-group">
+        <%= link_to 'Livro dos Espelhos', 'http://livrodosespelhos.com/', target: '_blank', class: 'list-group-item' %>
 
-        <li>
-          <%= link_to 'RPG Pará', 'http://www.rpgpara.com/', target: '_blank' %>
-        </li>
+        <%= link_to 'RPG Pará', 'http://www.rpgpara.com/', target: '_blank', class: 'list-group-item' %>
 
-        <li>
-          <%= link_to 'Trevas de Vitória', 'http://wod-vix.blogspot.com.br/', target: '_blank' %>
-        </li>
+        <%= link_to 'Trevas de Vitória', 'http://wod-vix.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
 
-        <li>
-          <%= link_to 'Escudo do Mestre', 'http://escudo-do-mestre.blogspot.com.br/', target: '_blank' %>
-        </li>
+        <%= link_to 'Escudo do Mestre', 'http://escudo-do-mestre.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
 
-        <li>
-          <%= link_to 'Instinct Alternative', 'http://instinctalternative.blogspot.com.br/', target: '_blank' %>
-        </li>
+        <%= link_to 'Instinct Alternative', 'http://instinctalternative.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
 
-        <li>
-          <%= link_to 'RPG Blogs', 'http://www.rpg.net.br/blogs', target: '_blank' %>
-        </li>
-      </ul>
+        <%= link_to 'RPG Blogs', 'http://www.rpg.net.br/blogs', target: '_blank', class: 'list-group-item' %>
+      </div>
     </section>
 
-    <section class="recommended">
-      <h1>Recomendados</h1>
+    <section class="panel panel-default">
+      <div class="panel-heading">
+        <h1 class="panel-title">Recomendados</h1>
+      </div>
 
-      <ul class="list-unstyled">
-        <li>
-          <%= link_to 'Mundo das Trevas - Oficial', 'http://www.devir.com.br/mundodastrevas', target: '_blank' %>
-        </li>
+      <div class="list-group">
+        <%= link_to 'Mundo das Trevas - Oficial', 'http://www.devir.com.br/mundodastrevas', target: '_blank', class: 'list-group-item' %>
 
-        <li>
-          <%= link_to 'The Onyx Path - World of Darkness', 'http://theonyxpath.com/games/wod', target: '_blank' %>
-        </li>
-      </ul>
+        <%= link_to 'The Onyx Path - World of Darkness', 'http://theonyxpath.com/games/wod', target: '_blank', class: 'list-group-item' %>
+      </div>
     </section>
   </div>
 </div>
