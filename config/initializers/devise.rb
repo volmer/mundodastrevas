@@ -7,6 +7,6 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :facebook, 'APP_ID', 'APP_SECRET'
-  # config.omniauth :twitter, 'APP_ID', 'APP_SECRET'
+  config.omniauth :facebook, '330164793746855', 'f543158ab07816a6182632c32c956ab4'
+  config.omniauth :twitter, 'yAO2DSZeD85ClNYnGVh2qA', 'EHsbEUZfwzDjniKrNDULsavpoXfziHKBtN6lPBCAX0'
 end
