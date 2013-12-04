@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Mundodastrevas::Application.config.secret_key_base = 'f079a5e6c17083d6aa531f4925a14cdf696b57c6310539fd578b61a199e0c4be31c4c214b43fdb5120be2ef01101fc5bdfe238805240baf44dc439640ebe062c'
+Mundodastrevas::Application.config.secret_key_base = 'eb5785773af454516c73b66a7355393c3cedeeac1cd20f4dceda69966dba0c6f37eb01ddbb6b6000156d6f3a867c87a73a469f6f14c461d843a378ff371103e9'
