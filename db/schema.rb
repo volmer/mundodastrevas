@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131205030334) do
+ActiveRecord::Schema.define(version: 20131205203722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -219,5 +219,16 @@ ActiveRecord::Schema.define(version: 20131205030334) do
   add_index "raddar_watchers_watches", ["user_id", "watchable_id", "watchable_type"], name: "index_raddar_watchers_watches_unique_user", unique: true, using: :btree
   add_index "raddar_watchers_watches", ["user_id"], name: "index_raddar_watchers_watches_on_user_id", using: :btree
   add_index "raddar_watchers_watches", ["watchable_id", "watchable_type"], name: "index_raddar_watchers_watches_watchable", using: :btree
+
+  create_table "universes", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "slug"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "universes", ["slug"], name: "index_universes_on_slug", unique: true, using: :btree
 
 end
