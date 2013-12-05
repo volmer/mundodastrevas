@@ -5,7 +5,7 @@ module Devise
     module Encryptors
       class DarkEncryptor < Base
         def self.digest(password, stretches, salt, pepper)
-          Digest::SHA1.hexdigest '--#{salt}--#{password}--'
+          Digest::SHA1.hexdigest "--#{salt}--#{password}--"
         end
       end
     end

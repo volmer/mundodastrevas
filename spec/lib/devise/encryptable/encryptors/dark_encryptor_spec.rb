@@ -7,7 +7,7 @@ describe Devise::Encryptable::Encryptors::DarkEncryptor do
 
   describe '.digest' do
     it 'properly encrypts the given password' do
-      expected_value = 'fe56bbcd912aa97a8ffe5ca2b887794a61bddfab'
+      expected_value = '81c35bdfd7b6bc8878248ae59671c396aa519764'
 
       expect(described_class.digest('password', 'stretches', 'salt', 'pepper')).to eq(expected_value)
     end
