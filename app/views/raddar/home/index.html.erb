@@ -25,14 +25,14 @@
       </a>
     </section>
 
-    <section class="panel panel-default">
+    <section class="panel panel-default new-users">
       <div class="panel-heading">
         <h1 class="panel-title">Novos membros</h1>
       </div>
 
       <div class="panel-body">
         <% Raddar::User.order('confirmed_at DESC').limit(9).each do |user| %>
-          <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle'), user %>
+          <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle img-thumbnail'), user, title: user.name %>
         <% end %>
       </div>
     </section>
