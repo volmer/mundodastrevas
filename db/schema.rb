@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204001625) do
+ActiveRecord::Schema.define(version: 20131205002109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,39 @@ ActiveRecord::Schema.define(version: 20131204001625) do
   add_index "raddar_followerships", ["user_id", "followable_id", "followable_type"], name: "index_raddar_followerships_on_user_and_followable", unique: true, using: :btree
   add_index "raddar_followerships", ["user_id"], name: "index_raddar_followerships_on_user_id", using: :btree
 
+  create_table "raddar_forums_forums", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+  end
+
+  add_index "raddar_forums_forums", ["slug"], name: "index_raddar_forums_forums_on_slug", unique: true, using: :btree
+
+  create_table "raddar_forums_posts", force: true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "raddar_forums_posts", ["topic_id"], name: "index_raddar_forums_posts_on_topic_id", using: :btree
+  add_index "raddar_forums_posts", ["user_id"], name: "index_raddar_forums_posts_on_user_id", using: :btree
+
+  create_table "raddar_forums_topics", force: true do |t|
+    t.string   "name"
+    t.integer  "views",      default: 0
+    t.integer  "forum_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "raddar_forums_topics", ["forum_id"], name: "index_raddar_forums_topics_on_forum_id", using: :btree
+  add_index "raddar_forums_topics", ["user_id"], name: "index_raddar_forums_topics_on_user_id", using: :btree
+
   create_table "raddar_messages", force: true do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
@@ -88,16 +121,18 @@ ActiveRecord::Schema.define(version: 20131204001625) do
   create_table "raddar_notifications", force: true do |t|
     t.string   "token"
     t.string   "item_path"
-    t.boolean  "unread",          default: true
+    t.boolean  "unread",            default: true
     t.integer  "user_id"
     t.integer  "notifiable_id"
     t.string   "notifiable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "watchers_watch_id"
   end
 
   add_index "raddar_notifications", ["notifiable_id", "notifiable_type"], name: "index_raddar_notifications_on_notifiable_id_and_notifiable_type", using: :btree
   add_index "raddar_notifications", ["user_id"], name: "index_raddar_notifications_on_user_id", using: :btree
+  add_index "raddar_notifications", ["watchers_watch_id"], name: "index_raddar_notifications_on_watchers_watch_id", using: :btree
 
   create_table "raddar_pages", force: true do |t|
     t.text     "content"
@@ -108,6 +143,19 @@ ActiveRecord::Schema.define(version: 20131204001625) do
   end
 
   add_index "raddar_pages", ["slug"], name: "index_raddar_pages_on_slug", unique: true, using: :btree
+
+  create_table "raddar_ratings_reviews", force: true do |t|
+    t.integer  "user_id"
+    t.string   "value"
+    t.integer  "reviewable_id"
+    t.string   "reviewable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "raddar_ratings_reviews", ["reviewable_id", "reviewable_type"], name: "index_raddar_ratings_reviews_reviewable", using: :btree
+  add_index "raddar_ratings_reviews", ["user_id", "reviewable_id", "reviewable_type"], name: "index_raddar_ratings_reviews_unique_user", unique: true, using: :btree
+  add_index "raddar_ratings_reviews", ["user_id"], name: "index_raddar_ratings_reviews_on_user_id", using: :btree
 
   create_table "raddar_roles", force: true do |t|
     t.string   "name"
@@ -157,5 +205,18 @@ ActiveRecord::Schema.define(version: 20131204001625) do
   add_index "raddar_users", ["email"], name: "index_raddar_users_on_email", unique: true, using: :btree
   add_index "raddar_users", ["name"], name: "index_raddar_users_on_name", unique: true, using: :btree
   add_index "raddar_users", ["reset_password_token"], name: "index_raddar_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "raddar_watchers_watches", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "watchable_id"
+    t.string   "watchable_type"
+    t.boolean  "active",         default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "raddar_watchers_watches", ["user_id", "watchable_id", "watchable_type"], name: "index_raddar_watchers_watches_unique_user", unique: true, using: :btree
+  add_index "raddar_watchers_watches", ["user_id"], name: "index_raddar_watchers_watches_on_user_id", using: :btree
+  add_index "raddar_watchers_watches", ["watchable_id", "watchable_type"], name: "index_raddar_watchers_watches_watchable", using: :btree
 
 end

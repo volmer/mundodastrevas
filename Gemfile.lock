@@ -1,6 +1,15 @@
 GIT
+  remote: git://github.com/volmer/raddar-forums.git
+  revision: d41e25b2045a0ce9adb9676eaf8f3e3f5dc3e527
+  specs:
+    raddar-forums (0.0.1)
+      raddar (>= 0.0.1.rc4)
+      raddar-ratings (>= 0.0.1.rc2)
+      raddar-watchers (>= 0.0.1.rc2)
+
+GIT
   remote: git://github.com/volmer/raddar.git
-  revision: 7df96304cc043072522ef4012bb0a92d595e8bc2
+  revision: beae8368efbd6d84c9ec7576273492125bc1b6d2
   specs:
     raddar (0.0.1.rc4)
       bootstrap-sass
@@ -57,6 +66,8 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
+    celluloid (0.15.2)
+      timers (~> 1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -64,6 +75,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    connection_pool (1.2.0)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -132,6 +144,11 @@ GEM
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
+    raddar-ratings (0.0.1.rc2)
+      raddar (>= 0.0.1.rc4)
+    raddar-watchers (0.0.1.rc2)
+      raddar (>= 0.0.1.rc4)
+      sidekiq
     rails (4.0.2)
       actionmailer (= 4.0.2)
       actionpack (= 4.0.2)
@@ -149,6 +166,9 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     recaptcha (0.3.5)
+    redis (3.0.6)
+    redis-namespace (1.4.1)
+      redis (~> 3.0.4)
     remotipart (1.2.1)
     sass (3.2.12)
     sass-rails (4.0.1)
@@ -158,6 +178,12 @@ GEM
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
+    sidekiq (2.17.0)
+      celluloid (>= 0.15.2)
+      connection_pool (>= 1.0.0)
+      json
+      redis (>= 3.0.4)
+      redis-namespace (>= 1.3.1)
     simple_form (3.0.1)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
@@ -175,6 +201,7 @@ GEM
     thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
+    timers (1.1.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -194,6 +221,7 @@ DEPENDENCIES
   jquery-rails
   pg
   raddar!
+  raddar-forums!
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
   sdoc

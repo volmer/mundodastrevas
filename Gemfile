@@ -42,3 +42,4 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'raddar', github: 'volmer/raddar'
+gem 'raddar-forums', github: 'volmer/raddar-forums'
