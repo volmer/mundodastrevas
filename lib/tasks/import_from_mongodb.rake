@@ -52,7 +52,41 @@ def import_pages(session)
   end
 end
 
-def import_users(session)
+def import_external_accounts(session)
+  puts 'Importing external accounts'
+
+  count = session[:accounts].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:accounts].find.each do |account|
+    user = session[:users].find(_id: account['user_id']).first
+    raddar_user = Raddar::User.find_by(name: user['name'])
+
+    raddar_account = Raddar::ExternalAccount.new(
+      user:       raddar_user,
+      provider:   account['provider'],
+      token:      account['token'],
+      secret:     account['secret'],
+      name:       account['name'],
+      url:        account['url'],
+      email:      account['email'],
+      verified:   account['verified'],
+      created_at: account['created_at'],
+      updated_at: account['updated_at']
+    )
+
+    raddar_account.save!
+
+    raddar_user.privacy[raddar_account.provider] = account['url_privacy']
+
+    raddar_user.save!
+
+    bar.increment!
+  end
+end
+
+def import_users(session, upload_avatars = true)
   Raddar::User.send(:include, UserWithoutPassword)
   unconfirmed_users = 0
 
@@ -99,12 +133,10 @@ def import_users(session)
     )
 
     if raddar_user.confirmed_at.blank?
-      puts "User #{ raddar_user } is not confirmed yet. An email will be sent."
-
       unconfirmed_users += 1
     end
 
-    if user['image'].present?
+    if user['image'].present? && upload_avatars
       begin
         file = File.open("/Users/volmer/backups/mundodastrevas/uploads/user/#{ user['_id'] }/image/#{ user['image'] }")
 
@@ -152,9 +184,9 @@ namespace :mundodastrevas do
     session = Moped::Session.new(["#{ args[:host] }:#{ args[:port] }"])
     session.use args[:dbname]
 
-    #import_roles(session)
-    #import_users(session)
-
+    import_roles(session)
+    import_users(session, false)
     import_pages(session)
+    #import_external_accounts(session) We'll cannot import them cause they don't include :uid
   end
 end
