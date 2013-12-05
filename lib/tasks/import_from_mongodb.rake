@@ -30,6 +30,28 @@ def import_roles(session)
   end
 end
 
+def import_pages(session)
+  puts 'Importing pages'
+
+  count = session[:pages].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:pages].find.each do |page|
+    raddar_page = Raddar::Page.new(
+      slug:                   page['name'],
+      content:                page['content'],
+      title:                  page['title'],
+      created_at:             page['created_at'],
+      updated_at:             page['updated_at']
+    )
+
+    raddar_page.save!
+
+    bar.increment!
+  end
+end
+
 def import_users(session)
   Raddar::User.send(:include, UserWithoutPassword)
   unconfirmed_users = 0
@@ -130,7 +152,9 @@ namespace :mundodastrevas do
     session = Moped::Session.new(["#{ args[:host] }:#{ args[:port] }"])
     session.use args[:dbname]
 
-    import_roles(session)
-    import_users(session)
+    #import_roles(session)
+    #import_users(session)
+
+    import_pages(session)
   end
 end
