@@ -3,8 +3,8 @@ class Universe < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  # has_many :forums, dependent: :nullify
-  # has_many :zines, dependent: :nullify
+  has_many :forums, class_name: 'Raddar::Forums::Forum', dependent: :nullify
+  has_many :zines, class_name: 'Raddar::Zines::Zine', dependent: :nullify
   # has_many :ranks, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 100 }

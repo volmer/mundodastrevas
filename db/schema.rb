@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207170826) do
+ActiveRecord::Schema.define(version: 20131207172204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,9 +79,11 @@ ActiveRecord::Schema.define(version: 20131207170826) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.integer  "universe_id"
   end
 
   add_index "raddar_forums_forums", ["slug"], name: "index_raddar_forums_forums_on_slug", unique: true, using: :btree
+  add_index "raddar_forums_forums", ["universe_id"], name: "index_raddar_forums_forums_on_universe_id", using: :btree
 
   create_table "raddar_forums_posts", force: true do |t|
     t.text     "content"
@@ -274,9 +276,11 @@ ActiveRecord::Schema.define(version: 20131207170826) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "universe_id"
   end
 
   add_index "raddar_zines_zines", ["slug"], name: "index_raddar_zines_zines_on_slug", unique: true, using: :btree
+  add_index "raddar_zines_zines", ["universe_id"], name: "index_raddar_zines_zines_on_universe_id", using: :btree
   add_index "raddar_zines_zines", ["user_id"], name: "index_raddar_zines_zines_on_user_id", using: :btree
 
   create_table "universes", force: true do |t|

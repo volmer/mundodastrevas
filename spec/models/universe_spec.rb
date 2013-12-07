@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe Universe do
+  it { should have_many(:forums).class_name('Raddar::Forums::Forum').dependent(:nullify) }
+  it { should have_many(:zines).class_name('Raddar::Zines::Zine').dependent(:nullify) }
+
   it { should validate_presence_of(:name) }
   it { should ensure_length_of(:name).is_at_most(100) }
 
