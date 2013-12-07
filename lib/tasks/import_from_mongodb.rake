@@ -392,6 +392,47 @@ def import_messages(session)
   puts "Imported #{ Raddar::Message.count } messages."
 end
 
+def import_followerships(session)
+  puts 'Importing followerships'
+
+  count = session[:followerships].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:followerships].find.each do |followership|
+    user = session[:users].find(_id: followership['user_id']).first
+    raddar_user = Raddar::User.find_by(name: user['name'])
+
+    case followership['followable_type']
+    when 'User'
+      user = session[:users].find(_id: followership['followable_id']).first
+      followable = Raddar::User.find_by(name: user['name'])
+    when 'Pub'
+      zine = session[:pubs].find(_id: followership['followable_id']).first
+      followable = Raddar::Zines::Zine.find_by(slug: zine['_slugs'].first)
+    when 'Forum'
+      forum = session[:forums].find(_id: followership['followable_id']).first
+      followable = Raddar::Forums::Forum.find_by(name: forum['name'])
+    end
+
+    raddar_followership = Raddar::Followership.new(
+      user:       raddar_user,
+      followable: followable,
+      created_at: followership['created_at'],
+      updated_at: followership['updated_at']
+    )
+
+    unless raddar_followership.save
+      puts "Failed for #{ raddar_followership }."
+      pp raddar_followership.errors
+    end
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Raddar::Followership.count } followerships."
+end
+
 def import_users(session, upload_avatars = true)
   Raddar::User.send(:include, UserWithoutPassword)
   unconfirmed_users = 0
@@ -493,13 +534,14 @@ namespace :mundodastrevas do
     import_roles(session)
     import_users(session, false)
     # import_pages(session)
-    # import_universes(session, false)
-    # import_forums(session)
+    import_universes(session, false)
+    import_forums(session)
     # import_topics(session)
     # import_forum_posts(session)
-    # import_zines(session, false)
+    import_zines(session, false)
     # import_zine_posts(session, false)
     # import_comments(session)
-    import_messages(session)
+    # import_messages(session)
+    import_followerships(session)
   end
 end
