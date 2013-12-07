@@ -11,5 +11,6 @@
  *= require_self
  *= require raddar/application
  *= require raddar/forums/application
+ *= require raddar/zines/application
  *= require_tree .
  */

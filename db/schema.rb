@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131205203722) do
+ActiveRecord::Schema.define(version: 20131207170826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,6 +173,26 @@ ActiveRecord::Schema.define(version: 20131205203722) do
   add_index "raddar_roles_users", ["role_id", "user_id"], name: "index_raddar_roles_users_on_role_id_and_user_id", using: :btree
   add_index "raddar_roles_users", ["user_id", "role_id"], name: "index_raddar_roles_users_on_user_id_and_role_id", using: :btree
 
+  create_table "raddar_tags_taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "raddar_tags_taggings", ["tag_id", "taggable_id", "taggable_type"], name: "index_raddar_tags_taggings_unique_tag", unique: true, using: :btree
+  add_index "raddar_tags_taggings", ["tag_id"], name: "index_raddar_tags_taggings_on_tag_id", using: :btree
+  add_index "raddar_tags_taggings", ["taggable_id", "taggable_type"], name: "index_raddar_tags_taggins_taggable", using: :btree
+
+  create_table "raddar_tags_tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "raddar_tags_tags", ["name"], name: "index_raddar_tags_tags_on_name", unique: true, using: :btree
+
   create_table "raddar_users", force: true do |t|
     t.string   "email",                  default: "",       null: false
     t.string   "encrypted_password",     default: "",       null: false
@@ -219,6 +239,45 @@ ActiveRecord::Schema.define(version: 20131205203722) do
   add_index "raddar_watchers_watches", ["user_id", "watchable_id", "watchable_type"], name: "index_raddar_watchers_watches_unique_user", unique: true, using: :btree
   add_index "raddar_watchers_watches", ["user_id"], name: "index_raddar_watchers_watches_on_user_id", using: :btree
   add_index "raddar_watchers_watches", ["watchable_id", "watchable_type"], name: "index_raddar_watchers_watches_watchable", using: :btree
+
+  create_table "raddar_zines_comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "raddar_zines_comments", ["post_id"], name: "index_raddar_zines_comments_on_post_id", using: :btree
+  add_index "raddar_zines_comments", ["user_id"], name: "index_raddar_zines_comments_on_user_id", using: :btree
+
+  create_table "raddar_zines_posts", force: true do |t|
+    t.integer  "zine_id"
+    t.text     "content"
+    t.string   "image"
+    t.string   "name"
+    t.integer  "views",      default: 0
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "raddar_zines_posts", ["slug"], name: "index_raddar_zines_posts_on_slug", unique: true, using: :btree
+  add_index "raddar_zines_posts", ["zine_id"], name: "index_raddar_zines_posts_on_zine_id", using: :btree
+
+  create_table "raddar_zines_zines", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.text     "description"
+    t.boolean  "starred",     default: false
+    t.string   "image"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "raddar_zines_zines", ["slug"], name: "index_raddar_zines_zines_on_slug", unique: true, using: :btree
+  add_index "raddar_zines_zines", ["user_id"], name: "index_raddar_zines_zines_on_user_id", using: :btree
 
   create_table "universes", force: true do |t|
     t.string   "name"

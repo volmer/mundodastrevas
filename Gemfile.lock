@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/volmer/raddar-forums.git
-  revision: d41e25b2045a0ce9adb9676eaf8f3e3f5dc3e527
+  revision: 39fd75a85a350e339ffdaf78c4846ccf68026579
   specs:
     raddar-forums (0.0.1)
       raddar (>= 0.0.1.rc4)
@@ -8,22 +8,32 @@ GIT
       raddar-watchers (>= 0.0.1.rc2)
 
 GIT
+  remote: git://github.com/volmer/raddar-zines.git
+  revision: 1ad37b47904437f50510a93db78cbd698de0da8a
+  specs:
+    raddar-zines (0.0.1)
+      raddar (>= 0.0.1.rc4)
+      raddar-ratings (>= 0.0.1.rc2)
+      raddar-tags (>= 0.0.1.rc3)
+      raddar-watchers (>= 0.0.1.rc2)
+
+GIT
   remote: git://github.com/volmer/raddar.git
-  revision: 4044202ce1fcab6c26cca58963c03bbad73fb40b
+  revision: ed40a09b1a61d07ed39f725770f96a84b345549f
   specs:
     raddar (0.0.1.rc4)
-      bootstrap-sass
-      bootsy
-      carrierwave
-      devise
-      kaminari
-      mini_magick
-      omniauth-facebook
-      omniauth-twitter
-      pg_search
-      pundit
-      recaptcha
-      simple_form
+      bootstrap-sass (~> 3.0)
+      bootsy (~> 2.0)
+      carrierwave (~> 0.9)
+      devise (~> 3.2)
+      kaminari (~> 0.15)
+      mini_magick (~> 3.7)
+      omniauth-facebook (~> 1.5)
+      omniauth-twitter (~> 1.0)
+      pg_search (~> 0.7)
+      pundit (~> 0.2)
+      recaptcha (~> 0.3)
+      simple_form (~> 3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -57,9 +67,9 @@ GEM
     bcrypt-ruby (3.1.2)
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
-    bootsy (2.0.4)
+    bootsy (2.0.5)
       carrierwave (~> 0.9.0)
-      mini_magick (~> 3.6.0)
+      mini_magick (~> 3.7.0)
       remotipart (~> 1.2.1)
     builder (3.1.4)
     carrierwave (0.9.0)
@@ -123,7 +133,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
-    mini_magick (3.6.0)
+    mini_magick (3.7.0)
       subexec (~> 0.2.1)
     minitest (4.7.5)
     moped (1.5.1)
@@ -168,6 +178,8 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     raddar-ratings (0.0.1.rc2)
+      raddar (>= 0.0.1.rc4)
+    raddar-tags (0.0.1.rc3)
       raddar (>= 0.0.1.rc4)
     raddar-watchers (0.0.1.rc2)
       raddar (>= 0.0.1.rc4)
@@ -263,6 +275,7 @@ DEPENDENCIES
   progress_bar
   raddar!
   raddar-forums!
+  raddar-zines!
   rails (= 4.0.2)
   rspec-rails
   sass-rails (~> 4.0.0)
