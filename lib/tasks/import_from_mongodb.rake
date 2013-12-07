@@ -52,7 +52,49 @@ def import_pages(session)
   end
 end
 
+def import_universes(session, upload_images = true)
+  puts 'Importing universes'
+
+  count = session[:universes].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:universes].find.each do |universe|
+    imported_universe = Universe.new(
+      slug:                  universe['_slugs'].first,
+      description:           universe['description'],
+      name:                  universe['name'],
+      created_at:            universe['created_at'],
+      updated_at:            universe['updated_at']
+    )
+
+    if universe['image'].present? && upload_images
+      begin
+        file = File.open("/Users/volmer/backups/mundodastrevas/uploads/universe/#{ universe['_id'] }/image/#{ universe['image'] }")
+
+        imported_universe.image = file
+
+        imported_universe.save!
+
+        file.close
+      rescue StandardError => e
+        puts "Error while processing #{ imported_universe }'s image"
+        puts e.message
+
+        imported_universe.save!
+      end
+    else
+      imported_universe.save!
+    end
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Universe.count } universes."
+end
+
 def import_external_accounts(session)
+  # We'll cannot import them cause they don't include :uid
   puts 'Importing external accounts'
 
   count = session[:accounts].find.count
@@ -184,9 +226,9 @@ namespace :mundodastrevas do
     session = Moped::Session.new(["#{ args[:host] }:#{ args[:port] }"])
     session.use args[:dbname]
 
-    import_roles(session)
-    import_users(session, false)
-    import_pages(session)
-    #import_external_accounts(session) We'll cannot import them cause they don't include :uid
+    # import_roles(session)
+    # import_users(session, false)
+    # import_pages(session)
+    import_universes(session)
   end
 end
