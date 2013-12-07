@@ -362,6 +362,36 @@ def import_external_accounts(session)
   end
 end
 
+def import_messages(session)
+  puts 'Importing messages'
+
+  count = session[:messages].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:messages].find.each do |message|
+    user = session[:users].find(_id: message['sender_id']).first
+    sender = Raddar::User.find_by(name: user['name'])
+    user = session[:users].find(_id: message['recipient_id']).first
+    recipient = Raddar::User.find_by(name: user['name'])
+
+    raddar_message = Raddar::Message.new(
+      sender:     sender,
+      recipient:  recipient,
+      read:       message['recipient_status'] != 'unread',
+      content:    message['content'],
+      created_at: message['created_at'],
+      updated_at: message['updated_at']
+    )
+
+    raddar_message.save!
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Raddar::Message.count } messages."
+end
+
 def import_users(session, upload_avatars = true)
   Raddar::User.send(:include, UserWithoutPassword)
   unconfirmed_users = 0
@@ -463,12 +493,13 @@ namespace :mundodastrevas do
     import_roles(session)
     import_users(session, false)
     # import_pages(session)
-    import_universes(session, false)
+    # import_universes(session, false)
     # import_forums(session)
     # import_topics(session)
     # import_forum_posts(session)
-    import_zines(session, false)
-    import_zine_posts(session, false)
-    import_comments(session)
+    # import_zines(session, false)
+    # import_zine_posts(session, false)
+    # import_comments(session)
+    import_messages(session)
   end
 end
