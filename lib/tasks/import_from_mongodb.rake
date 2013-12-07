@@ -52,6 +52,100 @@ def import_pages(session)
   end
 end
 
+def import_forums(session)
+  puts 'Importing forums'
+
+  count = session[:forums].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:forums].find.each do |forum|
+    raddar_forum = Raddar::Forums::Forum.new(
+      slug:                   forum['_slugs'].first,
+      description:            forum['description'],
+      name:                   forum['name'],
+      created_at:             forum['created_at'],
+      updated_at:             forum['updated_at']
+    )
+
+    if forum['universe_id'].present?
+      universe = session[:universes].find(_id: forum['universe_id']).first
+      imported_universe = Universe.find_by(name: universe['name'])
+
+      raddar_forum.universe = imported_universe
+
+      puts "Universe not found for #{ raddar_forum}!" if raddar_forum.universe.blank?
+    end
+
+    raddar_forum.save!
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Raddar::Forums::Forum.count } forums."
+end
+
+def import_topics(session)
+  puts 'Importing topics'
+
+  count = session[:topics].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:topics].find.each do |topic|
+    forum = session[:forums].find(_id: topic['forum_id']).first
+    raddar_forum = Raddar::Forums::Forum.find_by(name: forum['name'])
+
+    user = session[:users].find(_id: topic['user_id']).first
+    raddar_user = Raddar::User.find_by(name: user['name'])
+
+    raddar_topic = Raddar::Forums::Topic.new(
+      forum:                  raddar_forum,
+      user:                   raddar_user,
+      views:                  topic['views'],
+      name:                   topic['name'],
+      created_at:             topic['created_at'],
+      updated_at:             topic['updated_at']
+    )
+
+    raddar_topic.save!
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Raddar::Forums::Topic.count } topics."
+end
+
+def import_forum_posts(session)
+  puts 'Importing forum posts'
+
+  count = session[:posts].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:posts].find.each do |forum_post|
+    topic = session[:topics].find(_id: forum_post['topic_id']).first
+    raddar_topic = Raddar::Forums::Topic.find_by(name: topic['name'], created_at: topic['created_at'], views: topic['views'])
+
+    user = session[:users].find(_id: forum_post['user_id']).first
+    raddar_user = Raddar::User.find_by(name: user['name'])
+
+    raddar_forum_post = Raddar::Forums::Post.new(
+      topic:                  raddar_topic,
+      user:                   raddar_user,
+      content:                forum_post['content'],
+      created_at:             forum_post['created_at'],
+      updated_at:             forum_post['updated_at']
+    )
+
+    raddar_forum_post.save!
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Raddar::Forums::Post.count } forum posts."
+end
+
 def import_universes(session, upload_images = true)
   puts 'Importing universes'
 
@@ -226,9 +320,12 @@ namespace :mundodastrevas do
     session = Moped::Session.new(["#{ args[:host] }:#{ args[:port] }"])
     session.use args[:dbname]
 
-    # import_roles(session)
-    # import_users(session, false)
+    import_roles(session)
+    import_users(session, false)
     # import_pages(session)
-    import_universes(session)
+    import_universes(session, false)
+    import_forums(session)
+    import_topics(session)
+    import_forum_posts(session)
   end
 end
