@@ -1,5 +1,7 @@
 require 'pp'
 
+UPLOADS_PATH = '/Users/volmer/backups/mundodastrevas/uploads'
+
 module UserWithoutPassword
   extend ActiveSupport::Concern
 
@@ -146,6 +148,144 @@ def import_forum_posts(session)
   puts "Imported #{ Raddar::Forums::Post.count } forum posts."
 end
 
+def import_zines(session, upload_images = true)
+  puts 'Importing zines'
+
+  count = session[:pubs].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:pubs].find.each do |zine|
+    user = session[:users].find(_id: zine['user_id']).first
+    raddar_user = Raddar::User.find_by(name: user['name'])
+
+    raddar_zine = Raddar::Zines::Zine.new(
+      user:                   raddar_user,
+      slug:                   zine['_slugs'].first,
+      description:            zine['description'],
+      name:                   zine['name'],
+      starred:                zine['main'],
+      created_at:             zine['created_at'],
+      updated_at:             zine['updated_at']
+    )
+
+    if zine['universe_id'].present?
+      universe = session[:universes].find(_id: zine['universe_id']).first
+      imported_universe = Universe.find_by(name: universe['name'])
+
+      raddar_zine.universe = imported_universe
+
+      puts "Universe not found for #{ raddar_zine }!" if raddar_zine.universe.blank?
+    end
+
+    if zine['image'].present? && upload_images
+      begin
+        file = File.open(UPLOADS_PATH + "/pub/#{ zine['_id'] }/image/#{ zine['image'] }")
+
+        raddar_zine.image = file
+
+        raddar_zine.save!
+
+        file.close
+      rescue StandardError => e
+        puts "Error while processing #{ raddar_zine }'s image"
+        puts e.message
+
+        raddar_zine.save!
+      end
+    else
+      raddar_zine.save!
+    end
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Raddar::Zines::Zine.count } zines."
+end
+
+def import_zine_posts(session, upload_images = true)
+  puts 'Importing zine posts'
+
+  count = session[:stuffs].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:stuffs].find.each do |zine_post|
+    zine = session[:pubs].find(_id: zine_post['pub_id']).first
+    raddar_zine = Raddar::Zines::Zine.find_by(slug: zine['_slugs'].first)
+
+    raddar_zine_post = Raddar::Zines::Post.new(
+      zine:                   raddar_zine,
+      slug:                   zine_post['_slugs'].first,
+      content:                zine_post['content'],
+      views:                  zine_post['views'],
+      name:                   zine_post['name'],
+      created_at:             zine_post['created_at'],
+      updated_at:             zine_post['updated_at']
+    )
+
+    unless raddar_zine_post.valid?
+      puts "Post #{ raddar_zine_post } is not valid."
+      puts "Removing slug '#{ raddar_zine_post.slug }'..."
+
+      raddar_zine_post.slug = nil
+    end
+
+    if zine_post['image'].present? && upload_images
+      begin
+        file = File.open(UPLOADS_PATH + "/stuff/#{ zine_post['_id'] }/image/#{ zine_post['image'] }")
+
+        raddar_zine_post.image = file
+
+        raddar_zine_post.save!
+
+        file.close
+      rescue StandardError => e
+        puts "Error while processing #{ raddar_zine_post }'s image"
+        puts e.message
+
+        raddar_zine_post.save!
+      end
+    else
+      raddar_zine_post.save!
+    end
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Raddar::Zines::Post.count } zine posts."
+end
+
+def import_comments(session)
+  puts 'Importing comments'
+
+  count = session[:comments].find(commentable_type: 'Stuff').count
+
+  bar = ProgressBar.new(count)
+
+  session[:comments].find(commentable_type: 'Stuff').each do |comment|
+    post = session[:stuffs].find(_id: comment['commentable_id']).first
+    raddar_post = Raddar::Zines::Post.find_by(name: post['name'], created_at: post['created_at'], views: post['views'])
+
+    user = session[:users].find(_id: comment['user_id']).first
+    raddar_user = Raddar::User.find_by(name: user['name'])
+
+    raddar_comment = Raddar::Zines::Comment.new(
+      post:                   raddar_post,
+      user:                   raddar_user,
+      content:                comment['content'],
+      created_at:             comment['created_at'],
+      updated_at:             comment['updated_at']
+    )
+
+    raddar_comment.save!
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Raddar::Zines::Comment.count } comments."
+end
+
 def import_universes(session, upload_images = true)
   puts 'Importing universes'
 
@@ -164,7 +304,7 @@ def import_universes(session, upload_images = true)
 
     if universe['image'].present? && upload_images
       begin
-        file = File.open("/Users/volmer/backups/mundodastrevas/uploads/universe/#{ universe['_id'] }/image/#{ universe['image'] }")
+        file = File.open(UPLOADS_PATH +  "/universe/#{ universe['_id'] }/image/#{ universe['image'] }")
 
         imported_universe.image = file
 
@@ -274,7 +414,7 @@ def import_users(session, upload_avatars = true)
 
     if user['image'].present? && upload_avatars
       begin
-        file = File.open("/Users/volmer/backups/mundodastrevas/uploads/user/#{ user['_id'] }/image/#{ user['image'] }")
+        file = File.open(UPLOADS_PATH + "/user/#{ user['_id'] }/image/#{ user['image'] }")
 
         raddar_user.avatar = file
 
@@ -324,8 +464,11 @@ namespace :mundodastrevas do
     import_users(session, false)
     # import_pages(session)
     import_universes(session, false)
-    import_forums(session)
-    import_topics(session)
-    import_forum_posts(session)
+    # import_forums(session)
+    # import_topics(session)
+    # import_forum_posts(session)
+    import_zines(session, false)
+    import_zine_posts(session, false)
+    import_comments(session)
   end
 end
