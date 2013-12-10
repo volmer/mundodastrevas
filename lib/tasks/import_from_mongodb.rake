@@ -447,20 +447,24 @@ def import_notifications(session)
     if notification['content'].include?('começou a seguir você')
       event = 'new_follower'
       user = session[:users].find(_id: notification['notifiable_id']).first
-      notifiable = Raddar::User.find_by(name: user['name'])
+      follower = Raddar::User.find_by(name: user['name'])
 
-      raddar_notification = Raddar::Notification.new(
-        user:           raddar_user,
-        notifiable:     notifiable,
-        unread:         notification['status'] == 'unread',
-        event:          event,
-        created_at:     notification['created_at'],
-        updated_at:     notification['updated_at']
-      )
+      followership = Raddar::Followership.find_by(user: follower, followable: raddar_user)
 
-      unless raddar_notification.save
-        puts "Failed for #{ raddar_notification }."
-        pp raddar_notification.errors
+      if followership
+        raddar_notification = Raddar::Notification.new(
+          user:           raddar_user,
+          notifiable:     followership,
+          unread:         notification['status'] == 'unread',
+          event:          event,
+          created_at:     notification['created_at'],
+          updated_at:     notification['updated_at']
+        )
+
+        unless raddar_notification.save
+          puts "Failed for #{ raddar_notification }."
+          pp raddar_notification.errors
+        end
       end
     end
 
@@ -579,7 +583,7 @@ namespace :mundodastrevas do
     # import_zine_posts(session, false)
     # import_comments(session)
     # import_messages(session)
-    # import_followerships(session)
+    import_followerships(session)
     import_notifications(session)
   end
 end
