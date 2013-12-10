@@ -433,6 +433,46 @@ def import_followerships(session)
   puts "Imported #{ Raddar::Followership.count } followerships."
 end
 
+def import_watches(session)
+  puts 'Importing watches'
+
+  count = session[:watchings].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:watchings].find.each do |watch|
+    user = session[:users].find(_id: watch['user_id']).first
+    raddar_user = Raddar::User.find_by(name: user['name'])
+
+    case watch['watchable_type']
+    when 'Topic'
+      topic = session[:topics].find(_id: watch['watchable_id']).first
+      watchable = Raddar::Forums::Topic.find_by(name: topic['name'], views: topic['views'])
+    when 'Stuff'
+      post = session[:stuffs].find(_id: watch['watchable_id']).first
+      watchable = Raddar::Zines::Post.find_by(slug: post['_slugs'].first)
+    end
+
+    if watch['watchable_type'] != 'Venue'
+      raddar_watch = Raddar::Watchers::Watch.new(
+        user:       raddar_user,
+        watchable:  watchable,
+        created_at: watch['created_at'],
+        updated_at: watch['updated_at']
+      )
+
+      unless raddar_watch.save
+        puts "Failed for #{ raddar_watch }."
+        pp raddar_watch.errors
+      end
+    end
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Raddar::Watchers::Watch.count } watches."
+end
+
 def import_notifications(session)
   puts 'Importing notifications'
 
@@ -461,10 +501,7 @@ def import_notifications(session)
           updated_at:     notification['updated_at']
         )
 
-        unless raddar_notification.save
-          puts "Failed for #{ raddar_notification }."
-          pp raddar_notification.errors
-        end
+        raddar_notification.save!
       end
     end
 
@@ -575,15 +612,16 @@ namespace :mundodastrevas do
     import_roles(session)
     import_users(session, false)
     # import_pages(session)
-    # import_universes(session, false)
-    # import_forums(session)
-    # import_topics(session)
+    import_universes(session, false)
+    import_forums(session)
+    import_topics(session)
     # import_forum_posts(session)
-    # import_zines(session, false)
-    # import_zine_posts(session, false)
+    import_zines(session, false)
+    import_zine_posts(session, false)
     # import_comments(session)
     # import_messages(session)
-    import_followerships(session)
-    import_notifications(session)
+    # import_followerships(session)
+    # import_notifications(session)
+    import_watches(session)
   end
 end
