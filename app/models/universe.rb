@@ -6,6 +6,7 @@ class Universe < ActiveRecord::Base
   has_many :forums, class_name: 'Raddar::Forums::Forum', dependent: :nullify
   has_many :zines, class_name: 'Raddar::Zines::Zine', dependent: :nullify
   has_many :levels, dependent: :destroy
+  has_many :ranks, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 6_000 }

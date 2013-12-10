@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131210230139) do
+ActiveRecord::Schema.define(version: 20131210231927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -292,6 +292,19 @@ ActiveRecord::Schema.define(version: 20131210230139) do
   add_index "raddar_zines_zines", ["slug"], name: "index_raddar_zines_zines_on_slug", unique: true, using: :btree
   add_index "raddar_zines_zines", ["universe_id"], name: "index_raddar_zines_zines_on_universe_id", using: :btree
   add_index "raddar_zines_zines", ["user_id"], name: "index_raddar_zines_zines_on_user_id", using: :btree
+
+  create_table "ranks", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "universe_id"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ranks", ["universe_id"], name: "index_ranks_on_universe_id", using: :btree
+  add_index "ranks", ["value", "universe_id"], name: "index_ranks_on_value_and_universe_id", unique: true, using: :btree
+  add_index "ranks", ["value"], name: "index_ranks_on_value", using: :btree
 
   create_table "universes", force: true do |t|
     t.string   "name"
