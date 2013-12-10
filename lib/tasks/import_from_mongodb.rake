@@ -32,6 +32,59 @@ def import_roles(session)
   end
 end
 
+def import_tags(session)
+  puts 'Importing tags'
+
+  count = session[:tags].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:tags].find.each do |tag|
+    raddar_tag = Raddar::Tags::Tag.new(
+      name:                   tag['name'],
+      created_at:             tag['created_at'],
+      updated_at:             tag['updated_at']
+    )
+
+    raddar_tag.save!
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Raddar::Tags::Tag.count } tags."
+end
+
+def import_taggings(session)
+  puts 'Importing taggings'
+
+  taggings = session[:taggings].find(taggable_type: 'Stuff')
+
+  count = taggings.count
+
+  bar = ProgressBar.new(count)
+
+  taggings.each do |tagging|
+    tag = session[:tags].find(_id: tagging['tag_id']).first
+    raddar_tag = Raddar::Tags::Tag.find_by(name: tag['name'])
+
+    post = session[:stuffs].find(_id: tagging['taggable_id']).first
+    raddar_post = Raddar::Zines::Post.find_by(name: post['name'], created_at: post['created_at'])
+
+    raddar_tagging = Raddar::Tags::Tagging.new(
+      tag:                    raddar_tag,
+      taggable:               raddar_post,
+      created_at:             tagging['created_at'],
+      updated_at:             tagging['updated_at']
+    )
+
+    raddar_tagging.save!
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Raddar::Tags::Tagging.count } taggings."
+end
+
 def import_pages(session)
   puts 'Importing pages'
 
@@ -710,13 +763,15 @@ namespace :mundodastrevas do
     # import_topics(session)
     # import_forum_posts(session)
     import_zines(session, false)
-    # import_zine_posts(session, false)
+    import_zine_posts(session, false)
     # import_comments(session)
     # import_messages(session)
     # import_followerships(session)
     # import_notifications(session)
     # import_watches(session)
     # import_reviews(session)
-    import_bootsy(session)
+    # import_bootsy(session)
+    import_tags(session)
+    import_taggings(session)
   end
 end
