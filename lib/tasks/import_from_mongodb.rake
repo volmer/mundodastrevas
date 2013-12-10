@@ -557,6 +557,53 @@ def import_notifications(session)
   puts "Imported #{ Raddar::Notification.count } notifications."
 end
 
+def import_bootsy(session)
+  puts 'Importing bootsy'
+
+  galleries = session[:bootsy_image_galleries].find(bootsy_resource_type: 'Pub')
+
+  count = galleries.count
+
+  bar = ProgressBar.new(count)
+
+  galleries.each do |gallery|
+    zine = session[:pubs].find(_id: gallery['bootsy_resource_id']).first
+    raddar_zine = Raddar::Zines::Zine.find_by(slug: zine['_slugs'].first)
+
+    bootsy_gallery = Bootsy::ImageGallery.new(
+      bootsy_resource: raddar_zine,
+      created_at:      gallery['created_at'],
+      updated_at:      gallery['updated_at']
+    )
+
+    puts 'Resource not present!' if raddar_zine.blank?
+
+    bootsy_gallery.save!
+
+    images = session[:bootsy_images].find(image_gallery_id: gallery['_id'])
+
+    images.each do |image|
+      bootsy_image = Bootsy::Image.new(
+        image_gallery: bootsy_gallery,
+        created_at:    image['created_at'],
+        updated_at:    image['updated_at']
+      )
+
+      file = File.open(UPLOADS_PATH +  "/bootsy/image/#{ image['_id'] }/#{ image['image_file'] }")
+
+      bootsy_image.image_file = file
+
+      bootsy_image.save!
+
+      file.close
+    end
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Bootsy::ImageGallery.count } galleries and #{ Bootsy::Image.count } images."
+end
+
 def import_users(session, upload_avatars = true)
   Raddar::User.send(:include, UserWithoutPassword)
   unconfirmed_users = 0
@@ -659,16 +706,17 @@ namespace :mundodastrevas do
     import_users(session, false)
     # import_pages(session)
     import_universes(session, false)
-    import_forums(session)
-    import_topics(session)
-    import_forum_posts(session)
+    # import_forums(session)
+    # import_topics(session)
+    # import_forum_posts(session)
     import_zines(session, false)
-    import_zine_posts(session, false)
-    import_comments(session)
+    # import_zine_posts(session, false)
+    # import_comments(session)
     # import_messages(session)
     # import_followerships(session)
     # import_notifications(session)
     # import_watches(session)
-    import_reviews(session)
+    # import_reviews(session)
+    import_bootsy(session)
   end
 end
