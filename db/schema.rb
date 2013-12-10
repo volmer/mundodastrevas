@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207172204) do
+ActiveRecord::Schema.define(version: 20131210001030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,20 +121,17 @@ ActiveRecord::Schema.define(version: 20131207172204) do
   add_index "raddar_messages", ["sender_id"], name: "index_raddar_messages_on_sender_id", using: :btree
 
   create_table "raddar_notifications", force: true do |t|
-    t.string   "token"
-    t.string   "item_path"
-    t.boolean  "unread",            default: true
+    t.string   "event"
+    t.boolean  "unread",          default: true
     t.integer  "user_id"
     t.integer  "notifiable_id"
     t.string   "notifiable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "watchers_watch_id"
   end
 
   add_index "raddar_notifications", ["notifiable_id", "notifiable_type"], name: "index_raddar_notifications_on_notifiable_id_and_notifiable_type", using: :btree
   add_index "raddar_notifications", ["user_id"], name: "index_raddar_notifications_on_user_id", using: :btree
-  add_index "raddar_notifications", ["watchers_watch_id"], name: "index_raddar_notifications_on_watchers_watch_id", using: :btree
 
   create_table "raddar_pages", force: true do |t|
     t.text     "content"
