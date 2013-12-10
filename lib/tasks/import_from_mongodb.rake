@@ -433,6 +433,43 @@ def import_followerships(session)
   puts "Imported #{ Raddar::Followership.count } followerships."
 end
 
+def import_notifications(session)
+  puts 'Importing notifications'
+
+  count = session[:notifications].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:notifications].find.each do |notification|
+    user = session[:users].find(_id: notification['user_id']).first
+    raddar_user = Raddar::User.find_by(name: user['name'])
+
+    if notification['content'].include?('começou a seguir você')
+      event = 'new_follower'
+      user = session[:users].find(_id: notification['notifiable_id']).first
+      notifiable = Raddar::User.find_by(name: user['name'])
+
+      raddar_notification = Raddar::Notification.new(
+        user:           raddar_user,
+        notifiable:     notifiable,
+        unread:         notification['status'] == 'unread',
+        event:          event,
+        created_at:     notification['created_at'],
+        updated_at:     notification['updated_at']
+      )
+
+      unless raddar_notification.save
+        puts "Failed for #{ raddar_notification }."
+        pp raddar_notification.errors
+      end
+    end
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Raddar::Notification.count } notifications."
+end
+
 def import_users(session, upload_avatars = true)
   Raddar::User.send(:include, UserWithoutPassword)
   unconfirmed_users = 0
@@ -534,14 +571,15 @@ namespace :mundodastrevas do
     import_roles(session)
     import_users(session, false)
     # import_pages(session)
-    import_universes(session, false)
-    import_forums(session)
+    # import_universes(session, false)
+    # import_forums(session)
     # import_topics(session)
     # import_forum_posts(session)
-    import_zines(session, false)
+    # import_zines(session, false)
     # import_zine_posts(session, false)
     # import_comments(session)
     # import_messages(session)
-    import_followerships(session)
+    # import_followerships(session)
+    import_notifications(session)
   end
 end
