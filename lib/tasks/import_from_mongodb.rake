@@ -657,6 +657,66 @@ def import_bootsy(session)
   puts "Imported #{ Bootsy::ImageGallery.count } galleries and #{ Bootsy::Image.count } images."
 end
 
+def import_ranks(session)
+  puts 'Importing ranks'
+
+  count = session[:ranks].find.count
+
+  bar = ProgressBar.new(count)
+
+  session[:ranks].find.each do |rank|
+    universe = session[:universes].find(_id: rank['universe_id']).first
+    imported_universe = Universe.find_by(name: universe['name'])
+
+    local_rank = Rank.new(
+      universe:               imported_universe,
+      value:                  rank['level'],
+      description:            rank['description'],
+      name:                   rank['name'],
+      created_at:             rank['created_at'],
+      updated_at:             rank['updated_at']
+    )
+
+    local_rank.save!
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Rank.count } ranks."
+end
+
+def import_levels(session)
+  puts 'Importing levels'
+
+  users = session[:users].find(rank_ids: { '$exists' => true })
+
+  count = users.count
+
+  bar = ProgressBar.new(count)
+
+  users.each do |user|
+    ranks = session[:ranks].find(_id: { '$in' => user['rank_ids'] }).sort(level: 1)
+
+    ranks.each do |rank|
+      local_rank = Rank.find_by(name: rank['name'], value: rank['level'])
+      user       = Raddar::User.find_by(name: user['name'])
+
+      level = Level.find_or_initialize_by(
+        user:     user,
+        universe: local_rank.universe
+      )
+
+      level.value = rank['level']
+
+      level.save!
+    end
+
+    bar.increment!
+  end
+
+  puts "Imported #{ Level.count } levels."
+end
+
 def import_users(session, upload_avatars = true)
   Raddar::User.send(:include, UserWithoutPassword)
   unconfirmed_users = 0
@@ -762,8 +822,8 @@ namespace :mundodastrevas do
     # import_forums(session)
     # import_topics(session)
     # import_forum_posts(session)
-    import_zines(session, false)
-    import_zine_posts(session, false)
+    # import_zines(session, false)
+    # import_zine_posts(session, false)
     # import_comments(session)
     # import_messages(session)
     # import_followerships(session)
@@ -771,7 +831,9 @@ namespace :mundodastrevas do
     # import_watches(session)
     # import_reviews(session)
     # import_bootsy(session)
-    import_tags(session)
-    import_taggings(session)
+    # import_tags(session)
+    # import_taggings(session)
+    import_ranks(session)
+    import_levels(session)
   end
 end
