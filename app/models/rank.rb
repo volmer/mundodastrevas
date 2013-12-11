@@ -11,4 +11,14 @@ class Rank < ActiveRecord::Base
     uniqueness: {
       scope: :universe_id
     }
+  validates :name,
+    presence: true,
+    length: {
+      maximum: 100
+    }
+  validates :description,
+    presence: true,
+    length: {
+      maximum: 300
+    }
 end
