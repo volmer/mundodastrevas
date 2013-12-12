@@ -2,9 +2,12 @@
 
 FactoryGirl.define do
   factory :rank do
-    name "MyString"
-    description "MyText"
-    universe nil
+    name 'Mortal'
+
+    description 'A prey for the vampires.'
+
+    universe
+
     value 1
   end
 end

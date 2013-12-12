@@ -13,6 +13,8 @@ FactoryGirl.define do
       powers. The game's title is a metaphor for the way vampires within the game
       view their (un)life."
 
-    slug 'vampire-the-requiem'
+    sequence(:slug) do |n|
+      "vampire-the-requiem-#{ n }"
+    end
   end
 end

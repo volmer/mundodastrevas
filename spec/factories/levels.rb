@@ -2,8 +2,10 @@
 
 FactoryGirl.define do
   factory :level do
-    user nil
-    universe nil
+    user
+
+    universe
+
     value 1
   end
 end

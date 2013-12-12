@@ -6,6 +6,7 @@ module Mundodastrevas
       devise :encryptable
 
       has_many :levels, dependent: :destroy
+      has_many :ranks, through: :levels
     end
   end
 end
