@@ -815,6 +815,8 @@ namespace :mundodastrevas do
     session = Moped::Session.new(["#{ args[:host] }:#{ args[:port] }"])
     session.use args[:dbname]
 
+    ActiveRecord::Base.record_timestamps = false
+
     import_roles(session)
     import_users(session, true)
     import_pages(session)
