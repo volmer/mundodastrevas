@@ -1,72 +1,104 @@
-<div class="row">
-  <div class="col-md-9">
+<div class="mundodastrevas-home">
+  <div class="row">
+    <div class="col-md-9">
+      <% @featured_posts.each_slice(2) do |row| %>
+        <div class="row">
+          <% row.each do |post| %>
+            <div class="col-md-6">
+              <a href="#" class="featured-zine">
+                <div class="faux-image" style="background-image: url('<%= post.image.url %>')">
+                </div>
 
+                <div class="caption">
+                  <h1><%= post %></h1>
+                </div>
+              </a>
+            </div>
+          <% end%>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="home-heading">Nos fóruns</h2>
+
+          <div class="list-group forum-topics">
+            <% @forum_topics.each do |topic| %>
+              <%= link_to raddar_forums.forum_topic_path(topic.forum, topic), class: 'list-group-item' do %>
+                <h4 class="list-group-item-heading">
+                  <%= topic %>
+                </h4>
+
+                <p class="list-group-item-text forum-name">
+                  <%= topic.forum %>
+                </p>
+              <% end %>
+            <% end %>
+          </div>
+
+          <h3 class="home-heading">Comentários</h3>
+
+          <div class="list-group comments">
+            <% @comments.each do |comment| %>
+              <%= link_to raddar_zines.zine_post_path(comment.post.zine, comment.post), class: 'list-group-item' do %>
+                <div class="media">
+                  <%= image_tag comment.user.avatar.thumb.url, class: 'media-object pull-left img-circle' %>
+
+                  <div class="media-body">
+                    <strong>
+                      <%= comment.user %>:
+                    </strong>
+
+                    <%= truncate comment.content, length: 100, separator: ' ' %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h2 class="home-heading">Posts recentes</h2>
+
+          <ul class="media-list">
+            <% @recent_posts.each do |post| %>
+              <li class="media zine-with-post">
+                <%= link_to raddar_zines.zine_post_path(post.zine, post), class: 'pull-left' do %>
+                  <%= image_tag post.image.small.url, class: 'media-object img-rounded' %>
+                <% end %>
+
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    <%= link_to post, raddar_zines.zine_post_path(post.zine, post) %>
+                  </h4>
+
+                  <p class="zine-name">
+                    <%= post.zine %>
+                  </p>
+
+                  <p>
+                    <%= truncate(sanitize(post.content, tags: []), length: 120, separator: ' ') %>
+                  </p>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <%= render 'sidebar' %>
   </div>
 
-  <div class="col-md-3 mundodastrevas-sidebar">
-    <section class="facebook-like">
-      <div class="fb-like-box"
-        data-href="http://www.facebook.com/mundodastrevas"
-        data-width="260"
-        data-height="260"
-        data-colorscheme="light"
-        data-show-faces="true"
-        data-header="false"
-        data-stream="false"
-        data-show-border="true">
-      </div>
-    </section>
-
-    <section class="twitter-widget">
-      <a class="twitter-timeline"
-        href="https://twitter.com/WoDBrasil"
-        data-widget-id="252101067221893120">
-        Tweets de @WoDBrasil
-      </a>
-    </section>
-
-    <section class="panel panel-default new-users">
-      <div class="panel-heading">
-        <h1 class="panel-title">Novos membros</h1>
-      </div>
-
-      <div class="panel-body">
-        <% Raddar::User.where('confirmed_at IS NOT NULL').order('created_at DESC').limit(9).each do |user| %>
-          <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle img-thumbnail'), user, title: user.name %>
+  <div class="universes">
+    <% @universes.each_slice(3) do |row| %>
+      <div class="row">
+        <% row.each do |universe| %>
+          <div class="col-md-4 col-md-offset-<%= (row.length - 3) * -2 %>">
+            <%= link_to universe, main_app.universe_path(universe), class: 'btn btn-default btn-block', style: "background-image: url('#{ universe.image.url }')" %>
+          </div>
         <% end %>
       </div>
-    </section>
-
-    <section class="panel panel-default">
-      <div class="panel-heading">
-        <h1 class="panel-title">Parceiros</h1>
-      </div>
-
-      <div class="list-group">
-        <%= link_to 'Livro dos Espelhos', 'http://livrodosespelhos.com/', target: '_blank', class: 'list-group-item' %>
-
-        <%= link_to 'RPG Pará', 'http://www.rpgpara.com/', target: '_blank', class: 'list-group-item' %>
-
-        <%= link_to 'Trevas de Vitória', 'http://wod-vix.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
-
-        <%= link_to 'Escudo do Mestre', 'http://escudo-do-mestre.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
-
-        <%= link_to 'Instinct Alternative', 'http://instinctalternative.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
-
-        <%= link_to 'RPG Blogs', 'http://www.rpg.net.br/blogs', target: '_blank', class: 'list-group-item' %>
-      </div>
-    </section>
-
-    <section class="panel panel-default">
-      <div class="panel-heading">
-        <h1 class="panel-title">Recomendados</h1>
-      </div>
-
-      <div class="list-group">
-        <%= link_to 'Mundo das Trevas - Oficial', 'http://www.devir.com.br/mundodastrevas', target: '_blank', class: 'list-group-item' %>
-
-        <%= link_to 'The Onyx Path - World of Darkness', 'http://theonyxpath.com/games/wod', target: '_blank', class: 'list-group-item' %>
-      </div>
-    </section>
+    <% end %>
   </div>
 </div>

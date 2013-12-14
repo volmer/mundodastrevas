@@ -1,0 +1,66 @@
+<div class="col-md-3 mundodastrevas-sidebar">
+  <section class="facebook-like">
+    <div class="fb-like-box"
+      data-href="http://www.facebook.com/mundodastrevas"
+      data-width="260"
+      data-height="260"
+      data-colorscheme="light"
+      data-show-faces="true"
+      data-header="false"
+      data-stream="false"
+      data-show-border="true">
+    </div>
+  </section>
+
+  <section class="twitter-widget">
+    <a class="twitter-timeline"
+      href="https://twitter.com/WoDBrasil"
+      data-widget-id="252101067221893120">
+      Tweets de @WoDBrasil
+    </a>
+  </section>
+
+  <section class="panel panel-default new-users">
+    <div class="panel-heading">
+      <h1 class="panel-title">Novos membros</h1>
+    </div>
+
+    <div class="panel-body">
+      <% Raddar::User.where('confirmed_at IS NOT NULL').order('created_at DESC').limit(9).each do |user| %>
+        <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle img-thumbnail'), user, title: user.name %>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <h1 class="panel-title">Parceiros</h1>
+    </div>
+
+    <div class="list-group">
+      <%= link_to 'Livro dos Espelhos', 'http://livrodosespelhos.com/', target: '_blank', class: 'list-group-item' %>
+
+      <%= link_to 'RPG Pará', 'http://www.rpgpara.com/', target: '_blank', class: 'list-group-item' %>
+
+      <%= link_to 'Trevas de Vitória', 'http://wod-vix.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
+
+      <%= link_to 'Escudo do Mestre', 'http://escudo-do-mestre.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
+
+      <%= link_to 'Instinct Alternative', 'http://instinctalternative.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
+
+      <%= link_to 'RPG Blogs', 'http://www.rpg.net.br/blogs', target: '_blank', class: 'list-group-item' %>
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <h1 class="panel-title">Recomendados</h1>
+    </div>
+
+    <div class="list-group">
+      <%= link_to 'Mundo das Trevas - Oficial', 'http://www.devir.com.br/mundodastrevas', target: '_blank', class: 'list-group-item' %>
+
+      <%= link_to 'The Onyx Path - World of Darkness', 'http://theonyxpath.com/games/wod', target: '_blank', class: 'list-group-item' %>
+    </div>
+  </section>
+</div>
