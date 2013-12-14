@@ -43,9 +43,11 @@ end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
 end
 
-gem 'raddar', github: 'volmer/raddar'
+gem 'raddar', path: '~/Projects/raddar'
 gem 'raddar-forums', github: 'volmer/raddar-forums'
 gem 'raddar-zines', github: 'volmer/raddar-zines'
 gem 'devise-encryptable'
