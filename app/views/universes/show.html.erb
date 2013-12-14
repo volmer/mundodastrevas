@@ -1,0 +1,79 @@
+<% content_for :page_title, @universe.name %>
+
+<div class="panel panel-default universe-header" style="background-image: url('<%= @universe.image.url %>')">
+  <div class="panel-body">
+    <h1>
+      <%= @universe %>
+    </h1>
+  </div>
+</div>
+
+<section class="description">
+  <p class="lead">
+    <%= sanitize @universe.description %>
+  </p>
+</section>
+
+<ul class="nav nav-tabs nav-justified universe-nav">
+  <li class="active"><%= link_to t('.zines'), '#zines', data: { toggle: 'tab' } %></li>
+
+  <% if @forum.present? %>
+    <li><%= link_to t('.forum'), '#forum', data: { toggle: 'tab' } %></li>
+  <% end %>
+
+  <li><%= link_to t('.ranks'), '#ranks', data: { toggle: 'tab' } %></li>
+</ul>
+
+<div class="tab-content">
+  <section class="tab-pane fade in active" id="zines">
+    <div class="page-header">
+      <h2>
+        <%= t '.zines' %>
+      </h2>
+    </div>
+
+    <%= render 'raddar/zines/zines/list', zines: @zines %>
+  </section>
+
+  <% if @forum.present? %>
+    <section class="tab-pane fade" id="forum">
+      <div class="page-header">
+        <h2>
+          <%= t '.forum' %>
+        </h2>
+      </div>
+
+      <%= render 'raddar/forums/topics/index', topics: @forum_topics, forum: @forum %>
+    </section>
+  <% end %>
+
+  <section class="tab-pane fade" id="ranks">
+    <div class="page-header">
+      <h2>
+        <%= t '.zines' %>
+      </h2>
+    </div>
+
+    <% @ranks.each do |rank| %>
+      <div class="page-header">
+        <h3>
+          <%= rank %>
+
+          <small>
+            <%= rank.description %>
+          </small>
+        </h3>
+      </div>
+
+      <% rank.users.order('name ASC').each_slice(12) do |row| %>
+        <div class="row">
+          <% row.each do |user| %>
+            <div class="col-sm-1">
+              <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle'), raddar.user_path(user), title: user.name, class: 'thumbnail' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </section>
+</div>
