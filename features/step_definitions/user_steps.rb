@@ -70,9 +70,9 @@ end
 When(/^I sign in with the name "(.*?)" and the password "(.*?)"$/) do |name, password|
   step 'I am not signed in'
   step 'I go to the new user session page'
-  step "I fill in \"Name or email\" with \"#{ name }\""
-  step "I fill in \"Password\" with \"#{ password }\""
-  step 'I press "Sign in"'
+  step "I fill in \"Nome ou email\" with \"#{ name }\""
+  step "I fill in \"Senha\" with \"#{ password }\""
+  step 'I press "Entrar"'
 end
 
 When 'I open my user menu' do

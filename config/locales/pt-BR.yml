@@ -5,3 +5,7 @@ pt-BR:
       forum: 'Fórum'
       ranks: 'Ranks'
       more: 'Ver mais'
+  activerecord:
+    attributes:
+      raddar/zines/zine:
+        universe: 'Universo'
