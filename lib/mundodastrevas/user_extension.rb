@@ -6,7 +6,19 @@ module Mundodastrevas
       devise :encryptable
 
       has_many :levels, dependent: :destroy
-      has_many :ranks, through: :levels
+
+      def rank_in(universe)
+        if universe
+          level = levels.find_or_initialize_by(universe: universe)
+
+          if level.new_record?
+            level.value = 1
+            level.save!
+          end
+
+          level.rank
+        end
+      end
     end
   end
 end
