@@ -1,5 +1,5 @@
 <div class="col-md-2 user">
-  <%= link_to image_tag(post.user.avatar.medium.url, class: 'img-responsive img-thumbnail img-circle'), raddar.user_path(post.user) %>
+  <%= link_to image_tag(post.user.avatar.small.url, class: 'img-responsive img-thumbnail img-circle'), raddar.user_path(post.user) %>
 
   <div class="name">
     <%= link_to post.user, raddar.user_path(post.user) %>
