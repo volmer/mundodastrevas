@@ -41,8 +41,9 @@ a.featured-zine {
   transition: all .3s ease-in-out;
 
   .caption {
-    min-height: 80px;
+    height: 90px;
     padding: 10px;
+    overflow: hidden;
 
     h1 {
       color: #fff;
