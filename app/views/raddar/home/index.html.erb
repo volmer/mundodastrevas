@@ -5,7 +5,7 @@
         <div class="row">
           <% row.each do |post| %>
             <div class="col-md-6">
-              <a href="#" class="featured-zine">
+              <%= link_to raddar_zines.zine_post_path(post.zine, post), class: 'featured-zine' do %>
                 <div class="faux-image" style="background-image: url('<%= post.image.url %>')">
                 </div>
 
@@ -16,7 +16,7 @@
                     <%= post.zine %>
                   </p>
                 </div>
-              </a>
+              <% end %>
             </div>
           <% end%>
         </div>
