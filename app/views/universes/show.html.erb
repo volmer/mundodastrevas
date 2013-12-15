@@ -21,7 +21,9 @@
     <li><%= link_to t('.forum'), '#forum', data: { toggle: 'tab' } %></li>
   <% end %>
 
-  <li><%= link_to t('.ranks'), '#ranks', data: { toggle: 'tab' } %></li>
+  <% if @ranks.present? %>
+    <li><%= link_to t('.ranks'), '#ranks', data: { toggle: 'tab' } %></li>
+  <% end %>
 </ul>
 
 <div class="tab-content">
@@ -44,13 +46,15 @@
       </div>
 
       <%= render 'raddar/forums/topics/index', topics: @forum_topics, forum: @forum %>
+
+      <%= link_to t('.more'), raddar_forums.forum_path(@forum) %>
     </section>
   <% end %>
 
   <section class="tab-pane fade" id="ranks">
     <div class="page-header">
       <h2>
-        <%= t '.zines' %>
+        <%= t '.ranks' %>
       </h2>
     </div>
 
