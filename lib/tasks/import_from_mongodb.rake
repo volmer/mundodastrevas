@@ -65,10 +65,10 @@ def import_taggings(session)
 
   taggings.each do |tagging|
     tag = session[:tags].find(_id: tagging['tag_id']).first
-    raddar_tag = Raddar::Tags::Tag.find_by(name: tag['name'])
+    raddar_tag = Raddar::Tags::Tag.find_by!(name: tag['name'])
 
     post = session[:stuffs].find(_id: tagging['taggable_id']).first
-    raddar_post = Raddar::Zines::Post.find_by(name: post['name'], created_at: post['created_at'])
+    raddar_post = Raddar::Zines::Post.find_by!(name: post['name'], created_at: post['created_at'])
 
     raddar_tagging = Raddar::Tags::Tagging.new(
       tag:                    raddar_tag,
@@ -125,7 +125,7 @@ def import_forums(session)
 
     if forum['universe_id'].present?
       universe = session[:universes].find(_id: forum['universe_id']).first
-      imported_universe = Universe.find_by(name: universe['name'])
+      imported_universe = Universe.find_by!(name: universe['name'])
 
       raddar_forum.universe = imported_universe
 
@@ -149,10 +149,10 @@ def import_topics(session)
 
   session[:topics].find.each do |topic|
     forum = session[:forums].find(_id: topic['forum_id']).first
-    raddar_forum = Raddar::Forums::Forum.find_by(name: forum['name'])
+    raddar_forum = Raddar::Forums::Forum.find_by!(name: forum['name'])
 
     user = session[:users].find(_id: topic['user_id']).first
-    raddar_user = Raddar::User.find_by(name: user['name'])
+    raddar_user = Raddar::User.find_by!(name: user['name'])
 
     raddar_topic = Raddar::Forums::Topic.new(
       forum:                  raddar_forum,
@@ -180,10 +180,10 @@ def import_forum_posts(session)
 
   session[:posts].find.each do |forum_post|
     topic = session[:topics].find(_id: forum_post['topic_id']).first
-    raddar_topic = Raddar::Forums::Topic.find_by(name: topic['name'], created_at: topic['created_at'], views: topic['views'])
+    raddar_topic = Raddar::Forums::Topic.find_by!(name: topic['name'], created_at: topic['created_at'], views: topic['views'])
 
     user = session[:users].find(_id: forum_post['user_id']).first
-    raddar_user = Raddar::User.find_by(name: user['name'])
+    raddar_user = Raddar::User.find_by!(name: user['name'])
 
     raddar_forum_post = Raddar::Forums::Post.new(
       topic:                  raddar_topic,
@@ -210,7 +210,7 @@ def import_zines(session, upload_images = true)
 
   session[:pubs].find.each do |zine|
     user = session[:users].find(_id: zine['user_id']).first
-    raddar_user = Raddar::User.find_by(name: user['name'])
+    raddar_user = Raddar::User.find_by!(name: user['name'])
 
     raddar_zine = Raddar::Zines::Zine.new(
       user:                   raddar_user,
@@ -224,7 +224,7 @@ def import_zines(session, upload_images = true)
 
     if zine['universe_id'].present?
       universe = session[:universes].find(_id: zine['universe_id']).first
-      imported_universe = Universe.find_by(name: universe['name'])
+      imported_universe = Universe.find_by!(name: universe['name'])
 
       raddar_zine.universe = imported_universe
 
@@ -265,10 +265,11 @@ def import_zine_posts(session, upload_images = true)
 
   session[:stuffs].find.each do |zine_post|
     zine = session[:pubs].find(_id: zine_post['pub_id']).first
-    raddar_zine = Raddar::Zines::Zine.find_by(slug: zine['_slugs'].first)
+    raddar_zine = Raddar::Zines::Zine.find_by!(slug: zine['_slugs'].first)
 
     raddar_zine_post = Raddar::Zines::Post.new(
       zine:                   raddar_zine,
+      user:                   raddar_zine.user,
       slug:                   zine_post['_slugs'].first,
       content:                zine_post['content'],
       views:                  zine_post['views'],
@@ -279,9 +280,9 @@ def import_zine_posts(session, upload_images = true)
 
     unless raddar_zine_post.valid?
       puts "Post #{ raddar_zine_post } is not valid."
-      puts "Removing slug '#{ raddar_zine_post.slug }'..."
+      puts "Parameterizing slug '#{ raddar_zine_post.slug }' into '#{ raddar_zine_post.slug.parameterize }'"
 
-      raddar_zine_post.slug = nil
+      raddar_zine_post.slug = raddar_zine_post.slug.parameterize
     end
 
     if zine_post['image'].present? && upload_images
@@ -318,10 +319,10 @@ def import_comments(session)
 
   session[:comments].find(commentable_type: 'Stuff').each do |comment|
     post = session[:stuffs].find(_id: comment['commentable_id']).first
-    raddar_post = Raddar::Zines::Post.find_by(name: post['name'], created_at: post['created_at'], views: post['views'])
+    raddar_post = Raddar::Zines::Post.find_by!(name: post['name'], created_at: post['created_at'], views: post['views'])
 
     user = session[:users].find(_id: comment['user_id']).first
-    raddar_user = Raddar::User.find_by(name: user['name'])
+    raddar_user = Raddar::User.find_by!(name: user['name'])
 
     raddar_comment = Raddar::Zines::Comment.new(
       post:                   raddar_post,
@@ -390,7 +391,7 @@ def import_external_accounts(session)
 
   session[:accounts].find.each do |account|
     user = session[:users].find(_id: account['user_id']).first
-    raddar_user = Raddar::User.find_by(name: user['name'])
+    raddar_user = Raddar::User.find_by!(name: user['name'])
 
     raddar_account = Raddar::ExternalAccount.new(
       user:       raddar_user,
@@ -424,9 +425,9 @@ def import_messages(session)
 
   session[:messages].find.each do |message|
     user = session[:users].find(_id: message['sender_id']).first
-    sender = Raddar::User.find_by(name: user['name'])
+    sender = Raddar::User.find_by!(name: user['name'])
     user = session[:users].find(_id: message['recipient_id']).first
-    recipient = Raddar::User.find_by(name: user['name'])
+    recipient = Raddar::User.find_by!(name: user['name'])
 
     raddar_message = Raddar::Message.new(
       sender:     sender,
@@ -454,18 +455,18 @@ def import_followerships(session)
 
   session[:followerships].find.each do |followership|
     user = session[:users].find(_id: followership['user_id']).first
-    raddar_user = Raddar::User.find_by(name: user['name'])
+    raddar_user = Raddar::User.find_by!(name: user['name'])
 
     case followership['followable_type']
     when 'User'
       user = session[:users].find(_id: followership['followable_id']).first
-      followable = Raddar::User.find_by(name: user['name'])
+      followable = Raddar::User.find_by!(name: user['name'])
     when 'Pub'
       zine = session[:pubs].find(_id: followership['followable_id']).first
-      followable = Raddar::Zines::Zine.find_by(slug: zine['_slugs'].first)
+      followable = Raddar::Zines::Zine.find_by!(slug: zine['_slugs'].first)
     when 'Forum'
       forum = session[:forums].find(_id: followership['followable_id']).first
-      followable = Raddar::Forums::Forum.find_by(name: forum['name'])
+      followable = Raddar::Forums::Forum.find_by!(name: forum['name'])
     end
 
     raddar_followership = Raddar::Followership.new(
@@ -495,18 +496,18 @@ def import_reviews(session)
 
   session[:votes].find.each do |review|
     user = session[:users].find(_id: review['user_id']).first
-    raddar_user = Raddar::User.find_by(name: user['name'])
+    raddar_user = Raddar::User.find_by!(name: user['name'])
 
     case review['votable_type']
     when 'Comment'
       comment = session[:comments].find(_id: review['votable_id']).first
-      reviewable = Raddar::Zines::Comment.find_by(content: comment['content'], created_at: comment['created_at'])
+      reviewable = Raddar::Zines::Comment.find_by!(content: comment['content'], created_at: comment['created_at'])
     when 'Stuff'
       zine_post = session[:stuffs].find(_id: review['votable_id']).first
-      reviewable = Raddar::Zines::Post.find_by(name: zine_post['name'], created_at: zine_post['created_at'])
+      reviewable = Raddar::Zines::Post.find_by!(name: zine_post['name'], created_at: zine_post['created_at'])
     when 'Post'
       forum_post = session[:posts].find(_id: review['votable_id']).first
-      reviewable = Raddar::Forums::Post.find_by(content: forum_post['content'], created_at: forum_post['created_at'])
+      reviewable = Raddar::Forums::Post.find_by!(content: forum_post['content'], created_at: forum_post['created_at'])
     end
 
     case review['value'].to_s
@@ -541,24 +542,25 @@ def import_watches(session)
 
   session[:watchings].find.each do |watch|
     user = session[:users].find(_id: watch['user_id']).first
-    raddar_user = Raddar::User.find_by(name: user['name'])
+    raddar_user = Raddar::User.find_by!(name: user['name'])
 
     case watch['watchable_type']
     when 'Topic'
       topic = session[:topics].find(_id: watch['watchable_id']).first
-      watchable = Raddar::Forums::Topic.find_by(name: topic['name'], views: topic['views'])
+      watchable = Raddar::Forums::Topic.find_by!(name: topic['name'], views: topic['views'])
     when 'Stuff'
       post = session[:stuffs].find(_id: watch['watchable_id']).first
-      watchable = Raddar::Zines::Post.find_by(name: post['name'], created_at: post['created_at'])
+      watchable = Raddar::Zines::Post.find_by!(name: post['name'], created_at: post['created_at'])
     end
 
     if watch['watchable_type'] != 'Venue'
-      raddar_watch = Raddar::Watchers::Watch.new(
+      raddar_watch = Raddar::Watchers::Watch.find_or_initialize_by(
         user:       raddar_user,
-        watchable:  watchable,
-        created_at: watch['created_at'],
-        updated_at: watch['updated_at']
+        watchable:  watchable
       )
+
+      raddar_watch.created_at = watch['created_at']
+      raddar_watch.updated_at = watch['updated_at']
 
       unless raddar_watch.save
         puts "Failed for #{ raddar_watch }."
@@ -581,12 +583,12 @@ def import_notifications(session)
 
   session[:notifications].find.each do |notification|
     user = session[:users].find(_id: notification['user_id']).first
-    raddar_user = Raddar::User.find_by(name: user['name'])
+    raddar_user = Raddar::User.find_by!(name: user['name'])
 
     if notification['content'].include?('começou a seguir você')
       event = 'new_follower'
       user = session[:users].find(_id: notification['notifiable_id']).first
-      follower = Raddar::User.find_by(name: user['name'])
+      follower = Raddar::User.find_by!(name: user['name'])
 
       followership = Raddar::Followership.find_by(user: follower, followable: raddar_user)
 
@@ -621,7 +623,7 @@ def import_bootsy(session)
 
   galleries.each do |gallery|
     zine = session[:pubs].find(_id: gallery['bootsy_resource_id']).first
-    raddar_zine = Raddar::Zines::Zine.find_by(slug: zine['_slugs'].first)
+    raddar_zine = Raddar::Zines::Zine.find_by!(slug: zine['_slugs'].first)
 
     bootsy_gallery = Bootsy::ImageGallery.new(
       bootsy_resource: raddar_zine,
@@ -666,7 +668,7 @@ def import_ranks(session)
 
   session[:ranks].find.each do |rank|
     universe = session[:universes].find(_id: rank['universe_id']).first
-    imported_universe = Universe.find_by(name: universe['name'])
+    imported_universe = Universe.find_by!(name: universe['name'])
 
     local_rank = Rank.new(
       universe:               imported_universe,
@@ -698,8 +700,8 @@ def import_levels(session)
     ranks = session[:ranks].find(_id: { '$in' => user['rank_ids'] }).sort(level: 1)
 
     ranks.each do |rank|
-      local_rank = Rank.find_by(name: rank['name'], value: rank['level'])
-      user       = Raddar::User.find_by(name: user['name'])
+      local_rank = Rank.find_by!(name: rank['name'], value: rank['level'])
+      user       = Raddar::User.find_by!(name: user['name'])
 
       level = Level.find_or_initialize_by(
         user:     user,
@@ -791,7 +793,7 @@ def import_users(session, upload_avatars = true)
 
       user['role_ids'].each do |role_id|
         role = session[:roles].find(_id: role_id).first
-        raddar_role = Raddar::Role.find_by(name: role['name'])
+        raddar_role = Raddar::Role.find_by!(name: role['name'])
 
         puts "Associating with #{ raddar_role.name } role"
 
