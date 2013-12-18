@@ -17,6 +17,25 @@ GIT
       raddar-tags (>= 0.0.1.rc3)
       raddar-watchers (>= 0.0.1.rc3)
 
+GIT
+  remote: git://github.com/volmer/raddar.git
+  revision: fee62e4ebc5ace9224e411791ca2dd23e649ef59
+  specs:
+    raddar (0.0.1.rc6)
+      bootstrap-sass (~> 3.0)
+      bootsy (~> 2.0)
+      carrierwave (~> 0.9)
+      devise (~> 3.2)
+      draper (~> 1.3)
+      kaminari (~> 0.15)
+      mini_magick (~> 3.7)
+      omniauth-facebook (~> 1.5)
+      omniauth-twitter (~> 1.0)
+      pg_search (~> 0.7)
+      pundit (~> 0.2)
+      recaptcha (~> 0.3)
+      simple_form (~> 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -188,20 +207,6 @@ GEM
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    raddar (0.0.1.rc6)
-      bootstrap-sass (~> 3.0)
-      bootsy (~> 2.0)
-      carrierwave (~> 0.9)
-      devise (~> 3.2)
-      draper (~> 1.3)
-      kaminari (~> 0.15)
-      mini_magick (~> 3.7)
-      omniauth-facebook (~> 1.5)
-      omniauth-twitter (~> 1.0)
-      pg_search (~> 0.7)
-      pundit (~> 0.2)
-      recaptcha (~> 0.3)
-      simple_form (~> 3.0)
     raddar-ratings (0.0.1.rc2)
       raddar (>= 0.0.1.rc4)
     raddar-tags (0.0.1.rc3)
@@ -303,7 +308,7 @@ DEPENDENCIES
   moped
   pg
   progress_bar
-  raddar
+  raddar!
   raddar-forums!
   raddar-zines!
   rails (= 4.0.2)

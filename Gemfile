@@ -47,7 +47,7 @@ group :test do
   gem 'database_cleaner'
 end
 
-gem 'raddar'
+gem 'raddar', github: 'volmer/raddar'
 gem 'raddar-forums', github: 'volmer/raddar-forums'
 gem 'raddar-zines', github: 'volmer/raddar-zines'
 gem 'devise-encryptable'
