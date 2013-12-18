@@ -16,5 +16,7 @@ FactoryGirl.define do
     sequence :slug do |n|
       "#{ n }-brienne"
     end
+
+    user
   end
 end
