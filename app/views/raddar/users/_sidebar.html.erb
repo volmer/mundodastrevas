@@ -6,18 +6,20 @@
   <% if user.levels.present? %>
     <div class="list-group">
       <% user.levels.each do |level| %>
-        <%= link_to main_app.universe_path(level.universe, anchor: 'tab-ranks'), class: 'list-group-item' do %>
-          <div class="media user-rank">
-            <%= image_tag level.universe.image.thumb.url, class: 'media-object pull-left img-rounded' %>
+        <% if level.rank.present? %>
+          <%= link_to main_app.universe_path(level.universe, anchor: 'tab-ranks'), class: 'list-group-item' do %>
+            <div class="media user-rank">
+              <%= image_tag level.universe.image.thumb.url, class: 'media-object pull-left img-rounded' %>
 
-            <div class="media-body">
-              <h1 class="media-heading">
-                <%= level.rank %>
-              </h1>
+              <div class="media-body">
+                <h1 class="media-heading">
+                  <%= level.rank %>
+                </h1>
 
-              <%= level.rank.description %>
+                <%= level.rank.description %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
