@@ -56,7 +56,8 @@ production:
   encoding: unicode
   database: mundodastrevas_production
   pool: 5
-  username: postgres
+  username: mundodastrevas
+  password: mundodastrevas
   port: <%= ENV['BOXEN_POSTGRESQL_PORT'] || '5432' %>
 
 cucumber:
