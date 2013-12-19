@@ -2,8 +2,8 @@ require 'yaml'
 
 #config = YAML.load_file('./config/config.yml')[Rails.env]['unicorn']
 
-worker_processes 4
-listen 'unix:/tmp/mundodastrevas.sock', backlog: 64
+worker_processes 3
+listen 5000 #'unix:/tmp/mundodastrevas.sock', backlog: 64
 pid '/home/volmer/mundodastrevas.pid'
 
 # Preload our app for more speed
