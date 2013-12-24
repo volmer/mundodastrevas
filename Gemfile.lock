@@ -168,6 +168,7 @@ GEM
     multi_json (1.8.2)
     multi_test (0.0.2)
     multipart-post (1.2.0)
+    newrelic_rpm (3.7.1.180)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     oauth (0.4.7)
@@ -312,6 +313,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   moped
+  newrelic_rpm
   pg
   progress_bar
   raddar!

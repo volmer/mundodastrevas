@@ -57,3 +57,5 @@ gem 'devise-encryptable'
 # Import dependencies
 gem 'moped'
 gem 'progress_bar'
+
+gem 'newrelic_rpm'
