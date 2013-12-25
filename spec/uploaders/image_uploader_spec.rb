@@ -21,6 +21,12 @@ describe ImageUploader do
     end
   end
 
+  context 'the medium version' do
+    it 'has the exact dimensions 400 by 200 pixels' do
+      expect(@uploader.medium).to have_dimensions(400, 200)
+    end
+  end
+
   context 'the small version' do
     it 'has the exact dimensions 160 by 160 pixels' do
       expect(@uploader.small).to have_dimensions(160, 160)

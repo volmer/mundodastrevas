@@ -99,7 +99,7 @@
       <div class="row">
         <% row.each do |universe| %>
           <div class="col-md-4 col-md-offset-<%= (row.length - 3) * -2 %>">
-            <%= link_to universe, main_app.universe_path(universe), class: 'btn btn-default btn-block', style: "background-image: url('#{ universe.image.url }')" %>
+            <%= link_to universe, main_app.universe_path(universe), class: 'btn btn-default btn-block', style: "background-image: url('#{ universe.image.medium.url }')" %>
           </div>
         <% end %>
       </div>
