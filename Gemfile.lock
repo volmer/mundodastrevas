@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: git://github.com/volmer/raddar.git
-  revision: fee62e4ebc5ace9224e411791ca2dd23e649ef59
+  revision: 51a653897afa66cf4fac7acb6eff91e3f832463c
   specs:
     raddar (0.0.1.rc6)
       bootstrap-sass (~> 3.0)
@@ -195,7 +195,7 @@ GEM
     options (2.3.0)
       fattr
     orm_adapter (0.5.0)
-    pg (0.17.0)
+    pg (0.17.1)
     pg_search (0.7.2)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
@@ -230,7 +230,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
-    rake (10.1.0)
+    rake (10.1.1)
     rdoc (3.12.2)
       json (~> 1.4)
     recaptcha (0.3.5)
@@ -250,7 +250,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    sass (3.2.12)
+    sass (3.2.13)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
@@ -288,7 +288,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
-    uglifier (2.3.3)
+    uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicorn (4.7.0)
