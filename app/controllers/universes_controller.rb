@@ -1,6 +1,6 @@
 class UniversesController < ApplicationController
   def show
-    @universe = Universe.find_by(slug: params[:id])
+    @universe = Universe.find_by!(slug: params[:id])
 
     authorize(@universe)
 
