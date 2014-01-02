@@ -1,25 +1,25 @@
 GIT
   remote: git://github.com/volmer/raddar-forums.git
-  revision: 2f90a4c08f57867ae903a642f3c197f2f6d74b33
+  revision: a59c5dafd158830aac2b7f3a8f81278bdbb746d5
   specs:
     raddar-forums (0.0.1)
-      raddar (>= 0.0.1.rc5)
+      raddar (>= 0.0.1.rc6)
       raddar-ratings (>= 0.0.1.rc2)
       raddar-watchers (>= 0.0.1.rc3)
 
 GIT
   remote: git://github.com/volmer/raddar-zines.git
-  revision: 63f8217beaebfe90fd4ac68b33eeb7dd9761faed
+  revision: f8e6b48886424440c018ca5a1b40440223beca8b
   specs:
     raddar-zines (0.0.1)
       raddar (>= 0.0.1.rc6)
       raddar-ratings (>= 0.0.1.rc2)
-      raddar-tags (>= 0.0.1.rc3)
+      raddar-tags (>= 0.0.1.rc4)
       raddar-watchers (>= 0.0.1.rc3)
 
 GIT
   remote: git://github.com/volmer/raddar.git
-  revision: 51a653897afa66cf4fac7acb6eff91e3f832463c
+  revision: c00515d1bc97030589969022fcca1ff5bbba5cfc
   specs:
     raddar (0.0.1.rc6)
       bootstrap-sass (~> 3.0)
@@ -166,7 +166,7 @@ GEM
     minitest (4.7.5)
     moped (1.5.1)
     multi_json (1.8.2)
-    multi_test (0.0.2)
+    multi_test (0.0.3)
     multipart-post (1.2.0)
     newrelic_rpm (3.7.1.182)
     nokogiri (1.6.1)
@@ -211,8 +211,8 @@ GEM
       rack (>= 1.0)
     raddar-ratings (0.0.1.rc2)
       raddar (>= 0.0.1.rc4)
-    raddar-tags (0.0.1.rc3)
-      raddar (>= 0.0.1.rc4)
+    raddar-tags (0.0.1.rc4)
+      raddar (>= 0.0.1.rc6)
     raddar-watchers (0.0.1.rc3)
       raddar (>= 0.0.1.rc5)
       sidekiq
