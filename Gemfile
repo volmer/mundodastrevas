@@ -59,3 +59,5 @@ gem 'moped'
 gem 'progress_bar'
 
 gem 'newrelic_rpm'
+
+gem 'bootsy', github: 'volmer/bootsy'
