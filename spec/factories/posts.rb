@@ -2,10 +2,20 @@
 
 FactoryGirl.define do
   factory :post, class: Raddar::Forums::Post do
+    ignore do
+      universe nil
+    end
+
     user
 
     topic
 
     content 'I am the Hand of the King!'
+
+    after(:create) do |post, evaluator|
+      forum = post.topic.forum
+      forum.universe = evaluator.universe
+      forum.save!
+    end
   end
 end
