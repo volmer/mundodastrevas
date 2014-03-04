@@ -1,17 +1,40 @@
+# Public: Calculate points and levels for a given
+# user in a given universe.
 class LevelsCalculator
+  # Private: Integer number of reviews an item must have
+  # to be evaluated its relevance.
   RELEVANT_REVIEWS = 3
+
+  # Private: Integer number of points for a forum pust.
   FORUM_POST_BASE = 1
+
+  # Private: Integer number of points for a zine post.
   ZINE_POST_BASE = 3
+
+  # Private: Integer number of points for a comment.
   COMMENT_BASE = 1
+
+  # Private: An integer number of points a user must have
+  # to go from level 1 to 2.
   LEVEL_1_GOAL = 7
 
   attr_accessor :user, :universe
 
+  # Public: Initialize the calculator.
+  #
+  # user - A Raddar::User for whom the level will be calculated.
+  # universe - An Universe for whom the level will be calculated.
   def initialize(user, universe)
     @user     = user
     @universe = universe
   end
 
+  # Public: Verify if a given reviewable item is relevant or not
+  # for levels purposes.
+  #
+  # Returns true if the item has at least the amount of reviews
+  # defined by RELEVANT_REVIEWS and has more positive reviews
+  # than negative ones, or false otherwise.
   def relevant?(reviewable)
     loved = reviewable.reviews.where(value: 'loved').count
     hated = reviewable.reviews.where(value: 'hated').count
@@ -19,6 +42,13 @@ class LevelsCalculator
     (reviewable.reviews.count >= RELEVANT_REVIEWS) && (loved > hated)
   end
 
+  # Public: Calculate the points the user has scored in the universe
+  # by evaluating all its contributions in forum posts, zine posts
+  # and comments. Each item gives the user an amount of points defined
+  # by its respective base points constant. Relevant items give points
+  # in double.
+  #
+  # Returns an Integer with the total score of the user in the universe.
   def points
     points = 0
 
@@ -39,6 +69,15 @@ class LevelsCalculator
     points
   end
 
+  # Public: Calculate the level the user is according
+  # to its score in the universe.
+  #
+  # Starting with the score necessary to go from level 1
+  # to level 2, defined by LEVEL_1_GOAL, each level requires
+  # the amount of points that was necessary in the previous
+  # level plus 50%.
+  #
+  # Returns an Integer number of the user level.
   def level
     level = 1
     to_next = LEVEL_1_GOAL
@@ -49,27 +88,5 @@ class LevelsCalculator
     end
 
     level
-  end
-
-  def grant(commit = false)
-    Universe.each do |universe|
-      if universe.ranks.present?
-        User.where(state: 'active').each do |user|
-          intended_value = user.rank_in(universe).value + 1
-
-          if intended_value <= universe.highest_rank.level
-            points = calc_points user, universe
-            level = calc_level points
-
-            if level >= intended_level
-              rank = universe.ranks.where(level: intended_level).first
-              user.ranks << rank
-
-              Delayed::Job.enqueue NotifyRankJob.new(user.id, rank.id)
-            end
-          end
-        end
-      end
-    end
   end
 end
