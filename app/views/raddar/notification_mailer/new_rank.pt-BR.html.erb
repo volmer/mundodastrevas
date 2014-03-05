@@ -4,10 +4,17 @@
 
 <p>
   Parabéns! Pelas suas contribuições em <%= link_to @notifiable.universe, raddar.notification_url(@notification) %>
-  você recebeu o título de <strong><%= link_to @notifiable, raddar.notification_url(@notification) %></strong>!
+  você recebeu o título de <%= link_to @notifiable, raddar.notification_url(@notification) %>!
 </p>
 
-<p style="font-family: serif;">
+<p style="font-family: serif;
+  font-style: italic;
+  font-size: 20px;
+  padding: 20px;
+  background-color: #eee;">
+  <strong>
+    <%= @notifiable %>:
+  </strong>
   "<%= @notifiable.description %>"
 </p>
 
