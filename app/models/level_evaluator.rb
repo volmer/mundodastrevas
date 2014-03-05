@@ -1,6 +1,6 @@
 # Public: Calculate points and levels for a given
 # user in a given universe.
-class LevelsCalculator
+class LevelEvaluator
   # Private: Integer number of reviews an item must have
   # to be evaluated its relevance.
   RELEVANT_REVIEWS = 3

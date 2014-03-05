@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe LevelsCalculator do
+describe LevelEvaluator do
   let(:user) { create(:user) }
   let(:universe) { create(:universe) }
   subject(:calculator) { described_class.new(user, universe) }
