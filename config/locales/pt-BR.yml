@@ -9,3 +9,8 @@ pt-BR:
     attributes:
       raddar/zines/zine:
         universe: 'Universo'
+  mailers:
+    new_rank:
+      subject: 'Parabéns, agora você é um %{rank}!'
+  notifications:
+    new_rank: 'Parabéns! Agora você é um %{rank} em %{universe}!'

@@ -28,3 +28,6 @@ Raddar.setup do |config|
   # layouts/raddar/user_menu to change the markup.
   # config.user_menu = []
 end
+
+Raddar::Notifications.decorators_mapping[:new_rank] = 'NewRankDecorator'
+

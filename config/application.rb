@@ -25,6 +25,8 @@ module Mundodastrevas
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = 'pt-BR'
 
+    config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
     config.assets.initialize_on_precompile = false
     config.assets.compress = true
   end
