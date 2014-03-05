@@ -9,13 +9,13 @@ describe UniversePolicy do
       let(:user) { create(:admin) }
 
       it 'returns true' do
-        expect(subject.index?).to be_true
+        expect(subject.index?).to be true
       end
     end
 
     context 'when user is not an admin' do
       it 'returns false' do
-        expect(subject.index?).to be_false
+        expect(subject.index?).to be false
       end
     end
   end
@@ -25,13 +25,13 @@ describe UniversePolicy do
       let(:user) { create(:admin) }
 
       it 'returns true' do
-        expect(subject.update?).to be_true
+        expect(subject.update?).to be true
       end
     end
 
     context 'when user is not an admin' do
       it 'returns false' do
-        expect(subject.update?).to be_false
+        expect(subject.update?).to be false
       end
     end
   end
@@ -41,13 +41,13 @@ describe UniversePolicy do
       let(:user) { create(:admin) }
 
       it 'returns true' do
-        expect(subject.new?).to be_true
+        expect(subject.new?).to be true
       end
     end
 
     context 'when user is not an admin' do
       it 'returns false' do
-        expect(subject.new?).to be_false
+        expect(subject.new?).to be false
       end
     end
   end
@@ -57,13 +57,13 @@ describe UniversePolicy do
       let(:user) { create(:admin) }
 
       it 'returns true' do
-        expect(subject.create?).to be_true
+        expect(subject.create?).to be true
       end
     end
 
     context 'when user is not an admin' do
       it 'returns false' do
-        expect(subject.create?).to be_false
+        expect(subject.create?).to be false
       end
     end
   end
@@ -73,20 +73,20 @@ describe UniversePolicy do
       let(:user) { create(:admin) }
 
       it 'returns true' do
-        expect(subject.destroy?).to be_true
+        expect(subject.destroy?).to be true
       end
     end
 
     context 'when user is not an admin' do
       it 'returns false' do
-        expect(subject.destroy?).to be_false
+        expect(subject.destroy?).to be false
       end
     end
   end
 
   describe '#show?' do
     it 'returns true' do
-      expect(subject.show?).to be_true
+      expect(subject.show?).to be true
     end
   end
 end
