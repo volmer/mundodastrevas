@@ -4,6 +4,7 @@ describe LevelGrantor do
   describe '#level_up!' do
     let(:user) { create(:user) }
     let(:universe) { create(:universe) }
+    subject { described_class.level_up!(user, universe) }
 
     context 'when user can level up' do
       before do
@@ -18,27 +19,27 @@ describe LevelGrantor do
         create(:rank, universe: universe, value: 1)
 
         expect {
-          described_class.level_up!(user, universe)
+          subject
         }.to change {
           user.rank_in(universe).value
         }.from(1).to(2)
       end
 
       it 'returns the level with its value upgraded' do
-        expect(described_class.level_up!(user, universe).value).to eq 2
+        expect(subject.value).to eq 2
       end
 
       it 'schedules a notification job with proper arguments' do
-        rank = described_class.level_up!(user, universe).rank
+        rank = subject.rank
 
-        job = RankNotificationWorker.jobs.first
+        job = RankNotificationWorker.jobs.last
 
         expect(job['args']).to eq([user.id, rank.id])
       end
     end
 
     it 'returns nil when user cannot level up' do
-      expect(described_class.level_up!(user, universe)).to be_nil
+      expect(subject).to be_nil
     end
   end
 end
