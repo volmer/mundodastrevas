@@ -38,7 +38,7 @@ gem 'unicorn'
 # gem 'capistrano', group: :development
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '3.0.0.beta2'
   gem 'factory_girl_rails'
   gem 'debugger'
 end
@@ -53,6 +53,7 @@ gem 'raddar', github: 'volmer/raddar'
 gem 'raddar-forums', github: 'volmer/raddar-forums'
 gem 'raddar-zines', github: 'volmer/raddar-zines'
 gem 'devise-encryptable'
+gem 'sidekiq'
 
 # Import dependencies
 gem 'moped'
