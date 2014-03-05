@@ -2,7 +2,7 @@ class Rank < ActiveRecord::Base
   belongs_to :universe
   has_many :levels, ->(rank){ where(universe: rank.universe) }, foreign_key: 'value', primary_key: 'value'
   has_many :users, through: :levels
-  has_many :notifications, as: :notifiable, dependent: :destroy
+  has_many :notifications, class_name: 'Raddar::Notification', as: :notifiable, dependent: :destroy
 
   validates :universe_id, presence: true
   validates :value,
