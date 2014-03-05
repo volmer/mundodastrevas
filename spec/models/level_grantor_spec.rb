@@ -1,0 +1,44 @@
+require 'spec_helper'
+
+describe LevelGrantor do
+  describe '#level_up!' do
+    let(:user) { create(:user) }
+    let(:universe) { create(:universe) }
+
+    context 'when user can level up' do
+      before do
+        # With a score of 10, the user can level up from 1 to 2
+        allow_any_instance_of(LevelEvaluator).to receive(:score).and_return(10)
+
+        # Also, there must be a rank to the next level
+        create(:rank, universe: universe, value: 2)
+      end
+
+      it 'upgrades the user rank in the universe' do
+        create(:rank, universe: universe, value: 1)
+
+        expect {
+          described_class.level_up!(user, universe)
+        }.to change {
+          user.rank_in(universe).value
+        }.from(1).to(2)
+      end
+
+      it 'returns the level with its value upgraded' do
+        expect(described_class.level_up!(user, universe).value).to eq 2
+      end
+
+      it 'schedules a notification job with proper arguments' do
+        rank = described_class.level_up!(user, universe).rank
+
+        job = RankNotificationWorker.jobs.first
+
+        expect(job['args']).to eq([user.id, rank.id])
+      end
+    end
+
+    it 'returns nil when user cannot level up' do
+      expect(described_class.level_up!(user, universe)).to be_nil
+    end
+  end
+end
