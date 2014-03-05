@@ -25,4 +25,8 @@ class Universe < ActiveRecord::Base
   def to_s
     self.name
   end
+
+  def highest_rank
+    ranks.order(value: :desc).first
+  end
 end
