@@ -49,7 +49,7 @@ class LevelsCalculator
   # in double.
   #
   # Returns an Integer with the total score of the user in the universe.
-  def points
+  def score
     points = 0
 
     @user.reload
@@ -69,24 +69,48 @@ class LevelsCalculator
     points
   end
 
-  # Public: Calculate the level the user is according
-  # to its score in the universe.
+  # Public: Calculate the score necessary to
+  # pass to the next level.
   #
   # Starting with the score necessary to go from level 1
   # to level 2, defined by LEVEL_1_GOAL, each level requires
   # the amount of points that was necessary in the previous
   # level plus 50%.
   #
-  # Returns an Integer number of the user level.
-  def level
+  # Returns an Integer number of points necessary.
+  def to_next_level
     level = 1
-    to_next = LEVEL_1_GOAL
+    points = 0
 
-    while points >= to_next
-      to_next += (LEVEL_1_GOAL * (1.5 ** level)).to_i
+    while level < intended_level
+      points += (LEVEL_1_GOAL * (1.5 ** (level - 1))).to_i
       level += 1
     end
 
-    level
+    (points - score) > 0 ? (points - score) : 0
+  end
+
+  # Public: Check if the user can have its level upgraded
+  # in the given universe.
+  #
+  # Returns true if the user is active, if it already has
+  # the required score to the next level and if the given
+  # universe has a rank associated to the intended value,
+  # false otherwise.
+  def can_level_up?
+    @user.active? &&
+      to_next_level == 0 &&
+      intended_level <= (universe.highest_rank.try(:value) || 0)
+  end
+
+  private
+
+  # Internal: The next level the user need to
+  # acquire.
+  #
+  # Returns an Integer with the next level value
+  # the user is intended to.
+  def intended_level
+    (@user.rank_in(@universe).try(:value) || 1) + 1
   end
 end
