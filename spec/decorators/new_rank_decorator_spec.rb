@@ -10,7 +10,7 @@ describe NewRankDecorator do
     subject { presenter.redirect_path }
 
     it 'returns the path to the post topic' do
-      expect(subject).to match('/universes/vampire')
+      expect(subject).to match('/universes/vampire#tab-ranks')
     end
   end
 

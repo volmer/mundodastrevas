@@ -8,7 +8,7 @@ class NewRankDecorator < Raddar::Notifications::BaseDecorator
   end
 
   def redirect_path
-    universe_path(universe)
+    universe_path(universe, anchor: 'tab-ranks')
   end
 
   private
