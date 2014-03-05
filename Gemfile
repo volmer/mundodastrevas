@@ -54,9 +54,4 @@ gem 'raddar-forums', github: 'volmer/raddar-forums'
 gem 'raddar-zines', github: 'volmer/raddar-zines'
 gem 'devise-encryptable'
 gem 'sidekiq'
-
-# Import dependencies
-gem 'moped'
-gem 'progress_bar'
-
 gem 'newrelic_rpm'
