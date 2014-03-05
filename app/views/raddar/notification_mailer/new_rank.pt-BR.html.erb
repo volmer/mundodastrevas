@@ -1,0 +1,25 @@
+<p>
+  Olá, <%= @user %>!
+</p>
+
+<p>
+  Parabéns! Pelas suas contribuições em <%= link_to @notifiable.universe, raddar.notification_url(@notification) %>
+  você recebeu o título de <strong><%= link_to @notifiable, raddar.notification_url(@notification) %></strong>!
+</p>
+
+<p style="font-family: serif;">
+  "<%= @notifiable.description %>"
+</p>
+
+<p>
+  A nossa comunidade agradece sua participação. Continue contribuindo em
+  nossos fóruns, com zines e comentários para alcançar novos ranks tanto
+  em <%= link_to @notifiable.universe, raddar.notification_url(@notification) %>
+  quanto nos demais universos.
+</p>
+
+<p>
+  Um abraço,
+  <br>
+  Equipe Mundo das Trevas
+</p>
