@@ -1,4 +1,5 @@
 <% content_for :page_title, @universe.name %>
+<% content_for :page_description, truncate(sanitize(@universe.description, tags: []), length: 300, separator: ' ') %>
 
 <div class="panel panel-default universe-header" style="background-image: url('<%= @universe.image.url %>')">
   <div class="panel-body">
