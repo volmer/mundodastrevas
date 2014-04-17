@@ -55,7 +55,7 @@ production:
   adapter: postgresql
   encoding: unicode
   database: mundodastrevas_production
-  pool: 5
+  pool: 3
   username: mundodastrevas
   password: mundodastrevas
   port: <%= ENV['BOXEN_POSTGRESQL_PORT'] || '5432' %>
