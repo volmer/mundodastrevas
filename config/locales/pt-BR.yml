@@ -14,3 +14,9 @@ pt-BR:
       subject: 'Parabéns, agora você é um %{rank}!'
   notifications:
     new_rank: 'Parabéns! Agora você é um %{rank} em %{universe}!'
+  raddar:
+    users:
+      email_preferences:
+        edit:
+          keys:
+            new_rank: 'Novos ranks'
