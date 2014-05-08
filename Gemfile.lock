@@ -1,11 +1,11 @@
 GIT
   remote: git://github.com/volmer/raddar-forums.git
-  revision: b138a6a7580732b092fe57ea9ca0f14e333c406c
+  revision: e541267aa0bf53bc67b91339ef6a869f22e735bc
   specs:
     raddar-forums (0.0.1)
       raddar (>= 0.0.1.rc7)
       raddar-ratings (>= 0.0.1.rc2)
-      raddar-watchers (>= 0.0.1.rc3)
+      raddar-watchers (>= 0.0.1.rc4)
 
 GIT
   remote: git://github.com/volmer/raddar-zines.git
@@ -67,7 +67,7 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
-    bootstrap-sass (3.1.1.0)
+    bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     bootsy (2.0.9)
       carrierwave (~> 0.10.0)
@@ -209,8 +209,8 @@ GEM
       raddar (>= 0.0.1.rc4)
     raddar-tags (0.0.1.rc4)
       raddar (>= 0.0.1.rc6)
-    raddar-watchers (0.0.1.rc3)
-      raddar (>= 0.0.1.rc5)
+    raddar-watchers (0.0.1.rc4)
+      raddar (>= 0.0.1.rc8)
       sidekiq
     rails (4.1.1)
       actionmailer (= 4.1.1)
@@ -268,7 +268,7 @@ GEM
       rdoc (~> 4.0, < 5.0)
     shoulda-matchers (2.6.0)
       activesupport (>= 3.0.0)
-    sidekiq (3.0.0)
+    sidekiq (3.0.2)
       celluloid (>= 0.15.2)
       connection_pool (>= 2.0.0)
       json
