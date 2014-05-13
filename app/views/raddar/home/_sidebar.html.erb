@@ -26,7 +26,7 @@
     </div>
 
     <div class="panel-body">
-      <% Raddar::User.where('confirmed_at IS NOT NULL').order('created_at DESC').limit(9).each do |user| %>
+      <% Raddar::User.where('confirmed_at IS NOT NULL').order('created_at DESC').limit(6).each do |user| %>
         <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle img-thumbnail'), user, title: user.name %>
       <% end %>
     </div>
@@ -41,10 +41,6 @@
       <%= link_to 'Livro dos Espelhos', 'http://livrodosespelhos.com/', target: '_blank', class: 'list-group-item' %>
 
       <%= link_to 'RPG Pará', 'http://www.rpgpara.com/', target: '_blank', class: 'list-group-item' %>
-
-      <%= link_to 'Trevas de Vitória', 'http://wod-vix.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
-
-      <%= link_to 'Escudo do Mestre', 'http://escudo-do-mestre.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
 
       <%= link_to 'Instinct Alternative', 'http://instinctalternative.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
 
