@@ -7,7 +7,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook, '330164793746855', 'f543158ab07816a6182632c32c956ab4'
+  config.omniauth :facebook, '330164793746855', 'f543158ab07816a6182632c32c956ab4', secure_image_url: true
   config.omniauth :twitter, 'yAO2DSZeD85ClNYnGVh2qA', 'EHsbEUZfwzDjniKrNDULsavpoXfziHKBtN6lPBCAX0'
 
   # Setup a pepper to generate the encrypted password.
