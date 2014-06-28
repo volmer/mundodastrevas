@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Rank do
   subject(:rank) { build(:rank) }

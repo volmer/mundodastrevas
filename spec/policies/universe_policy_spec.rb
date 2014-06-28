@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe UniversePolicy do
   let(:user) { Raddar::User.new }

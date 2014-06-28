@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe RankNotificationWorker do
   subject(:worker) { described_class.new }

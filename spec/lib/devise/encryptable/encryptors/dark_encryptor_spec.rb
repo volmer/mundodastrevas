@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Devise::Encryptable::Encryptors::DarkEncryptor do
   it 'is an encryptor' do

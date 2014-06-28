@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Raddar::User do
   subject(:user) { create(:user) }

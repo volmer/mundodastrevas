@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe NewRankDecorator do
   let(:rank) { create(:rank, universe: universe, name: 'Ancila') }

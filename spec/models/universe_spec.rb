@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Universe do
   it { should have_many(:forums).class_name('Raddar::Forums::Forum').dependent(:nullify) }
