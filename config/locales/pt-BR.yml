@@ -20,3 +20,8 @@ pt-BR:
         edit:
           keys:
             new_rank: 'Novos ranks'
+    admin:
+      zines:
+        zines:
+          edit:
+            featured: 'Em destaque'
