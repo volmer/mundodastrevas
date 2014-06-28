@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218015656) do
+ActiveRecord::Schema.define(version: 20140628045856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -307,6 +307,15 @@ ActiveRecord::Schema.define(version: 20131218015656) do
   add_index "ranks", ["universe_id"], name: "index_ranks_on_universe_id", using: :btree
   add_index "ranks", ["value", "universe_id"], name: "index_ranks_on_value_and_universe_id", unique: true, using: :btree
   add_index "ranks", ["value"], name: "index_ranks_on_value", using: :btree
+
+  create_table "settings", force: true do |t|
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "settings", ["key"], name: "index_settings_on_key", unique: true, using: :btree
 
   create_table "universes", force: true do |t|
     t.string   "name"
