@@ -17,6 +17,8 @@ module Raddar
           if @zine.update(zine_params)
             if params[:featured]
               Setting[:featured_zine] = @zine.id
+            elsif Setting[:featured_zine] == @zine.id.to_s
+              Setting[:featured_zine] = nil
             end
 
             redirect_to admin_zines_path, notice: t('flash.zines.zines.update')
