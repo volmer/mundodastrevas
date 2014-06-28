@@ -1,4 +1,12 @@
 <div class="col-md-3 mundodastrevas-sidebar">
+  <% if @featured_zine %>
+    <section class="featured-zine">
+      <h1><%= t '.featured_zine' %></h1>
+
+      <%= render 'raddar/zines/zines/panel', zine: @featured_zine %>
+    </section>
+  <% end %>
+
   <section class="facebook-like">
     <div class="fb-like-box"
       data-href="http://www.facebook.com/mundodastrevas"

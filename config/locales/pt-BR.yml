@@ -25,3 +25,6 @@ pt-BR:
         zines:
           edit:
             featured: 'Em destaque'
+    home:
+      sidebar:
+        featured_zine: 'Zine em destaque'

@@ -14,6 +14,8 @@ module Raddar
       @universes = Universe.all
 
       @comments = Zines::Comment.order('created_at DESC').limit(6)
+
+      @featured_zine = Raddar::Zines::Zine.find_by(id: Setting[:featured_zine])
     end
   end
 end
