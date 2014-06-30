@@ -2,7 +2,7 @@
 
 # Get remote backup
 
-REMOTE_HOST="radicaos.com"
+REMOTE_HOST="mundodastrevas.com"
 REMOTE_USER="volmer"
 REMOTE_BACKUP_DIR="/home/volmer/backups/mundodastrevas_backup"
 LOCAL_BACKUP_DIR="/Users/volmer/backups"
