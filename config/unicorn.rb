@@ -1,18 +1,18 @@
-require 'yaml'
+root = '/home/volmer/projects/mundodastrevas/current'
+working_directory root
+pid "#{root}/tmp/pids/unicorn.pid"
+stderr_path "#{root}/log/unicorn.log"
+stdout_path "#{root}/log/unicorn.log"
 
-#config = YAML.load_file('./config/config.yml')[Rails.env]['unicorn']
-
+# Port configuration
+listen 5000
 worker_processes 2
-listen 5000 #'unix:/tmp/mundodastrevas.sock', backlog: 64
-pid '/home/volmer/mundodastrevas.pid'
 
 # Preload our app for more speed
 preload_app true
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
-
-working_directory '/home/volmer/projects/mundodastrevas'
 
 before_fork do |server, worker|
   old_pid = "#{server.config[:pid]}.oldbin"
@@ -23,4 +23,10 @@ before_fork do |server, worker|
       # someone else did our job for us
     end
   end
+end
+
+# Force the bundler gemfile environment variable to
+# reference the capistrano "current" symlink
+before_exec do |_|
+  ENV['BUNDLE_GEMFILE'] = File.join(root, 'Gemfile')
 end
