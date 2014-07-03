@@ -10,9 +10,6 @@ stdout_path "#{shared}/log/unicorn.log"
 listen 5000
 worker_processes 2
 
-# Preload our app for more speed
-preload_app true
-
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
 
