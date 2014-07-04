@@ -5,6 +5,7 @@ working_directory current
 pid "#{shared}/tmp/pids/unicorn.pid"
 stderr_path "#{shared}/log/unicorn.log"
 stdout_path "#{shared}/log/unicorn.log"
+preload_app false
 
 # Port configuration
 listen 5000
@@ -22,10 +23,4 @@ before_fork do |server, worker|
       # someone else did our job for us
     end
   end
-end
-
-# Force the bundler gemfile environment variable to
-# reference the capistrano "current" symlink
-before_exec do |_|
-  ENV['BUNDLE_GEMFILE'] = File.join(current, 'Gemfile')
 end
