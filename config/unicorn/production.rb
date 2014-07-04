@@ -5,7 +5,7 @@ working_directory current
 pid "#{shared}/tmp/pids/unicorn.pid"
 stderr_path "#{shared}/log/unicorn.log"
 stdout_path "#{shared}/log/unicorn.log"
-preload_app false
+preload_app true
 
 # Port configuration
 listen 5000
