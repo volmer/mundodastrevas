@@ -20,6 +20,7 @@ development:
   database: mundodastrevas_development
   pool: 5
   username: postgres
+  host: localhost
   port: 5432
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -49,6 +50,7 @@ test: &test
   database: mundodastrevas_test
   pool: 5
   username: postgres
+  host: localhost
   port: 5432
 
 production:
@@ -58,6 +60,7 @@ production:
   pool: 3
   username: mundodastrevas
   password: mundodastrevas
+  host: localhost
   port: 5432
 
 cucumber:
