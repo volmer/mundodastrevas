@@ -70,7 +70,11 @@
         </h3>
       </div>
 
-      <% rank.users.order('name ASC').each_slice(12) do |row| %>
+      <% rank.
+      levels.
+      map(&:user).
+      #order('name ASC').
+      each_slice(12) do |row| %>
         <div class="row">
           <% row.each do |user| %>
             <div class="col-sm-1">
