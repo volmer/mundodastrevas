@@ -28,4 +28,10 @@ class Rank < ActiveRecord::Base
   def to_s
     name
   end
+
+  # TODO: Replace this method with a `has_many :users, through: :levels`
+  # association. It stopped working after Rails `4.1.2`.
+  def users
+    levels.map(&:user)
+  end
 end

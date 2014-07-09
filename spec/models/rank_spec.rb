@@ -4,7 +4,6 @@ describe Rank do
   subject(:rank) { build(:rank) }
 
   it { should belong_to(:universe) }
-  it { should have_many(:users).through(:levels) }
   it { should have_many(:notifications).dependent(:destroy) }
 
   it { should validate_presence_of(:universe_id) }
@@ -35,6 +34,22 @@ describe Rank do
       expect(subject).to include(level_1)
       expect(subject).not_to include(level_2)
       expect(subject).not_to include(level_3)
+    end
+  end
+
+  describe '#users' do
+    subject { rank.users }
+
+    it 'returns all users that have a level with the same value and universe of the rank' do
+      level = create(:level, universe: rank.universe, value: rank.value)
+      level_with_different_value = create(:level, universe: rank.universe, value:
+        create(:rank, universe: rank.universe, value: (rank.value + 1)).value
+      )
+      level_of_another_universe = create(:level, value: rank.value)
+
+      expect(subject).to include(level.user)
+      expect(subject).not_to include(level_with_different_value)
+      expect(subject).not_to include(level_of_another_universe)
     end
   end
 end
