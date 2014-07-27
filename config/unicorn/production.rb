@@ -8,7 +8,7 @@ stdout_path "#{shared}/log/unicorn.log"
 preload_app true
 
 # Port configuration
-listen 5000
+listen '/tmp/unicorn.mundodastrevas.sock'
 worker_processes 2
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
