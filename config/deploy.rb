@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:volmer/mundodastrevas.git'
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/home/volmer/projects/mundodastrevas'
+set :deploy_to, '/home/mundodastrevas/mundodastrevas'
 
 # Default value for :scm is :git
 # set :scm, :git

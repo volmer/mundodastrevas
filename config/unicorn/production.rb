@@ -1,4 +1,4 @@
-deploy_to = '/home/volmer/projects/mundodastrevas'
+deploy_to = '/home/mundodastrevas/mundodastrevas'
 current = "#{deploy_to}/current"
 shared = "#{deploy_to}/shared"
 working_directory current
