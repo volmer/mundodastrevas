@@ -1,20 +1,26 @@
 #!/bin/bash
 
-# Get remote backup
+# Script de Backup para Mundo das Trevas
 
-REMOTE_HOST="mundodastrevas.com"
-REMOTE_USER="volmer"
-REMOTE_BACKUP_DIR="/home/volmer/backups/mundodastrevas_backup"
-LOCAL_BACKUP_DIR="/Users/volmer/backups"
+DATEF=$(date +"%F")
+PUBLIC_DIR="/home/mundodastrevas/mundodastrevas/shared/public/"
+BACKUP_DIR="/home/mundodastrevas/backups/mundodastrevas_backup"
+DUMP_FILENAME="mundodastrevas_$DATEF.dump"
+DB_NAME="mundodastrevas_production"
+PGPASSWORD="mundodastrevas"
+PG_USERNAME="mundodastrevas"
+PUBLIC_BACKUP_NAME="public_$DATEF.tar.gz"
 
-echo "GET MUNDO DAS TREVAS BACKUP"
+echo "MUNDO DAS TREVAS BACKUP"
 echo " "
+echo "Public dir: $PUBLIC_DIR"
 echo "Start time: $(date)"
 
-echo "Performing SCP to $REMOTE_HOST:$REMOTE_BACKUP_DIR"
-scp -r $REMOTE_USER@$REMOTE_HOST:$REMOTE_BACKUP_DIR $LOCAL_BACKUP_DIR
-echo "Backup data sucessfully copied to $LOCAL_BACKUP_DIR"
-echo "End time: $(date)"
+rm $BACKUP_DIR/*
+PGPASSWORD=$PGPASSWORD pg_dump --username=$PG_USERNAME --format=custom $DB_NAME > $BACKUP_DIR/$DUMP_FILENAME
+tar -zcf $BACKUP_DIR/$PUBLIC_BACKUP_NAME $PUBLIC_DIR
+
+echo "Backup finished at $(date)"
 echo "Bye!"
 echo " "
 echo " "
