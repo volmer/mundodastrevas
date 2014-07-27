@@ -4,7 +4,7 @@
 
 DATEF=$(date +"%F")
 PUBLIC_DIR="/home/mundodastrevas/mundodastrevas/shared/public/"
-BACKUP_DIR="/home/mundodastrevas/backups/mundodastrevas_backup"
+BACKUP_DIR="/home/mundodastrevas/mundodastrevas_backup"
 DUMP_FILENAME="mundodastrevas_$DATEF.dump"
 DB_NAME="mundodastrevas_production"
 PGPASSWORD="mundodastrevas"
