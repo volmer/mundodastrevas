@@ -22,7 +22,6 @@ require 'capistrano/deploy'
 # require 'capistrano/rails/migrations'
 
 require 'capistrano/rails'
-require 'capistrano/rbenv'
 require 'capistrano/sidekiq'
 require 'capistrano3/unicorn'
 
