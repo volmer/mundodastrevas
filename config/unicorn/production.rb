@@ -12,7 +12,7 @@ listen '/tmp/unicorn.mundodastrevas.sock'
 worker_processes 2
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
-timeout 30
+timeout 20
 
 before_fork do |server, worker|
   old_pid = "#{server.config[:pid]}.oldbin"
