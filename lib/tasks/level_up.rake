@@ -13,7 +13,7 @@ namespace :mundodastrevas do
               current = Level.find_by(user: user, universe: universe)
               intended = Rank.find_by(universe: universe, value: current.value + 1)
 
-              puts "#{user} can go from #{current.value} - #{current.rank}, earned at #{current.updated_at}, to #{intended.value} - #{intended}"
+              puts "#{user} can go from #{current.value} - #{current.rank}, earned at #{current.updated_at || current.created_at}, to #{intended.value} - #{intended}"
             end
           end
         end
