@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :review, class: Raddar::Ratings::Review do
+  factory :review, class: Raddar::Review do
     user
 
     association :reviewable, factory: :post
