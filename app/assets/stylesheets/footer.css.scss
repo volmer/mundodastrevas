@@ -3,16 +3,17 @@
   background-image: image-url('footer.jpg');
   background-position: left bottom;
   background-repeat: repeat-x;
-  min-height: 370px;
+  height: 390px;
+  padding-top: 40px;
 
   h1 {
-    font-size: 20px;
+    font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
   }
 
   a {
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .legal {
