@@ -7,7 +7,7 @@ Raddar.setup do |config|
   config.default_from = 'admin@mundodastrevas.com'
 
   # The email address where all contact messages will be sent to.
-  config.contacts_destination = 'admin@mundodastrevas.com'
+  config.contacts_destination = 'contato@mundodastrevas.com'
 
   # Links to be added to the navbar. Populate this array with hashes
   # that respond to :text and :href (is values must be callable).
