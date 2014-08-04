@@ -3,6 +3,20 @@
   background-image: image-url('footer.jpg');
   background-position: left bottom;
   background-repeat: repeat-x;
-  text-align: center;
-  height: 220px;
+  min-height: 370px;
+
+  h1 {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  a {
+    font-size: 17px;
+  }
+
+  .legal {
+    text-align: center;
+    margin-top: 70px;
+  }
 }
