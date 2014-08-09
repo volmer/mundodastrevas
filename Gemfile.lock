@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/volmer/raddar-zines.git
-  revision: e4fa70214b91a87bab1265c52880588706615418
+  revision: e3661db7911dea1ff5a7e248b6fcfbb5f4cef435
   specs:
     raddar-zines (0.0.1)
       raddar (>= 0.0.1.rc9)
@@ -303,7 +303,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (1.2.1)
+    tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.5.3)
       execjs (>= 0.3.0)

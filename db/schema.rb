@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140802165840) do
+ActiveRecord::Schema.define(version: 20140809160043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -283,12 +283,13 @@ ActiveRecord::Schema.define(version: 20140802165840) do
     t.string   "name"
     t.integer  "user_id"
     t.text     "description"
-    t.boolean  "starred",     default: false
+    t.boolean  "starred",      default: false
     t.string   "image"
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "universe_id"
+    t.datetime "last_post_at"
   end
 
   add_index "raddar_zines_zines", ["slug"], name: "index_raddar_zines_zines_on_slug", unique: true, using: :btree
