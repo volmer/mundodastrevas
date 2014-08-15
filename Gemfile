@@ -54,6 +54,7 @@ group :test do
   gem 'database_cleaner'
 end
 
+gem 'bootsy', github: 'volmer/bootsy'
 gem 'raddar', github: 'volmer/raddar'
 gem 'raddar-forums', github: 'volmer/raddar-forums'
 gem 'raddar-zines', github: 'volmer/raddar-zines'

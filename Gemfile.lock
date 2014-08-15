@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/volmer/bootsy.git
+  revision: 5c83e105964f5571e5a08de3d00643be29fa3a8e
+  specs:
+    bootsy (2.0.9)
+      carrierwave (~> 0.10.0)
+      mini_magick (~> 3.8.0)
+      remotipart (~> 1.2.1)
+
+GIT
   remote: git://github.com/volmer/raddar-forums.git
   revision: cea66c4a015470fb2fe50811514d9ac3b6e7521a
   specs:
@@ -65,10 +74,6 @@ GEM
     bcrypt (3.1.7)
     bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
-    bootsy (2.0.9)
-      carrierwave (~> 0.10.0)
-      mini_magick (~> 3.7.0)
-      remotipart (~> 1.2.1)
     builder (3.2.2)
     byebug (3.2.0)
       columnize (~> 0.8)
@@ -172,7 +177,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
-    mini_magick (3.7.0)
+    mini_magick (3.8.0)
       subexec (~> 0.2.1)
     mini_portile (0.6.0)
     minitest (5.4.0)
@@ -321,6 +326,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootsy!
   byebug
   capistrano-rails
   capistrano-rbenv
