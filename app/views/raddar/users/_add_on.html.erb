@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-md-4">
+    <% if user.levels.present? %>
+      <div class="list-group">
+        <% user.levels.each do |level| %>
+          <% if level.rank.present? %>
+            <%= link_to main_app.universe_path(level.universe, anchor: 'tab-ranks'), class: 'list-group-item' do %>
+              <div class="media user-rank">
+                <%= image_tag level.universe.image.thumb.url, class: 'media-object pull-left img-rounded' %>
+
+                <div class="media-body">
+                  <h1 class="media-heading">
+                    <%= level.rank %>
+                  </h1>
+
+                  <%= level.rank.description %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-8">
+    <%= render 'raddar/users/zines', user: user %>
+  </div>
+</div>

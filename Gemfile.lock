@@ -7,14 +7,14 @@ GIT
 
 GIT
   remote: git://github.com/volmer/raddar-zines.git
-  revision: 272313c15bcebe681a6b862e617d667ef10cbe69
+  revision: 52b39acc60b804fe3540bc40ebb6f13ff814cdda
   specs:
     raddar-zines (0.0.1)
       raddar (>= 0.0.1.rc9)
 
 GIT
   remote: git://github.com/volmer/raddar.git
-  revision: d96fec242c040c524771ddc2c6bd724774ebe028
+  revision: 6b4bd800ab1335064b7af907f92b5c8da75f30fc
   specs:
     raddar (0.0.1.rc9)
       bootstrap-sass (~> 3.2)
