@@ -5,7 +5,7 @@
 
 <meta property="og:type" content="<%= content_for(:page_type) || 'article' %>">
 
-<meta property="og:locale" content="<%= I18n.locale %>">
+<meta property="og:locale" content="<%= I18n.locale.to_s.sub('-', '_') %>">
 
 <meta property="og:determiner" content="auto">
 
@@ -22,6 +22,7 @@
 
 <% if content_for(:page_author) %>
   <meta name="author" content="<%= content_for(:page_author) %>">
+  <meta property="article:author" content="<%= content_for(:page_author) %>">
 <% end %>
 
 <% if content_for(:canonical_url) %>
