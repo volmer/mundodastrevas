@@ -1,8 +1,15 @@
+<%# Content from raddar %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<%= favicon_link_tag '/favicon.ico' %>
+<meta name="og:site_name" content="<%= Raddar.app_name %>">
 
-<%= auto_discovery_link_tag :atom, raddar_zines.posts_path, title: Raddar.app_name %>
+<meta name="og:type" content="<%= content_for(:page_type) || 'article' %>">
+
+<meta name="og:locale" content="<%= I18n.locale %>">
+
+<meta name="og:determiner" content="auto">
+
+<meta name="og:title" content="<%= content_for(:page_title) || Raddar.app_name %>">
 
 <% if content_for(:page_keywords) %>
   <meta name="keywords" content="<%= content_for(:page_keywords) %>">
@@ -10,14 +17,40 @@
 
 <% if content_for(:page_description) %>
   <meta name="description" content="<%= content_for(:page_description) %>">
+  <meta name="og:description" content="<%= content_for(:page_description) %>">
 <% end %>
 
 <% if content_for(:page_author) %>
   <meta name="author" content="<%= content_for(:page_author) %>">
 <% end %>
 
+<% if content_for(:canonical_url) %>
+  <meta name="og:url" content="<%= content_for(:canonical_url) %>">
+<% end %>
+
+<% if content_for(:page_image) %>
+  <meta name="og:image" content="<%= content_for(:page_image) %>">
+<% end %>
+
+<% if content_for(:page_see_also) %>
+  <meta name="og:see_also" content="<%= content_for(:page_see_also) %>">
+<% end %>
+
+<% if content_for(:page_updated_at) %>
+  <meta name="og:updated_time" content="<%= content_for(:page_updated_at) %>">
+<% end %>
+<%# End content from raddar %>
+
+<% unless content_for(:page_image) %>
+  <meta name="og:image" content="<%= URI(raddar.root_url) + 'Mundo_das_Trevas.jpg' %>">
+<% end %>
+
 <meta name="rating" content="general">
 <meta name="robots" content="follow">
+
+<%= favicon_link_tag '/favicon.ico' %>
+
+<%= auto_discovery_link_tag :atom, raddar_zines.posts_path, title: Raddar.app_name %>
 
 <%# Facebook %>
 <div id="fb-root"></div>
