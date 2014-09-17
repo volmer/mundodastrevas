@@ -6,7 +6,7 @@ Feature: Create zine
   Background:
     Given I am signed in
     And I am on the root page
-    And there is an universe called "Vampire"
+    And there is an universe called "A Song of Ice and Fire"
 
   Scenario: Successfully create a zine
     When I click on "Zines"
@@ -14,7 +14,7 @@ Feature: Create zine
     And I fill in "Nome" with "A Storm of Swords"
     And I fill in "Url amigável" with "a-storm-of-swords"
     And I fill in "Descrição" with "Fire and Blood."
-    And from "Universo" I select "Vampire"
+    And from "Universo" I select "A Song of Ice and Fire"
     And I click on "Criar zine"
     Then I see the info message "Zine criado!"
-    And I see "Vampire" on the page
+    And I see "A Song of Ice and Fire" on the page

@@ -11,6 +11,7 @@ end
 
 Given /^I am signed in$/ do
   step "I am signed in as \"#{ @user.presence || 'someone' }\""
+  step 'I do not see the link "Entrar"'
 end
 
 Given /^I am signed in as "(.*?)"$/ do |name|

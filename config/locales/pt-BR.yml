@@ -28,3 +28,7 @@ pt-BR:
     home:
       sidebar:
         featured_zine: 'Zine em destaque'
+    zines:
+      zines:
+        header:
+          universe_html: 'Um zine de %{universe}'
