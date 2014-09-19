@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: git://github.com/volmer/raddar.git
-  revision: a0958ad4e864f1cacfba049256fe060415d53a1c
+  revision: 258526d5bfbaf05104b527f7d6c0fc90a50036df
   specs:
     raddar (0.0.1.rc9)
       bootstrap-sass (~> 3.2)
