@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: git://github.com/volmer/raddar-zines.git
-  revision: d71987f515a0650f9428e8330145cfe846be3114
+  revision: a0482859605128e31e4784903faaa1173f97fbcb
   specs:
     raddar-zines (0.0.1)
       raddar (>= 0.0.1.rc9)
