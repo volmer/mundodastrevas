@@ -78,7 +78,7 @@
       <% rank.users.each_slice(12) do |row| %>
         <div class="row">
           <% row.each do |user| %>
-            <div class="col-sm-1">
+            <div class="col-md-1 col-sm-2 col-xs-3">
               <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle'), raddar.user_path(user), title: user.name, class: 'thumbnail' %>
             </div>
           <% end %>
