@@ -9,6 +9,18 @@
 <% content_for :page_type, 'website' %>
 <% content_for :canonical_url, raddar.root_url %>
 
+<% content_for :layout_top  do %>
+  <div class="page-top">
+    <div class="container">
+      <h1><%= link_to 'Mundo das Trevas', raddar.root_path %></h1>
+
+      <p class="lead">
+        A comunidade brasileira de storytelling
+      </p>
+    </div>
+  </div>
+<% end %>
+
 <div class="mundodastrevas-home">
   <div class="row">
     <div class="col-md-9">

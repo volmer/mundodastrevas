@@ -4,17 +4,19 @@
 <% content_for :page_image, URI(raddar.root_url) + @universe.image.url %>
 <% content_for :page_updated_at, @universe.updated_at %>
 
-<div class="panel panel-default universe-header" style="background-image: url('<%= @universe.image.url %>')">
-  <div class="panel-body">
-    <h1>
-      <%= @universe %>
-    </h1>
+<% content_for :layout_top do %>
+  <div class="universe-header" style="background-image: url('<%= @universe.image.url %>')">
+    <div class="container">
+      <h1>
+        <%= @universe %>
+      </h1>
+    </div>
   </div>
-</div>
+<% end %>
 
 <section class="description">
-  <p class="lead">
-    <%= sanitize @universe.description %>
+  <p class="lead text-justify">
+    <%= strip_tags @universe.description %>
   </p>
 </section>
 
