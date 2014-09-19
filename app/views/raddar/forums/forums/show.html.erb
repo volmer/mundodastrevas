@@ -1,0 +1,43 @@
+<% content_for :page_title, @forum %>
+<% content_for :page_description, strip_tags(@forum.description) %>
+
+<% if @forum.universe %>
+  <% content_for :layout_top do %>
+    <div class="universe-header" style="background-image: url('<%= @forum.universe.image.url %>')">
+    </div>
+  <% end %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8">
+    <h1><%= @forum %></h1>
+  </div>
+
+  <div class="col-md-4">
+    <div class="pull-right">
+      <%= followers_count @forum %>
+
+      <%= follow_link @forum, current_user %>
+    </div>
+  </div>
+</div>
+
+<div class="forum-description">
+  <div class="row">
+    <div class="col-md-8">
+      <%= simple_text @forum.description %>
+    </div>
+
+    <div class="col-md-4">
+      <%= link_to t('.new'), new_forum_topic_path(@forum), class: 'btn btn-primary btn-lg pull-right' if policy(Raddar::Forums::Topic.new).new? %>
+
+      <% unless user_signed_in? %>
+        <%= link_to t('.invite'), raddar.new_user_session_path, class: 'btn btn-default btn-block' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render 'raddar/forums/topics/index', topics: @topics, forum: @forum %>
+
+<%= paginate @topics %>
