@@ -27,7 +27,7 @@
       <% @featured_posts.each_slice(2) do |row| %>
         <div class="row">
           <% row.each do |post| %>
-            <div class="col-md-6">
+            <div class="col-sm-6">
               <%= link_to raddar_zines.zine_post_path(post.zine, post), class: 'featured-zine' do %>
                 <div class="faux-image" style="background-image: url('<%= post.image.url %>')">
                 </div>
@@ -46,7 +46,7 @@
       <% end %>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-sm-6">
           <h2 class="home-heading">Nos fóruns</h2>
 
           <div class="list-group forum-topics">
@@ -84,7 +84,7 @@
           </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-sm-6">
           <h2 class="home-heading">Posts recentes</h2>
 
           <ul class="media-list">

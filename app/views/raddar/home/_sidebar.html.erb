@@ -1,79 +1,85 @@
 <div class="col-md-3 mundodastrevas-sidebar">
-  <% if @featured_zine %>
-    <section class="featured-zine">
-      <h1><%= t '.featured_zine' %></h1>
+  <div class="row">
+    <div class="col-sm-6 col-md-12">
+      <% if @featured_zine %>
+        <section class="featured-zine">
+          <h1><%= t '.featured_zine' %></h1>
 
-      <%= render 'raddar/zines/zines/panel', zine: @featured_zine %>
-    </section>
-  <% end %>
-
-  <section class="facebook-like">
-    <div class="fb-like-box"
-      data-href="http://www.facebook.com/mundodastrevas"
-      data-width="258"
-      data-height="260"
-      data-colorscheme="light"
-      data-show-faces="true"
-      data-header="false"
-      data-stream="false"
-      data-show-border="false">
-    </div>
-  </section>
-
-  <section class="twitter-widget">
-    <a href="https://twitter.com/mundodastrevas"
-      class="twitter-follow-button"
-      data-show-count="false"
-      data-size="large">
-      Siga @mundodastrevas
-    </a>
-  </section>
-
-  <section class="panel panel-default new-users">
-    <div class="panel-heading">
-      <h1 class="panel-title">Novos membros</h1>
-    </div>
-
-    <div class="panel-body">
-      <% Raddar::User.where('confirmed_at IS NOT NULL').order('created_at DESC').limit(6).each do |user| %>
-        <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle img-thumbnail'), user, title: user.name %>
+          <%= render 'raddar/zines/zines/panel', zine: @featured_zine %>
+        </section>
       <% end %>
+
+      <section class="facebook-like">
+        <div class="fb-like-box"
+          data-href="http://www.facebook.com/mundodastrevas"
+          data-width="258"
+          data-height="260"
+          data-colorscheme="light"
+          data-show-faces="true"
+          data-header="false"
+          data-stream="false"
+          data-show-border="false">
+        </div>
+      </section>
+
+      <section class="twitter-widget">
+        <a href="https://twitter.com/mundodastrevas"
+          class="twitter-follow-button"
+          data-show-count="false"
+          data-size="large">
+          Siga @mundodastrevas
+        </a>
+      </section>
+
+      <section class="panel panel-default new-users">
+        <div class="panel-heading">
+          <h1 class="panel-title">Novos membros</h1>
+        </div>
+
+        <div class="panel-body">
+          <% Raddar::User.where('confirmed_at IS NOT NULL').order('created_at DESC').limit(6).each do |user| %>
+            <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle img-thumbnail'), user, title: user.name %>
+          <% end %>
+        </div>
+      </section>
     </div>
-  </section>
 
-  <section class="panel panel-default">
-    <div class="panel-heading">
-      <h1 class="panel-title">Parceiros</h1>
+    <div class="col-sm-6 col-md-12">
+      <section class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">Parceiros</h1>
+        </div>
+
+        <div class="list-group">
+          <%= link_to 'Instinct Alternative', 'http://instinctalternative.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
+
+          <%= link_to 'Livro dos Espelhos', 'http://livrodosespelhos.com/', target: '_blank', class: 'list-group-item' %>
+
+          <%= link_to 'Minas Morgul', 'http://www.minasmorgul.com.br/', target: '_blank', class: 'list-group-item' %>
+
+          <%= link_to 'RPG Blogs', 'http://www.rpg.net.br/blogs/', target: '_blank', class: 'list-group-item' %>
+
+          <%= link_to 'RRPG FireCast', 'http://rrpg.com.br/', target: '_blank', class: 'list-group-item' %>
+
+          <%= link_to 'RPG Online', 'http://rpgonline.com.br/', target: '_blank', class: 'list-group-item' %>
+
+          <%= link_to 'RPG Pará', 'http://www.rpgpara.com/', target: '_blank', class: 'list-group-item' %>
+
+          <%= link_to 'Taberna do Dragão', 'http://www.tabernadodragao.com.br/', target: '_blank', class: 'list-group-item' %>
+        </div>
+      </section>
+
+      <section class="ads">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- First banner -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:260px;height:280px"
+             data-ad-client="ca-pub-9497859715792057"
+             data-ad-slot="2800063727"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </section>
     </div>
-
-    <div class="list-group">
-      <%= link_to 'Instinct Alternative', 'http://instinctalternative.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
-
-      <%= link_to 'Livro dos Espelhos', 'http://livrodosespelhos.com/', target: '_blank', class: 'list-group-item' %>
-
-      <%= link_to 'Minas Morgul', 'http://www.minasmorgul.com.br/', target: '_blank', class: 'list-group-item' %>
-
-      <%= link_to 'RPG Blogs', 'http://www.rpg.net.br/blogs/', target: '_blank', class: 'list-group-item' %>
-
-      <%= link_to 'RRPG FireCast', 'http://rrpg.com.br/', target: '_blank', class: 'list-group-item' %>
-
-      <%= link_to 'RPG Online', 'http://rpgonline.com.br/', target: '_blank', class: 'list-group-item' %>
-
-      <%= link_to 'RPG Pará', 'http://www.rpgpara.com/', target: '_blank', class: 'list-group-item' %>
-
-      <%= link_to 'Taberna do Dragão', 'http://www.tabernadodragao.com.br/', target: '_blank', class: 'list-group-item' %>
-    </div>
-  </section>
-
-  <section class="ads">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- First banner -->
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:260px;height:280px"
-         data-ad-client="ca-pub-9497859715792057"
-         data-ad-slot="2800063727"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </section>
+  </div>
 </div>
