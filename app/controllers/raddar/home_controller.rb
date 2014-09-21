@@ -11,7 +11,7 @@ module Raddar
 
       @forum_topics = Forums::Topic.order('created_at DESC').limit(6)
 
-      @universes = Universe.all
+      @universes = Universe.order(name: :asc)
 
       @comments = Zines::Comment.order('created_at DESC').limit(6)
 
