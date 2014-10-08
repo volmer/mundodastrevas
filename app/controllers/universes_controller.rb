@@ -1,7 +1,7 @@
 class UniversesController < ApplicationController
   def show
-    logger.tagged('SSL', 'Full url') { logger.info request.url }
-    logger.tagged('SSL', 'Protocol') { logger.warn request.protocol }
+    logger.info "Request URL: #{request.url}"
+    logger.info "Request protocol: #{request.protocol}"
 
     @universe = Universe.find_by!(slug: params[:id])
 
