@@ -1,8 +1,5 @@
 class UniversesController < ApplicationController
   def show
-    logger.info "Request URL: #{request.url}"
-    logger.info "Request protocol: #{request.protocol}"
-
     @universe = Universe.find_by!(slug: params[:id])
 
     authorize(@universe)
