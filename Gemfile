@@ -61,3 +61,5 @@ gem 'raddar-forums', github: 'volmer/raddar-forums'
 gem 'raddar-zines', github: 'volmer/raddar-zines'
 gem 'devise-encryptable'
 gem 'newrelic_rpm'
+
+gem 'skylight'
