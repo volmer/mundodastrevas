@@ -3,8 +3,8 @@ require 'rails_helper'
 describe Universe do
   it { is_expected.to have_many(:forums).class_name('Raddar::Forums::Forum').dependent(:nullify) }
   it { is_expected.to have_many(:zines).class_name('Raddar::Zines::Zine').dependent(:nullify) }
-  it { is_expected.to have_many(:levels).dependent(:destroy) }
-  it { is_expected.to have_many(:ranks).dependent(:destroy) }
+  it { is_expected.to have_many(:levels).dependent(:restrict_with_exception) }
+  it { is_expected.to have_many(:ranks).dependent(:restrict_with_exception) }
 
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to ensure_length_of(:name).is_at_most(100) }
