@@ -3,17 +3,17 @@ require 'rails_helper'
 describe Rank do
   subject(:rank) { build(:rank) }
 
-  it { should belong_to(:universe) }
-  it { should have_many(:notifications).dependent(:destroy) }
+  it { is_expected.to belong_to(:universe) }
+  it { is_expected.to have_many(:notifications).dependent(:destroy) }
 
-  it { should validate_presence_of(:universe_id) }
-  it { should validate_presence_of(:value) }
-  it { should validate_numericality_of(:value).is_greater_than(0).only_integer }
-  it { should validate_uniqueness_of(:value).scoped_to(:universe_id) }
-  it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:description) }
-  it { should ensure_length_of(:name).is_at_most(100) }
-  it { should ensure_length_of(:description).is_at_most(300) }
+  it { is_expected.to validate_presence_of(:universe_id) }
+  it { is_expected.to validate_presence_of(:value) }
+  it { is_expected.to validate_numericality_of(:value).is_greater_than(0).only_integer }
+  it { is_expected.to validate_uniqueness_of(:value).scoped_to(:universe_id) }
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:description) }
+  it { is_expected.to ensure_length_of(:name).is_at_most(100) }
+  it { is_expected.to ensure_length_of(:description).is_at_most(300) }
 
   describe '#to_s' do
     it 'returns its name' do

@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Raddar::User do
   subject(:user) { create(:user) }
 
-  it { should have_many(:levels).dependent(:destroy) }
+  it { is_expected.to have_many(:levels).dependent(:destroy) }
 
   it 'uses devise-encryptable' do
     expect(subject.devise_modules).to include(:encryptable)
