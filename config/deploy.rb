@@ -34,7 +34,7 @@ set :linked_dirs, %w{public/uploads public/system log tmp/pids bin tmp/cache tmp
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-set :rbenv_ruby, '2.1.2'
+set :rbenv_ruby, '2.1.4'
 
 namespace :deploy do
 
