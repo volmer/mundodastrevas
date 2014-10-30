@@ -75,7 +75,7 @@
         </h3>
       </div>
 
-      <% rank.users.each_slice(12) do |row| %>
+      <% rank.users.first(24).each_slice(12) do |row| %>
         <div class="row">
           <% row.each do |user| %>
             <div class="col-md-1 col-sm-2 col-xs-3">
@@ -83,6 +83,10 @@
             </div>
           <% end %>
         </div>
+      <% end %>
+
+      <% if (others = (rank.users.count - 20)) > 0 %>
+        and <%= others %> others.
       <% end %>
     <% end %>
   </section>
