@@ -89,7 +89,7 @@
 
           <ul class="media-list">
             <% @recent_posts.each do |post| %>
-              <li class="media zine-with-post">
+              <li class="media zine-with-post clearfix">
                 <%= link_to raddar_zines.zine_post_path(post.zine, post), class: 'pull-left' do %>
                   <%= image_tag post.image.small.url, class: 'media-object img-rounded' %>
                 <% end %>
