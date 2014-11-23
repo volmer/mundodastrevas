@@ -1,27 +1,21 @@
-<div class="row">
-  <div class="col-md-4">
-    <% if user.levels.present? %>
-      <div class="list-group">
-        <% user.levels.each do |level| %>
-          <% if level.rank.present? %>
-            <%= link_to main_app.universe_path(level.universe, anchor: 'tab-ranks'), class: 'list-group-item' do %>
-              <div class="user-rank clearfix">
-                <%= image_tag level.universe.image.thumb.url, class: 'img-rounded' %>
+<% if user.levels.present? %>
+  <div class="list-group">
+    <% user.levels.each do |level| %>
+      <% if level.rank.present? %>
+        <%= link_to main_app.universe_path(level.universe, anchor: 'tab-ranks'), class: 'list-group-item' do %>
+          <div class="user-rank clearfix">
+            <%= image_tag level.universe.image.thumb.url, class: 'img-rounded' %>
 
-                <h1>
-                  <%= level.rank %>
-                </h1>
+            <h1>
+              <%= level.rank %>
+            </h1>
 
-                <%= level.rank.description %>
-              </div>
-            <% end %>
-          <% end %>
+            <%= level.rank.description %>
+          </div>
         <% end %>
-      </div>
+      <% end %>
     <% end %>
   </div>
+<% end %>
 
-  <div class="col-md-8">
-    <%= render 'raddar/users/zines', user: user %>
-  </div>
-</div>
+<%= render 'raddar/users/zines', user: user %>
