@@ -1,13 +1,13 @@
 GIT
   remote: git://github.com/volmer/raddar-forums.git
-  revision: b8a26916eb89cc8c75825be28194f02cd2853a6a
+  revision: e65b995f39ab7148a9403dcb62e2540ef89e5756
   specs:
     raddar-forums (0.0.1)
       raddar (>= 0.0.1.rc10)
 
 GIT
   remote: git://github.com/volmer/raddar-zines.git
-  revision: 94098ca06324b39fa80ae56dde4bf40dc4b634aa
+  revision: 803577c4b2c9bc2aca8c47b3095c7fe64c2236c1
   specs:
     raddar-zines (0.0.1)
       raddar (>= 0.0.1.rc10)
