@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809160043) do
+ActiveRecord::Schema.define(version: 20141123045527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,20 @@ ActiveRecord::Schema.define(version: 20140809160043) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "raddar_activities", force: true do |t|
+    t.integer  "subject_id"
+    t.string   "subject_type"
+    t.integer  "user_id"
+    t.string   "key"
+    t.hstore   "parameters"
+    t.string   "privacy"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "raddar_activities", ["subject_id", "subject_type"], name: "index_raddar_activities_on_subject_id_and_subject_type", using: :btree
+  add_index "raddar_activities", ["user_id"], name: "index_raddar_activities_on_user_id", using: :btree
 
   create_table "raddar_external_accounts", force: true do |t|
     t.string   "provider"
