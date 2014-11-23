@@ -1,7 +1,7 @@
 namespace :mundodastrevas do
   namespace :level_up do
     desc 'Iterate through all users and universes to check if someone can level up'
-    task :check do
+    task check: :environment do
       Universe.all.each do |universe|
         if universe.ranks.present?
           puts "########### #{universe} ###########"
@@ -21,7 +21,7 @@ namespace :mundodastrevas do
     end
 
     desc 'Level up all eligible users in all universes'
-    task :perform do
+    task perform: :environment do
       Universe.all.each do |universe|
         if universe.ranks.present?
           puts "########### #{universe} ###########"
