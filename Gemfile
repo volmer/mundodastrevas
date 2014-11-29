@@ -9,16 +9,13 @@ gem 'rails', '4.2.0.rc1'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 4.0.3'
+gem 'sass-rails', '>= 4.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -26,10 +23,9 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
+# bundle exec rake doc:rails generates the API under doc/api.
+gem 'sdoc', require: false
+
 
 # Use unicorn as the app server
 gem 'unicorn'
