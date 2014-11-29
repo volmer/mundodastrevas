@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :post, class: Raddar::Forums::Post do
-    ignore do
+    transient do
       universe nil
     end
 

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :zine_post, class: Raddar::Zines::Post do
-    ignore do
+    transient do
       universe nil
     end
 
