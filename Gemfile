@@ -3,29 +3,28 @@ source 'https://rubygems.org'
 ruby '2.1.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0.rc2'
+gem 'rails', '4.2.0.rc3'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 4.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', require: false
-
 
 # Use unicorn as the app server
 gem 'unicorn'
@@ -52,10 +51,10 @@ group :test do
 end
 
 gem 'bootsy'
+gem 'sidekiq'
 gem 'raddar', github: 'volmer/raddar'
 gem 'raddar-forums', github: 'volmer/raddar-forums'
 gem 'raddar-zines', github: 'volmer/raddar-zines'
 gem 'devise-encryptable'
 gem 'newrelic_rpm'
-
 gem 'skylight'
