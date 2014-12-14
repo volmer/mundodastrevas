@@ -50,9 +50,8 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem 'bootsy'
 gem 'sidekiq'
-gem 'raddar', github: 'volmer/raddar'
+gem 'raddar'
 gem 'raddar-forums', github: 'volmer/raddar-forums'
 gem 'raddar-zines', github: 'volmer/raddar-zines'
 gem 'devise-encryptable'
