@@ -32,3 +32,5 @@ pt-BR:
       zines:
         header:
           universe_html: 'Um zine de %{universe}'
+        author:
+          level_html: 'Em %{universe} %{user} é <strong>%{rank}</strong>: <em>"%{description}"</em>'
