@@ -1,10 +1,10 @@
 class Universe < ActiveRecord::Base
   include Bootsy::Container
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :image, UniverseImageUploader
 
   has_many :forums, class_name: 'Raddar::Forums::Forum', dependent: :nullify
-  has_many :zines, class_name: 'Raddar::Zines::Zine', dependent: :nullify
+  has_many :zines, dependent: :nullify
   has_many :levels, dependent: :restrict_with_exception
   has_many :ranks, dependent: :restrict_with_exception
 

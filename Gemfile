@@ -51,9 +51,8 @@ group :test do
 end
 
 gem 'sidekiq'
-gem 'raddar'
+gem 'raddar', github: 'volmer/raddar'
 gem 'raddar-forums', github: 'volmer/raddar-forums'
-gem 'raddar-zines', github: 'volmer/raddar-zines'
 gem 'devise-encryptable'
 gem 'newrelic_rpm'
 gem 'skylight'

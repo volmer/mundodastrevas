@@ -1,0 +1,9 @@
+<% if post.image.file.present? %>
+  <div>
+    <%= image_tag(raddar.root_url.chop + post.image.url) %>
+  </div>
+<% end %>
+
+<div>
+  <%= sanitize post.content %>
+</div>

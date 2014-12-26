@@ -5,7 +5,6 @@ require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
-# require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -36,5 +35,10 @@ module Mundodastrevas
     config.active_record.raise_in_transactional_callbacks = true
 
     config.active_job.queue_adapter = :sidekiq
+
+    config.to_prepare do
+      Raddar::User.send(:include, UserExtension)
+      Raddar::Forums::Forum.send(:include, ForumExtension)
+    end
   end
 end

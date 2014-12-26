@@ -1,0 +1,26 @@
+pt-BR:
+  raddar:
+    users:
+      email_preferences:
+        edit:
+          keys:
+            new_rank: 'Novos ranks'
+            new_comment: 'Comentários em posts que eu estou vigiando'
+      add_on:
+        title: 'Zines'
+        all_zines: 'Ver todos'
+    admin:
+      zines: 'Gerenciamento de zines'
+      zines:
+        edit:
+          featured: 'Em destaque'
+          title: 'Editar %{zine}'
+          save: 'Salvar zine'
+        index:
+          author: 'Autor'
+    home:
+      sidebar:
+        featured_zine: 'Zine em destaque'
+    tags:
+      panel:
+        title: 'Tags'

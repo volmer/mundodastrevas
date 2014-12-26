@@ -1,0 +1,33 @@
+<% content_for :page_title, @zine %>
+<% content_for :page_author, @zine.user %>
+<% content_for :page_description, truncate(sanitize(@zine.description, tags: []), length: 300, separator: ' ') %>
+<% content_for :page_canonical_url, zine_url(@zine) %>
+<% content_for :page_image, URI(raddar.root_url) + @zine.image.url %>
+<% content_for :page_updated_at, @zine.updated_at %>
+<% content_for :page_see_also, zine_post_url(@zine, @zine.posts.first) if @zine.posts.any? %>
+
+<%= render 'header' %>
+
+<div class="row">
+  <div class="col-md-8 zine-full">
+    <% if @zine.image.file.present? %>
+      <%= image_tag @zine.image.url, class: 'zine-image' %>
+    <% end %>
+
+    <% if policy(@zine).edit? %>
+      <p>
+        <%= link_to t('.edit'), edit_zine_path(@zine), class: 'btn btn-default' %>
+      </p>
+    <% end %>
+
+    <div class="description clearfix">
+      <%= sanitize @zine.description %>
+    </div>
+
+    <%= render 'posts/list', posts: @posts %>
+  </div>
+
+  <div class="col-md-4">
+    <%= render 'show_sidebar' %>
+  </div>
+</div>

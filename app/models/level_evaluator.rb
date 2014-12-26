@@ -58,11 +58,11 @@ class LevelEvaluator
       points += (FORUM_POST_BASE * (relevant?(post) ? 2 : 1)) if post.topic.forum.universe == @universe
     end
 
-    @user.zine_posts.each do |post|
+    @user.posts.each do |post|
       points += (ZINE_POST_BASE * (relevant?(post) ? 2 : 1)) if post.zine.universe == @universe
     end
 
-    @user.zine_comments.each do |comment|
+    @user.comments.each do |comment|
       points += (COMMENT_BASE * (relevant?(comment) ? 2 : 1)) if comment.post.zine.universe == @universe
     end
 

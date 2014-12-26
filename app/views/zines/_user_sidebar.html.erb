@@ -1,0 +1,11 @@
+<div class="col-md-4 zines-user-sidebar">
+  <%= render 'author', user: user %>
+
+  <% if current_user == user %>
+    <section class="panel panel-default">
+      <div class="panel-body">
+        <%= link_to t('.new'), new_zine_path, class: 'btn btn-primary btn-block' if policy(Zine.new).new? %>
+      </div>
+    </section>
+  <% end %>
+</div>

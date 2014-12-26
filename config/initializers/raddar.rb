@@ -30,4 +30,14 @@ Raddar.setup do |config|
 end
 
 Raddar::Notifications.decorators_mapping[:new_rank] = 'NewRankDecorator'
+Raddar::Notifications.decorators_mapping[:new_comment] = 'NewCommentDecorator'
+
+Raddar.main_links << { text: ->{ I18n.t('links.main') }, href: ->{ Rails.application.routes.url_helpers.zines_path } }
+
+Raddar.admin_links << { text: ->{ I18n.t('links.admin') }, href: ->{ Raddar::Engine.routes.url_helpers.admin_zines_path }, active: :zines }
+
+Raddar.user_menu << ->(context) { context.link_to(('<span class="glyphicon glyphicon-book"></span> ' + I18n.t('links.user_menu')).html_safe, context.main_app.user_zines_path(context.current_user)) }
+
+
+
 

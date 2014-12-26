@@ -1,0 +1,9 @@
+<section class="panel panel-default">
+  <div class="panel-body">
+    <%= link_to t('.new'), new_zine_path, class: 'btn btn-primary btn-block' if policy(Zine.new).new? %>
+
+    <% unless user_signed_in? %>
+      <%= link_to t('.invite'), raddar.new_user_session_path, class: 'btn btn-default btn-block' %>
+    <% end %>
+  </div>
+</section>

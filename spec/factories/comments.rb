@@ -1,10 +1,10 @@
 FactoryGirl.define do
-  factory :comment, class: Raddar::Zines::Comment do
+  factory :comment do
     transient do
       universe nil
     end
 
-    association :post, factory: :zine_post
+    post
 
     content "A Song of Ice and Fire is a series of epic fantasy novels written
       by American novelist and screenwriter George R. R. Martin. Martin began the

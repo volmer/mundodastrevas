@@ -41,13 +41,13 @@ describe LevelEvaluator do
 
     it 'increases 1 point for each forum post published' do
       expect {
-        create_list(:post, 3, user: user, universe: universe)
+        create_list(:forum_post, 3, user: user, universe: universe)
       }.to change { calculator.score }.by(3)
     end
 
     it 'increases 3 points for each zine post published' do
       expect {
-        create_list(:zine_post, 2, user: user, universe: universe)
+        create_list(:post, 2, user: user, universe: universe)
       }.to change { calculator.score }.by(6)
     end
 
@@ -64,13 +64,13 @@ describe LevelEvaluator do
 
       it 'increases 2 points for each relevant forum post published' do
         expect {
-          create_list(:post, 3, user: user, universe: universe)
+          create_list(:forum_post, 3, user: user, universe: universe)
         }.to change { calculator.score }.by(6)
       end
 
       it 'increases 6 points for each relevant zine post published' do
         expect {
-          create_list(:zine_post, 2, user: user, universe: universe)
+          create_list(:post, 2, user: user, universe: universe)
         }.to change { calculator.score }.by(12)
       end
 

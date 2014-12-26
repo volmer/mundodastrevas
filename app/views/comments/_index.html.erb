@@ -1,0 +1,23 @@
+<div class="zine-comments" id="zine-post-comments">
+  <%= render @comments %>
+
+  <% if policy(@comment).create? %>
+    <div class="new-zine-comment">
+      <div class="row">
+        <div class="col-md-2 col-xs-3 user">
+          <%= link_to image_tag(current_user.avatar.small.url, class: 'img-responsive img-circle'), raddar.user_path(current_user) %>
+        </div>
+
+        <div class="col-md-10 col-xs-9">
+          <%= render 'comments/new' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% unless user_signed_in? %>
+    <div class="zines-invite">
+      <%= link_to t('.invite'), raddar.new_user_session_path %>
+    </div>
+  <% end %>
+</div>

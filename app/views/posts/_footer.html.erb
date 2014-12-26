@@ -1,0 +1,60 @@
+<div class="zine-post-footer">
+  <div class="row">
+    <div class="col-sm-8">
+      <% if @post.tags.present? %>
+        <p>
+          <strong>
+            <%= t '.tags' %>
+          </strong>
+
+          <%= render_tags @post %>
+        </p>
+      <% end %>
+    </div>
+
+    <div class="col-sm-4">
+      <strong>
+        <%= t '.rate' %>
+      </strong>
+
+      <%= render 'raddar/reviews/form', reviewable: @post %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="tweet-button">
+        <%= link_to 'Tweet',
+          'https://twitter.com/share',
+          class: 'twitter-share-button',
+          data: {
+            related: 'mundodastrevas',
+            lang: I18n.locale,
+            size: 'medium',
+            count: 'horizontal'
+          } %>
+      </div>
+
+      <div class="facebook-like-button">
+        <%= content_tag :div,
+          '',
+          class: 'fb-share-button',
+          data: {
+            type: 'button_count'
+          } %>
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <% if user_signed_in? %>
+        <div class="clearfix">
+          <div class="pull-right">
+            <%= t('.watching') if @post.watched_by?(current_user) %>
+
+            <%= watch_button @post, current_user, zine_post_path(@zine, @post) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

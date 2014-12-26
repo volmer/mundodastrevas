@@ -1,0 +1,42 @@
+<div class="page-header">
+  <h1><%= t 'admin.zines' %></h1>
+</div>
+
+<%= render 'raddar/admin/shared/tabs', active: :zines %>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th><%= Zine.human_attribute_name 'name' %></th>
+      <th><%= t '.author' %></th>
+      <th><%= Zine.human_attribute_name 'slug' %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @zines.each do |zine| %>
+      <tr class="zine">
+        <td>
+          <%= link_to edit_admin_zine_path(zine) do %>
+            <%= image_tag zine.image.thumb, class: 'mini-avatar' %>
+            <%= zine %>
+          <% end %>
+
+          <% if zine.starred %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% end %>
+        </td>
+
+        <td>
+          <%= link_to zine.user, zine.user, target: '_blank' %>
+        </td>
+
+        <td>
+          <%= link_to main_app.zine_path(zine), main_app.zine_path(zine), target: '_blank' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @zines %>

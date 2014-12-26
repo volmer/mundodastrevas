@@ -6,7 +6,7 @@ end
 Given(/^there is a post "(.*?)" in the "(.*?)" topic$/) do |content, topic_name|
   topic = Raddar::Forums::Topic.find_by(name: topic_name)
 
-  create(:post, topic: topic, content: content)
+  create(:forum_post, topic: topic, content: content)
 end
 
 When(/^I go to the "(.*?)" forum$/) do |forum_name|

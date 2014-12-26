@@ -12,10 +12,6 @@ class ImageUploader < Raddar::ImageUploader
 
   process resize_to_limit: [760, 1160]
 
-  version :medium do
-    process resize_to_fill: [400, 200]
-  end
-
   version :small do
     process resize_to_fill: [160, 160]
   end

@@ -18,4 +18,22 @@
   </div>
 <% end %>
 
-<%= render 'raddar/users/zines', user: user %>
+<% if user.zines.present? %>
+  <div class="user-zines-add-on">
+    <h3>
+      <%= t '.title' %>
+    </h3>
+
+    <% user.zines.order('updated_at DESC').limit(4).each_slice(2) do |row| %>
+      <div class="row">
+        <% row.each do |zine| %>
+          <div class="col-md-6">
+            <%= render 'zines/panel', zine: zine %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= link_to t('.all_zines'), main_app.user_zines_path(user) %>
+  </div>
+<% end %>

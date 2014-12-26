@@ -5,32 +5,106 @@ pt-BR:
       forum: 'Fórum'
       ranks: 'Ranks'
       more: 'Ver mais'
-  activerecord:
-    attributes:
-      raddar/zines/zine:
-        universe: 'Universo'
   mailers:
     new_rank:
       subject: 'Parabéns, agora você é um %{rank}!'
+    new_comment:
+      subject: 'Novo comentário em %{post}'
   notifications:
     new_rank: 'Parabéns! Agora você é um %{rank} em %{universe}!'
-  raddar:
-    users:
-      email_preferences:
-        edit:
-          keys:
-            new_rank: 'Novos ranks'
-    admin:
+    new_comment: '%{user} comentou em %{post}.'
+  zines:
+    header:
+      universe_html: 'Um zine de %{universe}'
+    index:
+      title: 'Zines'
+    list:
+      more: '(continuar lendo)'
+    list_with_last_post:
+      more: '(continuar lendo)'
+    invite_panel:
+      new: 'Novo zine'
+      invite: 'Deseja criar um zine? Entre aqui!'
+    user_index:
+      title: 'Zines de %{user}'
+    user_sidebar:
+      new: 'Novo zine'
+    new:
+      title: 'Novo zine'
+      submit: 'Criar zine'
+    edit:
+      title: 'Editar zine'
+      submit: 'Atualizar zine'
+      destroy: 'Apagar zine'
+      confirm: 'Você confirma a exclusão deste zine, incluindo todos os posts e comentários?'
+    show:
+      edit: 'Editar'
+    show_sidebar:
+      new_post: 'Novo post'
+    author:
+      title: 'O Autor'
       zines:
-        zines:
-          edit:
-            featured: 'Em destaque'
-    home:
-      sidebar:
-        featured_zine: 'Zine em destaque'
+        one: '1 zine publicado'
+        other: '%{count} zines publicados'
+      level_html: 'Em %{universe} %{user} é <strong>%{rank}</strong>: <em>"%{description}"</em>'
+  posts:
+    new:
+      title: 'Novo post'
+      submit: 'Criar post'
+    edit:
+      title: 'Editar post'
+      submit: 'Atualizar post'
+      destroy: 'Apagar post'
+      confirm: 'Você confirma a exclusão deste post, incluindo todos os comentários?'
+    show:
+      edit: 'Editar'
+      author_and_date:
+        html: '<em>por</em> %{user} <em>em %{date}</em>'
+      previous: 'Anterior'
+      next: 'Próximo'
+      index: 'Índice'
+    most_read:
+      title: 'Mais lidos'
+    list:
+      empty: 'Ainda não existem posts neste zine.'
+      more: '(continuar lendo)'
+    panel:
+      title: 'Posts em %{zine}'
+    footer:
+      tags: 'Tags'
+      rate: 'Avalie este post'
+      watching: 'Você está vigiando este post.'
+  comments:
+    to_s: 'o comentário de %{user}'
+    index:
+      invite: 'Deseja adicionar um comentário? Entre aqui!'
+    new:
+      label: 'Adicionar comentário'
+      submit: 'Comentar'
+      watch: 'Avise-me sobre novos comentários neste post'
+    comment:
+      updated_at: 'Atualizado em'
+      destroy: 'Apagar'
+  links:
+    main: 'Zines'
+    admin: 'Zines'
+    user_menu: 'Meus zines'
+  flash:
     zines:
-      zines:
-        header:
-          universe_html: 'Um zine de %{universe}'
-        author:
-          level_html: 'Em %{universe} %{user} é <strong>%{rank}</strong>: <em>"%{description}"</em>'
+      create: 'Zine criado!'
+      update: 'Zine atualizado!'
+      destroy: 'Zine apagado.'
+    posts:
+      create: 'Post criado!'
+      update: 'Post atualizado!'
+      destroy: 'Post apagado.'
+    comments:
+      create: 'Comentário criado!'
+      destroy: 'Comentário apagado.'
+  activities:
+    zines:
+      create_html: '%{user} criou o zine %{zine}'
+    posts:
+      create_html: '%{user} publicou %{post} em %{zine}'
+    comments:
+      create_html: '%{user} comentou em %{post}:'

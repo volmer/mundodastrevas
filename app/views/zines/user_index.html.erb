@@ -1,0 +1,19 @@
+<% content_for :page_title, t('.title', user: @user) %>
+<% content_for :page_author, @user %>
+<% content_for :page_description, strip_tags(@user.bio) %>
+<% content_for :page_canonical_url, user_zines_url(@user) %>
+<% content_for :page_image, URI(raddar.root_url) + @user.avatar.url %>
+
+<div class="page-header">
+  <h1>
+    <%= t '.title', user: @user %>
+  </h1>
+</div>
+
+<div class="row">
+  <%= render 'user_sidebar', user: @user, zines: @zines %>
+
+  <div class="col-md-8">
+    <%= render 'list', zines: @zines %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<% zines.each do |zine| %>
+  <div class="media zine">
+    <%= link_to zine, class: 'media-left' do %>
+      <%= image_tag zine.image.small.url %>
+    <% end %>
+
+    <div class="media-body">
+      <h3 class="media-heading">
+        <%= link_to zine, zine %>
+      </h3>
+
+      <p>
+        <%= truncate(sanitize(zine.description, tags: []), length: 300, separator: ' ') do %>
+          <%= link_to t('.more'), zine %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+<% end %>
+
+<%= paginate zines %>

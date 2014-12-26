@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :zine, class: Raddar::Zines::Zine do
+  factory :zine do
     sequence :slug do |n|
       "a-song-of-ice-and-fire-#{n}"
     end

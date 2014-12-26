@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Universe do
   it { is_expected.to have_many(:forums).class_name('Raddar::Forums::Forum').dependent(:nullify) }
-  it { is_expected.to have_many(:zines).class_name('Raddar::Zines::Zine').dependent(:nullify) }
+  it { is_expected.to have_many(:zines).class_name('Zine').dependent(:nullify) }
   it { is_expected.to have_many(:levels).dependent(:restrict_with_exception) }
   it { is_expected.to have_many(:ranks).dependent(:restrict_with_exception) }
 
@@ -45,7 +45,7 @@ describe Universe do
 
   describe '#image' do
     it 'is an uploader field' do
-      expect(subject.image).to be_an_instance_of(ImageUploader)
+      expect(subject.image).to be_an_instance_of(UniverseImageUploader)
     end
   end
 

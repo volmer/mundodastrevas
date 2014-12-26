@@ -6,11 +6,24 @@ GIT
       raddar (>= 0.0.1.rc10)
 
 GIT
-  remote: git://github.com/volmer/raddar-zines.git
-  revision: 9c27661bf9b136385fd5a0637c8e2131a2979ab5
+  remote: git://github.com/volmer/raddar.git
+  revision: 7c1ac60a503b6a6e6b13b8a34e4db0062f86e94c
   specs:
-    raddar-zines (0.0.1)
-      raddar (>= 0.0.1.rc10)
+    raddar (0.0.1)
+      bootstrap-sass (~> 3.3)
+      bootsy (~> 2.0.12)
+      carrierwave (~> 0.10)
+      devise (~> 3.4)
+      draper (~> 1.3)
+      kaminari (~> 0.16)
+      mini_magick (~> 4.0)
+      omniauth-facebook (~> 2.0)
+      omniauth-twitter (~> 1.1)
+      pg_search (~> 0.7)
+      pundit (~> 0.3)
+      rails_autolink (~> 1.1)
+      recaptcha (~> 0.3)
+      simple_form (~> 3.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -220,21 +233,6 @@ GEM
     rack (1.6.0)
     rack-test (0.6.2)
       rack (>= 1.0)
-    raddar (0.0.1)
-      bootstrap-sass (~> 3.3)
-      bootsy (~> 2.0.12)
-      carrierwave (~> 0.10)
-      devise (~> 3.4)
-      draper (~> 1.3)
-      kaminari (~> 0.16)
-      mini_magick (~> 4.0)
-      omniauth-facebook (~> 2.0)
-      omniauth-twitter (~> 1.1)
-      pg_search (~> 0.7)
-      pundit (~> 0.3)
-      rails_autolink (~> 1.1)
-      recaptcha (~> 0.3)
-      simple_form (~> 3.1.0)
     rails (4.2.0)
       actionmailer (= 4.2.0)
       actionpack (= 4.2.0)
@@ -370,9 +368,8 @@ DEPENDENCIES
   jquery-rails
   newrelic_rpm
   pg
-  raddar
+  raddar!
   raddar-forums!
-  raddar-zines!
   rails (= 4.2.0)
   rspec-rails
   sass-rails

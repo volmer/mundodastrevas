@@ -1,0 +1,13 @@
+<h1>
+  <%= link_to highlight(searchable.to_s, params[:query]), main_app.url_for(searchable) %>
+</h1>
+
+<p>
+  <%= highlight(
+    truncate(
+      sanitize(searchable.description, tags: []),
+      length: 300,
+      separator: ' '
+    ),
+    params[:query]) %>
+</p>

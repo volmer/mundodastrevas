@@ -1,0 +1,14 @@
+<p>
+  <%= t "#{activity.key}_html",
+    scope: 'activities',
+    user: link_to(activity.user),
+    post: link_to(
+      activity.subject.post,
+      main_app.zine_post_path(activity.subject.post.zine, activity.subject.post)
+    )
+  %>
+</p>
+
+<p class="text-muted">
+  <%= truncate activity.subject.content, length: 100, separator: ' ' %>
+</p>

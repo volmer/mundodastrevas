@@ -1,0 +1,97 @@
+<% content_for :page_title, @post %>
+<% content_for :page_author, @post.user %>
+<% content_for :page_description, truncate(sanitize(@post.content, tags: []), length: 300, separator: ' ') %>
+<% content_for :page_keywords, [@zine, @post.tags].reject(&:blank?).join(', ') %>
+<% content_for :page_canonical_url, zine_post_url(@zine, @post) %>
+<% content_for :page_image, URI(raddar.root_url) + @post.image.url %>
+<% content_for :page_updated_at, @post.updated_at %>
+<% content_for :page_see_also, zine_url(@zine) %>
+
+<% content_for :layout_top do %>
+  <div class="zine-post-top"
+    <% if @zine.image.file %>
+      style="background-image: url(<%= @zine.image.url %>)"
+    <% elsif @post.image.file %>
+      style="background-image: url(<%= @post.image.url %>)"
+    <% end %>
+  >
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2 col-md-9 col-md-offset-1">
+    <div class="zine-post">
+      <div class="page-header">
+        <h1>
+          <%= @post %>
+        </h1>
+
+        <div class="clearfix">
+          <span class="author-and-date">
+            <%= t '.author_and_date.html',
+              user: link_to(@post.user, raddar.user_path(@post.user)),
+              date: time_tag(@post.created_at.to_date, format: :long) %>
+          </span>
+
+          <div class="pull-right">
+            <%= link_to t('.edit'), edit_zine_post_path(@zine, @post), class: 'btn btn-default' if policy(@post).edit? %>
+          </div>
+        </div>
+      </div>
+
+      <% if @post.image.file.present? %>
+        <%= image_tag @post.image.url, class: 'zine-image' %>
+      <% end %>
+
+      <div class="content clearfix">
+        <%= sanitize @post.content %>
+      </div>
+
+      <%= render 'posts/footer' %>
+
+      <div class="well well-sm zine-navigator">
+        <%= link_to @zine, @zine, class: 'zine-link', title: t('.index') %>
+
+        <ul class="pager">
+          <% if previous_post = @zine.posts.where('created_at < ?', @post.created_at).order(created_at: :desc).first %>
+            <li class="previous">
+              <%= link_to zine_post_path(@zine, previous_post), title: previous_post do %>
+                &larr;
+                <%= t '.previous' %>
+              <% end %>
+            </li>
+          <% else %>
+            <li class="previous disabled">
+              <%= link_to '#' do %>
+                &larr;
+                <%= t '.previous' %>
+              <% end %>
+            </li>
+          <% end %>
+
+          <li>
+            <%= link_to t('.index'), @zine, title: @zine %>
+          </li>
+
+          <% if next_post = @zine.posts.where('created_at > ?', @post.created_at).order(created_at: :asc).first %>
+            <li class="next">
+              <%= link_to [@zine, next_post], title: next_post do %>
+                <%= t '.next' %>
+                &rarr;
+              <% end %>
+            </li>
+          <% else %>
+            <li class="next disabled">
+              <%= link_to 'javascript:void(0);' do %>
+                <%= t '.next' %>
+                &rarr;
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <%= render 'comments/index' %>
+  </div>
+</div>

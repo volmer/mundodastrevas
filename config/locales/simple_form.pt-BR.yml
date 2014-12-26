@@ -1,0 +1,8 @@
+pt-BR:
+  simple_form:
+    hints:
+      zine:
+        slug: 'Apenas letras, números e - são permitidos.'
+      post:
+        slug: 'Apenas letras, números e - são permitidos.'
+        tags: 'Separe tags com vírgula.'

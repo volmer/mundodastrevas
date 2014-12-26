@@ -43,7 +43,7 @@ When(/^from "(.*?)" I select "(.*?)"$/) do |field, option|
 end
 
 When(/^I attach the file "(.*?)" to "(.*?)"$/) do |file_name, field|
-  attach_file(field, Rails.root.to_s + '/public/' + file_name)
+  attach_file(field, Rails.root.to_s + '/features/support/fixtures/' + file_name)
 end
 
 When(/^I uncheck "(.*?)"$/) do |checkbox|
@@ -67,8 +67,8 @@ Then(/^I see the following (.*?) message:$/) do |type, message|
   step "I see the #{type} message \"#{message}\""
 end
 
-Then(/^I see the field "(.*?)" with the error "(.*?)"$/) do |field, message|
-  form_group = first('.form-group', text: field)
+Then(/^I see the field "(.*?)" with the error "(.*?)"$/) do |field_class, message|
+  form_group = find(".form-group.#{ field_class }") || first('.form-group', text: field)
   expect(form_group).to have_content(message)
 end
 
@@ -119,4 +119,8 @@ end
 
 Then(/^I see the field "(.*?)" filled in with "(.*?)"$/) do |field, value|
   expect(page).to have_field(field, with: value)
+end
+
+Then(/^I see the image "(.*?)"$/) do |image|
+  expect(page).to have_selector(:xpath, "//img[contains(@src, '#{ image }')]")
 end
