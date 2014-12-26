@@ -36,8 +36,10 @@ set :linked_dirs, %w{public/uploads public/system log tmp/pids bin tmp/cache tmp
 
 set :rbenv_ruby, '2.2.0'
 
-namespace :deploy do
+# Default value for bundle flags is '--deployment --quiet'
+set :bundle_flags, '--deployment'
 
+namespace :deploy do
   desc 'Restart application'
   task :restart do
     invoke 'unicorn:restart'
