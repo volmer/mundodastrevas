@@ -2,3 +2,16 @@
   margin: 0 auto -220px;
   padding: 0 0 220px;
 }
+
+.navbar-form .form-control {
+  background-color: $gray-dark;
+  border-color: $gray;
+
+  &:focus {
+    background-color: $body-bg;
+  }
+}
+
+.navbar-brand {
+  font-weight: 500;
+}
