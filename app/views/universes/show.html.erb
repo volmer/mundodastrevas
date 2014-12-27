@@ -1,5 +1,5 @@
 <% content_for :page_title, @universe.name %>
-<% content_for :page_description, truncate(sanitize(@universe.description, tags: []), length: 300, separator: ' ') %>
+<% content_for :page_description, truncate(strip_tags(@universe.description), length: 300, separator: ' ') %>
 <% content_for :canonical_url, universe_url(@universe) %>
 <% content_for :page_image, URI(raddar.root_url) + @universe.image.url %>
 <% content_for :page_updated_at, @universe.updated_at %>

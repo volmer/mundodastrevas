@@ -13,7 +13,7 @@
     </h1>
 
     <p class="bio">
-      <%= truncate(sanitize(user.bio, tags: []), length: 300, separator: ' ') %>
+      <%= truncate(strip_tags(user.bio), length: 300, separator: ' ') %>
     </p>
 
     <% if @zine.try(:universe) %>

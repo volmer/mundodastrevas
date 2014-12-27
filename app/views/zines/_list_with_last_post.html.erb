@@ -16,8 +16,8 @@
       </p>
 
       <p>
-        <%= truncate(sanitize(post.content, tags: []), length: 300, separator: ' ') do %>
-          <%= link_to t('.more'), main_app.zine_post_path(zine, post) %>
+        <%= truncate(strip_tags(post.content), length: 300, separator: ' ') do %>
+          <%= link_to t('.more'), [zine, post] %>
         <% end %>
       </p>
     </div>

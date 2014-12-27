@@ -9,7 +9,7 @@
 <p>
   <%= highlight(
     truncate(
-      sanitize(taggable.content, tags: []),
+      strip_tags(taggable.content),
       length: 300,
       separator: ' '
     ),

@@ -98,7 +98,7 @@
                   </p>
 
                   <p>
-                    <%= truncate(sanitize(post.content, tags: []), length: 120, separator: ' ') %>
+                    <%= truncate(strip_tags(post.content), length: 120, separator: ' ') %>
                   </p>
                 </div>
               </li>

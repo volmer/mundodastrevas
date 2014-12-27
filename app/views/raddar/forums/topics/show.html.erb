@@ -1,5 +1,5 @@
 <% content_for :page_title, @topic %>
-<% content_for :page_description, truncate(sanitize(@topic.posts.first.content, tags: []), length: 200, separator: ' ') %>
+<% content_for :page_description, truncate(strip_tags(@topic.posts.first.content), length: 200, separator: ' ') %>
 <% content_for :page_author, @topic.user %>
 <% content_for :page_keywords, @forum %>
 

@@ -10,7 +10,7 @@
       </h3>
 
       <p>
-        <%= truncate(sanitize(zine.description, tags: []), length: 300, separator: ' ') do %>
+        <%= truncate(strip_tags(zine.description), length: 300, separator: ' ') do %>
           <%= link_to t('.more'), zine %>
         <% end %>
       </p>
