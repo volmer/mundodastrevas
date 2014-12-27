@@ -14,6 +14,17 @@
   <%= render 'user_sidebar', user: @user, zines: @zines %>
 
   <div class="col-md-8">
-    <%= render 'list', zines: @zines %>
+    <% if @zines.any? %>
+      <%= render 'list', zines: @zines %>
+    <% else %>
+      <div class="alert alert-info">
+        <% if @user == current_user %>
+          <%= t '.no_zines_user' %>
+          <%= link_to t('.first_zine'), new_zine_path, class: 'alert-link' %>
+        <% else %>
+          <%= t '.no_zines', user: @user %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
