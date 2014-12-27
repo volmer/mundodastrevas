@@ -67,18 +67,12 @@
 
           <div class="list-group comments">
             <% @comments.each do |comment| %>
-              <%= link_to main_app.zine_post_path(comment.post.zine, comment.post), class: 'list-group-item' do %>
-                <div class="media">
-                  <%= image_tag comment.user.avatar.thumb.url, class: 'media-object pull-left img-circle' %>
+              <%= link_to main_app.zine_post_path(comment.post.zine, comment.post), class: 'list-group-item clearfix' do %>
+                <%= image_tag comment.user.avatar.thumb.url, class: 'pull-left img-circle' %>
 
-                  <div class="media-body">
-                    <strong>
-                      <%= comment.user %>:
-                    </strong>
+                <strong><%= comment.user %>:</strong>
 
-                    <%= truncate comment.content, length: 100, separator: ' ' %>
-                  </div>
-                </div>
+                <%= truncate comment.content, length: 100, separator: ' ' %>
               <% end %>
             <% end %>
           </div>
