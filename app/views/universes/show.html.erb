@@ -86,7 +86,7 @@
       <% end %>
 
       <% if (others = (rank.users.count - 20)) > 0 %>
-        and <%= others %> others.
+        <%= t '.and_others', count: others %>
       <% end %>
     <% end %>
   </section>

@@ -5,6 +5,9 @@ pt-BR:
       forum: 'Fórum'
       ranks: 'Ranks'
       more: 'Ver mais'
+      and_others:
+        one: 'e um outro.'
+        other: 'e %{count} outros.'
   mailers:
     new_rank:
       subject: 'Parabéns, agora você é um %{rank}!'
