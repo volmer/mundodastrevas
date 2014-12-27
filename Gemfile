@@ -45,7 +45,6 @@ end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'cucumber', github: 'cucumber', branch: 'v1.3.x-bugfix', require: false
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'selenium-webdriver'
