@@ -10,46 +10,49 @@
   <% end %>
 <% end %>
 
-<div class="page-header">
-  <h1>
-    <%= @topic %>
+<div class="forum-topic">
+  <div class="page-header">
+    <h1><%= @topic %></h1>
 
-    <small><%= @forum %></small>
-  </h1>
+    <div class="clearfix">
+      <%= t '.created_by_html', user: link_to(@topic.user, raddar.user_path(@topic.user)) %>
 
-  <div class="clearfix">
-    <%= t '.created_by_html', user: link_to(@topic.user, raddar.user_path(@topic.user)) %>
+      <span class="text-muted">·</span>
 
-    <span class="text-muted">·</span>
+      <%= t '.posts', count: @topic.posts.count %>
 
-    <%= t '.posts', count: @topic.posts.count %>
+      <% if user_signed_in? %>
+        <%= link_to t('.edit'), edit_forum_topic_path(@forum, @topic), class: 'btn btn-xs' if policy(@topic).edit? %>
 
-    <% if user_signed_in? %>
-      <%= link_to t('.edit'), edit_forum_topic_path(@forum, @topic), class: 'btn btn-xs' if policy(@topic).edit? %>
+        <div class="pull-right">
+          <%= t('.watching') if @topic.watched_by?(current_user) %>
 
-      <div class="pull-right">
-        <%= t('.watching') if @topic.watched_by?(current_user) %>
-
-        <%= watch_button @topic, current_user, forum_topic_path(@forum, @topic) %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<%= render @posts %>
-
-<%= paginate @posts %>
-
-<% if policy(@post).create? %>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <%= render 'raddar/forums/posts/new', post: @post %>
+          <%= watch_button @topic, current_user, forum_topic_path(@forum, @topic) %>
+        </div>
+      <% end %>
     </div>
   </div>
-<% end %>
 
-<% unless user_signed_in? %>
-  <div class="forum-invite">
-    <%= link_to t('.invite'), raddar.new_user_session_path %>
-  </div>
-<% end %>
+  <ol class="breadcrumb">
+    <li><%= link_to @forum, @forum %></li>
+    <li class="active"><%= @topic %></li>
+  </ol>
+
+  <%= render @posts %>
+
+  <%= paginate @posts %>
+
+  <% if policy(@post).create? %>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <%= render 'raddar/forums/posts/new', post: @post %>
+      </div>
+    </div>
+  <% end %>
+
+  <% unless user_signed_in? %>
+    <div class="forum-invite">
+      <%= link_to t('.invite'), raddar.new_user_session_path %>
+    </div>
+  <% end %>
+</div>
