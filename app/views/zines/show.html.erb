@@ -1,6 +1,6 @@
 <% content_for :page_title, @zine %>
 <% content_for :page_author, @zine.user %>
-<% content_for :page_description, truncate(sanitize(@zine.description, tags: []), length: 300, separator: ' ') %>
+<% content_for :page_description, truncate_rich(@zine.description) %>
 <% content_for :page_canonical_url, zine_url(@zine) %>
 <% content_for :page_image, URI(raddar.root_url) + @zine.image.url %>
 <% content_for :page_updated_at, @zine.updated_at %>

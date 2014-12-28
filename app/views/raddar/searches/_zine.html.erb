@@ -3,11 +3,5 @@
 </h1>
 
 <p>
-  <%= highlight(
-    truncate(
-      strip_tags(searchable.description),
-      length: 300,
-      separator: ' '
-    ),
-    params[:query]) %>
+  <%= highlight truncate_rich(searchable.description), params[:query] %>
 </p>

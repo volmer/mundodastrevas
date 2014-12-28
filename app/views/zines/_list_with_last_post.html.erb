@@ -16,7 +16,7 @@
       </p>
 
       <p>
-        <%= truncate(strip_tags(post.content), length: 300, separator: ' ') do %>
+        <%= truncate_rich(post.content) do %>
           <%= link_to t('.more'), [zine, post] %>
         <% end %>
       </p>

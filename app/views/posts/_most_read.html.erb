@@ -15,7 +15,7 @@
             </h4>
 
             <p>
-              <%= truncate strip_tags(post.content), length: 100, separator: ' ' %>
+              <%= truncate_rich post.content, length: 100 %>
             </p>
           </div>
         </div>
