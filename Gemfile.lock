@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/volmer/raddar-forums.git
-  revision: 4cb5c876f0a5cf6364db7565250a4cdc74557fbe
+  revision: 47d77a191ee6267cfc90e160e5b09fe02e7ba942
   specs:
     raddar-forums (0.0.1)
       raddar (>= 0.0.1.rc10)
@@ -157,7 +157,7 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    faraday (0.9.0)
+    faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.6)
     gherkin (2.12.2)
@@ -175,7 +175,7 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (1.8.1)
+    json (1.8.2)
     jwt (1.2.0)
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
@@ -186,8 +186,8 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
-    mini_magick (4.0.1)
-    mini_portile (0.6.1)
+    mini_magick (4.0.2)
+    mini_portile (0.6.2)
     minitest (5.5.0)
     multi_json (1.10.1)
     multi_test (0.1.1)
