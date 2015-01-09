@@ -8,7 +8,7 @@ class NewCommentDecorator < Raddar::Notifications::BaseDecorator
   end
 
   def redirect_path
-    zine_post_path(zine, post)
+    main_app.zine_post_path(zine, post)
   end
 
   private
