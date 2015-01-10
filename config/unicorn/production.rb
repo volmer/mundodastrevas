@@ -5,7 +5,6 @@ working_directory current
 pid "#{shared}/tmp/pids/unicorn.pid"
 stderr_path "#{shared}/log/unicorn.log"
 stdout_path "#{shared}/log/unicorn.log"
-preload_app true
 
 # Port configuration
 listen '/tmp/unicorn.mundodastrevas.sock'
