@@ -5,7 +5,7 @@
 REMOTE_HOST="107.170.96.245"
 REMOTE_USER="mundodastrevas"
 REMOTE_BACKUP_DIR="/home/mundodastrevas/mundodastrevas_backup"
-LOCAL_BACKUP_DIR="/Users/volmer/backups"
+LOCAL_BACKUP_DIR="/Users/volmer/Backups"
 
 echo "GET MUNDO DAS TREVAS BACKUP"
 echo " "
