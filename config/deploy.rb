@@ -1,5 +1,5 @@
 # config valid only for Capistrano 3.1
-lock '3.3.5'
+lock '3.4.0'
 
 set :application, 'mundodastrevas'
 set :repo_url, 'git@bitbucket.org:volmer/mundodastrevas.git'
@@ -34,7 +34,7 @@ set :linked_dirs, %w{public/uploads public/system log tmp/pids bin tmp/cache tmp
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-set :rbenv_ruby, '2.2.0'
+set :rbenv_ruby, '2.2.1'
 
 # Default value for bundle flags is '--deployment --quiet'
 set :bundle_flags, '--deployment'
