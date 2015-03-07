@@ -13,5 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require raddar/application
-//= require raddar/forums/application
 //= require_tree .

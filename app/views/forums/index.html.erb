@@ -1,0 +1,23 @@
+<% content_for :page_title, t('.title') %>
+
+<div class="page-header">
+  <h1><%= t '.title' %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-8 forums-list">
+    <% @forums.each do |forum| %>
+      <div class="forum">
+        <h2><%= link_to forum, forum %></h2>
+
+        <%= simple_text forum.description %>
+
+        <%= render 'topics/index', topics: forum.topics.order('updated_at DESC').limit(5), forum: forum %>
+
+        <%= link_to t('.more'), forum %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render 'sidebar' %>
+</div>

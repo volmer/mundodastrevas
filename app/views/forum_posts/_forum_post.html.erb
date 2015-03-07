@@ -1,0 +1,42 @@
+<div class="forum-post">
+  <div class="row">
+    <%= render 'forum_posts/user', post: forum_post %>
+
+    <div class="col-md-10 post">
+      <div class="row">
+        <div class="col-md-10 content">
+          <%= sanitize forum_post.content %>
+        </div>
+      </div>
+
+      <div class="meta clearfix">
+        <%= time_tag forum_post.created_at, format: :short %>
+
+        <% if forum_post.created_at != forum_post.updated_at %>
+          -
+          <em>
+            <%= t '.updated_at' %>
+
+            <%= time_tag forum_post.updated_at, format: :short %>
+          </em>
+        <% end %>
+
+        <div class="actions">
+          <%= render 'raddar/reviews/form', reviewable: forum_post %>
+
+          <%= link_to t('.quote'), '#quote', class: 'btn btn-default btn-sm' if policy(forum_post).create? %>
+
+          <%= link_to t('.edit'), '#edit', class: 'btn btn-xs' if policy(forum_post).update? %>
+
+          <%= link_to t('.destroy'), [forum_post.topic.forum, forum_post.topic, forum_post], method: :delete, data: { confirm: t('.confirm') }, class: 'btn btn-xs' if policy(forum_post).destroy? %>
+        </div>
+      </div>
+    </div>
+
+    <% if policy(forum_post).update? %>
+      <div class="col-md-8 editor hide">
+        <%= render 'forum_posts/edit', post: forum_post %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<h1>
+  <%= link_to highlight(searchable.topic.name, params[:query]), main_app.url_for([searchable.topic.forum, searchable.topic]) %>
+</h1>
+
+<p>
+  <%= link_to image_tag(searchable.user.avatar.thumb.url), main_app.url_for([searchable.topic.forum, searchable.topic]) %>
+
+  <span class="searchable-type">
+    <%= searchable.class.model_name.human %>
+  </span> -
+
+  <%= highlight truncate_rich(searchable.content, length: 200), params[:query] %>
+</p>

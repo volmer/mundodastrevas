@@ -38,7 +38,6 @@ module Mundodastrevas
 
     config.to_prepare do
       Raddar::User.send(:include, UserExtension)
-      Raddar::Forums::Forum.send(:include, ForumExtension)
     end
   end
 end

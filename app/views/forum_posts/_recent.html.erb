@@ -1,0 +1,25 @@
+<section class="panel panel-default forum-panel">
+  <div class="panel-heading">
+    <h1 class="panel-title"><%= t '.title' %></h1>
+  </div>
+
+  <div class="list-group">
+    <% posts.each do |post| %>
+      <%= link_to [post.topic.forum, post.topic], class: 'list-group-item' do %>
+        <div class="media">
+          <%= image_tag post.user.avatar.thumb.url, class: 'media-object pull-left img-circle' %>
+
+          <div class="media-body">
+            <h2 class="media-heading">
+              <%= post.user %>:
+            </h2>
+
+            <p>
+              <%= truncate_rich post.content, length: 100 %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>

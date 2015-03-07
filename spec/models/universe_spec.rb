@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Universe do
-  it { is_expected.to have_many(:forums).class_name('Raddar::Forums::Forum').dependent(:nullify) }
-  it { is_expected.to have_many(:zines).class_name('Zine').dependent(:nullify) }
+  it { is_expected.to have_many(:forums).dependent(:nullify) }
+  it { is_expected.to have_many(:zines).dependent(:nullify) }
   it { is_expected.to have_many(:levels).dependent(:restrict_with_exception) }
   it { is_expected.to have_many(:ranks).dependent(:restrict_with_exception) }
 

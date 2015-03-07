@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109154406) do
+ActiveRecord::Schema.define(version: 20150307211728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(version: 20150109154406) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
-    t.string   "bootsy_resource_type"
+    t.string   "bootsy_resource_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "bootsy_images", force: :cascade do |t|
-    t.string   "image_file"
+    t.string   "image_file",       limit: 255
     t.integer  "image_gallery_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -42,6 +42,29 @@ ActiveRecord::Schema.define(version: 20150109154406) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "forum_posts", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "forum_posts", ["topic_id"], name: "index_forum_posts_on_topic_id", using: :btree
+  add_index "forum_posts", ["user_id"], name: "index_forum_posts_on_user_id", using: :btree
+
+  create_table "forums", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug",        limit: 255
+    t.integer  "universe_id"
+  end
+
+  add_index "forums", ["slug"], name: "index_forums_on_slug", unique: true, using: :btree
+  add_index "forums", ["universe_id"], name: "index_forums_on_universe_id", using: :btree
 
   create_table "levels", force: :cascade do |t|
     t.integer  "user_id"
@@ -59,7 +82,7 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
     t.integer  "searchable_id"
-    t.string   "searchable_type"
+    t.string   "searchable_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,10 +90,10 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   create_table "posts", force: :cascade do |t|
     t.integer  "zine_id"
     t.text     "content"
-    t.string   "image"
-    t.string   "name"
-    t.integer  "views",      default: 0
-    t.string   "slug"
+    t.string   "image",      limit: 255
+    t.string   "name",       limit: 255
+    t.integer  "views",                  default: 0
+    t.string   "slug",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -82,11 +105,11 @@ ActiveRecord::Schema.define(version: 20150109154406) do
 
   create_table "raddar_activities", force: :cascade do |t|
     t.integer  "subject_id"
-    t.string   "subject_type"
+    t.string   "subject_type", limit: 255
     t.integer  "user_id"
-    t.string   "key"
+    t.string   "key",          limit: 255
     t.hstore   "parameters"
-    t.string   "privacy"
+    t.string   "privacy",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -95,13 +118,13 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   add_index "raddar_activities", ["user_id"], name: "index_raddar_activities_on_user_id", using: :btree
 
   create_table "raddar_external_accounts", force: :cascade do |t|
-    t.string   "provider"
-    t.string   "token"
-    t.string   "secret"
-    t.string   "name"
-    t.string   "url"
-    t.string   "email"
-    t.string   "uid"
+    t.string   "provider",   limit: 255
+    t.string   "token",      limit: 255
+    t.string   "secret",     limit: 255
+    t.string   "name",       limit: 255
+    t.string   "url",        limit: 255
+    t.string   "email",      limit: 255
+    t.string   "uid",        limit: 255
     t.boolean  "verified"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -118,7 +141,7 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   create_table "raddar_followerships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "followable_id"
-    t.string   "followable_type"
+    t.string   "followable_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -175,11 +198,11 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   add_index "raddar_messages", ["sender_id"], name: "index_raddar_messages_on_sender_id", using: :btree
 
   create_table "raddar_notifications", force: :cascade do |t|
-    t.string   "event"
-    t.boolean  "unread",          default: true
+    t.string   "event",           limit: 255
+    t.boolean  "unread",                      default: true
     t.integer  "user_id"
     t.integer  "notifiable_id"
-    t.string   "notifiable_type"
+    t.string   "notifiable_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -189,8 +212,8 @@ ActiveRecord::Schema.define(version: 20150109154406) do
 
   create_table "raddar_pages", force: :cascade do |t|
     t.text     "content"
-    t.string   "title"
-    t.string   "slug"
+    t.string   "title",      limit: 255
+    t.string   "slug",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -199,9 +222,9 @@ ActiveRecord::Schema.define(version: 20150109154406) do
 
   create_table "raddar_reviews", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "value"
+    t.string   "value",           limit: 255
     t.integer  "reviewable_id"
-    t.string   "reviewable_type"
+    t.string   "reviewable_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -211,7 +234,7 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   add_index "raddar_reviews", ["user_id"], name: "index_raddar_reviews_on_user_id", using: :btree
 
   create_table "raddar_roles", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -229,7 +252,7 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   create_table "raddar_taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
-    t.string   "taggable_type"
+    t.string   "taggable_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -239,7 +262,7 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   add_index "raddar_taggings", ["taggable_id", "taggable_type"], name: "index_raddar_taggins_taggable", using: :btree
 
   create_table "raddar_tags", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -247,32 +270,32 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   add_index "raddar_tags", ["name"], name: "index_raddar_tags_on_name", unique: true, using: :btree
 
   create_table "raddar_users", force: :cascade do |t|
-    t.string   "email",                  default: "",       null: false
-    t.string   "encrypted_password",     default: "",       null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "",       null: false
+    t.string   "encrypted_password",     limit: 255, default: "",       null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                      default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.string   "name"
-    t.string   "location"
+    t.string   "unconfirmed_email",      limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "location",               limit: 255
     t.date     "birthday"
-    t.string   "gender"
+    t.string   "gender",                 limit: 255
     t.text     "bio"
-    t.string   "state",                  default: "active"
-    t.string   "avatar"
+    t.string   "state",                  limit: 255, default: "active"
+    t.string   "avatar",                 limit: 255
     t.hstore   "privacy"
     t.hstore   "email_preferences"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_salt"
+    t.string   "password_salt",          limit: 255
   end
 
   add_index "raddar_users", ["confirmation_token"], name: "index_raddar_users_on_confirmation_token", unique: true, using: :btree
@@ -283,8 +306,8 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   create_table "raddar_watches", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "watchable_id"
-    t.string   "watchable_type"
-    t.boolean  "active",         default: true
+    t.string   "watchable_type", limit: 255
+    t.boolean  "active",                     default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -293,8 +316,51 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   add_index "raddar_watches", ["user_id"], name: "index_raddar_watches_on_user_id", using: :btree
   add_index "raddar_watches", ["watchable_id", "watchable_type"], name: "index_raddar_watches_watchable", using: :btree
 
-  create_table "ranks", force: :cascade do |t|
+  create_table "raddar_zines_comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "raddar_zines_comments", ["post_id"], name: "index_raddar_zines_comments_on_post_id", using: :btree
+  add_index "raddar_zines_comments", ["user_id"], name: "index_raddar_zines_comments_on_user_id", using: :btree
+
+  create_table "raddar_zines_posts", force: :cascade do |t|
+    t.integer  "zine_id"
+    t.text     "content"
+    t.string   "image"
     t.string   "name"
+    t.integer  "views",      default: 0
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "raddar_zines_posts", ["slug"], name: "index_raddar_zines_posts_on_slug", unique: true, using: :btree
+  add_index "raddar_zines_posts", ["user_id"], name: "index_raddar_zines_posts_on_user_id", using: :btree
+  add_index "raddar_zines_posts", ["zine_id"], name: "index_raddar_zines_posts_on_zine_id", using: :btree
+
+  create_table "raddar_zines_zines", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.text     "description"
+    t.boolean  "starred",     default: false
+    t.string   "image"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "universe_id"
+  end
+
+  add_index "raddar_zines_zines", ["slug"], name: "index_raddar_zines_zines_on_slug", unique: true, using: :btree
+  add_index "raddar_zines_zines", ["universe_id"], name: "index_raddar_zines_zines_on_universe_id", using: :btree
+  add_index "raddar_zines_zines", ["user_id"], name: "index_raddar_zines_zines_on_user_id", using: :btree
+
+  create_table "ranks", force: :cascade do |t|
+    t.string   "name",        limit: 255
     t.text     "description"
     t.integer  "universe_id"
     t.integer  "value"
@@ -307,19 +373,31 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   add_index "ranks", ["value"], name: "index_ranks_on_value", using: :btree
 
   create_table "settings", force: :cascade do |t|
-    t.string   "key"
-    t.string   "value"
+    t.string   "key",        limit: 255
+    t.string   "value",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "settings", ["key"], name: "index_settings_on_key", unique: true, using: :btree
 
+  create_table "topics", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "views",                  default: 0
+    t.integer  "forum_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "topics", ["forum_id"], name: "index_topics_on_forum_id", using: :btree
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
+
   create_table "universes", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        limit: 255
     t.text     "description"
-    t.string   "slug"
-    t.string   "image"
+    t.string   "slug",        limit: 255
+    t.string   "image",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -327,12 +405,12 @@ ActiveRecord::Schema.define(version: 20150109154406) do
   add_index "universes", ["slug"], name: "index_universes_on_slug", unique: true, using: :btree
 
   create_table "zines", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",         limit: 255
     t.integer  "user_id"
     t.text     "description"
-    t.boolean  "starred",      default: false
-    t.string   "image"
-    t.string   "slug"
+    t.boolean  "starred",                  default: false
+    t.string   "image",        limit: 255
+    t.string   "slug",         limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "universe_id"

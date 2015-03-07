@@ -6,10 +6,12 @@ module UserExtension
   included do
     devise :encryptable
 
-    has_many :levels, dependent: :destroy
-    has_many :zines, dependent: :destroy
-    has_many :posts, dependent: :destroy
-    has_many :comments, dependent: :destroy
+    has_many :levels,      dependent: :destroy
+    has_many :zines,       dependent: :destroy
+    has_many :posts,       dependent: :destroy
+    has_many :comments,    dependent: :destroy
+    has_many :topics,      dependent: :destroy
+    has_many :forum_posts, dependent: :destroy
 
     def rank_in(universe)
       if universe

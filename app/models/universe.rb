@@ -3,7 +3,7 @@ class Universe < ActiveRecord::Base
 
   mount_uploader :image, UniverseImageUploader
 
-  has_many :forums, class_name: 'Raddar::Forums::Forum', dependent: :nullify
+  has_many :forums, dependent: :nullify
   has_many :zines, dependent: :nullify
   has_many :levels, dependent: :restrict_with_exception
   has_many :ranks, dependent: :restrict_with_exception

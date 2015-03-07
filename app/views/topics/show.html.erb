@@ -1,5 +1,5 @@
 <% content_for :page_title, @topic %>
-<% content_for :page_description, truncate_rich(@topic.posts.first.content) %>
+<% content_for :page_description, truncate_rich(@topic.forum_posts.first.content) %>
 <% content_for :page_author, @topic.user %>
 <% content_for :page_keywords, @forum %>
 
@@ -19,7 +19,7 @@
 
       <span class="text-muted">·</span>
 
-      <%= t '.posts', count: @topic.posts.count %>
+      <%= t '.forum_posts', count: @topic.forum_posts.count %>
 
       <% if user_signed_in? %>
         <%= link_to t('.edit'), edit_forum_topic_path(@forum, @topic), class: 'btn btn-xs' if policy(@topic).edit? %>
@@ -38,14 +38,14 @@
     <li class="active"><%= @topic %></li>
   </ol>
 
-  <%= render @posts %>
+  <%= render @forum_posts %>
 
-  <%= paginate @posts %>
+  <%= paginate @forum_posts %>
 
-  <% if policy(@post).create? %>
+  <% if policy(@forum_post).create? %>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <%= render 'raddar/forums/posts/new', post: @post %>
+        <%= render 'forum_posts/new', post: @forum_post %>
       </div>
     </div>
   <% end %>

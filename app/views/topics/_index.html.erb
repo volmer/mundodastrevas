@@ -1,0 +1,35 @@
+<table class="table table-bordered table-striped table-hover forum-topics">
+  <thead>
+    <tr>
+      <th><%= t '.topic' %></th>
+      <th><%= t '.posts' %></th>
+      <th><%= t '.last_post' %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% topics.each do |topic| %>
+      <tr class="topic">
+        <td>
+          <%= link_to topic.name, forum_topic_path(forum, topic) %>
+        </td>
+
+        <td>
+          <%= link_to topic.forum_posts.count, forum_topic_path(forum, topic) %>
+        </td>
+
+        <td>
+          <% if post = topic.forum_posts.last %>
+            <%= link_to forum_topic_path(forum, topic) do %>
+              <%= image_tag post.user.avatar.thumb.url %>
+
+              <%= post.user %>,
+
+              <%= time_tag post.created_at, format: :short %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

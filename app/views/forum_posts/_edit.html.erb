@@ -1,0 +1,9 @@
+<%= simple_form_for([@forum, @topic, post]) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :content, as: :bootsy, label: false, input_html: { rows: 6 } %>
+  <%= hidden_field_tag :page, params[:page] %>
+
+  <%= f.button :submit, t('.submit') %>
+  <%= link_to t('.cancel'), '#cancel', class: 'btn btn-sm' %>
+<% end %>

@@ -29,15 +29,16 @@ Raddar.setup do |config|
   # config.user_menu = []
 end
 
-Raddar::Notifications.decorators_mapping[:new_rank] = 'NewRankDecorator'
-Raddar::Notifications.decorators_mapping[:new_comment] = 'NewCommentDecorator'
+Raddar::Notifications.decorators_mapping.merge!(
+  new_rank: 'NewRankDecorator',
+  new_comment: 'NewCommentDecorator',
+  new_forum_post: 'NewForumPostDecorator'
+)
 
-Raddar.main_links << { text: ->{ I18n.t('links.main') }, href: ->{ Rails.application.routes.url_helpers.zines_path } }
+Raddar.main_links << { text: ->{ I18n.t('links.zines.main') }, href: ->{ Rails.application.routes.url_helpers.zines_path } }
+Raddar.main_links << { text: ->{ I18n.t('links.forums.main') }, href: ->{ Rails.application.routes.url_helpers.forums_path } }
 
-Raddar.admin_links << { text: ->{ I18n.t('links.admin') }, href: ->{ Raddar::Engine.routes.url_helpers.admin_zines_path }, active: :zines }
+Raddar.admin_links << { text: ->{ I18n.t('links.zines.admin') }, href: ->{ Raddar::Engine.routes.url_helpers.admin_zines_path }, active: :zines }
+Raddar.admin_links << { text: ->{ I18n.t('links.forums.admin') }, href: ->{ Raddar::Engine.routes.url_helpers.admin_forums_path }, active: :forums }
 
-Raddar.user_menu << ->(context) { context.link_to(('<span class="glyphicon glyphicon-book"></span> ' + I18n.t('links.user_menu')).html_safe, context.main_app.user_zines_path(context.current_user)) }
-
-
-
-
+Raddar.user_menu << ->(context) { context.link_to(('<span class="glyphicon glyphicon-book"></span> ' + I18n.t('links.zines.user_menu')).html_safe, context.main_app.user_zines_path(context.current_user)) }

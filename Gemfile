@@ -52,7 +52,6 @@ end
 
 gem 'sidekiq'
 gem 'raddar', github: 'volmer/raddar'
-gem 'raddar-forums', github: 'volmer/raddar-forums'
 gem 'devise-encryptable'
 gem 'newrelic_rpm'
 gem 'skylight'

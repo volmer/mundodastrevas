@@ -16,3 +16,11 @@ pt-BR:
         tags: 'Tags'
       comment:
         content: 'Conteúdo'
+      forum:
+        name: 'Nome'
+        slug: 'Url amigável'
+        description: 'Descrição'
+      topic:
+        name: 'Nome'
+      forum_post:
+        content: 'Conteúdo'
