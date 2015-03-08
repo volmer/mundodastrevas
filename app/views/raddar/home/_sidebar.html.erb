@@ -37,7 +37,7 @@
         </div>
 
         <div class="panel-body">
-          <% Raddar::User.where('confirmed_at IS NOT NULL').order('created_at DESC').limit(6).each do |user| %>
+          <% @new_members.each do |user| %>
             <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle img-thumbnail'), user, title: user.name %>
           <% end %>
         </div>
