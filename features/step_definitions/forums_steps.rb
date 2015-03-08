@@ -1,16 +1,29 @@
-Given(/^there is a topic called "(.*?)" in the "(.*?)" forum$/) do |topic_name, forum_name|
-  forum = Raddar::Forums::Forum.find_by(name: forum_name) || create(:forum, name: forum_name)
-  create(:topic, forum: forum, name: topic_name)
+Given(/^there is a forum called "(.*?)"$/) do |name|
+  create :forum, name: name
 end
 
-Given(/^there is a post "(.*?)" in the "(.*?)" topic$/) do |content, topic_name|
-  topic = Raddar::Forums::Topic.find_by(name: topic_name)
-
-  create(:forum_post, topic: topic, content: content)
+Given(/^there is a forum with the given attributes:$/) do |table|
+  table.hashes.each do |line|
+    create :forum, line
+  end
 end
+
+Given(/^I am following the "(.*?)" forum$/) do |forum_name|
+  followership = Raddar::Followership.new
+  followership.user = @user
+  followership.followable = Forum.find_by(name: forum_name)
+  followership.save!
+end
+
 
 When(/^I go to the "(.*?)" forum$/) do |forum_name|
-  forum = Raddar::Forums::Forum.find_by(name: forum_name) || create(:forum, name: forum_name)
+  forum = Forum.find_by(name: forum_name) || create(:forum, name: forum_name)
 
-  visit raddar_forums.forum_path(forum)
+  visit forum_path(forum)
+end
+
+Then(/^I am redirected to "(.*?)" forum$/) do |forum_name|
+  forum = Forum.find_by(name: forum_name)
+
+  expect(current_path).to eq forum_path(forum)
 end

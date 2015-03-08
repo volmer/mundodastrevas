@@ -1,0 +1,25 @@
+.forum-description {
+  border-top: 1px solid $hr-border;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.forums-list .forum {
+  border-bottom: 1px solid $hr-border;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+
+.forum-panel {
+  h2 {
+    font-size: 15px;
+  }
+}
+
+.forum-invite {
+  background-color: $well-bg;
+  font-size: 20px;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}

@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :forum, class: Raddar::Forums::Forum do
+  factory :forum do
     sequence :slug do |n|
       "the-small-council-#{n}"
     end

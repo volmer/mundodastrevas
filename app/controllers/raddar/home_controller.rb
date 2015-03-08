@@ -9,7 +9,7 @@ module Raddar
 
       @recent_posts = Zine.with_posts.where.not(id: featured_zines.map(&:id)).order(last_post_at: :desc).limit(4).map {|zine| zine.posts.order('created_at DESC').first }
 
-      @forum_topics = Forums::Topic.order(created_at: :desc).limit(4)
+      @forum_topics = Topic.order(created_at: :desc).limit(4)
 
       @universes = Universe.order(name: :asc)
 

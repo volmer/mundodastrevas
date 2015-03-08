@@ -13,9 +13,59 @@ pt-BR:
       subject: 'Parabéns, agora você é um %{rank}!'
     new_comment:
       subject: 'Novo comentário em %{post}'
+    new_forum_post:
+      subject: 'Nova postagem em %{topic}'
   notifications:
     new_rank: 'Parabéns! Agora você é um %{rank} em %{universe}!'
     new_comment: '%{user} comentou em %{post}.'
+    new_forum_post: '%{user} postou em %{topic}.'
+  forums:
+    index:
+      title: 'Fóruns'
+      more: 'Ver mais'
+    show:
+      new: 'Novo tópico'
+      invite: 'Deseja participar deste fórum? Entre aqui!'
+  topics:
+    recent:
+      title: 'Tópicos recentes'
+    index:
+      topic: 'Últimos tópics'
+      forum_posts: 'Postagens'
+      last_post: 'Última atividade'
+    new:
+      title: 'Novo tópico'
+      submit: 'Criar tópico'
+    edit:
+      title: 'Editar tópico'
+      submit: 'Atualizar tópico'
+      destroy: 'Apagar tópico'
+      confirm: 'Você confirma a destruição deste tópico?'
+    show:
+      edit: 'Editar'
+      invite: 'Deseja postar neste tópico? Entre aqui!'
+      watching: 'Você está vigiando este tópico'
+      created_by_html: 'Criado por %{user}'
+      forum_posts:
+        one: '1 postagem'
+        other: '%{count} postagens'
+  forum_posts:
+    to_s: 'o post de %{user}'
+    recent:
+      title: 'Postagens recentes'
+    forum_post:
+      edit: 'Editar'
+      destroy: 'Apagar'
+      updated_at: 'Atualizado em'
+      confirm: 'Você confirma a exclusão desta postagem?'
+      quote: 'Citar'
+    new:
+      submit: 'Postar'
+      watch: 'Avise-me sobre novas postagens neste tópico'
+      title: 'Postar no tópico'
+    edit:
+      submit: 'Atualizar postagem'
+      cancel: 'Cancelar'
   zines:
     header:
       universe_html: 'Um zine de %{universe}'
@@ -92,9 +142,13 @@ pt-BR:
       updated_at: 'Atualizado em'
       destroy: 'Apagar'
   links:
-    main: 'Zines'
-    admin: 'Zines'
-    user_menu: 'Meus zines'
+    zines:
+      main: 'Zines'
+      admin: 'Zines'
+      user_menu: 'Meus zines'
+    forums:
+      main: 'Fóruns'
+      admin: 'Fóruns'
   flash:
     zines:
       create: 'Zine criado!'
@@ -107,6 +161,18 @@ pt-BR:
     comments:
       create: 'Comentário criado!'
       destroy: 'Comentário apagado.'
+    topics:
+      create: 'Tópico criado!'
+      update: 'Tópico atualizado.'
+      destroy: 'Tópico apagado.'
+    forum_posts:
+      create: 'Postado!'
+      update: 'Post atualizado!'
+      destroy: 'Post apagado.'
+    forums:
+      create: 'Fórum criado!'
+      update: 'Fórum atualizado.'
+      destroy: 'Fórum apagado.'
   activities:
     zines:
       create_html: '%{user} criou o zine %{zine}'
@@ -114,3 +180,5 @@ pt-BR:
       create_html: '%{user} publicou %{post} em %{zine}'
     comments:
       create_html: '%{user} comentou em %{post}:'
+    forum_posts:
+      create_html: '%{user} postou no tópico %{topic}:'

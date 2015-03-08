@@ -51,7 +51,7 @@
 
           <div class="list-group forum-topics">
             <% @forum_topics.each do |topic| %>
-              <%= link_to raddar_forums.forum_topic_path(topic.forum, topic), class: 'list-group-item' do %>
+              <%= link_to main_app.forum_topic_path(topic.forum, topic), class: 'list-group-item' do %>
                 <h4 class="list-group-item-heading">
                   <%= topic %>
                 </h4>

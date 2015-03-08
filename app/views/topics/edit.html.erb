@@ -1,0 +1,19 @@
+<% content_for :page_title, t('.title') %>
+
+<div class="page-header">
+  <h1><%= t '.title' %></h1>
+</div>
+
+<%= simple_form_for([@forum, @topic]) do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.error_notification %>
+
+      <%= f.input :name, autofocus: true %>
+    </div>
+  </div>
+
+  <%= f.button :submit, t('.submit'), class: 'btn-lg' %>
+<% end %>
+
+<%= link_to t('.destroy'), [@forum, @topic], class: 'btn', method: :delete, data: { confirm: t('.confirm') } if policy(@topic).destroy? %>

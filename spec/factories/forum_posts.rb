@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :forum_post, class: Raddar::Forums::Post do
+  factory :forum_post do
     transient do
       universe nil
     end

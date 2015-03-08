@@ -6,6 +6,7 @@ pt-BR:
           keys:
             new_rank: 'Novos ranks'
             new_comment: 'Comentários em posts que eu estou vigiando'
+            new_forum_post: 'Novas postagens em tópicos que eu estou vigiando'
       add_on:
         title: 'Zines'
         all_zines: 'Ver todos'
@@ -18,6 +19,18 @@ pt-BR:
           save: 'Salvar zine'
         index:
           author: 'Autor'
+      forums:
+        index:
+          new: 'Novo fórum'
+          topics: 'Tópicos'
+        edit:
+          title: 'Editar fórum'
+          submit: 'Atualizar fórum'
+          destroy: 'Apagar fórum'
+          confirm: 'Você confirma a destruição deste fórum e de todos os seus tópicos e postagens?'
+        new:
+          title: 'Novo fórum'
+          submit: 'Criar fórum'
     home:
       sidebar:
         featured_zine: 'Zine em destaque'

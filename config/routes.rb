@@ -22,9 +22,19 @@ Mundodastrevas::Application.routes.draw do
     resources :zines, only: [:index]
   end
 
+  resources :forums, only: [:show, :index] do
+    resources :topics, except: [:index] do
+      resources :forum_posts, only: [:create, :update, :destroy]
+    end
+
+    resources :followerships, only: [:create, :destroy], on: :member, controller: 'forum_followerships'
+    get 'followers', controller: 'forum_followerships'
+  end
+
   Raddar::Engine.routes.draw do
     namespace :admin do
       resources :zines, only: [:index, :edit, :update], controller: 'zines'
+      resources :forums, except: [:show], controller: 'forums'
     end
   end
 end

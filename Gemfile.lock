@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/volmer/raddar-forums.git
-  revision: 47d77a191ee6267cfc90e160e5b09fe02e7ba942
-  specs:
-    raddar-forums (0.0.1)
-      raddar (>= 0.0.1.rc10)
-
-GIT
   remote: git://github.com/volmer/raddar.git
   revision: 80f76425364d3a0f8367203045489a99ebe5224c
   specs:
@@ -371,7 +364,6 @@ DEPENDENCIES
   newrelic_rpm
   pg
   raddar!
-  raddar-forums!
   rails (= 4.2.0)
   rspec-rails
   sass-rails

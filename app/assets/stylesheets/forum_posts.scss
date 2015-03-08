@@ -1,5 +1,51 @@
-.forum-post .user .rank {
-  font-size: 10px;
-  display: inline-block;
-  margin-bottom: 10px;
+.forum-post {
+  margin-bottom: 20px;
+  background-color: $well-bg;
+  padding: 10px 0;
+
+  .user {
+    text-align: center;
+    border-right: 1px solid $well-border;
+
+    a {
+      font-size: 15px;
+      font-weight: bold;
+      display: block;
+    }
+
+    img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .rank {
+      font-size: 10px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+  }
+
+  .content {
+    min-height: 120px;
+  }
+
+  .meta {
+    border-top: 1px solid $well-border;
+    padding: 10px 10px 0 0;
+
+    .actions {
+      float: right;
+    }
+
+    form.raddar-ratings-review {
+      display: inline;
+      margin-right: 10px;
+    }
+
+    time {
+      font-size: 11px;
+      color: $gray-light;
+    }
+  }
 }
+
