@@ -51,9 +51,9 @@
         </h2>
       </div>
 
-      <%= render 'raddar/forums/topics/index', topics: @forum_topics, forum: @forum %>
+      <%= render 'topics/index', topics: @forum_topics, forum: @forum %>
 
-      <%= link_to t('.more'), raddar_forums.forum_path(@forum) %>
+      <%= link_to t('.more'), @forum %>
     </section>
   <% end %>
 
