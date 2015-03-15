@@ -40,7 +40,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'byebug'
+  gem 'pry-rails'
 end
 
 group :test do
@@ -48,6 +48,8 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'selenium-webdriver'
+  gem 'rspec-rails'
+  gem 'webmock', require: false
 end
 
 gem 'sidekiq'

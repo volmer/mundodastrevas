@@ -1,10 +1,5 @@
-class RankNotificationWorker
-  include Sidekiq::Worker
-
-  def perform(user_id, rank_id)
-    user = Raddar::User.find(user_id)
-    rank = Rank.find(rank_id)
-
+class RankNotificationJob < ActiveJob::Base
+  def perform(user, rank)
     notification = Raddar::Notification.find_or_initialize_by(
       user:       user,
       event:      'new_rank',

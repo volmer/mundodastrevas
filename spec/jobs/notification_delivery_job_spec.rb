@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe RankNotificationWorker do
-  subject(:worker) { described_class.new }
+describe Raddar::NotificationDeliveryJob, type: :job do
+  subject(:job) { described_class.new }
+  let(:notifiable) { create(:comment) }
   let(:user) { create(:user) }
-  let(:rank) { create(:rank) }
 
   describe '#perform' do
-    subject { worker.perform(user.id, rank.id) }
+    subject { job.perform(user, notifiable, 'new_comment') }
 
     it 'creates notifications to the watcher' do
       subject
@@ -14,7 +14,7 @@ describe RankNotificationWorker do
       expect(Raddar::Notification.find_by(user: user)).to be_present
     end
 
-    it 'sends an email to the user' do
+    it 'sends an email to the watcher' do
       expect {
         subject
       }.to change {
@@ -23,17 +23,17 @@ describe RankNotificationWorker do
     end
 
     describe 'the notification sent' do
-      it 'has the new_rank event' do
-        expect(subject.event).to eq('new_rank')
+      it 'has the given event' do
+        expect(subject.event).to eq('new_comment')
       end
 
-      it 'has the given rank as the notifiable' do
-        expect(subject.notifiable).to eq(rank)
+      it 'has the given notifiable' do
+        expect(subject.notifiable).to eq(notifiable)
       end
     end
 
     context 'a notification with the same attributes has already been sent' do
-      before { create(:notification, notifiable: rank, user: user, event: 'new_rank') }
+      before { create(:notification, notifiable: notifiable, user: user, event: 'new_comment') }
 
       it 'does not creates a new one' do
         expect {

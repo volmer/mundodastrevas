@@ -32,9 +32,9 @@ describe LevelGrantor do
       it 'schedules a notification job with proper arguments' do
         rank = subject.rank
 
-        job = RankNotificationWorker.jobs.last
+        job = RankNotificationJob.queue_adapter.enqueued_jobs.last
 
-        expect(job['args']).to eq([user.id, rank.id])
+        expect(job[:args]).to eq([user, rank])
       end
     end
 

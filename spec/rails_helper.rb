@@ -2,9 +2,10 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'sidekiq/testing'
+require 'webmock/rspec'
 
-Sidekiq::Testing.fake!
+WebMock.disable_net_connect!
+Rails.application.config.active_job.queue_adapter = :test
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -40,7 +41,7 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  config.order = 'random'
 
   config.expect_with :rspec do |c|
     c.syntax = :expect

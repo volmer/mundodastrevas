@@ -18,7 +18,7 @@ class LevelGrantor
       level.value += 1
       level.save!
 
-      RankNotificationWorker.perform_async(user.id, level.rank.id)
+      RankNotificationJob.perform_later(user, level.rank)
 
       level
     end
