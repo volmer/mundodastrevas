@@ -14,10 +14,10 @@ Feature: Notify watchers
     When I go to the notifications page
     Then I see "davos postou em Treason!." on the page
     And I receive an email titled "Nova postagem em Treason!"
-    And the email contains "volmer"
-    And the email contains "davos"
-    And the email contains "Treason!"
-    And the email contains "preferências de email"
+    And the email I've received contains "volmer"
+    And the email I've received contains "davos"
+    And the email I've received contains "Treason!"
+    And the email I've received contains "preferências de email"
 
   Scenario: Disable email
     Given I've unchecked "Novas postagens em tópicos que eu estou vigiando" in my email preferences

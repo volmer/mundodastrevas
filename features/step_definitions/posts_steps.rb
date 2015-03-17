@@ -24,6 +24,18 @@ Given(/^I'm on the "(.*?)" post page$/) do |name|
   visit zine_post_path(post.zine, post)
 end
 
+Given(/^I'm on the new post page$/) do
+  zine = create(:zine, user: @user)
+
+  visit new_zine_post_path(zine)
+end
+
+Given(/^I'm on the edit post page$/) do
+  post = create(:post, user: @user)
+
+  visit edit_zine_post_path(post.zine, post)
+end
+
 Given(/^within the zine "(.*?)" there is a post with the given attributes:$/) do |name, table|
   zine = Zine.find_by(name: name)
 

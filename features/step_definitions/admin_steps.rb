@@ -8,8 +8,16 @@ Given(/^"(.*?)" is an admin$/) do |user_name|
   user.roles << role
 end
 
+Given(/^there are (\d+) users$/) do |count|
+  create_list :user, count.to_i
+end
+
 When(/^within the admin tabs I click on "(.*?)"$/) do |link|
   within('.admin-tabs') do
     click_on link
   end
+end
+
+Then(/^I see (\d+) users$/) do |count|
+  expect(page).to have_selector('.user', count: count)
 end

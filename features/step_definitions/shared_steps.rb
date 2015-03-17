@@ -68,7 +68,7 @@ Then(/^I see the following (.*?) message:$/) do |type, message|
 end
 
 Then(/^I see the field "(.*?)" with the error "(.*?)"$/) do |field_class, message|
-  form_group = find(".form-group.#{ field_class }") || first('.form-group', text: field)
+  form_group = first(".form-group.#{ field_class }") || first('.form-group', text: field_class)
   expect(form_group).to have_content(message)
 end
 

@@ -4,14 +4,32 @@ Given(/^I've unchecked "(.*?)" in my email preferences$/) do |field|
   step('I click on "Salvar"')
 end
 
+Given(/^the email destination for contacts is "(.*?)"$/) do |email|
+  Raddar.contacts_destination = email
+end
+
 Then(/^I receive an email titled "(.*?)"$/) do |subject|
   expect(ActionMailer::Base.deliveries.last.subject).to eq(subject)
 end
 
-Then(/^the email contains "(.*?)"$/) do |content|
-  expect(ActionMailer::Base.deliveries.select {|email|
+Then(/^the email I've received contains "(.*?)"$/) do |content|
+  expect(ActionMailer::Base.deliveries.select { |email|
     email.to.include?(@user.email)
   }.first.body).to include(content)
+end
+
+Then(/^the email contains "(.*?)"$/) do |content|
+  expect(ActionMailer::Base.deliveries.last.body).to include(content)
+end
+
+Then(/^I don't receive an email titled "(.*?)"$/) do |subject|
+  if ActionMailer::Base.deliveries.present?
+    expect(ActionMailer::Base.deliveries.last.subject).not_to eq(subject)
+  end
+end
+
+Then(/^an email is sent to "(.*?)"$/) do |email|
+  expect(ActionMailer::Base.deliveries.last.to).to eq([email])
 end
 
 Then(/^I don't receive any emails$/) do

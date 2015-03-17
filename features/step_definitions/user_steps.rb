@@ -109,7 +109,7 @@ end
 
 Then /^my password is now "(.*?)"$/ do |password|
   @user.reload
-  expect(@user.valid_password?(password)).to be_true
+  expect(@user.valid_password?(password)).to be true
 end
 
 Then(/^I am redirected to my user page$/) do
@@ -130,4 +130,10 @@ end
 
 Then(/^I am no longer signed in$/) do
   step('I see the link "Entrar"')
+end
+
+Then(/^within my profile I do not see the link "(.*?)"$/) do |link|
+  within('.user-profile') do
+    expect(page).not_to have_link(link)
+  end
 end

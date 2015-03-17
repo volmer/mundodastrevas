@@ -15,10 +15,10 @@ Feature: Notify watchers
     When I go to the notifications page
     Then I see "davos comentou em Arya." on the page
     And I receive an email titled "Novo comentário em Arya"
-    And the email contains "volmer"
-    And the email contains "davos"
-    And the email contains "Arya"
-    And the email contains "preferências de email"
+    And the email I've received contains "volmer"
+    And the email I've received contains "davos"
+    And the email I've received contains "Arya"
+    And the email I've received contains "preferências de email"
 
   Scenario: Disable email
     Given I've unchecked "Comentários em posts que eu estou vigiando" in my email preferences
