@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require raddar/application
+//= require bootstrap-sprockets
+//= require bootsy
 //= require_tree .

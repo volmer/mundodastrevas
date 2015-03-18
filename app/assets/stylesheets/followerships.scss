@@ -1,0 +1,26 @@
+a.followerships-counter {
+  display: inline-block;
+  margin: 0 10px;
+  text-shadow: 0 1px 2px #ddd;
+
+  strong {
+    font-size: 36px;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    line-height: 1;
+  }
+}
+
+.followership {
+  img {
+    float: left;
+    border-radius: 50%;
+  }
+
+  h1 {
+    float: left;
+    margin: 15px 10px 0;
+    font-size: 20px;
+  }
+}
