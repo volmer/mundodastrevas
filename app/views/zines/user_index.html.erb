@@ -2,7 +2,7 @@
 <% content_for :page_author, @user %>
 <% content_for :page_description, strip_tags(@user.bio) %>
 <% content_for :page_canonical_url, user_zines_url(@user) %>
-<% content_for :page_image, URI(raddar.root_url) + @user.avatar.url %>
+<% content_for :page_image, URI(root_url) + @user.avatar.url %>
 
 <div class="page-header">
   <h1>

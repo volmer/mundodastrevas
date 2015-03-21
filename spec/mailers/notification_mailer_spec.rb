@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::NotificationMailer do
+describe NotificationMailer do
   let(:notification) { create(:notification) }
 
   describe '#notify' do
@@ -15,7 +15,7 @@ describe Raddar::NotificationMailer do
       subject
 
       options = Rails.application.config.action_mailer.default_url_options
-      notification_url = Raddar::Engine.routes.url_helpers.notification_url(notification, options)
+      notification_url = Rails.application.routes.url_helpers.notification_url(notification, options)
 
       expect(ActionMailer::Base.deliveries.last.body).to include(notification_url)
     end

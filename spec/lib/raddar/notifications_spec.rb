@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-describe Raddar::Notifications do
+describe Notifications do
   describe '.decorators_mapping' do
     subject { described_class.decorators_mapping }
 
     it 'includes decorator for :new_follower' do
-      expect(subject[:new_follower]).to eq('Raddar::Notifications::NewFollowerDecorator')
+      expect(subject[:new_follower]).to eq('Notifications::NewFollowerDecorator')
     end
 
     it 'includes decorator for :new_message' do
-      expect(subject[:new_message]).to eq('Raddar::Notifications::NewMessageDecorator')
+      expect(subject[:new_message]).to eq('Notifications::NewMessageDecorator')
     end
   end
 
@@ -18,8 +18,8 @@ describe Raddar::Notifications do
       new_follower = build(:new_follower_notification)
       new_message = build(:new_message_notification)
 
-      expect(described_class.decorator_for(new_follower)).to be_a(Raddar::Notifications::NewFollowerDecorator)
-      expect(described_class.decorator_for(new_message)).to be_a(Raddar::Notifications::NewMessageDecorator)
+      expect(described_class.decorator_for(new_follower)).to be_a(Notifications::NewFollowerDecorator)
+      expect(described_class.decorator_for(new_message)).to be_a(Notifications::NewMessageDecorator)
     end
   end
 end

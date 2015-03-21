@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::TagsHelper, type: :helper do
+describe TagsHelper, type: :helper do
   let(:taggable) { create(:post) }
 
   describe '#render_tags' do

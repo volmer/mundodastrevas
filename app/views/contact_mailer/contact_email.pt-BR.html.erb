@@ -1,0 +1,16 @@
+<% if @contact.guest? %>
+  <h1>Novo contato de um visitante</h1>
+<% else %>
+  <h1>Novo contato do usuário <%= link_to @contact.user, user_url(@contact.user) %></h1>
+<% end %>
+
+<dl>
+  <dt>Nome</dt>
+  <dd><%= @contact.name %></dd>
+
+  <dt>Email</dt>
+  <dd><%= mail_to @contact.email %></dd>
+
+  <dt>Mensagem</dt>
+  <dd><%= simple_text @contact.message %></dd>
+</dl>

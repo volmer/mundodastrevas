@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Notification do
+describe Notification do
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:notifiable) }
 
@@ -9,7 +9,7 @@ describe Raddar::Notification do
   it { is_expected.to validate_presence_of(:user_id) }
 
   it 'validates inlcusion of event according to the decorators mapping' do
-    Raddar::Notifications.decorators_mapping[:valid_event] = 'decorator'
+    Notifications.decorators_mapping[:valid_event] = 'decorator'
     subject.event = 'valid_event'
     subject.valid?
 

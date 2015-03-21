@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Notifications::NewMessageDecorator do
+describe Notifications::NewMessageDecorator do
   let(:sender) { create(:user, name: 'volmer') }
 
   let(:message) { create(:message, sender: sender) }

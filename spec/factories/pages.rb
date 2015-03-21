@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :page, class: Raddar::Page do
+  factory :page do
     sequence :slug do |n|
       "nights-watch-oath-#{n}"
     end

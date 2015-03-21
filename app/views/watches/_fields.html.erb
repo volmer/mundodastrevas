@@ -1,0 +1,9 @@
+<%= form.fields_for(watch) do |sf| %>
+  <div class="checkbox">
+    <%= sf.label :active do %>
+      <%= sf.check_box :active %>
+
+      <%= label.presence || t('.label') %>
+    <% end %>
+  </div>
+<% end %>

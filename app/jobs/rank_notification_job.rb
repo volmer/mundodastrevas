@@ -1,6 +1,6 @@
 class RankNotificationJob < ActiveJob::Base
   def perform(user, rank)
-    notification = Raddar::Notification.find_or_initialize_by(
+    notification = Notification.find_or_initialize_by(
       user:       user,
       event:      'new_rank',
       notifiable: rank

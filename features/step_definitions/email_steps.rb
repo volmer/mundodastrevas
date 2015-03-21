@@ -4,10 +4,6 @@ Given(/^I've unchecked "(.*?)" in my email preferences$/) do |field|
   step('I click on "Salvar"')
 end
 
-Given(/^the email destination for contacts is "(.*?)"$/) do |email|
-  Raddar.contacts_destination = email
-end
-
 Then(/^I receive an email titled "(.*?)"$/) do |subject|
   expect(ActionMailer::Base.deliveries.last.subject).to eq(subject)
 end

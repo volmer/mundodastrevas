@@ -1,0 +1,15 @@
+<h1>
+  <%= link_to highlight(searchable.name, params[:query]), url_for([searchable.forum, searchable]) %>
+</h1>
+
+<p>
+  <%= link_to image_tag(searchable.user.avatar.thumb.url), url_for([searchable.forum, searchable]) %>
+
+  <span class="searchable-type">
+    <%= searchable.class.model_name.human %>
+  </span> -
+
+  <% if searchable.forum_posts.present? %>
+    <%= highlight truncate_rich(searchable.forum_posts.order(created_at: :asc).first.content, length: 200), params[:query] %>
+  <% end %>
+</p>

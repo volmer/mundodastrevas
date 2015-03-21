@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Tag do
+describe Tag do
   it { should have_many(:taggings).dependent(:destroy) }
 
   it { should validate_presence_of(:name) }

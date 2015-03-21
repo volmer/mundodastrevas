@@ -1,0 +1,25 @@
+<% content_for :page_title, t('.title') %>
+
+<div class="page-header">
+  <h1><%= t '.title' %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table table-striped table-hover notifications">
+      <% @notifications.each do |notification| %>
+        <tr>
+          <td>
+            <%= link_to_notification notification %>
+          </td>
+
+          <td class="time">
+            <%= link_to time_tag(notification.created_at, format: :short), notification %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<%= paginate @notifications %>

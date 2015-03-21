@@ -1,5 +1,5 @@
 atom_feed language: I18n.locale do |feed|
-  feed.title Raddar.app_name
+  feed.title Rails.application.config.app_name
   feed.updated @posts.first.try(:updated_at)
 
   @posts.each do |post|

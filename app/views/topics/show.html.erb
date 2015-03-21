@@ -15,7 +15,7 @@
     <h1><%= @topic %></h1>
 
     <div class="clearfix">
-      <%= t '.created_by_html', user: link_to(@topic.user, raddar.user_path(@topic.user)) %>
+      <%= t '.created_by_html', user: link_to(@topic.user, user_path(@topic.user)) %>
 
       <span class="text-muted">·</span>
 
@@ -52,7 +52,7 @@
 
   <% unless user_signed_in? %>
     <div class="forum-invite">
-      <%= link_to t('.invite'), raddar.new_user_session_path %>
+      <%= link_to t('.invite'), new_user_session_path %>
     </div>
   <% end %>
 </div>

@@ -1,4 +1,77 @@
 pt-BR:
+  'yes': 'Sim'
+  'no': 'Não'
+  user:
+    show: 'Perfil'
+    registration:
+      edit: 'Editar conta'
+    session:
+      new: 'Entrar'
+      destroy: 'Sair'
+    gender_options:
+      female: 'Feminino'
+      male: 'Masculino'
+    state_options:
+      active: 'Ativo'
+      blocked: 'Bloqueado'
+  followership:
+    follow: 'Seguir'
+    unfollow: 'Deixar de seguir'
+    followers:
+      one: 'Seguidor'
+      other: 'Seguidores'
+    following: 'Seguindo'
+  role:
+    names:
+      admin: 'Administrador'
+  save: 'Salvar'
+  notifications:
+    events:
+      new_follower: '%{user} está te seguindo'
+      new_message: '%{user} te enviou uma mensagem'
+    see_all: 'Ver todas'
+    new_rank: 'Parabéns! Agora você é um %{rank} em %{universe}!'
+    new_comment: '%{user} comentou em %{post}.'
+    new_forum_post: '%{user} postou em %{topic}.'
+  mailers:
+    new_rank:
+      subject: 'Parabéns, agora você é um %{rank}!'
+    new_comment:
+      subject: 'Novo comentário em %{post}'
+    new_forum_post:
+      subject: 'Nova postagem em %{topic}'
+    notification:
+      new_follower:
+        subject: '%{user} começou a te seguir!'
+      new_message:
+        subject: '%{user} te enviou uma mensagem'
+    contact:
+      subject: 'Novo contato de %{name}'
+  views:
+    pagination:
+      first: '&laquo; Primeira'
+      last: 'Última &raquo;'
+      previous: '&lsaquo; Anterior'
+      next: 'Próxima &rsaquo;'
+      truncate: '...'
+  activities:
+    zines:
+      create_html: '%{user} criou o zine %{zine}'
+    posts:
+      create_html: '%{user} publicou %{post} em %{zine}'
+    comments:
+      create_html: '%{user} comentou em %{post}:'
+    forum_posts:
+      create_html: '%{user} postou no tópico %{topic}:'
+    users:
+      sign_up_html: '%{user} entrou no %{app}'
+    followerships:
+      create_html: '%{user} começou a seguir %{followable}'
+    external_accounts:
+      create_html: '%{user} conectou sua conta do %{account}'
+    reviews:
+      loved_html: '%{user} curtiu %{reviewable}'
+      hated_html: '%{user} não curtiu %{reviewable}'
   universes:
     show:
       zines: 'Zines'
@@ -8,17 +81,6 @@ pt-BR:
       and_others:
         one: 'e um outro.'
         other: 'e %{count} outros.'
-  mailers:
-    new_rank:
-      subject: 'Parabéns, agora você é um %{rank}!'
-    new_comment:
-      subject: 'Novo comentário em %{post}'
-    new_forum_post:
-      subject: 'Nova postagem em %{topic}'
-  notifications:
-    new_rank: 'Parabéns! Agora você é um %{rank} em %{universe}!'
-    new_comment: '%{user} comentou em %{post}.'
-    new_forum_post: '%{user} postou em %{topic}.'
   forums:
     index:
       title: 'Fóruns'
@@ -149,36 +211,3 @@ pt-BR:
     forums:
       main: 'Fóruns'
       admin: 'Fóruns'
-  flash:
-    zines:
-      create: 'Zine criado!'
-      update: 'Zine atualizado!'
-      destroy: 'Zine apagado.'
-    posts:
-      create: 'Post criado!'
-      update: 'Post atualizado!'
-      destroy: 'Post apagado.'
-    comments:
-      create: 'Comentário criado!'
-      destroy: 'Comentário apagado.'
-    topics:
-      create: 'Tópico criado!'
-      update: 'Tópico atualizado.'
-      destroy: 'Tópico apagado.'
-    forum_posts:
-      create: 'Postado!'
-      update: 'Post atualizado!'
-      destroy: 'Post apagado.'
-    forums:
-      create: 'Fórum criado!'
-      update: 'Fórum atualizado.'
-      destroy: 'Fórum apagado.'
-  activities:
-    zines:
-      create_html: '%{user} criou o zine %{zine}'
-    posts:
-      create_html: '%{user} publicou %{post} em %{zine}'
-    comments:
-      create_html: '%{user} comentou em %{post}:'
-    forum_posts:
-      create_html: '%{user} postou no tópico %{topic}:'

@@ -1,5 +1,5 @@
 class Level < ActiveRecord::Base
-  belongs_to :user, class_name: 'Raddar::User'
+  belongs_to :user
   belongs_to :universe
   belongs_to :rank, ->(level) { where(universe: level.universe) }, primary_key: 'value', foreign_key: 'value'
 

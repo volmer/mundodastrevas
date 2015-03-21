@@ -7,7 +7,7 @@
 
   <div class="list-group">
     <% zine.posts.order('created_at DESC').each do |post| %>
-      <%= link_to post, main_app.zine_post_path(zine, post), class: 'list-group-item' %>
+      <%= link_to post, zine_post_path(zine, post), class: 'list-group-item' %>
     <% end %>
   </div>
 </section>

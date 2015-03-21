@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :notification, class: Raddar::Notification do
+  factory :notification do
     event 'new_rank'
     user
     association :notifiable, factory: :rank

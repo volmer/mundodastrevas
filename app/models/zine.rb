@@ -4,14 +4,14 @@ class Zine < ActiveRecord::Base
 
   multisearchable against: [:name, :description]
 
-  belongs_to :user, class_name: 'Raddar::User'
+  belongs_to :user
   belongs_to :universe
   has_many :followers,
-           class_name: 'Raddar::Followership',
+           class_name: 'Followership',
            as: :followable,
            dependent: :destroy
   has_many :posts, dependent: :destroy
-  has_one :activity, class_name: 'Raddar::Activity', as: :subject, dependent: :destroy
+  has_one :activity, as: :subject, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 66_000 }
@@ -41,7 +41,7 @@ class Zine < ActiveRecord::Base
   private
 
   def create_activity
-    Raddar::Activity.create!(
+    Activity.create!(
       user: user,
       subject: self,
       key: 'zines.create',

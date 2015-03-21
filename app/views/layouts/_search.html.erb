@@ -1,0 +1,5 @@
+<%= form_tag(search_path, class: 'navbar-form navbar-left', role: 'search', method: :get) do %>
+  <div class="form-group">
+    <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: t('.submit') %>
+  </div>
+<% end %>

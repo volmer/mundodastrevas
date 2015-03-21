@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Watch do
+describe Watch do
   it { should belong_to(:user) }
   it { should belong_to(:watchable) }
 

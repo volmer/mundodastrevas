@@ -11,7 +11,7 @@ describe RankNotificationJob, type: :job do
     it 'creates notifications to the watcher' do
       subject
 
-      expect(Raddar::Notification.find_by(user: user)).to be_present
+      expect(Notification.find_by(user: user)).to be_present
     end
 
     it 'sends an email to the user' do
@@ -39,7 +39,7 @@ describe RankNotificationJob, type: :job do
         expect {
           subject
         }.not_to change {
-          Raddar::Notification.count
+          Notification.count
         }
       end
 

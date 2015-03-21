@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe Raddar::User do
+describe User do
   subject { build :user }
 
-  it { is_expected.to be_a(Raddar::Followable) }
+  it { is_expected.to be_a(Followable) }
 
   it 'uses devise-encryptable' do
     expect(subject.devise_modules).to include(:encryptable)
@@ -37,12 +37,12 @@ describe Raddar::User do
     it { is_expected.to have_and_belong_to_many(:roles) }
     it { is_expected.to have_many(:notifications).dependent(:destroy) }
     it { is_expected.to have_many(:external_accounts).dependent(:destroy) }
-    it { is_expected.to have_many(:sent_messages).class_name('Raddar::Message').dependent(:destroy) }
-    it { is_expected.to have_many(:incoming_messages).class_name('Raddar::Message').dependent(:destroy) }
+    it { is_expected.to have_many(:sent_messages).class_name('Message').dependent(:destroy) }
+    it { is_expected.to have_many(:incoming_messages).class_name('Message').dependent(:destroy) }
     it { is_expected.to have_many(:reviews).dependent(:destroy) }
     it { is_expected.to have_many(:watches).dependent(:destroy) }
     it { is_expected.to have_many(:activities).dependent(:destroy) }
-    it { is_expected.to have_many(:related_activities).class_name('Raddar::Activity').dependent(:destroy) }
+    it { is_expected.to have_many(:related_activities).class_name('Activity').dependent(:destroy) }
     it { is_expected.to have_many(:zines).class_name('Zine').dependent(:destroy) }
     it { is_expected.to have_many(:posts).class_name('Post').dependent(:destroy) }
     it { is_expected.to have_many(:comments).class_name('Comment').dependent(:destroy) }
@@ -53,7 +53,7 @@ describe Raddar::User do
 
   describe '#avatar' do
     it 'is an uploader field' do
-      expect(subject.avatar).to be_an_instance_of(Raddar::AvatarUploader)
+      expect(subject.avatar).to be_an_instance_of(AvatarUploader)
     end
   end
 
@@ -218,10 +218,10 @@ describe Raddar::User do
       expect {
         subject.save
       }.to change{
-        Raddar::Activity.count
+        Activity.count
       }.by(1)
 
-      activity = Raddar::Activity.last
+      activity = Activity.last
 
       expect(activity.user).to eq(subject)
       expect(activity.subject).to eq(subject)
@@ -235,7 +235,7 @@ describe Raddar::User do
       it 'sets the associated activity to public' do
         subject.save!
         create(:external_account, provider: 'twitter', user: subject)
-        activity = Raddar::Activity.last
+        activity = Activity.last
         subject.privacy = { twitter: 'only_me' }
         subject.save!
         activity.reload
@@ -249,7 +249,7 @@ describe Raddar::User do
         subject.privacy = { twitter: 'only_me' }
         subject.save!
         create(:external_account, provider: 'twitter', user: subject)
-        activity = Raddar::Activity.last
+        activity = Activity.last
         subject.privacy = { twitter: 'public' }
         subject.save!
         activity.reload

@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe Raddar::ImageUploader do
+describe ImageUploader do
   let(:user) { create(:user) }
 
   subject(:uploader) { described_class.new(user, :avatar) }
 
   describe '#store_dir' do
     it 'properly stores uploads according to the model class and id' do
-      expect(subject.store_dir).to eq("uploads/raddar/user/#{user.id}/avatar")
+      expect(subject.store_dir).to eq("uploads/user/#{user.id}/avatar")
     end
   end
 

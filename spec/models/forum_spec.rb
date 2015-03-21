@@ -16,7 +16,7 @@ describe Forum do
   it { is_expected.not_to allow_value('oath!').for(:slug) }
 
   it { is_expected.to have_many(:topics).dependent(:destroy) }
-  it { is_expected.to have_many(:followers).class_name('Raddar::Followership').dependent(:destroy) }
+  it { is_expected.to have_many(:followers).class_name('Followership').dependent(:destroy) }
   it { is_expected.to belong_to(:universe) }
 
   describe '#to_param' do

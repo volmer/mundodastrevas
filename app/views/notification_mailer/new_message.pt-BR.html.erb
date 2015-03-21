@@ -1,0 +1,12 @@
+<h1>Olá, <%= @user %>!</h1>
+
+<p>
+  <%= link_to @notifiable.sender, notification_url(@notification) %>
+  te enviou a seguinte mensagem:
+</p>
+
+<%= simple_text @notifiable.content %>
+
+<p>
+  Para responder a mensagem de <%= @notifiable.sender %>, <%= link_to 'clique aqui', notification_url(@notification) %>.
+</p>

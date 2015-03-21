@@ -40,7 +40,7 @@ describe UniverseImageUploader do
   end
 
   it 'is an Image Uploader' do
-    expect(@uploader).to be_an(Raddar::ImageUploader)
+    expect(@uploader).to be_a(RaddarImageUploader)
   end
 
   describe '#default_url' do

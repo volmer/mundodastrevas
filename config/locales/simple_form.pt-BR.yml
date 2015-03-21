@@ -1,6 +1,26 @@
 pt-BR:
   simple_form:
+    "yes": 'Sim'
+    "no": 'Não'
+    required:
+      text: 'obrigatório'
+      mark: '*'
+    error_notification:
+      default_message: 'Verifique os erros abaixo:'
+    labels:
+      user:
+        login: 'Nome ou email'
+    options:
+      user:
+        gender:
+          female: 'Feminino'
+          male: 'Masculino'
+        state:
+          active: 'Ativo'
+          blocked: 'Bloqueado'
     hints:
+      user:
+        name: 'Apenas letras, números e _ são permitidos.'
       zine:
         slug: 'Apenas letras, números e - são permitidos.'
       post:

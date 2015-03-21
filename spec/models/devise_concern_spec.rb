@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::DeviseConcern do
+describe DeviseConcern do
   subject { build :user }
 
   describe '#active_for_authentication?' do
@@ -53,7 +53,7 @@ describe Raddar::DeviseConcern do
 
     let(:params) { {} }
 
-    subject { Raddar::User.new_with_session(params, session) }
+    subject { User.new_with_session(params, session) }
 
     context 'when name is included in params' do
       let(:params) { { name: 'volmer' } }

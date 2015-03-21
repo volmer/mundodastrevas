@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Review do
+describe Review do
   subject { build(:review) }
 
   describe 'associations' do
@@ -39,10 +39,10 @@ describe Raddar::Review do
       expect {
         subject.save!
       }.to change{
-        Raddar::Activity.count
+        Activity.count
       }.by(1)
 
-      activity = Raddar::Activity.last
+      activity = Activity.last
 
       expect(activity.user).to eq(subject.user)
       expect(activity.subject).to eq(subject)
@@ -58,10 +58,10 @@ describe Raddar::Review do
       expect {
         subject.save!
       }.to change{
-        Raddar::Activity.count
+        Activity.count
       }.by(1)
 
-      activity = Raddar::Activity.last
+      activity = Activity.last
 
       expect(activity.user).to eq(subject.user)
       expect(activity.subject).to eq(subject)
@@ -74,7 +74,7 @@ describe Raddar::Review do
     context 'from loved to hated' do
       it 'sets the associated activity to only_me' do
         review = create(:review, value: 'loved')
-        activity = Raddar::Activity.last
+        activity = Activity.last
         review.update!(value: 'hated')
         activity.reload
 
@@ -85,7 +85,7 @@ describe Raddar::Review do
     context 'from hated to loved' do
       it 'sets the associated activity to public' do
         review = create(:review, value: 'hated')
-        activity = Raddar::Activity.last
+        activity = Activity.last
         review.update!(value: 'loved')
         activity.reload
 

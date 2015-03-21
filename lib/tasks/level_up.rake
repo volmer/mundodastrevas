@@ -6,7 +6,7 @@ namespace :mundodastrevas do
         if universe.ranks.present?
           puts "########### #{universe} ###########"
 
-          Raddar::User.all.each do |user|
+          User.all.each do |user|
             evaluator = LevelEvaluator.new(user, universe)
 
             if evaluator.can_level_up?
@@ -26,7 +26,7 @@ namespace :mundodastrevas do
         if universe.ranks.present?
           puts "########### #{universe} ###########"
 
-          Raddar::User.all.each do |user|
+          User.all.each do |user|
             level = LevelGrantor.level_up!(user, universe)
 
             if level

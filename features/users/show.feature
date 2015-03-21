@@ -10,7 +10,6 @@ Feature: Show user
 
   Scenario: Show user to a signed in user
     Given I am signed in
-    And the site calls "Radicaos"
     When I go to catelyn's profile page
     Then I see the page heading "catelyn"
     And I see "Duty, family, honor" on the page
@@ -18,7 +17,7 @@ Feature: Show user
     And I see the field "Email" with the value "catelyn@example.com"
     And I see the field "Localização" with the value "Winterfell"
     And I see the field "Data de nascimento" with the value "22/05/1959"
-    And I see an activity called "catelyn entrou no Radicaos"
+    And I see an activity called "catelyn entrou no Mundo das Trevas"
 
   Scenario: Show user to a non signed in user
     Given I am not signed in

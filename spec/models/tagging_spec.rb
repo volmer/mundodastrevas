@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Tagging do
+describe Tagging do
   it { should belong_to(:tag) }
   it { should belong_to(:taggable) }
 

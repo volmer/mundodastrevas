@@ -1,0 +1,23 @@
+<% content_for :page_title, t('.title', tag: @tag) %>
+
+<div class="page-header">
+  <h1>
+    <%= t '.title', tag: @tag %>
+  </h1>
+</div>
+
+<% if @taggings.present? %>
+  <ul class="list-unstyled tag-results">
+    <% @taggings.each do |tagging| %>
+      <li class="tag-result">
+        <%= render 'tags/' + tagging.taggable.class.name.underscore.gsub('', ''), taggable: tagging.taggable %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= paginate @taggings %>
+<% else %>
+  <div class="alert alert-info">
+    <%= t '.empty', tag: @tag %>
+  </div>
+<% end %>

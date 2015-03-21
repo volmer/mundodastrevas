@@ -1,14 +1,14 @@
 class Post < ActiveRecord::Base
   include PgSearch
-  include Raddar::Watchable
-  include Raddar::Taggable
+  include Watchable
+  include Taggable
 
   belongs_to :zine
-  belongs_to :user, class_name: 'Raddar::User'
+  belongs_to :user
 
   has_many :comments, dependent: :destroy
-  has_many :reviews, class_name: 'Raddar::Review', as: :reviewable, dependent: :destroy
-  has_one :activity, class_name: 'Raddar::Activity', as: :subject, dependent: :destroy
+  has_many :reviews, as: :reviewable, dependent: :destroy
+  has_one :activity, as: :subject, dependent: :destroy
 
   multisearchable against: [:name, :content]
 
@@ -49,7 +49,7 @@ class Post < ActiveRecord::Base
   private
 
   def create_activity
-    Raddar::Activity.create!(
+    Activity.create!(
       user: user,
       subject: self,
       key: 'posts.create',

@@ -48,12 +48,24 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'selenium-webdriver'
-  gem 'rspec-rails'
   gem 'webmock', require: false
 end
 
 gem 'sidekiq'
-gem 'raddar', github: 'volmer/raddar'
+gem 'bootstrap-sass'
+gem 'bootsy'
+gem 'carrierwave'
+gem 'devise'
+gem 'draper'
+gem 'kaminari'
+gem 'mini_magick'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'pg_search'
+gem 'pundit'
+gem 'rails_autolink'
+gem 'recaptcha'
+gem 'simple_form'
 gem 'devise-encryptable'
 gem 'newrelic_rpm'
 gem 'skylight'

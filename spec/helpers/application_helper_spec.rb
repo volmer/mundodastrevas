@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::ApplicationHelper, type: :helper do
+describe ApplicationHelper, type: :helper do
   describe '#simple_text' do
     it 'adds <br> tags to line breaks' do
       text = "Line One\nLine Two"

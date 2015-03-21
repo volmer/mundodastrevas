@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'carrierwave/test/matchers'
 
-describe Raddar::AvatarUploader do
+describe AvatarUploader do
   include CarrierWave::Test::Matchers
 
   before(:all) do
@@ -44,14 +44,14 @@ describe Raddar::AvatarUploader do
   end
 
   it 'is an Image Uploader' do
-    expect(@uploader).to be_an(Raddar::ImageUploader)
+    expect(@uploader).to be_a(RaddarImageUploader)
   end
 
   describe '#default_url' do
     subject { described_class.new(build(:user), :avatar) }
 
     it 'returns the proper fallback image' do
-      expect(subject.thumb.url).to include('raddar/fallback/avatar/thumb.png')
+      expect(subject.thumb.url).to include('fallback/avatar/thumb.png')
     end
   end
 end

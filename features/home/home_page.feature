@@ -4,6 +4,5 @@ Feature: Home Page
   I want to navigate through the home page
 
   Scenario: view the home page
-    Given the site calls "Radicaos"
     When I go to the root page
-    Then I see "Radicaos" in the page
+    Then I see "Mundo das Trevas" in the page

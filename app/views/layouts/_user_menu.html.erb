@@ -1,0 +1,72 @@
+<% if user_signed_in? %>
+  <li class="dropdown">
+    <%= link_to current_user, id: 'user-menu', data: { toggle: 'dropdown', target: '#' } do %>
+      <%= image_tag current_user.avatar.thumb.url, class: 'mini-avatar' %>
+
+      <%= current_user %>
+
+      <b class="caret"></b>
+    <% end %>
+
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+      <li>
+        <%= link_to current_user do %>
+          <span class="glyphicon glyphicon-user"></span>
+          <%= t 'user.show' %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to edit_user_registration_path do %>
+          <span class="glyphicon glyphicon-edit"></span>
+
+          <%= t 'user.registration.edit' %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to messages_path do %>
+          <span class="glyphicon glyphicon-envelope"></span>
+
+          <%= t 'messages.index.title' %>
+          <% messages_count = Message.distinct_for(current_user).where(recipient_id: current_user, read: false).count %>
+
+          <% if messages_count > 0 %>
+            <span class="badge"><%= messages_count %></span>
+          <% end %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to user_zines_path(current_user) do %>
+          <span class="glyphicon glyphicon-book"></span>
+          <%= raw t('links.zines.user_menu') %>
+        <% end %>
+      </li>
+
+      <li class="divider"></li>
+
+      <% if current_user.admin? %>
+        <li>
+          <%= link_to admin_root_path do %>
+            <span class="glyphicon glyphicon-wrench"></span>
+
+            <%= t 'admin.dashboard.index.title' %>
+          <% end %>
+        </li>
+
+        <li class="divider"></li>
+      <% end %>
+
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <span class="glyphicon glyphicon-log-out"></span>
+
+          <%= t 'user.session.destroy' %>
+        <% end %>
+      </li>
+    </ul>
+  </li>
+<% else %>
+  <li><%= link_to t('user.session.new'), new_user_session_path %></li>
+<% end %>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Notifications::BaseDecorator do
+describe Notifications::BaseDecorator do
   let(:notification) { build(:new_follower_notification) }
 
   subject(:presenter) { described_class.new(notification) }

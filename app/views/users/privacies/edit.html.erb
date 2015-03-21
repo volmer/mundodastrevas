@@ -1,0 +1,22 @@
+<% content_for :page_title, t('.title') %>
+
+<div class="page-header">
+  <h1><%= t '.title' %></h1>
+</div>
+
+<%= render 'users/shared/tabs', active: :privacies %>
+
+<div class="row">
+  <div class="col-md-3">
+    <%= simple_form_for(@user, url: user_privacy_path, method: :patch) do |f|  %>
+      <%= f.simple_fields_for(:privacy) do |p| %>
+        <% @user.privacy_keys.each do |key| %>
+          <%= p.input key, collection: ['public', 'only_me'], include_blank: false, label: User.human_attribute_name(key),
+            label_method: ->(o){ t(".options.#{o}") }, selected: @user.privacy[key].presence || 'public' %>
+        <% end %>
+      <% end %>
+
+      <%= f.button :submit, t('.submit') %>
+    <% end %>
+  </div>
+</div>

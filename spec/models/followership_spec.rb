@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Followership do
+describe Followership do
   subject { build(:followership) }
 
   describe 'associations' do
@@ -50,10 +50,10 @@ describe Raddar::Followership do
       expect {
         subject.save
       }.to change{
-        Raddar::Activity.count
+        Activity.count
       }.by(1)
 
-      activity = Raddar::Activity.last
+      activity = Activity.last
 
       expect(activity.user).to eq(subject.user)
       expect(activity.subject).to eq(subject)

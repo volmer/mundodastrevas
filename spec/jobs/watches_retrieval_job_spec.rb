@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::WatchesRetrievalJob, type: :job do
+describe WatchesRetrievalJob, type: :job do
   subject(:job) { described_class.new }
 
   describe '#perform' do
@@ -18,7 +18,7 @@ describe Raddar::WatchesRetrievalJob, type: :job do
       expect {
         subject
       }.to change(
-        Raddar::NotificationDeliveryJob.queue_adapter.enqueued_jobs, :size
+        NotificationDeliveryJob.queue_adapter.enqueued_jobs, :size
       # 3 watchers from the list plus the post author
       ).by(4)
     end
@@ -32,7 +32,7 @@ describe Raddar::WatchesRetrievalJob, type: :job do
 
       it 'does not enqueue a job to the user' do
         expect(
-          Raddar::NotificationDeliveryJob
+          NotificationDeliveryJob
         ).not_to receive(:perform_later).with(user_to_skip, anything, anything)
 
         subject
@@ -42,7 +42,7 @@ describe Raddar::WatchesRetrievalJob, type: :job do
         expect {
           subject
         }.to change(
-          Raddar::NotificationDeliveryJob.queue_adapter.enqueued_jobs, :size
+          NotificationDeliveryJob.queue_adapter.enqueued_jobs, :size
         # 3 watchers from the list plus the post author
         ).by(4)
       end

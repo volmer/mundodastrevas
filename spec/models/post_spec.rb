@@ -6,8 +6,8 @@ describe Post do
   it { is_expected.to belong_to(:zine) }
   it { is_expected.to belong_to(:user) }
   it { is_expected.to have_many(:comments) }
-  it { is_expected.to have_many(:reviews).class_name('Raddar::Review').dependent(:destroy) }
-  it { is_expected.to have_one(:activity).class_name('Raddar::Activity').dependent(:destroy) }
+  it { is_expected.to have_many(:reviews).class_name('Review').dependent(:destroy) }
+  it { is_expected.to have_one(:activity).class_name('Activity').dependent(:destroy) }
 
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to ensure_length_of(:name).is_at_most(100) }
@@ -29,11 +29,11 @@ describe Post do
   it { is_expected.to validate_presence_of(:user_id) }
 
   it 'is watchable' do
-    expect(subject).to be_a_kind_of(Raddar::Watchable)
+    expect(subject).to be_a_kind_of(Watchable)
   end
 
   it 'is taggable' do
-    expect(subject).to be_a_kind_of(Raddar::Taggable)
+    expect(subject).to be_a_kind_of(Taggable)
   end
 
   describe '#to_param' do
@@ -77,10 +77,10 @@ describe Post do
       expect {
         subject.save
       }.to change{
-        Raddar::Activity.count
+        Activity.count
       }.by(1)
 
-      activity = Raddar::Activity.last
+      activity = Activity.last
 
       expect(activity.user).to eq(subject.user)
       expect(activity.subject).to eq(subject)

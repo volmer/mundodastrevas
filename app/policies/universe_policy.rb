@@ -1,4 +1,4 @@
-class UniversePolicy < Raddar::ApplicationPolicy
+class UniversePolicy < ApplicationPolicy
   class Scope < Struct.new(:user, :scope)
     def resolve
       scope

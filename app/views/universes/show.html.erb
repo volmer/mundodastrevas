@@ -1,7 +1,7 @@
 <% content_for :page_title, @universe.name %>
 <% content_for :page_description, truncate_rich(@universe.description) %>
 <% content_for :canonical_url, universe_url(@universe) %>
-<% content_for :page_image, URI(raddar.root_url) + @universe.image.url %>
+<% content_for :page_image, URI(root_url) + @universe.image.url %>
 <% content_for :page_updated_at, @universe.updated_at %>
 
 <% content_for :layout_top do %>
@@ -79,7 +79,7 @@
         <div class="row">
           <% row.each do |user| %>
             <div class="col-md-1 col-sm-2 col-xs-3">
-              <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle'), raddar.user_path(user), title: user.name, class: 'thumbnail' %>
+              <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle'), user_path(user), title: user.name, class: 'thumbnail' %>
             </div>
           <% end %>
         </div>

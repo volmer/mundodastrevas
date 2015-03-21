@@ -1,10 +1,10 @@
 <div class="zine-comment">
   <div class="row">
     <div class="col-md-2 col-xs-3 user">
-      <%= link_to image_tag(comment.user.avatar.small.url, class: 'img-responsive img-circle'), raddar.user_path(comment.user) %>
+      <%= link_to image_tag(comment.user.avatar.small.url, class: 'img-responsive img-circle'), user_path(comment.user) %>
 
       <div class="name">
-        <%= link_to comment.user, raddar.user_path(comment.user) %>
+        <%= link_to comment.user, user_path(comment.user) %>
       </div>
     </div>
 
@@ -26,7 +26,7 @@
         <% end %>
 
         <div class="actions">
-          <%= render 'raddar/reviews/form', reviewable: comment %>
+          <%= render 'reviews/form', reviewable: comment %>
 
           <%= link_to t('.destroy'), [comment.post.zine, comment.post, comment], method: :delete, class: 'btn btn-xs' if policy(comment).destroy? %>
         </div>

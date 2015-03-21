@@ -1,0 +1,17 @@
+<ul class="nav nav-tabs admin-tabs">
+  <li class="<%= 'active' if active == :users %>">
+    <%= link_to t('admin.users.index.title'), admin_users_path %>
+  </li>
+
+  <li class="<%= 'active' if active == :pages %>">
+    <%= link_to t('admin.pages.index.title'), admin_pages_path %>
+  </li>
+
+  <li class="<%= 'active' if active == :zines %>">
+    <%= link_to t('links.zines.admin'), admin_zines_path %>
+  </li>
+
+  <li class="<%= 'active' if active == :forums %>">
+    <%= link_to t('links.forums.admin'), admin_forums_path %>
+  </li>
+</ul>

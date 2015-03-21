@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe Raddar::MessagePolicy do
+describe MessagePolicy do
   subject { described_class.new(user, record) }
-  let(:user) { Raddar::User.new }
-  let(:record) { Raddar::Message.new }
+  let(:user) { User.new }
+  let(:record) { Message.new }
 
   describe '#index?' do
     context 'when user is signed in' do
@@ -24,7 +24,7 @@ describe Raddar::MessagePolicy do
   describe '#create?' do
     context 'when user is signed in' do
       context 'when user is the sender' do
-        let(:record) { Raddar::Message.new(sender: user) }
+        let(:record) { Message.new(sender: user) }
 
         it 'returns true' do
           expect(subject.create?).to be true

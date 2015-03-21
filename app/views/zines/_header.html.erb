@@ -5,7 +5,7 @@
 
       <% if @zine.universe %>
         <span class="meta-universe">
-          <%= t '.universe_html', universe: link_to(@zine.universe, main_app.universe_path(@zine.universe)) %>
+          <%= t '.universe_html', universe: link_to(@zine.universe, universe_path(@zine.universe)) %>
         </span>
       <% end %>
     </div>

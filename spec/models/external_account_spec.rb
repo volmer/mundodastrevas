@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::ExternalAccount do
+describe ExternalAccount do
   subject { build(:external_account) }
 
   describe 'associations' do
@@ -44,10 +44,10 @@ describe Raddar::ExternalAccount do
       expect {
         subject.save!
       }.to change{
-        Raddar::Activity.count
+        Activity.count
       }.by(1)
 
-      activity = Raddar::Activity.last
+      activity = Activity.last
 
       expect(activity.user).to eq(subject.user)
       expect(activity.subject).to eq(subject)
@@ -65,10 +65,10 @@ describe Raddar::ExternalAccount do
         expect {
           subject.save!
         }.to change{
-          Raddar::Activity.count
+          Activity.count
         }.by(1)
 
-        activity = Raddar::Activity.last
+        activity = Activity.last
 
         expect(activity.privacy).to eq('only_me')
       end

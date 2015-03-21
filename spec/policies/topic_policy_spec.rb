@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe TopicPolicy do
-  let(:user) { Raddar::User.new }
+  let(:user) { User.new }
   let(:topic) { create(:topic) }
   subject { described_class.new(user, topic) }
 
@@ -39,7 +39,7 @@ describe TopicPolicy do
 
   describe '#new?' do
     context 'when user is signed in' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns true' do
         expect(subject.new?).to be true
@@ -57,7 +57,7 @@ describe TopicPolicy do
 
   describe '#create?' do
     context 'when user is signed in' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns true' do
         expect(subject.create?).to be true

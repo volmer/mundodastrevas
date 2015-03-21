@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe Raddar::PagePolicy do
-  let(:user) { Raddar::User.new }
+describe PagePolicy do
+  let(:user) { User.new }
   subject { described_class.new(user, nil) }
 
   describe '#index?' do

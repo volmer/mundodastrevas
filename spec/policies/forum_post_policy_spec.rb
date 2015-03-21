@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ForumPostPolicy do
-  let(:user) { Raddar::User.new }
+  let(:user) { User.new }
   let(:post) { create(:post) }
   subject { described_class.new(user, post) }
 
@@ -39,7 +39,7 @@ describe ForumPostPolicy do
 
   describe '#create?' do
     context 'when user is signed in' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns true' do
         expect(subject.create?).to be true

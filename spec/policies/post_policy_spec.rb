@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe PostPolicy do
-  let(:user) { Raddar::User.new }
+  let(:user) { User.new }
   let(:post) { create(:post) }
   subject { described_class.new(user, post) }
 

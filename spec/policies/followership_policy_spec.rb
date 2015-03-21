@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe Raddar::FollowershipPolicy do
+describe FollowershipPolicy do
   subject { described_class.new(user, record) }
-  let(:record) { Raddar::Followership.new }
+  let(:record) { Followership.new }
 
   describe '#create?' do
     context 'when user is signed in' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns true' do
         expect(subject.create?).to be true
@@ -24,7 +24,7 @@ describe Raddar::FollowershipPolicy do
 
   describe '#destroy?' do
     context 'when user is signed in' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns true' do
         expect(subject.destroy?).to be true
@@ -42,7 +42,7 @@ describe Raddar::FollowershipPolicy do
 
   describe '#followers?' do
     context 'when user is signed in' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns true' do
         expect(subject.followers?).to be true
@@ -60,7 +60,7 @@ describe Raddar::FollowershipPolicy do
 
   describe '#following?' do
     context 'when user is signed in' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns true' do
         expect(subject.following?).to be true

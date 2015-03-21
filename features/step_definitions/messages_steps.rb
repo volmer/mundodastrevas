@@ -2,7 +2,7 @@ Given(/^(.*?) has sent me the message: "(.*?)"$/) do |user, content|
   recipient = @user
 
   step("I am signed in as \"#{ user }\"")
-  visit raddar.user_messages_path(recipient)
+  visit user_messages_path(recipient)
   fill_in('message_content', with: content)
   click_on('Enviar')
 

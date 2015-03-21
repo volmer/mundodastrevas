@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::FollowershipsHelper, type: :helper do
-  before { helper.extend(Raddar::Engine.routes.url_helpers) }
-
+describe FollowershipsHelper, type: :helper do
   describe '#follow_link' do
     let(:followable) { create(:user, name: 'followableuser') }
 

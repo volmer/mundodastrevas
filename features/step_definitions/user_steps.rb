@@ -1,5 +1,5 @@
 Given(/^I am not signed in$/) do
-  unless page.driver.try(:submit, :delete, raddar.destroy_user_session_path, {})
+  unless page.driver.try(:submit, :delete, destroy_user_session_path, {})
     step('I go to the root page')
 
     unless find('.navbar').has_content?('Entrar')
@@ -18,7 +18,7 @@ Given /^I am signed in as "(.*?)"$/ do |name|
   password = 12345678
 
   if @user.blank? || (@user.name != name)
-    @user = Raddar::User.find_by(name: name) || create(:user, name: name, password: password)
+    @user = User.find_by(name: name) || create(:user, name: name, password: password)
   end
 
   step "I sign in with the name \"#{ name }\" and the password \"#{ password }\""
@@ -46,7 +46,7 @@ Given(/^my email address is "(.*?)"$/) do |email|
 end
 
 Given(/^(.*?) has an unconfirmed email "(.*?)"$/) do |user_name, email|
-  user = Raddar::User.find_by(name: user_name)
+  user = User.find_by(name: user_name)
   user.email = email
   user.skip_confirmation_notification!
   user.save!
@@ -57,7 +57,7 @@ Given(/^there is an user called "(.*?)"$/) do |name|
 end
 
 Given(/^"(.*?)" is blocked$/) do |user_name|
-  user = Raddar::User.find_by(name: user_name)
+  user = User.find_by(name: user_name)
 
   user.state = 'blocked'
 
@@ -83,8 +83,8 @@ When 'I open my user menu' do
 end
 
 When(/^I go to (.*?)'s profile page$/) do |user_name|
-  user = Raddar::User.find_by(name: user_name)
-  visit raddar.user_path(user)
+  user = User.find_by(name: user_name)
+  visit user_path(user)
 end
 
 When(/^I go to my profile page$/) do
@@ -94,7 +94,7 @@ When(/^I go to my profile page$/) do
 end
 
 When(/^I confirm my registration$/) do
-  user = Raddar::User.last
+  user = User.last
   user.confirm!
   user.save!
 end
@@ -114,7 +114,7 @@ end
 
 Then(/^I am redirected to my user page$/) do
   @user.reload
-  expect(current_path).to eq raddar.user_path(@user)
+  expect(current_path).to eq user_path(@user)
 end
 
 Then(/^I see the field "(.*?)" with the value "(.*?)"$/) do |field, value|
@@ -123,9 +123,9 @@ Then(/^I see the field "(.*?)" with the value "(.*?)"$/) do |field, value|
 end
 
 Then(/^I am redirected to (.*?)'s profile page$/) do |user_name|
-  user = Raddar::User.find_by(name: user_name)
+  user = User.find_by(name: user_name)
 
-  expect(current_path).to eq raddar.user_path(user)
+  expect(current_path).to eq user_path(user)
 end
 
 Then(/^I am no longer signed in$/) do

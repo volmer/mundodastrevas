@@ -5,9 +5,9 @@ describe Comment do
 
   it { is_expected.to belong_to(:post) }
   it { is_expected.to belong_to(:user) }
-  it { is_expected.to have_many(:reviews).class_name('Raddar::Review').dependent(:destroy) }
-  it { is_expected.to have_many(:notifications).class_name('Raddar::Notification').dependent(:destroy) }
-  it { is_expected.to have_one(:activity).class_name('Raddar::Activity').dependent(:destroy) }
+  it { is_expected.to have_many(:reviews).class_name('Review').dependent(:destroy) }
+  it { is_expected.to have_many(:notifications).class_name('Notification').dependent(:destroy) }
+  it { is_expected.to have_one(:activity).class_name('Activity').dependent(:destroy) }
 
   it { is_expected.to validate_presence_of(:content) }
   it { is_expected.to ensure_length_of(:content).is_at_most(6_000) }
@@ -22,10 +22,10 @@ describe Comment do
       expect {
         subject.save
       }.to change{
-        Raddar::Activity.count
+        Activity.count
       }.by(1)
 
-      activity = Raddar::Activity.last
+      activity = Activity.last
 
       expect(activity.user).to eq(subject.user)
       expect(activity.subject).to eq(subject)

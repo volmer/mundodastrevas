@@ -1,4 +1,4 @@
-class NewForumPostDecorator < Raddar::Notifications::BaseDecorator
+class NewForumPostDecorator < Notifications::BaseDecorator
   def mailer_subject
     t 'mailers.new_forum_post.subject', topic: topic
   end
@@ -13,7 +13,7 @@ class NewForumPostDecorator < Raddar::Notifications::BaseDecorator
 
     path_options[:page] = last_page if last_page > 1
 
-    main_app.forum_topic_path(forum, topic, path_options)
+    forum_topic_path(forum, topic, path_options)
   end
 
   private

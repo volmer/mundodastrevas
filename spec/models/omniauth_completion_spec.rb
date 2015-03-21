@@ -78,7 +78,7 @@ shared_examples_for 'the created external account' do
 end
 
 
-describe Raddar::OmniauthCompletion do
+describe OmniauthCompletion do
   let(:auth_data) do
     {
       provider: 'bookface',
@@ -244,12 +244,12 @@ describe Raddar::OmniauthCompletion do
   end
 
   describe '.populate' do
-    let(:user) { Raddar::User.new }
+    let(:user) { User.new }
 
     before { described_class.populate(user, auth_data) }
 
     context 'when name is present in user' do
-      let(:user) { Raddar::User.new(name: 'volmer') }
+      let(:user) { User.new(name: 'volmer') }
 
       it 'keeps the value' do
         expect(user.name).to eq('volmer')
@@ -263,7 +263,7 @@ describe Raddar::OmniauthCompletion do
     end
 
     context 'when email is present in user' do
-      let(:user) { Raddar::User.new(email: 'volmer@email.com') }
+      let(:user) { User.new(email: 'volmer@email.com') }
 
       it 'keeps the value' do
         expect(user.email).to eq('volmer@email.com')
@@ -277,7 +277,7 @@ describe Raddar::OmniauthCompletion do
     end
 
     context 'when bio is present in user' do
-      let(:user) { Raddar::User.new(bio: 'Pragmatic one.') }
+      let(:user) { User.new(bio: 'Pragmatic one.') }
 
       it 'keeps the value' do
         expect(user.bio).to eq('Pragmatic one.')
@@ -291,7 +291,7 @@ describe Raddar::OmniauthCompletion do
     end
 
     context 'when location is present in user' do
-      let(:user) { Raddar::User.new(location: 'Sao Paulo') }
+      let(:user) { User.new(location: 'Sao Paulo') }
 
       it 'keeps the value' do
         expect(user.location).to eq('Sao Paulo')
@@ -319,7 +319,7 @@ describe Raddar::OmniauthCompletion do
       end
 
       context 'when birthday is present in user' do
-        let(:user) { Raddar::User.new(birthday: Date.new(1991, 11, 11)) }
+        let(:user) { User.new(birthday: Date.new(1991, 11, 11)) }
 
         it 'keeps the value' do
           expect(user.birthday).to eq(Date.new(1991, 11, 11))
@@ -333,7 +333,7 @@ describe Raddar::OmniauthCompletion do
       end
 
       context 'when gender is present in user' do
-        let(:user) { Raddar::User.new(gender: 'male') }
+        let(:user) { User.new(gender: 'male') }
 
         it 'keeps the value' do
           expect(user.gender).to eq('male')

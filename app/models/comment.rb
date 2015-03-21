@@ -1,9 +1,9 @@
 class Comment < ActiveRecord::Base
-  belongs_to :user, class_name: 'Raddar::User'
+  belongs_to :user
   belongs_to :post
-  has_many :reviews, class_name: 'Raddar::Review', as: :reviewable, dependent: :destroy
-  has_many :notifications, class_name: 'Raddar::Notification', as: :notifiable, dependent: :destroy
-  has_one :activity, class_name: 'Raddar::Activity', as: :subject, dependent: :destroy
+  has_many :reviews, as: :reviewable, dependent: :destroy
+  has_many :notifications, as: :notifiable, dependent: :destroy
+  has_one :activity, as: :subject, dependent: :destroy
 
   validates :content, presence: true, length: { maximum: 6_000 }
   validates :user_id, presence: true
@@ -18,7 +18,7 @@ class Comment < ActiveRecord::Base
   private
 
   def create_activity
-    Raddar::Activity.create!(
+    Activity.create!(
       user: user,
       subject: self,
       key: 'comments.create',

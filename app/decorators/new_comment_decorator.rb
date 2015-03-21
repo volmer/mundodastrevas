@@ -1,4 +1,4 @@
-class NewCommentDecorator < Raddar::Notifications::BaseDecorator
+class NewCommentDecorator < Notifications::BaseDecorator
   def mailer_subject
     t 'mailers.new_comment.subject', post: post
   end
@@ -8,7 +8,7 @@ class NewCommentDecorator < Raddar::Notifications::BaseDecorator
   end
 
   def redirect_path
-    main_app.zine_post_path(zine, post)
+    zine_post_path(zine, post)
   end
 
   private

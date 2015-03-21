@@ -1,5 +1,70 @@
 Mundodastrevas::Application.routes.draw do
-  mount Raddar::Engine => '/'
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+
+  resources :watches, only: [:create, :update]
+
+  resources :reviews, only: [:create, :update]
+
+  resources :tags, only: [:show]
+
+  resource :search, only: [:show]
+
+  resources :pages, only: [:show]
+
+  resources :contacts, only: [:new, :create]
+
+  resources :messages, only: [:index]
+
+  resources :notifications, only: [:index, :show] do
+    patch 'read'
+  end
+
+  devise_for :users,
+             controllers: {
+               registrations: 'users/registrations',
+               sessions: 'users/sessions',
+               passwords: 'users/passwords',
+               confirmations: 'users/confirmations',
+               omniauth_callbacks: 'users/omniauth_callbacks'
+             },
+             module: :devise
+
+  as :user do
+    get '/users/password/change' => 'users/passwords#change',
+        as: :change_user_password
+    patch '/users/password/change' => 'users/passwords#do_change',
+          as: :do_change_user_password
+    get '/users/registrations/destroy' => 'users/registrations#destroy',
+        as: :destroy_user_registration
+  end
+
+  root 'home#index'
+
+  namespace 'users', as: 'user' do
+    resource :privacy, only: [:edit, :update]
+    resource :email_preferences, only: [:edit, :update]
+    resources :external_accounts, only: [:index, :destroy]
+  end
+
+  resources :users, only: [:show] do
+    resources :followerships, only: [:create, :destroy], on: :member
+    get 'followers', controller: 'followerships'
+    get 'following', controller: 'followerships'
+
+    resources :messages, only: [:index, :create]
+  end
+
+  namespace :admin do
+    root 'dashboard#index'
+
+    resources :users, only: [:index, :show, :update]
+
+    resources :pages, except: [:show]
+
+    resources :zines, only: [:index, :edit, :update], controller: 'zines'
+
+    resources :forums, except: [:show], controller: 'forums'
+  end
 
   resources :universes, only: [:show]
 
@@ -29,12 +94,5 @@ Mundodastrevas::Application.routes.draw do
 
     resources :followerships, only: [:create, :destroy], on: :member, controller: 'forum_followerships'
     get 'followers', controller: 'forum_followerships'
-  end
-
-  Raddar::Engine.routes.draw do
-    namespace :admin do
-      resources :zines, only: [:index, :edit, :update], controller: 'zines'
-      resources :forums, except: [:show], controller: 'forums'
-    end
   end
 end

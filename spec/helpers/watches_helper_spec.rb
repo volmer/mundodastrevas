@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::WatchesHelper, type: :helper do
+describe WatchesHelper, type: :helper do
   before { allow(helper).to receive(:post_path) }
   let(:watchable) { create(:post) }
   let(:user) { create(:user) }

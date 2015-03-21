@@ -1,0 +1,11 @@
+<h2>
+  <%= link_to highlight(taggable.to_s, params[:query]), url_for([taggable.zine, taggable]) %>
+
+  <small>
+    <%= taggable.zine %>
+  </small>
+</h2>
+
+<p>
+  <%= highlight truncate_rich(taggable.content), params[:query] %>
+</p>

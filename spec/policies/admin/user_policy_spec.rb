@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Admin::UserPolicy do
+describe Admin::UserPolicy do
   subject { described_class.new(user, nil) }
 
   describe '#index?' do
@@ -13,7 +13,7 @@ describe Raddar::Admin::UserPolicy do
     end
 
     context 'when user is not an admin' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns false' do
         expect(subject.index?).to be false
@@ -31,7 +31,7 @@ describe Raddar::Admin::UserPolicy do
     end
 
     context 'when user is not an admin' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns false' do
         expect(subject.show?).to be false
@@ -49,7 +49,7 @@ describe Raddar::Admin::UserPolicy do
     end
 
     context 'when user is not an admin' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns false' do
         expect(subject.update?).to be false

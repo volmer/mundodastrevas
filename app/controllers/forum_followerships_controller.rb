@@ -1,4 +1,4 @@
-class ForumFollowershipsController < Raddar::FollowershipsController
+class ForumFollowershipsController < FollowershipsController
   private
 
   def find_followable

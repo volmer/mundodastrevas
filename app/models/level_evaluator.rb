@@ -22,7 +22,7 @@ class LevelEvaluator
 
   # Public: Initialize the calculator.
   #
-  # user - A Raddar::User for whom the level will be calculated.
+  # user - A User for whom the level will be calculated.
   # universe - An Universe for whom the level will be calculated.
   def initialize(user, universe)
     @user     = user

@@ -14,7 +14,7 @@ describe Topic do
   it { is_expected.to have_many(:forum_posts).dependent(:destroy) }
 
   it 'is watchable' do
-    expect(subject).to be_a_kind_of(Raddar::Watchable)
+    expect(subject).to be_a_kind_of(Watchable)
   end
 
   describe '#to_param' do

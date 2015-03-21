@@ -1,0 +1,31 @@
+<% content_for :page_title, t('admin.users') %>
+
+<div class="page-header">
+  <h1><%= t 'admin.users' %></h1>
+</div>
+
+<%= render 'admin/shared/tabs', active: :users %>
+
+<ol class="breadcrumb">
+  <li><%= link_to t('admin.users'), admin_users_path %></li>
+  <li class="active"><%= @user %></li>
+</ol>
+
+<h2><%= t '.title', user: @user %></h2>
+
+<div class="row">
+  <div class="col-md-2">
+    <%= image_tag @user.avatar.small.url, class: 'img-thumbnail' %>
+  </div>
+
+  <div class="col-md-10">
+    <%= simple_form_for([:admin, @user]) do |f| %>
+      <%= f.input :state, collection: [:active, :blocked], as: :radio_buttons %>
+
+      <%= f.association :roles, as: :check_boxes,
+        label_method: ->(r) { t(r.name, scope: 'role.names') } %>
+
+      <%= f.button :submit, t(:save) %>
+    <% end %>
+  </div>
+</div>

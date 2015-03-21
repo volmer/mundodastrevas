@@ -1,0 +1,41 @@
+<% content_for :page_title, t('.title') %>
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2 col-md-9 col-md-offset-1">
+    <div class="page-header">
+      <h1><%= t '.title' %></h1>
+    </div>
+
+    <% if @messages.present? %>
+      <div class="list-group messages">
+        <% @messages.each do |message| %>
+          <% user = (message.sender == current_user ? message.recipient : message.sender) %>
+
+          <%= link_to user_messages_path(user), class: 'list-group-item' do %>
+            <div class="media message">
+              <%= image_tag user.avatar.thumb.url, class: 'media-object pull-left img-circle' %>
+
+              <div class="media-body">
+                <h1 class="media-heading">
+                  <%= user %>
+                </h1>
+
+                <p>
+                  <%= strip_tags message.content %>
+                </p>
+
+                <%= time_tag message.created_at, format: :short %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%= paginate @messages %>
+    <% else %>
+      <div class="alert alert-info">
+        <%= t '.empty_html' %>
+      </div>
+    <% end %>
+  </div>
+</div>

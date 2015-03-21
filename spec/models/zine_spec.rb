@@ -5,9 +5,9 @@ describe Zine do
 
   describe 'associations' do
     it { is_expected.to belong_to(:user)}
-    it { is_expected.to have_many(:followers).class_name('Raddar::Followership').dependent(:destroy) }
+    it { is_expected.to have_many(:followers).class_name('Followership').dependent(:destroy) }
     it { is_expected.to have_many(:posts).dependent(:destroy) }
-    it { is_expected.to have_one(:activity).class_name('Raddar::Activity').dependent(:destroy) }
+    it { is_expected.to have_one(:activity).class_name('Activity').dependent(:destroy) }
     it { is_expected.to belong_to(:universe) }
   end
 
@@ -85,10 +85,10 @@ describe Zine do
       expect {
         subject.save
       }.to change{
-        Raddar::Activity.count
+        Activity.count
       }.by(1)
 
-      activity = Raddar::Activity.last
+      activity = Activity.last
 
       expect(activity.user).to eq(subject.user)
       expect(activity.subject).to eq(subject)

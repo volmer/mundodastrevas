@@ -1,0 +1,32 @@
+<p>
+  Olá <%= @user %>!
+</p>
+
+<p>
+  Parabéns! Pelas suas contribuições em <%= link_to @notifiable.universe, notification_url(@notification) %>
+  você recebeu o título de <%= link_to @notifiable, notification_url(@notification) %>!
+</p>
+
+<p style="font-family: serif;
+  font-style: italic;
+  font-size: 20px;
+  padding: 20px;
+  background-color: #eee;">
+  <strong>
+    <%= @notifiable %>:
+  </strong>
+  "<%= @notifiable.description %>"
+</p>
+
+<p>
+  A nossa comunidade agradece sua participação. Continue contribuindo em
+  nossos fóruns, criando zines e comentários para alcançar novos ranks tanto
+  em <%= link_to @notifiable.universe, notification_url(@notification) %>
+  quanto nos demais universos do Mundo das Trevas.
+</p>
+
+<p>
+  Um abraço,
+  <br>
+  Equipe Mundo das Trevas
+</p>

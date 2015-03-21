@@ -3,9 +3,6 @@ Feature: Contact us
   As a guest or signed in user
   I want to contact the staff
 
-  Background:
-    Given the email destination for contacts is "staff@example.com"
-
   Scenario: Contact from a guest
     Given I am not signed in
     And I am on the root page
@@ -16,7 +13,7 @@ Feature: Contact us
     And I click on "Enviar"
     Then I am redirected to the root page
     And I see the info message "Muito obrigado pela sua mensagem. Vamos te responder por email em breve."
-    And an email is sent to "staff@example.com"
+    And an email is sent to "contato@mundodastrevas.com"
     And the email contains "Joffrey is not Robert's son!"
     And the email contains "Stannis Baratheon"
     And the email contains "stannis@baratheon.com"
@@ -32,7 +29,7 @@ Feature: Contact us
     And I click on "Enviar"
     Then I am redirected to the root page
     And I see the info message "Muito obrigado pela sua mensagem. Vamos te responder por email em breve."
-    And an email is sent to "staff@example.com"
+    And an email is sent to "contato@mundodastrevas.com"
     And the email contains "Joffrey is an abomination!"
     And the email contains "stannis"
     And the email contains "stannis@dragonstone.com"

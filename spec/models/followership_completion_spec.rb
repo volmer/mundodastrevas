@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::FollowershipCompletion do
+describe FollowershipCompletion do
   subject { described_class.new(followership) }
   let(:user) { create(:user) }
   let(:followed_user) { create(:user) }

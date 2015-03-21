@@ -1,0 +1,29 @@
+<% content_for :page_title, t('.title') %>
+
+<div class="page-header">
+  <h1><%= t '.title' %></h1>
+</div>
+
+<%= render 'users/shared/tabs', active: :external_accounts %>
+
+<dl class="dl-horizontal">
+  <% User.omniauth_providers.each do |provider| %>
+    <dt>
+      <%= provider.to_s.titleize %>
+    </dt>
+
+    <dd class="external-account <%= provider %>">
+      <% if account = @user.external_accounts.find_by(provider: provider) %>
+        <%= link_to t('.connected_as', name: account.name), account.url, target: '_blank' %>
+
+        <%= link_to t('.destroy', provider: provider.to_s.titleize), [:user, account], method: :delete, class: 'btn btn-default btn-xs' %>
+      <% else %>
+        <%= link_to user_omniauth_authorize_path(provider), class: 'btn btn-primary' do %>
+          <%= image_tag "omniauth/#{ provider }/logo.png" %>
+
+          <%= t '.connect', provider: provider.to_s.titleize %>
+        <% end %>
+      <% end %>
+    </dd>
+  <% end %>
+</dl>

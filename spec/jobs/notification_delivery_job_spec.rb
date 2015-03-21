@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::NotificationDeliveryJob, type: :job do
+describe NotificationDeliveryJob, type: :job do
   subject(:job) { described_class.new }
   let(:notifiable) { create(:comment) }
   let(:user) { create(:user) }
@@ -11,7 +11,7 @@ describe Raddar::NotificationDeliveryJob, type: :job do
     it 'creates notifications to the watcher' do
       subject
 
-      expect(Raddar::Notification.find_by(user: user)).to be_present
+      expect(Notification.find_by(user: user)).to be_present
     end
 
     it 'sends an email to the watcher' do
@@ -39,7 +39,7 @@ describe Raddar::NotificationDeliveryJob, type: :job do
         expect {
           subject
         }.not_to change {
-          Raddar::Notification.count
+          Notification.count
         }
       end
 

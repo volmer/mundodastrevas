@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe Raddar::TagPolicy do
-  let(:user) { Raddar::User.new }
+describe TagPolicy do
+  let(:user) { User.new }
   let(:tag) { create(:tag) }
   subject { described_class.new(user, tag) }
 

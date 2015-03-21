@@ -64,7 +64,7 @@ class ZinesController < ApplicationController
   end
 
   def user_zines_index
-    @user = Raddar::User.find_by!(name: params[:user_id])
+    @user = User.find_by!(name: params[:user_id])
 
     @zines = @user.zines.order(
       'COALESCE(last_post_at, created_at) DESC').page(params[:page])
@@ -76,7 +76,7 @@ class ZinesController < ApplicationController
     @zines = Zine.with_posts.order(
       'last_post_at DESC').page(params[:page])
 
-    @tags = Raddar::Tag.trending.limit(8)
+    @tags = Tag.trending.limit(8)
 
     @most_read_posts = Post.order('views DESC').limit(5)
   end

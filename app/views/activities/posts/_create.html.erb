@@ -1,0 +1,25 @@
+<p>
+  <%= t "#{activity.key}_html",
+    scope: 'activities',
+    user: link_to(activity.user),
+    post: link_to(
+      activity.subject,
+      zine_post_path(activity.subject.zine, activity.subject)
+    ),
+    zine: link_to(
+      activity.subject.zine,
+      zine_path(activity.subject.zine)
+    )
+  %>
+</p>
+
+<section class="list-group zine-panel">
+  <%= link_to '', zine_post_path(activity.subject.zine, activity.subject), class: 'list-group-item cover', style: "background-image: url('#{ activity.subject.image.url }')" %>
+
+  <%= link_to zine_post_path(activity.subject.zine, activity.subject), class: 'list-group-item' do %>
+    <h4 class="list-group-item-heading">
+      <%= activity.subject %>
+    </h4>
+  <% end %>
+</section>
+

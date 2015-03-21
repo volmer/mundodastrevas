@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::NotificationsHelper, type: :helper do
+describe NotificationsHelper, type: :helper do
   let(:user) { create(:user) }
 
   describe '#unread_notifications_count' do
@@ -24,7 +24,7 @@ describe Raddar::NotificationsHelper, type: :helper do
     let(:notification) { create(:notification) }
 
     it 'sets the "href" attribute to the notification path' do
-      expect(helper.link_to_notification(notification)).to include("href=\"#{ raddar.notification_path(notification) }\"")
+      expect(helper.link_to_notification(notification)).to include("href=\"#{ notification_path(notification) }\"")
     end
 
     it 'sets the "id" data attribute to the notification id' do

@@ -1,0 +1,11 @@
+<h1>
+  <%= link_to highlight(searchable.to_s, params[:query]), searchable %>
+</h1>
+
+<p>
+  <span class="searchable-type">
+    <%= searchable.class.model_name.human %>
+  </span> -
+
+  <%= highlight truncate_rich(searchable.content, length: 200), params[:query] %>
+</p>

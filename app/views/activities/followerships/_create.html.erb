@@ -1,0 +1,10 @@
+<p>
+  <%= t "#{activity.key}_html",
+    scope: 'activities',
+    user: link_to(activity.user),
+    followable: activity.subject.followable %>
+</p>
+
+<div class="well well-sm followership clearfix">
+  <%= render 'followerships/' + activity.subject.followable.class.name.underscore.gsub('', ''), record: activity.subject.followable %>
+</div>

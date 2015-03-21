@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Level do
   subject(:level) { build(:level) }
 
-  it { is_expected.to belong_to(:user).class_name('Raddar::User') }
+  it { is_expected.to belong_to(:user).class_name('User') }
   it { is_expected.to belong_to(:universe) }
 
   it { is_expected.to validate_presence_of(:user_id) }

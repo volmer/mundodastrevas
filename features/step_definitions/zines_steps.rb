@@ -19,7 +19,7 @@ Given(/^there is a zine called "(.*?)"$/) do |name|
 end
 
 Given(/^I am following the "(.*?)" zine$/) do |zine_name|
-  followership = Raddar::Followership.new
+  followership = Followership.new
   followership.user = @user
   followership.followable = Zine.find_by(name: zine_name)
   followership.save!

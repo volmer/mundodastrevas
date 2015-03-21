@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe Raddar::ContactMailer do
+describe ContactMailer do
   let(:contact) do
-    Raddar::Contact.new(
+    Contact.new(
       message: 'Growing strong.',
       name: 'Loras',
       email: 'loras@tyrell.com',
@@ -14,7 +14,7 @@ describe Raddar::ContactMailer do
     before { described_class.contact_email(contact).deliver_now }
 
     it 'sends the email to the address configured as contact destination' do
-      expect(ActionMailer::Base.deliveries.last.to).to eq([Raddar.contacts_destination])
+      expect(ActionMailer::Base.deliveries.last.to).to eq([Rails.application.config.contacts_destination])
     end
 
     it 'includes the contact message' do
@@ -34,7 +34,7 @@ describe Raddar::ContactMailer do
 
       it 'includes a link to the user page' do
         options = Rails.application.config.action_mailer.default_url_options
-        user_url = Raddar::Engine.routes.url_helpers.user_url(user, options)
+        user_url = Rails.application.routes.url_helpers.user_url(user, options)
 
         expect(ActionMailer::Base.deliveries.last.body).to include(user_url)
       end

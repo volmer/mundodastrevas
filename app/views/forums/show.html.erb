@@ -32,7 +32,7 @@
       <%= link_to t('.new'), new_forum_topic_path(@forum), class: 'btn btn-primary btn-lg pull-right' if policy(Topic.new).new? %>
 
       <% unless user_signed_in? %>
-        <%= link_to t('.invite'), raddar.new_user_session_path, class: 'btn btn-default btn-block' %>
+        <%= link_to t('.invite'), new_user_session_path, class: 'btn btn-default btn-block' %>
       <% end %>
     </div>
   </div>

@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :external_account, class: Raddar::ExternalAccount do
+  factory :external_account do
     provider 'hubgit'
     sequence(:token) { |n| "mytoken#{n}" }
     sequence(:name) { |n| "arya.stark#{n}" }

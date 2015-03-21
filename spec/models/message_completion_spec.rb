@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::MessageCompletion do
+describe MessageCompletion do
   subject { described_class.new(message) }
   let(:message) { create(:message, recipient: recipient) }
   let(:recipient) { create(:user) }

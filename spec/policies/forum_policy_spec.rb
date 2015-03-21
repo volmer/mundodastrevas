@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ForumPolicy do
-  let(:user) { Raddar::User.new }
+  let(:user) { User.new }
   subject { described_class.new(user, nil) }
 
   describe '#index?' do

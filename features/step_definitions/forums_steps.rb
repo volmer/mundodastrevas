@@ -9,7 +9,7 @@ Given(/^there is a forum with the given attributes:$/) do |table|
 end
 
 Given(/^I am following the "(.*?)" forum$/) do |forum_name|
-  followership = Raddar::Followership.new
+  followership = Followership.new
   followership.user = @user
   followership.followable = Forum.find_by(name: forum_name)
   followership.save!

@@ -1,0 +1,9 @@
+<% content_for :page_title, @page.title %>
+<% content_for :page_description, truncate_rich(@page.content) %>
+<% content_for :page_updated_at, @page.updated_at %>
+
+<div class="page-header">
+  <h1><%= @page.title %></h1>
+</div>
+
+<%= sanitize @page.content %>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Role do
+describe Role do
   it { is_expected.to have_and_belong_to_many(:users) }
 
   it { is_expected.to validate_uniqueness_of(:name).case_insensitive }

@@ -1,6 +1,6 @@
 class Topic < ActiveRecord::Base
   include PgSearch
-  include Raddar::Watchable
+  include Watchable
 
   multisearchable against: [:name]
 
@@ -10,7 +10,7 @@ class Topic < ActiveRecord::Base
   validates :user_id, presence: true
 
   belongs_to :forum
-  belongs_to :user, class_name: 'Raddar::User'
+  belongs_to :user
   has_many :forum_posts, dependent: :destroy
 
   accepts_nested_attributes_for :forum_posts

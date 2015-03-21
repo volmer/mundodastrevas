@@ -13,7 +13,7 @@ shared_examples 'a watch setter' do
     end
 
     it 'does not create a new watch' do
-      expect { subject }.to_not change { Raddar::Watch.count }
+      expect { subject }.to_not change { Watch.count }
     end
   end
 
@@ -25,14 +25,14 @@ shared_examples 'a watch setter' do
   end
 end
 
-describe Raddar::Watchable do
+describe Watchable do
   # Post extends Watchable
   subject(:watchable) { create(:post) }
   let(:user) { create(:user) }
   let(:watch_params) { { active: false } }
 
   it 'has many watches' do
-    expect(subject).to have_many(:watches).class_name('Raddar::Watch').dependent(:destroy)
+    expect(subject).to have_many(:watches).class_name('Watch').dependent(:destroy)
   end
 
   describe '#set_watcher' do
@@ -99,7 +99,7 @@ describe Raddar::Watchable do
     it 'sends the proper parameters to the job' do
       subject
 
-      job = Raddar::WatchesRetrievalJob.queue_adapter.enqueued_jobs.last
+      job = WatchesRetrievalJob.queue_adapter.enqueued_jobs.last
 
       expect(job[:args]).to eq([watchable, comment, 'new_comment', user])
     end

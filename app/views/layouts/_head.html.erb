@@ -1,0 +1,81 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta property="og:site_name" content="<%= Rails.application.config.app_name %>">
+
+<meta property="og:type" content="<%= content_for(:page_type) || 'article' %>">
+
+<meta property="og:locale" content="<%= I18n.locale.to_s.sub('-', '_') %>">
+
+<meta property="og:determiner" content="auto">
+
+<meta property="og:title" content="<%= content_for(:page_title) || Rails.application.config.app_name %>">
+
+<% if content_for(:page_keywords) %>
+  <meta name="keywords" content="<%= content_for(:page_keywords) %>">
+<% end %>
+
+<% if content_for(:page_description) %>
+  <meta name="description" content="<%= content_for(:page_description) %>">
+  <meta property="og:description" content="<%= content_for(:page_description) %>">
+<% end %>
+
+<% if content_for(:page_author) %>
+  <meta name="author" content="<%= content_for(:page_author) %>">
+  <meta property="article:author" content="<%= content_for(:page_author) %>">
+<% end %>
+
+<% if content_for(:canonical_url) %>
+  <meta property="og:url" content="<%= content_for(:canonical_url) %>">
+<% end %>
+
+<% if content_for(:page_image) %>
+  <meta property="og:image" content="<%= content_for(:page_image) %>">
+<% end %>
+
+<% if content_for(:page_see_also) %>
+  <meta property="og:see_also" content="<%= content_for(:page_see_also) %>">
+<% end %>
+
+<% if content_for(:page_updated_at) %>
+  <meta property="og:updated_time" content="<%= content_for(:page_updated_at) %>">
+<% end %>
+
+<% unless content_for(:page_image) %>
+  <meta property="og:image" content="<%= image_url('Mundo_das_Trevas_background.jpg') %>">
+<% end %>
+
+<meta name="rating" content="general">
+<meta name="robots" content="follow">
+
+<%= favicon_link_tag '/favicon.ico' %>
+
+<%= auto_discovery_link_tag :atom, posts_path, title: Rails.application.config.app_name %>
+
+<%# Facebook %>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=330164793746855";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<%# Google Analytics %>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17078442-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<%# Twitter %>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<%# Google Fonts %>
+<%= stylesheet_link_tag '//fonts.googleapis.com/css?family=Amethysta', media: 'all' %>

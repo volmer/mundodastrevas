@@ -1,0 +1,9 @@
+<h1>
+  <%= link_to highlight(searchable.to_s, params[:query]), searchable %>
+</h1>
+
+<p>
+  <%= link_to image_tag(searchable.avatar.thumb.url), searchable %>
+
+  <%= highlight truncate_rich(searchable.bio, length: 200), params[:query] %>
+</p>

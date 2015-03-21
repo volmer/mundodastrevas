@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe Raddar::ReviewPolicy do
+describe ReviewPolicy do
   let(:review) { create(:review) }
-  let(:user) { Raddar::User.new }
+  let(:user) { User.new }
 
   subject { described_class.new(user, review) }
 

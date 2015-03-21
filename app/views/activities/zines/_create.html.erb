@@ -1,0 +1,12 @@
+<p>
+  <%= t "#{activity.key}_html",
+    scope: 'activities',
+    user: link_to(activity.user),
+    zine: link_to(
+      activity.subject,
+      zine_path(activity.subject)
+    )
+  %>
+</p>
+
+<%= render 'zines/panel', zine: activity.subject %>

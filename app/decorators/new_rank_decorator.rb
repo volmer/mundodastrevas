@@ -1,4 +1,4 @@
-class NewRankDecorator < Raddar::Notifications::BaseDecorator
+class NewRankDecorator < Notifications::BaseDecorator
   def mailer_subject
     t 'mailers.new_rank.subject', rank: rank
   end

@@ -1,4 +1,4 @@
-class ZineFollowershipsController < Raddar::FollowershipsController
+class ZineFollowershipsController < FollowershipsController
   private
 
   def find_followable

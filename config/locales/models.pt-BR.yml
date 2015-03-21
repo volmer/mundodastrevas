@@ -1,0 +1,30 @@
+pt-BR:
+  activerecord:
+    attributes:
+      user:
+        password: 'Senha'
+        name: 'Nome de usuário'
+        location: 'Localização'
+        birthday: 'Data de nascimento'
+        gender: 'Sexo'
+        avatar: 'Avatar'
+        remember_me: 'Lembrar'
+        email: 'Email'
+        password_confirmation: 'Confirmação da senha'
+        bio: 'Bio'
+        current_password: 'Senha atual'
+        roles: 'Papéis'
+        state: 'Estado'
+        facebook: 'Facebook'
+        twitter: 'Twitter'
+      page:
+        title: 'Título'
+        slug: 'URL amigável'
+        contet: 'Conteúdo'
+  activemodel:
+    attributes:
+      contact:
+        name: 'Nome'
+        email: 'Email'
+        message: 'Mensagem'
+

@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 describe CommentPolicy do
-  let(:user) { Raddar::User.new }
+  let(:user) { User.new }
   let(:comment) { create(:comment) }
 
   subject { described_class.new(user, comment) }
 
   describe '#create?' do
     context 'when user is signed in' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns true' do
         expect(subject.create?).to be true

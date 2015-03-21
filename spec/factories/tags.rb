@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :tag, class: Raddar::Tag do
+  factory :tag do
     sequence :name do |n|
       "chronicle#{n}"
     end

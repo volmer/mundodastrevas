@@ -1,0 +1,21 @@
+<% content_for :page_title, t('.title', user: @user) %>
+<% content_for :page_image, URI(root_url) + @user.avatar.url %>
+<% content_for :canonical_url, user_following_url(@user) %>
+
+<div class="page-header">
+  <h1><%= t '.title', user: @user %></h1>
+</div>
+
+<% @followerships.each_slice(3) do |row| %>
+  <div class="row">
+    <% row.each do |followership| %>
+      <div class="col-md-4">
+        <div class="followership clearfix">
+          <%= render 'followerships/' + followership.followable.class.name.underscore.gsub('', ''), record: followership.followable %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= paginate @followerships %>

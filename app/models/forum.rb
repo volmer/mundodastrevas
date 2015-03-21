@@ -13,7 +13,7 @@ class Forum < ActiveRecord::Base
 
   has_many :topics, dependent: :destroy
   has_many :followers,
-           class_name: 'Raddar::Followership',
+           class_name: 'Followership',
            as: :followable,
            dependent: :destroy
   belongs_to :universe

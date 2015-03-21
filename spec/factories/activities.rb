@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :activity, class: Raddar::Activity do
+  factory :activity do
     user
     association :subject, factory: :post
     key 'followerships.create'

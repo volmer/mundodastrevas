@@ -1,0 +1,32 @@
+<% content_for :page_title, t('.title') %>
+
+<div class="page-header">
+  <h1><%= t '.title' %></h1>
+</div>
+
+<%= render 'users/shared/tabs', active: :email_preferences %>
+
+<h3><%= t '.description' %></h3>
+
+<div class="row">
+  <div class="col-md-3">
+    <%= simple_form_for(
+      @user,
+      url: user_email_preferences_path,
+      method: :patch
+    ) do |f|  %>
+      <%= f.simple_fields_for(:email_preferences) do |p| %>
+        <% User.email_preferences_keys.each do |key| %>
+          <%= p.input key, as: :boolean,
+            label: false,
+            inline_label: t(".keys.#{ key }"),
+            input_html: { checked: @user.email_preferences[key] != 'false' },
+            checked_value: true,
+            unchecked_value: false %>
+        <% end %>
+      <% end %>
+
+      <%= f.button :submit, t('.submit') %>
+    <% end %>
+  </div>
+</div>

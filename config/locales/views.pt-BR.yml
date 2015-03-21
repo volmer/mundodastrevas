@@ -1,0 +1,176 @@
+pt-BR:
+  layouts:
+    mailer:
+      automatic: 'Este é um email automático. Por favor não responda para este endereço.'
+      contact: 'Clique aqui para falar conosco'
+    search:
+      submit: 'Pesquisar'
+  admin:
+    dashboard:
+      index:
+        title: 'Painel administrativo'
+        statistics: 'Estatísticas globais'
+        users:
+          registered: 'Usuários registrados'
+          confirmed: 'Usuários confirmados'
+          blocked: 'Usuários bloqueados'
+        messages: 'Mensagens enviadas'
+    users:
+      show:
+        title: 'Gerenciar %{user}'
+      index:
+        title: 'Usuários'
+        name: 'Nome de usuário'
+        state: 'Estado'
+        confirmed: 'Confirmado?'
+        last_sign_in: 'Último login'
+    pages:
+      index:
+        title: 'Páginas'
+        created_at: 'Data de criação'
+        updated_at: 'Última modificação'
+        new: 'Nova página'
+      new:
+        title: 'Nova página'
+        submit: 'Criar página'
+      edit:
+        title: 'Editar página'
+        submit: 'Atualizar página'
+        destroy: 'Excluir página'
+    zines:
+      edit:
+        featured: 'Em destaque'
+        title: 'Editar %{zine}'
+        save: 'Salvar zine'
+      index:
+        title: 'Gerenciamento de zines'
+        author: 'Autor'
+    forums:
+      index:
+        new: 'Novo fórum'
+        topics: 'Tópicos'
+      edit:
+        title: 'Editar fórum'
+        submit: 'Atualizar fórum'
+        destroy: 'Apagar fórum'
+        confirm: 'Você confirma a destruição deste fórum e de todos os seus tópicos e postagens?'
+      new:
+        title: 'Novo fórum'
+        submit: 'Criar fórum'
+  users:
+    passwords:
+      change:
+        title: 'Alterar senha'
+        submit: 'Alterar'
+        password_label: 'Nova senha'
+      new:
+        title: 'Esqueceu a sua senha?'
+        submit: 'Enviar instruções de troca de senha'
+      edit:
+        title: 'Criar nova senha'
+        password_label: 'Nova senha'
+        submit: 'Criar senha'
+    confirmations:
+      new:
+        title: 'Reenviar instruções de confirmação'
+        submit: 'Reenviar instruções de confirmação'
+    show:
+      unconfirmed_email: 'Aguardando confirmação para %{email}'
+      message: 'Mensagem'
+      edit: 'Editar perfil'
+      member_since: 'Membro desde'
+    privacies:
+      edit:
+        title: 'Opções de privacidade'
+        options:
+          only_me: 'Somente eu'
+          public: 'Público'
+        submit: 'Salvar'
+    email_preferences:
+      edit:
+        title: 'Preferências de email'
+        keys:
+          new_follower: 'Novos seguidores'
+          new_message: 'Novas mensagens'
+          new_rank: 'Novos ranks'
+          new_comment: 'Comentários em posts que eu estou vigiando'
+          new_forum_post: 'Novas postagens em tópicos que eu estou vigiando'
+        submit: 'Salvar'
+        description: 'Avise-me por email sobre:'
+    external_accounts:
+      index:
+        title: 'Contas externas'
+        connect: 'Conectar conta do %{provider}'
+        destroy: 'Desconectar %{provider}'
+        connected_as: 'Conectado como @%{name}'
+    registrations:
+      destroy:
+        title: 'Destruir conta'
+        alert: 'Ao destruir sua conta o seu perfil e todas as suas criações serão apagados. Se mesmo assim você deseja destruir sua conta informe sua senha abaixo:'
+        submit: 'Eu entendo as consequências. Destrua minha conta.'
+      new:
+        title: 'Cadastre-se!'
+        submit: 'Cadastrar'
+      edit:
+        title: 'Editar perfil'
+        submit: 'Atualizar'
+    sessions:
+      new:
+        title: 'Entrar'
+        submit: 'Entrar'
+    shared:
+      links:
+        or: 'ou'
+        sign_in_with: 'Entrar com %{provider}'
+        sign_up: 'Cadastre-se!'
+        sign_in: 'Já tem uma conta? Entre aqui'
+        forgot_password: 'Esqueceu sua senha?'
+        resend_confirmation: 'Não recebeu instruções de confirmação?'
+    add_on:
+      title: 'Zines'
+      all_zines: 'Ver todos'
+  notifications:
+    index:
+      title: 'Notificações'
+  messages:
+    index:
+      title: 'Mensagens'
+      empty_html: 'Não existem mensagens no momento. Para enviar uma mensagem, vá até o perfil do usuário desejado e clique em <strong>Mensagem</strong>.'
+    user_index:
+      title: 'Mensagens com %{user}'
+    new:
+      submit: 'Enviar mensagem'
+  contacts:
+    new:
+      title: 'Fale conosco'
+      submit: 'Enviar mensagem'
+      description: 'Tem alguma dúvida, sugestão, reclamação ou deseja comunicar um problema? Entre em contato conosco através do formulário abaixo que responderemos o mais breve possível por email.'
+  followerships:
+    following:
+      title: 'Seguidos por %{user}'
+    followers:
+      title: 'Seguindo %{followable}'
+  searches:
+    show:
+      title_html: 'Pesquisa por <em>%{q}</em>'
+      title: 'Pesquisa por %{q}'
+      empty: 'Nenhum resultado encontrado.'
+  tags:
+    show:
+      title: 'Tag: %{tag}'
+      empty: 'Nada foi encontrado com a tag %{tag}.'
+    panel:
+      title: 'Tags'
+  reviews:
+    form:
+      loved: 'Curti isso!'
+      hated: 'Não gostei.'
+  watches:
+    form:
+      watch: 'Vigiar'
+      unwatch: 'Parar de vigiar'
+    fields:
+      label: 'Notifique-me sobre este item'
+  home:
+    sidebar:
+      featured_zine: 'Zine em destaque'

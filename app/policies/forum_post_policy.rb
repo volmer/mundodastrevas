@@ -1,4 +1,4 @@
-class ForumPostPolicy < Raddar::ApplicationPolicy
+class ForumPostPolicy < ApplicationPolicy
   class Scope < Struct.new(:user, :scope)
     def resolve
       scope

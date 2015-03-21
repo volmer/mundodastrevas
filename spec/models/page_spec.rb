@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Page do
+describe Page do
   it { is_expected.to validate_presence_of(:slug) }
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:content) }

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ZinePolicy do
-  let(:user) { Raddar::User.new }
+  let(:user) { User.new }
   let(:zine) { create(:zine) }
   subject { described_class.new(user, zine) }
 
@@ -39,7 +39,7 @@ describe ZinePolicy do
 
   describe '#new?' do
     context 'when user is signed in' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns true' do
         expect(subject.new?).to be true
@@ -57,7 +57,7 @@ describe ZinePolicy do
 
   describe '#create?' do
     context 'when user is signed in' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns true' do
         expect(subject.create?).to be true

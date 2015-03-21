@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Activity, type: :model do
+describe Activity, type: :model do
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:subject) }
 

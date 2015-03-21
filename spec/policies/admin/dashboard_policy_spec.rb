@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Admin::DashboardPolicy do
+describe Admin::DashboardPolicy do
   subject { described_class.new(user, nil) }
 
   describe '#index?' do
@@ -13,7 +13,7 @@ describe Raddar::Admin::DashboardPolicy do
     end
 
     context 'when user is not an admin' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns false' do
         expect(subject.index?).to be false

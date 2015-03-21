@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe Raddar::UserPolicy do
+describe UserPolicy do
   subject { described_class.new(user, record) }
 
   describe '#show?' do
-    let(:record) { Raddar::User.new }
+    let(:record) { User.new }
 
     context 'when user is signed in' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
 
       it 'returns true' do
         expect(subject.show?).to be true
@@ -25,7 +25,7 @@ describe Raddar::UserPolicy do
 
   describe '#read_field?' do
     context 'when user is the owner of the field' do
-      let(:user) { Raddar::User.new }
+      let(:user) { User.new }
       let(:record) { user }
 
       it 'returns true' do
@@ -34,8 +34,8 @@ describe Raddar::UserPolicy do
     end
 
     context 'when user is not the owner of the field' do
-      let(:user) { Raddar::User.new }
-      let(:record) { Raddar::User.new }
+      let(:user) { User.new }
+      let(:record) { User.new }
 
       context 'when the privacy setting for the field is "public"' do
         before { record.privacy = { my_attr: 'public' } }

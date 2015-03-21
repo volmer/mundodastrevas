@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe Raddar::NotificationPolicy do
+describe NotificationPolicy do
   subject { described_class.new(user, record) }
-  let(:user) { Raddar::User.new }
-  let(:record) { Raddar::Notification.new }
+  let(:user) { User.new }
+  let(:record) { Notification.new }
 
   describe '#index?' do
     context 'when user is signed in' do
@@ -23,7 +23,7 @@ describe Raddar::NotificationPolicy do
 
   describe '#show?' do
     context 'when user owns the notification' do
-      let(:record) { Raddar::Notification.new(user: user) }
+      let(:record) { Notification.new(user: user) }
 
       it 'returns true' do
         expect(subject.show?).to be true
@@ -39,7 +39,7 @@ describe Raddar::NotificationPolicy do
 
   describe '#read?' do
     context 'when user owns the notification' do
-      let(:record) { Raddar::Notification.new(user: user) }
+      let(:record) { Notification.new(user: user) }
 
       it 'returns true' do
         expect(subject.read?).to be true

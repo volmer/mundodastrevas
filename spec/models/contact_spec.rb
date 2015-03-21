@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Raddar::Contact do
+describe Contact do
   it { is_expected.to validate_presence_of(:message) }
   it { is_expected.to validate_length_of(:message).is_at_most(6_000) }
 
@@ -9,7 +9,7 @@ describe Raddar::Contact do
 
   context 'with an user' do
     before do
-      subject.user = Raddar::User.new
+      subject.user = User.new
       subject.valid?
     end
 
@@ -36,7 +36,7 @@ describe Raddar::Contact do
 
   describe '#guest?' do
     context 'with an user' do
-      before { subject.user = Raddar::User.new }
+      before { subject.user = User.new }
 
       it 'returns false' do
         expect(subject.guest?).to be false
@@ -54,7 +54,7 @@ describe Raddar::Contact do
     before { subject.name = 'jon' }
 
     context 'with an user' do
-      before { subject.user = Raddar::User.new(name: 'daenerys') }
+      before { subject.user = User.new(name: 'daenerys') }
 
       it 'returns the user name' do
         expect(subject.name).to eq('daenerys')
@@ -72,7 +72,7 @@ describe Raddar::Contact do
     before { subject.email = 'jon@westeros.com' }
 
     context 'with an user' do
-      before { subject.user = Raddar::User.new(email: 'daenerys@westeros.com') }
+      before { subject.user = User.new(email: 'daenerys@westeros.com') }
 
       it 'returns the user email' do
         expect(subject.email).to eq('daenerys@westeros.com')

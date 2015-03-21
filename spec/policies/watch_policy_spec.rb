@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe Raddar::WatchPolicy do
+describe WatchPolicy do
   let(:watch) { create(:watch) }
-  let(:user) { Raddar::User.new }
+  let(:user) { User.new }
 
   subject { described_class.new(user, watch) }
 
