@@ -145,6 +145,7 @@ pt-BR:
       no_zines: '%{user} ainda não publicou nenhum zine.'
       no_zines_user: 'Você ainda não tem nenhum zine publicado.'
       first_zine: 'Clique aqui para criar seu primeiro zine!'
+      my: 'Meus zines'
     user_sidebar:
       new: 'Novo zine'
     new:
@@ -203,11 +204,3 @@ pt-BR:
     comment:
       updated_at: 'Atualizado em'
       destroy: 'Apagar'
-  links:
-    zines:
-      main: 'Zines'
-      admin: 'Zines'
-      user_menu: 'Meus zines'
-    forums:
-      main: 'Fóruns'
-      admin: 'Fóruns'

@@ -43,10 +43,11 @@ pt-BR:
         title: 'Editar %{zine}'
         save: 'Salvar zine'
       index:
-        title: 'Gerenciamento de zines'
+        title: 'Zines'
         author: 'Autor'
     forums:
       index:
+        title: 'Fóruns'
         new: 'Novo fórum'
         topics: 'Tópicos'
       edit:
