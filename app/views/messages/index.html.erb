@@ -21,7 +21,7 @@
                 </h1>
 
                 <p>
-                  <%= strip_tags message.content %>
+                  <%= truncate_rich message.content %>
                 </p>
 
                 <%= time_tag message.created_at, format: :short %>

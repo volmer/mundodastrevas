@@ -133,6 +133,12 @@ describe ApplicationHelper, type: :helper do
     it 'is blank if nil is given' do
       expect(helper.truncate_rich(nil)).to eq('')
     end
+
+    it 'handles special characters' do
+      expect(helper.truncate_rich('This is a "quoted" text.')).to eq(
+        'This is a &quot;quoted&quot; text.'
+      )
+    end
   end
 
   describe '#autolink_mentions' do

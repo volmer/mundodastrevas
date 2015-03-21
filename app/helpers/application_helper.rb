@@ -13,8 +13,9 @@ module ApplicationHelper
     doc = Loofah.fragment(text.gsub(/[[:space:]]/, ' '))
     doc.css('br').each { |br| br.replace ' ' }
     safe_text = strip_tags(doc.to_text.gsub(/[[:space:]]/, ' ').strip)
+    unescaped = CGI.unescape_html(safe_text)
 
-    truncate(safe_text.squeeze(' '), length: length, separator: ' ', &block)
+    truncate(unescaped.squeeze(' '), length: length, separator: ' ', &block)
   end
 
   def autolink_mentions(text)
