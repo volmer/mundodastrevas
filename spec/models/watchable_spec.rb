@@ -92,16 +92,14 @@ describe Watchable do
   end
 
   describe '#notify_watchers' do
-    let(:comment) { create(:comment) }
-
-    subject(:notify_watchers) { watchable.notify_watchers(comment, 'new_comment', user) }
-
     it 'sends the proper parameters to the job' do
-      subject
+      comment = create(:comment)
 
-      job = WatchesRetrievalJob.queue_adapter.enqueued_jobs.last
+      expect(WatchesRetrievalJob).to receive(:perform_later).with(
+        watchable, comment, 'new_comment', user
+      )
 
-      expect(job[:args]).to eq([watchable, comment, 'new_comment', user])
+      watchable.notify_watchers(comment, 'new_comment', user)
     end
   end
 
