@@ -1,5 +1,25 @@
 pt-BR:
   activerecord:
+    models:
+      activity: 'Atividade'
+      comment: 'Comentário'
+      contact: 'Contato'
+      external_account: 'Conta externa'
+      forum: 'Fórum'
+      forum_post: 'Post em fórum'
+      level: 'Nível'
+      message: 'Mensagem'
+      notification: 'Notificação'
+      page: 'Página'
+      post: 'Post'
+      rank: 'Rank'
+      role: 'Papel'
+      setting: 'Configuração'
+      tag: 'Tag'
+      topic: 'Tópico'
+      universe: 'Universo'
+      user: 'Usuário'
+      zine: 'Zine'
     attributes:
       zine:
         universe: 'Universo'
@@ -24,3 +44,29 @@ pt-BR:
         name: 'Nome'
       forum_post:
         content: 'Conteúdo'
+      user:
+        password: 'Senha'
+        name: 'Nome de usuário'
+        location: 'Localização'
+        birthday: 'Data de nascimento'
+        gender: 'Sexo'
+        avatar: 'Avatar'
+        remember_me: 'Lembrar'
+        email: 'Email'
+        password_confirmation: 'Confirmação da senha'
+        bio: 'Bio'
+        current_password: 'Senha atual'
+        roles: 'Papéis'
+        state: 'Estado'
+        facebook: 'Facebook'
+        twitter: 'Twitter'
+      page:
+        title: 'Título'
+        slug: 'URL amigável'
+        contet: 'Conteúdo'
+  activemodel:
+    attributes:
+      contact:
+        name: 'Nome'
+        email: 'Email'
+        message: 'Mensagem'

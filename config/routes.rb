@@ -2,17 +2,11 @@ Mundodastrevas::Application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
   resources :watches, only: [:create, :update]
-
   resources :reviews, only: [:create, :update]
-
   resources :tags, only: [:show]
-
   resource :search, only: [:show]
-
   resources :pages, only: [:show]
-
   resources :contacts, only: [:new, :create]
-
   resources :messages, only: [:index]
 
   resources :notifications, only: [:index, :show] do
@@ -55,14 +49,11 @@ Mundodastrevas::Application.routes.draw do
   end
 
   namespace :admin do
-    root 'dashboard#index'
+    root 'home#index'
 
     resources :users, only: [:index, :show, :update]
-
     resources :pages, except: [:show]
-
     resources :zines, only: [:index, :edit, :update], controller: 'zines'
-
     resources :forums, except: [:show], controller: 'forums'
   end
 

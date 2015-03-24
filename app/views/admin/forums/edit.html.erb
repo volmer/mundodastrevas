@@ -1,6 +1,11 @@
-<div class="page-header">
-  <h1><%= t '.title' %></h1>
-</div>
+<% content_for :page_title, t('.title') %>
+
+<ol class="breadcrumb">
+  <li><%= link_to t('admin.forums.index.title'), :back %></li>
+  <li class="active"><%= @forum %></li>
+</ol>
+
+<h2><%= t '.title' %></h2>
 
 <%= render 'form', submit: t('.submit') %>
 

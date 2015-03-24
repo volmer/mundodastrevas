@@ -204,3 +204,5 @@ pt-BR:
     comment:
       updated_at: 'Atualizado em'
       destroy: 'Apagar'
+  link:
+    admin: 'Administração'

@@ -1,5 +1,5 @@
 module Admin
-  class DashboardController < ApplicationController
+  class HomeController < ApplicationController
     def index
       authorize(self)
 

@@ -6,9 +6,10 @@ pt-BR:
     search:
       submit: 'Pesquisar'
   admin:
-    dashboard:
+    home:
       index:
-        title: 'Painel administrativo'
+        title: 'Admin'
+        greeting: 'Bem-vindo à administração do Mundo das Trevas, %{user}.'
         statistics: 'Estatísticas globais'
         users:
           registered: 'Usuários registrados'
@@ -45,6 +46,7 @@ pt-BR:
       index:
         title: 'Zines'
         author: 'Autor'
+        posts: 'Posts'
     forums:
       index:
         title: 'Fóruns'

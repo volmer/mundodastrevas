@@ -23,7 +23,7 @@
       <div class='container' id='main-container'>
         <%= render 'layouts/alerts' %>
 
-        <%= yield %>
+        <%= content_for?(:content) ? yield(:content) : yield %>
       </div>
     </div>
 
