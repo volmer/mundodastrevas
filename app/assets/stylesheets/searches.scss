@@ -1,5 +1,5 @@
 .search-result {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 
   mark {
     background: none;
@@ -7,18 +7,14 @@
     font-weight: bold;
   }
 
-  .searchable-type {
-    text-transform: uppercase;
-    font-style: italic;
-  }
-
   img {
-    width: 30px;
-    border-radius: 8px;
+    width: 40px;
+    border-radius: 4px;
+    float: left;
+    margin: 0 8px 8px 0;
   }
 
   h1 {
     font-size: 20px;
-    margin: 0 0 5px;
   }
 }
