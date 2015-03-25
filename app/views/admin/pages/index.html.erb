@@ -5,10 +5,10 @@
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
-      <th><%= Page.human_attribute_name 'title' %></th>
-      <th><%= Page.human_attribute_name 'slug' %></th>
-      <th><%= t '.created_at' %></th>
-      <th><%= t '.updated_at' %></th>
+      <th><%= admin_thead Page, 'title' %></th>
+      <th><%= admin_thead Page, 'slug' %></th>
+      <th><%= admin_thead Page, 'created_at' %></th>
+      <th><%= admin_thead Page, 'updated_at' %></th>
     </tr>
   </thead>
 

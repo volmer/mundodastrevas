@@ -8,7 +8,7 @@ pt-BR:
   admin:
     home:
       index:
-        title: 'Admin'
+        title: 'Administração'
         greeting: 'Bem-vindo à administração do Mundo das Trevas, %{user}.'
         statistics: 'Estatísticas globais'
         users:
@@ -21,15 +21,10 @@ pt-BR:
         title: 'Gerenciar %{user}'
       index:
         title: 'Usuários'
-        name: 'Nome de usuário'
-        state: 'Estado'
         confirmed: 'Confirmado?'
-        last_sign_in: 'Último login'
     pages:
       index:
         title: 'Páginas'
-        created_at: 'Data de criação'
-        updated_at: 'Última modificação'
         new: 'Nova página'
       new:
         title: 'Nova página'
@@ -45,7 +40,6 @@ pt-BR:
         save: 'Salvar zine'
       index:
         title: 'Zines'
-        author: 'Autor'
         posts: 'Posts'
     forums:
       index:

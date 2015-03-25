@@ -1,10 +1,10 @@
 module Admin
-  class ForumsController < ApplicationController
+  class ForumsController < Admin::ApplicationController
     before_action :set_forum, only: [:edit, :update, :destroy]
 
     def index
       authorize(Forum.new)
-      @forums = Forum.order('name ASC')
+      @forums = Forum.order(params[:order]).order(name: :asc)
     end
 
     def new

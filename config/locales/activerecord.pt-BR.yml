@@ -28,6 +28,7 @@ pt-BR:
         description: 'Descrição'
         image: 'Imagem de capa'
         starred: 'Estrelado'
+        user_id: 'Usuário'
       post:
         name: 'Nome'
         slug: 'URL amigável'
@@ -60,10 +61,13 @@ pt-BR:
         state: 'Estado'
         facebook: 'Facebook'
         twitter: 'Twitter'
+        current_sign_in_at: 'Último login'
       page:
         title: 'Título'
         slug: 'URL amigável'
         contet: 'Conteúdo'
+        created_at: 'Data de criação'
+        updated_at: 'Última modificação'
   activemodel:
     attributes:
       contact:

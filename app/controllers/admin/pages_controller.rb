@@ -1,10 +1,10 @@
 module Admin
-  class PagesController < ApplicationController
+  class PagesController < Admin::ApplicationController
     before_action :set_page, only: [:edit, :update, :destroy]
 
     # GET /pages
     def index
-      @pages = Page.order('title ASC').page(params[:page])
+      @pages = Page.order(params[:order]).order(title: :asc).page(params[:page])
       authorize(Page.new)
     end
 

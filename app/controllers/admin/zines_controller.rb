@@ -1,11 +1,11 @@
 module Admin
-  class ZinesController < ApplicationController
+  class ZinesController < Admin::ApplicationController
     before_action :set_zine, only: [:edit, :update]
 
     def index
       authorize(Zine.new)
 
-      @zines = Zine.order('name ASC').page(params[:page]).per(20)
+      @zines = Zine.order(params[:order]).order('name ASC').page(params[:page]).per(20)
     end
 
     def edit

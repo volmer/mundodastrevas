@@ -5,9 +5,9 @@
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
-      <th><%= Zine.human_attribute_name 'name' %></th>
-      <th><%= t '.author' %></th>
-      <th><%= Zine.human_attribute_name 'slug' %></th>
+      <th><%= admin_thead Zine, 'name' %></th>
+      <th><%= Zine.human_attribute_name 'user_id' %></th>
+      <th><%= admin_thead Zine, 'slug' %></th>
       <th><%= t '.posts' %></th>
     </tr>
   </thead>

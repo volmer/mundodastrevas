@@ -19,6 +19,6 @@ Feature: Find users
   Scenario: Paginate users
     Given there are 25 users
     When I go to the admin users page
-    Then I see 3 pages
-    And I see 10 users
-    And I see 6 users in the page 3
+    Then I see 2 pages
+    And I see 20 users
+    And I see 6 users in the page 2

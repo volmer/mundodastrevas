@@ -5,10 +5,10 @@
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
-      <th><%= t '.name' %></th>
-      <th><%= t '.state' %></th>
+      <th><%= admin_thead User, 'name' %></th>
+      <th><%= admin_thead User, 'state' %></th>
       <th><%= t '.confirmed' %></th>
-      <th><%= t '.last_sign_in' %></th>
+      <th><%= admin_thead User, 'current_sign_in_at' %></th>
     </tr>
   </thead>
 

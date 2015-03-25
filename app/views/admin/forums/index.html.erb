@@ -5,8 +5,8 @@
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
-      <th><%= Forum.human_attribute_name 'name' %></th>
-      <th><%= Forum.human_attribute_name 'slug' %></th>
+      <th><%= admin_thead Forum, 'name' %></th>
+      <th><%= admin_thead Forum, 'slug' %></th>
       <th><%= t '.topics' %></th>
     </tr>
   </thead>
