@@ -101,7 +101,45 @@
 
   <div class="row">
     <div class="col-sm-4">
-      <%= render 'users/add_on', user: @user %>
+      <% if @user.levels.present? %>
+        <div class="list-group">
+          <% @user.levels.each do |level| %>
+            <% if level.rank.present? %>
+              <%= link_to universe_path(level.universe, anchor: 'tab-ranks'), class: 'list-group-item' do %>
+                <div class="user-rank clearfix">
+                  <%= image_tag level.universe.image.thumb.url, class: 'img-rounded' %>
+
+                  <h1>
+                    <%= level.rank %>
+                  </h1>
+
+                  <%= level.rank.description %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if @zines.present? %>
+        <div class="user-zines-add-on">
+          <h3>
+            <%= t '.title' %>
+          </h3>
+
+          <% @zines.limit(4).each_slice(2) do |row| %>
+            <div class="row">
+              <% row.each do |zine| %>
+                <div class="col-md-6">
+                  <%= render 'zines/panel', zine: zine %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+
+          <%= link_to t('.all_zines'), user_zines_path(@user) %>
+        </div>
+      <% end %>
     </div>
 
     <div class="col-sm-8">
