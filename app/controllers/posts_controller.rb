@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   def show
     @post.update_column(:views, @post.views + 1)
 
-    @comments = @post.comments.includes(:user).order('created_at ASC')
+    @comments = @post.comments.includes(:user).order(created_at: :asc)
 
     @comment = @post.comments.new
   end

@@ -18,7 +18,7 @@ Raddar.Reviews.init = ->
       count.html(parseInt(count.html()) - 1)
     else
       $(@).attr('method', 'patch')
-      $(@).attr('action', $(@).attr('action') + data.id)
+      $(@).attr('action', $(@).attr('action') + '/' + data.id)
 
     $(@).find('.btn').removeClass('disabled')
 

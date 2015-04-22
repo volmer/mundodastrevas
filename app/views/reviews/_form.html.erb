@@ -1,14 +1,8 @@
-<% review = Review.find_or_initialize_by(user_id: current_user.try(:id), reviewable: reviewable) %>
+<% review = review_by_current_user(reviewable) %>
 
 <%= form_for(review, remote: true, html: { class: 'raddar-ratings-review' }) do |f| %>
   <div class="btn-group btn-group-sm" data-toggle="buttons">
-    <% btn_class = 'btn btn-default' %>
-
-    <% btn_class += ' disabled' unless user_signed_in? %>
-
-    <% loved_class = btn_class + ' loved' + (review.value == 'loved' ? ' active' : '') %>
-
-    <%= f.label :value, value: 'loved', class: loved_class, title: t('.loved') do %>
+    <%= f.label :value, value: 'loved', class: review_btn_class('loved', review), title: t('.loved') do %>
       <%= f.radio_button :value, :loved %>
 
       <span class="glyphicon glyphicon-thumbs-up"></span>
@@ -18,9 +12,7 @@
       </span>
     <% end %>
 
-    <% hated_class = btn_class + ' hated' + (review.value == 'hated' ? ' active' : '') %>
-
-    <%= f.label :value, value: 'hated', class: hated_class, title: t('.hated') do %>
+    <%= f.label :value, value: 'hated', class: review_btn_class('hated', review), title: t('.hated') do %>
       <%= f.radio_button :value, :hated %>
 
       <span class="glyphicon glyphicon-thumbs-down"></span>
