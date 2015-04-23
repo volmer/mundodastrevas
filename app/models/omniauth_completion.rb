@@ -92,7 +92,7 @@ class OmniauthCompletion
     user.name ||= auth_data[:info][:nickname]
     user.bio ||= auth_data[:info][:description]
     user.location ||= auth_data[:info][:location]
-    user.remote_avatar_url ||= auth_data[:info][:image]
+    user.remote_avatar_url ||= auth_data[:info][:image] if user.avatar.blank?
   end
 
   def self.parse_facebook_image(auth_data)
