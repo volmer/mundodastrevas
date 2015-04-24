@@ -2,7 +2,7 @@
 
 # Get remote backup
 
-REMOTE_HOST="107.170.96.245"
+REMOTE_HOST="162.243.93.228"
 REMOTE_USER="mundodastrevas"
 REMOTE_BACKUP_DIR="/home/mundodastrevas/mundodastrevas_backup"
 LOCAL_BACKUP_DIR="/Users/volmer/Backups"
