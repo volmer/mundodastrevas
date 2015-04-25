@@ -12,7 +12,7 @@ class ZinesController < ApplicationController
   end
 
   def show
-    @posts = @zine.posts.order('created_at DESC').page(params[:page])
+    @posts = @zine.posts.order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -60,7 +60,9 @@ class ZinesController < ApplicationController
   end
 
   def zine_params
-    params.require(:zine).permit(:name, :slug, :description, :image, :universe_id)
+    params.require(:zine).permit(
+      :name, :slug, :description, :image, :universe_id
+    )
   end
 
   def user_zines_index
@@ -74,10 +76,11 @@ class ZinesController < ApplicationController
 
   def zines_index
     @zines = Zine.with_posts.order(
-      'last_post_at DESC').page(params[:page])
+      last_post_at: :desc
+    ).page(params[:page])
 
     @tags = Tag.trending.limit(8)
 
-    @most_read_posts = Post.order('views DESC').limit(5)
+    @most_read_posts = Post.order(views: :desc).limit(5)
   end
 end

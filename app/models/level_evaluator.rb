@@ -54,17 +54,9 @@ class LevelEvaluator
 
     @user.reload
 
-    @user.forum_posts.each do |post|
-      points += (FORUM_POST_BASE * (relevant?(post) ? 2 : 1)) if post.topic.forum.universe == @universe
-    end
-
-    @user.posts.each do |post|
-      points += (ZINE_POST_BASE * (relevant?(post) ? 2 : 1)) if post.zine.universe == @universe
-    end
-
-    @user.comments.each do |comment|
-      points += (COMMENT_BASE * (relevant?(comment) ? 2 : 1)) if comment.post.zine.universe == @universe
-    end
+    @user.forum_posts.each { |post| points += points_in_forum_post(post) }
+    @user.posts.each { |post| points += points_in_post(post) }
+    @user.comments.each { |comment| points += points_in_comment(comment) }
 
     points
   end
@@ -83,7 +75,7 @@ class LevelEvaluator
     points = 0
 
     while level < intended_level
-      points += (LEVEL_1_GOAL * (1.5 ** (level - 1))).to_i
+      points += (LEVEL_1_GOAL * (1.5**(level - 1))).to_i
       level += 1
     end
 
@@ -112,5 +104,20 @@ class LevelEvaluator
   # the user is intended to.
   def intended_level
     (@user.rank_in(@universe).try(:value) || 1) + 1
+  end
+
+  def points_in_post(post)
+    return 0 if post.zine.universe != @universe
+    ZINE_POST_BASE * (relevant?(post) ? 2 : 1)
+  end
+
+  def points_in_forum_post(forum_post)
+    return 0 if forum_post.topic.forum.universe != @universe
+    FORUM_POST_BASE * (relevant?(forum_post) ? 2 : 1)
+  end
+
+  def points_in_comment(comment)
+    return 0 if comment.post.zine.universe != @universe
+    COMMENT_BASE * (relevant?(comment) ? 2 : 1)
   end
 end

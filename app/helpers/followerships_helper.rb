@@ -7,11 +7,7 @@ module FollowershipsHelper
     if followership
       build_unfollow_link([followable, followership])
     else
-      href = send(
-        "#{ followable.class.model_name.param_key }_followerships_path",
-        followable
-      )
-
+      href = followable_followerships_path(followable)
       build_follow_link(href)
     end
   end
@@ -52,6 +48,13 @@ module FollowershipsHelper
       href,
       class: 'btn btn-default btn-sm',
       method: :delete
+    )
+  end
+
+  def followable_followerships_path(followable)
+    send(
+      "#{followable.class.model_name.param_key}_followerships_path",
+      followable
     )
   end
 end

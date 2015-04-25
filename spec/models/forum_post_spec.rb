@@ -43,6 +43,14 @@ describe ForumPost do
       expect(activity.key).to eq('forum_posts.create')
       expect(activity.privacy).to eq('public')
     end
+
+    it 'properly notifies the topic watchers' do
+      expect(subject.topic).to receive(:notify_watchers).with(
+        subject, 'new_forum_post', subject.user
+      )
+
+      subject.save
+    end
   end
 
   context 'when it is updated' do

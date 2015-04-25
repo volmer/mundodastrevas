@@ -48,4 +48,33 @@ describe Message do
       expect(described_class.all_between(user2, user1)).to eq([m2, m1])
     end
   end
+
+  context 'when it is created' do
+    subject! { build(:message, recipient: recipient) }
+    let(:recipient) { create(:user) }
+
+    it 'creates a new notification for the recipient' do
+      expect {
+        subject.save
+      }.to change { subject.recipient.notifications.count }.by(1)
+    end
+
+    it 'delivers a notification email to the recipient' do
+      expect {
+        subject.save
+      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+
+      expect(ActionMailer::Base.deliveries.last.to).to match_array([recipient.email])
+    end
+
+    context 'the recipient does not want to receive emails about new messages' do
+      let(:recipient) { create(:user, email_preferences: { new_message: 'false' } ) }
+
+      it 'does not deliver a notification email' do
+        expect {
+          subject.save
+        }.not_to change { ActionMailer::Base.deliveries.count }
+      end
+    end
+  end
 end

@@ -15,12 +15,12 @@ module DeviseConcern
       login = conditions.delete(:login)
 
       if login
-        where(conditions).where(
+        where(conditions).find_by(
           'lower(name) = :value OR lower(email) = :value',
           value: login.downcase
-        ).first
+        )
       else
-        where(conditions).first
+        find_by(conditions)
       end
     end
 

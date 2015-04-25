@@ -1,7 +1,8 @@
 class NotificationMailer < ActionMailer::Base
   helper 'application'
   layout 'mailer'
-  default from: "#{ Rails.application.config.app_name } <#{ Rails.application.config.default_from }>"
+  default from: "#{ Rails.application.config.app_name } "\
+    "<#{ Rails.application.config.default_from }>"
 
   def notify(notification)
     @notification = notification

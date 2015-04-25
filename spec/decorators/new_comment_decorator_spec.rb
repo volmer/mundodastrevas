@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe NewCommentDecorator do
+describe NewCommentDecorator, type: :decorator do
   let(:user) { create(:user, name: 'khaldrogo') }
   let(:comment) { create(:comment, user: user, post: post) }
   let(:post) { create(:post, name: 'The Dothraki Sea', slug: 'the-dothraki-sea') }

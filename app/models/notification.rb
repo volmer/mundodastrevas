@@ -12,9 +12,7 @@ class Notification < ActiveRecord::Base
 
   def send!
     save!
-
     return if user.email_preferences.try(:[], event) == 'false'
-
     NotificationMailer.notify(self).deliver_now
   end
 end

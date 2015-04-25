@@ -8,10 +8,11 @@ class CommentsController < ApplicationController
 
     authorize(@comment)
 
-    if CommentCompletion.new(@comment).create(params[:comment][:watch])
+    if @comment.save
+      @comment.post.set_watcher!(current_user, params[:comment][:watch])
       redirect_to [@zine, @post], notice: t('flash.comments.create')
     else
-      @comments = @post.comments.order('created_at ASC')
+      @comments = @post.comments.order(created_at: :asc)
       render(template: 'posts/show')
     end
   end

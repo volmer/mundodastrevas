@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Notifications::NewFollowerDecorator do
+describe Notifications::NewFollowerDecorator, type: :decorator do
   let(:follower) { create(:user, name: 'volmer') }
 
   let(:followership) { create(:followership, user: follower) }

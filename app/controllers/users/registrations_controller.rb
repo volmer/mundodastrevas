@@ -7,12 +7,7 @@ module Users
       unconfirmed_email = @user.unconfirmed_email
 
       if @user.update_attributes(account_update_params)
-        if is_navigational_format?
-          set_flash_message :notice, message_for_update(unconfirmed_email)
-        end
-
-        sign_in @user, bypass: true
-        respond_with @user, location: @user
+        respond_to_update(unconfirmed_email)
       else
         clean_up_passwords @user
         respond_with @user
@@ -57,6 +52,15 @@ module Users
         :password, params[:user][:password].blank? ? :blank : :invalid
       )
       clean_up_passwords @user
+    end
+
+    def respond_to_update(unconfirmed_email)
+      if is_navigational_format?
+        set_flash_message :notice, message_for_update(unconfirmed_email)
+      end
+
+      sign_in @user, bypass: true
+      respond_with @user, location: @user
     end
   end
 end

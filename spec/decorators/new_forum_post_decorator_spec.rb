@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe NewForumPostDecorator do
+describe NewForumPostDecorator, type: :decorator do
   let(:user) { create(:user, name: 'khaldrogo') }
 
   let(:forum_post) { create(:forum_post, user: user, topic: topic) }

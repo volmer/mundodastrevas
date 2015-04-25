@@ -22,33 +22,26 @@ class FollowershipsController < ApplicationController
 
     authorize(@followership)
 
-    respond_to_create
+    if @followership.save
+      respond_to_create
+    else
+      respond_to_creation_error
+    end
   end
 
   def destroy
     @followership = Followership.find(params[:id])
-    @followable = @followership.followable
     authorize(@followership)
 
     @followership.destroy
 
-    respond_to do |format|
-      format.html do
-        redirect_to(
-          @followable, notice: t(
-            'flash.followerships.destroy', followable: @followable.name
-          )
-        )
-      end
-
-      format.json { head :no_content }
-    end
+    respond_to_destroy
   end
 
   private
 
   def find_followable
-    key, value = params.select { |k, _| k.end_with?('_id') }.first
+    key, value = params.find { |k, _| k.end_with?('_id') }
 
     if key == 'user_id'
       User.find_by_name!(value)
@@ -59,19 +52,36 @@ class FollowershipsController < ApplicationController
 
   def respond_to_create
     respond_to do |f|
-      if FollowershipCompletion.new(@followership).create
-        f.html do
-          redirect_to @followable, notice: t(
-            'flash.followerships.create', followable: @followable.name
-          )
-        end
-        f.json do
-          render action: 'show', status: :created, location: @followership
-        end
-      else
-        f.html { redirect_to @followable, alert: 'Error.' }
-        f.json { render json: @followership, status: :unprocessable_entity }
+      f.html do
+        redirect_to @followable, notice: t(
+          'flash.followerships.create', followable: @followable.name
+        )
       end
+
+      f.json do
+        render action: 'show', status: :created, location: @followership
+      end
+    end
+  end
+
+  def respond_to_creation_error
+    respond_to do |f|
+      f.html { redirect_to @followable, alert: 'Error.' }
+      f.json { render json: @followership, status: :unprocessable_entity }
+    end
+  end
+
+  def respond_to_destroy
+    respond_to do |format|
+      format.html do
+        @followable = @followership.followable
+        redirect_to(
+          @followable, notice: t(
+            'flash.followerships.destroy', followable: @followable.name)
+        )
+      end
+
+      format.json { head :no_content }
     end
   end
 end

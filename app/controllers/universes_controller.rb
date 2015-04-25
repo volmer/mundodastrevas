@@ -4,9 +4,13 @@ class UniversesController < ApplicationController
 
     authorize(@universe)
 
-    @ranks = @universe.ranks.order('value DESC')
-    @zines = @universe.zines.with_posts.where("zines.image <> ''").order('last_post_at DESC').page(params[:page])
+    @ranks = @universe.ranks.order(value: :desc)
+    @zines = @universe.zines.with_posts.where("zines.image <> ''").order(
+      last_post_at: :desc
+    ).page(params[:page])
     @forum = @universe.forums.first
-    @forum_topics = @forum.topics.order('updated_at DESC').limit(10) if @forum.present?
+
+    return if @forum.blank?
+    @forum_topics = @forum.topics.order(updated_at: :desc).limit(10)
   end
 end

@@ -4,7 +4,7 @@ module Admin
       authorize(self)
 
       @registered_users_count = User.count
-      @confirmed_users_count = User.where('confirmed_at IS NOT NULL').count
+      @confirmed_users_count = User.where.not(confirmed_at: nil).count
       @blocked_users_count = User.where(state: 'blocked').count
       @messages_count = Message.count
     end

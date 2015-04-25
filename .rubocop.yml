@@ -1,0 +1,13 @@
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'features/**/*'
+    - 'spec/**/*'
+Style/Documentation:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Rails/HasAndBelongsToMany:
+  Enabled: false

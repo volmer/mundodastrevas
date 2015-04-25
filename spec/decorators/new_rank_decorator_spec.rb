@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe NewRankDecorator do
+describe NewRankDecorator, type: :decorator do
   let(:rank) { create(:rank, universe: universe, name: 'Ancila') }
   let(:universe) { create(:universe, name: 'Vampire: the Requiem', slug: 'vampire') }
   let(:notification) { build(:notification, notifiable: rank) }

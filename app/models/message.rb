@@ -8,6 +8,8 @@ class Message < ActiveRecord::Base
   validates :content, length: { maximum: 2_000 }
   validate :sender_and_recipient_must_be_different
 
+  after_create :notify_recipient
+
   scope(:distinct_for, lambda do |user|
     joins(
       "INNER JOIN (
@@ -39,5 +41,13 @@ class Message < ActiveRecord::Base
     return if sender.blank? || sender != recipient
 
     errors[:base] << 'User cannot send a message to himself/herself.'
+  end
+
+  def notify_recipient
+    notification            = Notification.new
+    notification.user       = recipient
+    notification.event      = 'new_message'
+    notification.notifiable = self
+    notification.send!
   end
 end

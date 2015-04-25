@@ -9,15 +9,10 @@ class ForumPostsController < ApplicationController
 
     authorize(@forum_post)
 
-    if ForumPostCompletion.new(@forum_post).create(params[:forum_post][:watch])
-      target_path = forum_topic_path(
-        @forum, @topic, page: @topic.forum_posts.page(1).total_pages
-      )
-
-      redirect_to target_path, notice: t('flash.forum_posts.create')
+    if @forum_post.save
+      respond_to_create
     else
-      @forum_posts = @topic.forum_posts.order('created_at ASC').page(params[:page])
-      render(template: 'topics/show')
+      respond_to_creation_error
     end
   end
 
@@ -53,5 +48,20 @@ class ForumPostsController < ApplicationController
 
   def post_params
     params.require(:forum_post).permit(:content)
+  end
+
+  def respond_to_create
+    @forum_post.topic.set_watcher!(current_user, params[:forum_post][:watch])
+    path = forum_topic_path(
+      @forum, @topic, page: @topic.forum_posts.page(1).total_pages
+    )
+
+    redirect_to path, notice: t('flash.forum_posts.create')
+  end
+
+  def respond_to_creation_error
+    @forum_posts = @topic.forum_posts.order(
+      created_at: :asc).page(params[:page])
+    render(template: 'topics/show')
   end
 end

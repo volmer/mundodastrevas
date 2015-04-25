@@ -12,12 +12,10 @@ module Users
 
     def complete(provider)
       @provider = provider
-      logger.info "Attempting user registration through #{@provider}."
 
-      @user =
-        OmniauthCompletion.complete(
-          request.env['omniauth.auth'], current_user
-        )
+      @user = OmniauthCompletion.complete(
+        request.env['omniauth.auth'], current_user
+      )
 
       if @user.persisted?
         redirect_persisted_user

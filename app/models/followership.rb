@@ -10,7 +10,7 @@ class Followership < ActiveRecord::Base
   validates :followable_id, presence: true
   validate :user_and_followable_must_be_different
 
-  after_create :create_follow_activity
+  after_create :create_follow_activity, :notify_followed_user
 
   private
 
@@ -27,5 +27,14 @@ class Followership < ActiveRecord::Base
       key: 'followerships.create',
       privacy: 'public'
     )
+  end
+
+  def notify_followed_user
+    return unless followable.is_a?(User)
+    notification            = Notification.new
+    notification.user       = followable
+    notification.event      = 'new_follower'
+    notification.notifiable = self
+    notification.send!
   end
 end

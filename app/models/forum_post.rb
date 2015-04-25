@@ -15,7 +15,7 @@ class ForumPost < ActiveRecord::Base
   has_many :notifications, as: :notifiable, dependent: :destroy
   has_one :activity, as: :subject, dependent: :destroy
 
-  after_create :touch_topic_and_forum, :create_activity
+  after_create :touch_topic_and_forum, :create_activity, :notify_topic_watchers
 
   def to_s
     I18n.t('forum_posts.to_s', user: user)
@@ -34,6 +34,12 @@ class ForumPost < ActiveRecord::Base
       subject: self,
       key: 'forum_posts.create',
       privacy: 'public'
+    )
+  end
+
+  def notify_topic_watchers
+    topic.notify_watchers(
+      self, 'new_forum_post', user
     )
   end
 end

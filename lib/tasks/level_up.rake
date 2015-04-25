@@ -1,38 +1,41 @@
 namespace :mundodastrevas do
   namespace :level_up do
-    desc 'Iterate through all users and universes to check if someone can level up'
+    desc 'Check all users and universes to check if someone can level up'
     task check: :environment do
-      Universe.all.each do |universe|
-        if universe.ranks.present?
-          puts "########### #{universe} ###########"
+      Universe.each do |universe|
+        next if universe.ranks.empty?
 
-          User.all.each do |user|
-            evaluator = LevelEvaluator.new(user, universe)
+        puts "########### #{universe} ###########"
 
-            if evaluator.can_level_up?
-              current = Level.find_by(user: user, universe: universe)
-              intended = Rank.find_by(universe: universe, value: current.value + 1)
+        User.each do |user|
+          evaluator = LevelEvaluator.new(user, universe)
 
-              puts "#{user} can go from #{current.value} - #{current.rank}, earned at #{current.updated_at || current.created_at}, to #{intended.value} - #{intended}"
-            end
-          end
+          next unless evaluator.can_level_up?
+
+          current = Level.find_by(user: user, universe: universe)
+          intended = Rank.find_by(
+            universe: universe, value: current.value + 1
+          )
+
+          puts(
+            "#{user} can go from #{current.value} - #{current.rank}, "\
+            "earned at #{current.updated_at || current.created_at}, to "\
+            "#{intended.value} - #{intended}"
+          )
         end
       end
     end
 
     desc 'Level up all eligible users in all universes'
     task perform: :environment do
-      Universe.all.each do |universe|
-        if universe.ranks.present?
-          puts "########### #{universe} ###########"
+      Universe.each do |universe|
+        next if universe.ranks.empty?
 
-          User.all.each do |user|
-            level = LevelGrantor.level_up!(user, universe)
+        puts "########### #{universe} ###########"
 
-            if level
-              puts "#{user} grew to level #{level.value} - #{level.rank}"
-            end
-          end
+        User.each do |user|
+          level = LevelGrantor.level_up!(user, universe)
+          puts "#{user} grew to level #{level.value} - #{level.rank}" if level
         end
       end
     end

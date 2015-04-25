@@ -32,6 +32,14 @@ describe Comment do
       expect(activity.key).to eq('comments.create')
       expect(activity.privacy).to eq('public')
     end
+
+    it 'properly notifies the post watchers' do
+      expect(subject.post).to receive(:notify_watchers).with(
+        subject, 'new_comment', subject.user
+      )
+
+      subject.save
+    end
   end
 
   describe '#to_s' do

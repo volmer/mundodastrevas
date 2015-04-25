@@ -63,11 +63,11 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_name!(name)
-    where('LOWER(name) = ?', name.downcase).take!
+    find_by!('LOWER(name) = ?', name.downcase)
   end
 
   def self.find_by_name(name)
-    where('LOWER(name) = ?', name.downcase).take
+    find_by('LOWER(name) = ?', name.downcase)
   end
 
   def admin?
@@ -92,16 +92,16 @@ class User < ActiveRecord::Base
   end
 
   def rank_in(universe)
-    if universe
-      level = levels.find_or_initialize_by(universe: universe)
+    return if universe.blank?
 
-      if level.new_record?
-        level.value = 1
-        level.save!
-      end
+    level = levels.find_or_initialize_by(universe: universe)
 
-      level.rank
+    if level.new_record?
+      level.value = 1
+      level.save!
     end
+
+    level.rank
   end
 
   private

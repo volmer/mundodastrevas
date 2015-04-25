@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
 
     authorize(@message)
 
-    MessageCompletion.new(@message).create
+    @message.save!
 
     redirect_to user_messages_path(@user)
   end
