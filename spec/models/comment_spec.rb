@@ -10,7 +10,7 @@ describe Comment do
   it { is_expected.to have_one(:activity).class_name('Activity').dependent(:destroy) }
 
   it { is_expected.to validate_presence_of(:content) }
-  it { is_expected.to ensure_length_of(:content).is_at_most(6_000) }
+  it { is_expected.to validate_length_of(:content).is_at_most(6_000) }
 
   it { is_expected.to validate_presence_of(:user_id) }
   it { is_expected.to validate_presence_of(:post_id) }

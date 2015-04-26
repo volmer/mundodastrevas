@@ -10,14 +10,14 @@ describe Post do
   it { is_expected.to have_one(:activity).class_name('Activity').dependent(:destroy) }
 
   it { is_expected.to validate_presence_of(:name) }
-  it { is_expected.to ensure_length_of(:name).is_at_most(100) }
+  it { is_expected.to validate_length_of(:name).is_at_most(100) }
 
   it { is_expected.to validate_presence_of(:content) }
-  it { is_expected.to ensure_length_of(:content).is_at_most(66_000) }
+  it { is_expected.to validate_length_of(:content).is_at_most(66_000) }
 
   it { is_expected.to validate_presence_of(:slug) }
   it { is_expected.to validate_uniqueness_of(:slug).case_insensitive }
-  it { is_expected.to ensure_length_of(:slug).is_at_least(3).is_at_most(100) }
+  it { is_expected.to validate_length_of(:slug).is_at_least(3).is_at_most(100) }
   it { is_expected.to allow_value('game').for(:slug) }
   it { is_expected.to allow_value('ga-me').for(:slug) }
   it { is_expected.to allow_value('GAME').for(:slug) }

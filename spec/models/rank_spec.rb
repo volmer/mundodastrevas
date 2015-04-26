@@ -12,8 +12,8 @@ describe Rank do
   it { is_expected.to validate_uniqueness_of(:value).scoped_to(:universe_id) }
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:description) }
-  it { is_expected.to ensure_length_of(:name).is_at_most(100) }
-  it { is_expected.to ensure_length_of(:description).is_at_most(300) }
+  it { is_expected.to validate_length_of(:name).is_at_most(100) }
+  it { is_expected.to validate_length_of(:description).is_at_most(300) }
 
   describe '#to_s' do
     it 'returns its name' do
