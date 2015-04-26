@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   skip_after_action :verify_authorized, only: [:index]
 
   def index
-    @featured_posts = featured_zines
+    @featured_posts = featured_posts
     @recent_posts = recent_posts
     @forum_topics = forum_topics
     @universes = Universe.order(name: :asc)
