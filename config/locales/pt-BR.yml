@@ -34,17 +34,17 @@ pt-BR:
     new_comment: '%{user} comentou em %{post}.'
     new_forum_post: '%{user} postou em %{topic}.'
   mailers:
-    new_rank:
-      subject: 'Parabéns, agora você é um %{rank}!'
-    new_comment:
-      subject: 'Novo comentário em %{post}'
-    new_forum_post:
-      subject: 'Nova postagem em %{topic}'
     notification:
+      new_comment:
+        subject: 'Novo comentário em %{post}'
       new_follower:
         subject: '%{user} começou a te seguir!'
+      new_forum_post:
+        subject: 'Nova postagem em %{topic}'
       new_message:
         subject: '%{user} te enviou uma mensagem'
+      new_rank:
+        subject: 'Parabéns, agora você é um %{rank}!'
     contact:
       subject: 'Novo contato de %{name}'
   views:

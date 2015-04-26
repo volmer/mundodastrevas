@@ -32,12 +32,4 @@ describe Notifications::NewMessageDecorator, type: :decorator do
       expect(subject).to eq('volmer te enviou uma mensagem')
     end
   end
-
-  describe '#mailer_template' do
-    subject { presenter.mailer_template }
-
-    it 'returns new_message' do
-      expect(subject).to eq('new_message')
-    end
-  end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe NewCommentDecorator, type: :decorator do
+describe Notifications::NewCommentDecorator, type: :decorator do
   let(:user) { create(:user, name: 'khaldrogo') }
   let(:comment) { create(:comment, user: user, post: post) }
   let(:post) { create(:post, name: 'The Dothraki Sea', slug: 'the-dothraki-sea') }
@@ -26,12 +26,6 @@ describe NewCommentDecorator, type: :decorator do
     it 'returns the proper text' do
       expect(subject.mailer_subject)
         .to eq('Novo comentário em The Dothraki Sea')
-    end
-  end
-
-  describe '#mailer_template' do
-    it 'returns new_comment' do
-      expect(subject.mailer_template).to eq('new_comment')
     end
   end
 end

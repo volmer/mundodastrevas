@@ -1,8 +1,5 @@
 class ContactMailer < ActionMailer::Base
-  helper 'application'
-  layout 'mailer'
-  default from: "#{ Rails.application.config.app_name } "\
-    "<#{ Rails.application.config.default_from }>"
+  include MailerConcern
 
   def contact_email(contact)
     @contact = contact

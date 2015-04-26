@@ -32,12 +32,4 @@ describe Notifications::NewFollowerDecorator, type: :decorator do
       expect(subject).to eq('volmer começou a te seguir!')
     end
   end
-
-  describe '#mailer_template' do
-    subject { presenter.mailer_template }
-
-    it 'returns new_message' do
-      expect(subject).to eq('new_follower')
-    end
-  end
 end

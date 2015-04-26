@@ -1,15 +1,11 @@
 require 'rails_helper'
 
 describe Notifications do
-  describe '.decorators_mapping' do
-    subject { described_class.decorators_mapping }
-
-    it 'includes decorator for :new_follower' do
-      expect(subject[:new_follower]).to eq('Notifications::NewFollowerDecorator')
-    end
-
-    it 'includes decorator for :new_message' do
-      expect(subject[:new_message]).to eq('Notifications::NewMessageDecorator')
+  describe '.events' do
+    it 'is a list of valid events' do
+      expect(described_class.events).to eq(
+        %w(new_comment new_follower new_forum_post new_message new_rank)
+      )
     end
   end
 

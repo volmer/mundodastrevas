@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe NewForumPostDecorator, type: :decorator do
+describe Notifications::NewForumPostDecorator, type: :decorator do
   let(:user) { create(:user, name: 'khaldrogo') }
 
   let(:forum_post) { create(:forum_post, user: user, topic: topic) }
@@ -38,14 +38,6 @@ describe NewForumPostDecorator, type: :decorator do
 
     it 'returns the proper text' do
       expect(subject).to eq('Nova postagem em The Dothraki Sea')
-    end
-  end
-
-  describe '#mailer_template' do
-    subject { presenter.mailer_template }
-
-    it 'returns new_forum_post' do
-      expect(subject).to eq('new_forum_post')
     end
   end
 end

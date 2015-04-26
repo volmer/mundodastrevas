@@ -4,13 +4,14 @@ module Notifications
       user_path(notifiable.user)
     end
 
-    def text
-      render 'notifications/new_follower', user: notifiable.user
+    private
+
+    def text_locals
+      { user: notifiable.user }
     end
 
-    def mailer_subject
-      I18n.t 'mailers.notification.new_follower.subject',
-             user: notifiable.user
+    def mailer_subject_params
+      { user: notifiable.user }
     end
   end
 end

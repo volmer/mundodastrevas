@@ -9,15 +9,21 @@ module Notifications
     end
 
     def text
-      fail 'Not yet implemented'
+      render("notifications/#{event}", text_locals)
     end
 
     def mailer_subject
-      fail 'Not yet implemented'
+      t("mailers.notification.#{event}.subject", mailer_subject_params)
     end
 
-    def mailer_template
-      event
+    protected
+
+    def text_locals
+      {}
+    end
+
+    def mailer_subject_params
+      {}
     end
   end
 end

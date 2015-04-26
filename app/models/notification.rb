@@ -4,9 +4,7 @@ class Notification < ActiveRecord::Base
 
   validates :event,
             presence: true,
-            inclusion: { in: lambda do |_|
-              Notifications.decorators_mapping.keys.map(&:to_s)
-            end }
+            inclusion: { in: Notifications.events }
   validates :user_id, presence: true
   validates :notifiable_id, presence: true
 

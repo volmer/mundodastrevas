@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe NewRankDecorator, type: :decorator do
+describe Notifications::NewRankDecorator, type: :decorator do
   let(:rank) { create(:rank, universe: universe, name: 'Ancila') }
   let(:universe) { create(:universe, name: 'Vampire: the Requiem', slug: 'vampire') }
   let(:notification) { build(:notification, notifiable: rank) }
@@ -27,14 +27,6 @@ describe NewRankDecorator, type: :decorator do
 
     it 'returns the proper text' do
       expect(subject).to eq('Parabéns, agora você é um Ancila!')
-    end
-  end
-
-  describe '#mailer_template' do
-    subject { presenter.mailer_template }
-
-    it 'returns new_rank' do
-      expect(subject).to eq('new_rank')
     end
   end
 end

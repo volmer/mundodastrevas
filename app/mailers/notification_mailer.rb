@@ -1,8 +1,5 @@
 class NotificationMailer < ActionMailer::Base
-  helper 'application'
-  layout 'mailer'
-  default from: "#{ Rails.application.config.app_name } "\
-    "<#{ Rails.application.config.default_from }>"
+  include MailerConcern
 
   def notify(notification)
     @notification = notification
@@ -14,7 +11,7 @@ class NotificationMailer < ActionMailer::Base
     mail(
       to: "#{ @user } <#{ @user.email }>",
       subject: decorator.mailer_subject,
-      template_name: decorator.mailer_template
+      template_name: @notification.event
     )
   end
 end

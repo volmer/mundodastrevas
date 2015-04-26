@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   end
 
   cattr_accessor(:email_preferences_keys) do
-    Notifications.decorators_mapping.keys.map(&:to_s)
+    Notifications.events
   end
 
   def self.find_by_name!(name)

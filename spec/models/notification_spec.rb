@@ -8,12 +8,13 @@ describe Notification do
   it { is_expected.to validate_presence_of(:notifiable_id) }
   it { is_expected.to validate_presence_of(:user_id) }
 
-  it 'validates inlcusion of event according to the decorators mapping' do
-    Notifications.decorators_mapping[:valid_event] = 'decorator'
-    subject.event = 'valid_event'
-    subject.valid?
+  it 'validates inlcusion of events' do
+    Notifications.events.each do |event|
+      subject.event = event
+      subject.valid?
 
-    expect(subject.errors[:event].size).to eq(0)
+      expect(subject.errors[:event].size).to eq(0)
+    end
 
     subject.event = 'invalid_event'
     subject.valid?
