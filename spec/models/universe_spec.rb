@@ -45,7 +45,7 @@ describe Universe do
 
   describe '#image' do
     it 'is an uploader field' do
-      expect(subject.image).to be_an_instance_of(UniverseImageUploader)
+      expect(subject.image).to be_an_instance_of(ImageUploader)
     end
   end
 

@@ -53,7 +53,7 @@ describe User do
 
   describe '#avatar' do
     it 'is an uploader field' do
-      expect(subject.avatar).to be_an_instance_of(AvatarUploader)
+      expect(subject.avatar).to be_an_instance_of(ImageUploader)
     end
   end
 

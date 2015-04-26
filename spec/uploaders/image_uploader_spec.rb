@@ -6,7 +6,8 @@ describe ImageUploader do
 
   before(:all) do
     described_class.enable_processing = true
-    @uploader = described_class.new(build(:zine), :image)
+    @user = create(:user)
+    @uploader = described_class.new(@user, :avatar)
     @uploader.store!(File.open(Rails.root.to_s + '/spec/fixtures/image.jpg'))
   end
 
@@ -18,6 +19,12 @@ describe ImageUploader do
   context 'the original version' do
     it 'scales down a landscape image to fit within 760 by 1160 pixels' do
       expect(@uploader).to be_no_larger_than(760, 1160)
+    end
+  end
+
+  context 'the medium version' do
+    it 'has the exact dimensions 360 by 360 pixels' do
+      expect(@uploader.medium).to have_dimensions(360, 360)
     end
   end
 
@@ -33,16 +40,39 @@ describe ImageUploader do
     end
   end
 
-  it 'is an Image Uploader' do
-    expect(@uploader).to be_a(RaddarImageUploader)
+  it 'makes the image readable and not executable' do
+    expect(@uploader).to have_permissions(0666)
   end
 
   describe '#default_url' do
-    subject { described_class.new(build(:user), :avatar) }
-
     it 'returns the proper fallback image' do
-      expect(subject.thumb.url).to include('fallback/user/thumb.png')
+      expect(@uploader.default_url).to eq('/assets/fallback/user/original.png')
+    end
+  end
+
+  describe '#store_dir' do
+    it 'properly stores uploads according to the model class and id' do
+      expect(@uploader.store_dir).to eq("uploads/user/#{@user.id}/avatar")
+    end
+  end
+
+  describe '#extension_white_list' do
+    subject { @uploader.extension_white_list }
+
+    it 'includes png' do
+      expect(subject).to include('png')
+    end
+
+    it 'includes jpg' do
+      expect(subject).to include('jpg')
+    end
+
+    it 'includes gif' do
+      expect(subject).to include('gif')
+    end
+
+    it 'includes jpeg' do
+      expect(subject).to include('jpeg')
     end
   end
 end
-

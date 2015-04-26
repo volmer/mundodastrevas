@@ -1,7 +1,7 @@
 class Universe < ActiveRecord::Base
   include Bootsy::Container
 
-  mount_uploader :image, UniverseImageUploader
+  mount_uploader :image, ImageUploader
 
   has_many :forums, dependent: :nullify
   has_many :zines, dependent: :nullify

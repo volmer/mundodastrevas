@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
            class_name: 'Activity',
            dependent: :destroy
 
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, ImageUploader
 
   validates :name,
             presence: true,
