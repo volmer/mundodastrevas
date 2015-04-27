@@ -45,42 +45,49 @@
     </div>
 
     <div class="col-sm-6 col-md-12">
+      <section class="panel panel-default new-levels">
+        <div class="panel-heading">
+          <h1 class="panel-title">Level up!</h1>
+        </div>
+
+        <div class="list-group">
+          <% @new_levels.each do |level| %>
+            <% if level.rank %>
+              <%= link_to level.user, class: 'list-group-item clearfix' do %>
+                <div class="level-image">
+                  <%= image_tag level.user.avatar.thumb.url, class: 'img-rounded' %>
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </div>
+                <div class="level-user">
+                  <strong><%= level.user %></strong>
+                  agora é
+                  <strong><%= level.rank %></strong>
+                  <div class="level-universe"><%= level.universe %></div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </section>
+
       <section class="panel panel-default">
         <div class="panel-heading">
           <h1 class="panel-title">Parceiros</h1>
         </div>
 
         <div class="list-group">
-          <%= link_to 'Instinct Alternative', 'http://instinctalternative.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
-
           <%= link_to 'Livro dos Espelhos', 'http://livrodosespelhos.com/', target: '_blank', class: 'list-group-item' %>
 
           <%= link_to 'Minas Morgul', 'http://www.minasmorgul.com.br/', target: '_blank', class: 'list-group-item' %>
 
           <%= link_to 'Rádio Budega', ' http://radio-budega.blogspot.com.br/', target: '_blank', class: 'list-group-item' %>
 
-          <%= link_to 'RPG Blogs', 'http://www.rpg.net.br/blogs/', target: '_blank', class: 'list-group-item' %>
-
           <%= link_to 'RRPG FireCast', 'http://rrpg.com.br/', target: '_blank', class: 'list-group-item' %>
-
-          <%= link_to 'RPG Online', 'http://rpgonline.com.br/', target: '_blank', class: 'list-group-item' %>
 
           <%= link_to 'RPG Pará', 'http://www.rpgpara.com/', target: '_blank', class: 'list-group-item' %>
 
           <%= link_to 'Taberna do Dragão', 'http://www.tabernadodragao.com.br/', target: '_blank', class: 'list-group-item' %>
         </div>
-      </section>
-
-      <section class="ads">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- First banner -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:260px;height:280px"
-             data-ad-client="ca-pub-9497859715792057"
-             data-ad-slot="2800063727"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
       </section>
     </div>
   </div>

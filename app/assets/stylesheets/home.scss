@@ -119,3 +119,32 @@ section.featured-zine {
     opacity: 1;
   }
 }
+
+section.new-levels {
+  .level-image {
+    float: left;
+  }
+
+  img {
+    width: 30px;
+  }
+
+  .glyphicon {
+    position: relative;
+    z-index: 2;
+    left: -10px;
+    top: 10px;
+    color: #ddc735;
+    text-shadow: -1px 1px 2px
+  }
+
+  .level-user {
+    overflow: auto;
+  }
+
+  .level-universe {
+    font-style: italic;
+    font-size: 11px;
+    color: #777;
+  }
+}

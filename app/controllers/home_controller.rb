@@ -9,6 +9,7 @@ class HomeController < ApplicationController
     @comments = comments
     @featured_zine = Zine.find_by(id: Setting[:featured_zine])
     @new_members = new_members
+    @new_levels = new_levels
   end
 
   private
@@ -43,5 +44,9 @@ class HomeController < ApplicationController
     User.where.not(confirmed_at: nil).order(
       created_at: :desc
     ).limit(6)
+  end
+
+  def new_levels
+    Level.where('value > 1').order(updated_at: :desc).limit(5)
   end
 end
