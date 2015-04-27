@@ -70,7 +70,7 @@ Mundodastrevas::Application.configure do
     port:            '587',
     authentication:  :plain,
     user_name:       'mundodastrevas',
-    password:        'mentecapto12',
+    password:        'jtBWLaxc6vu^QVAm,y3Mqr6BWqLTidLYf7BfsXNC',
     domain:          'mundodastrevas.com'
   }
 
