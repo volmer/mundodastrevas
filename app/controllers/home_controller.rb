@@ -47,6 +47,7 @@ class HomeController < ApplicationController
   end
 
   def new_levels
-    Level.where('value > 1').order(updated_at: :desc).limit(5)
+    Level.where.not(updated_at: nil).where('value > 1').order(
+      updated_at: :desc).limit(5)
   end
 end
