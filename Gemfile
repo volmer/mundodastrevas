@@ -26,6 +26,7 @@ gem 'rails_autolink'
 gem 'recaptcha'
 gem 'simple_form'
 gem 'devise-encryptable'
+gem 'rubocop'
 
 group :development do
   gem 'capistrano-rails'
@@ -39,7 +40,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'pry-rails'
-  gem 'rubocop'
 end
 
 group :test do
