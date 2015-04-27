@@ -42,7 +42,7 @@ set :bundle_flags, '--deployment'
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:restart'
+    invoke 'unicorn:reload'
 
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
