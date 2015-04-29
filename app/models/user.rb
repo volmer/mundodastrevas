@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   NAME_FORMAT = /\A[\w-]+\z/
   NAME_RANGE  = 3..16
+  PRIVATE_ATTRIBUTES = %w(email gender location birthday)
 
   multisearchable against: [:name]
 
@@ -54,10 +55,6 @@ class User < ActiveRecord::Base
   after_create :create_sign_up_activity
   after_update :update_activities
 
-  cattr_accessor(:privaciable_fields) do
-    [:email, :gender, :location, :birthday]
-  end
-
   cattr_accessor(:email_preferences_keys) do
     Notifications.events
   end
@@ -75,8 +72,7 @@ class User < ActiveRecord::Base
   end
 
   def privacy_keys
-    account_keys = external_accounts.map(&:provider)
-    @@privaciable_fields + account_keys
+    PRIVATE_ATTRIBUTES + external_accounts.map(&:provider)
   end
 
   def to_s

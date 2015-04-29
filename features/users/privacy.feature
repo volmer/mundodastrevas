@@ -16,6 +16,7 @@ Feature: Privacy settings
     And I click on "Salvar"
     Then I am redirected to the edit user privacy page
     And I see the info message "Suas preferências foram atualizadas."
+    And the select "<field>" is set to "Público"
     And I can see my "<field>"
     And the user "volmer" can see my "<field>"
 
@@ -32,6 +33,7 @@ Feature: Privacy settings
     And I click on "Salvar"
     Then I am redirected to the edit user privacy page
     And I see the info message "Suas preferências foram atualizadas."
+    And the select "<field>" is set to "Somente eu"
     And I can see my "<field>"
     And the user "volmer" cannot see my "<field>"
 

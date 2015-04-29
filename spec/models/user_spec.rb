@@ -69,32 +69,6 @@ describe User do
     end
   end
 
-  describe '.privaciable_fields' do
-    it 'contains :email' do
-      expect(described_class.privaciable_fields).to include(:email)
-    end
-
-    it 'contains :gender' do
-      expect(described_class.privaciable_fields).to include(:gender)
-    end
-
-    it 'contains :birthday' do
-      expect(described_class.privaciable_fields).to include(:birthday)
-    end
-
-    it 'contains :location' do
-      expect(described_class.privaciable_fields).to include(:location)
-    end
-
-    it 'does not contain :name' do
-      expect(described_class.privaciable_fields).not_to include(:name)
-    end
-
-    it 'does not contain :avatar' do
-      expect(described_class.privaciable_fields).not_to include(:avatar)
-    end
-  end
-
   describe '#admin?' do
     context 'when it has the admin role' do
       subject { create :admin }
@@ -167,8 +141,10 @@ describe User do
   end
 
   describe '#privacy_keys' do
-    it 'returns an array including the privaciable fields' do
-      expect(subject.privacy_keys).to include(*described_class.privaciable_fields)
+    it 'returns an array of private attributes' do
+      expect(subject.privacy_keys).to eq(
+        %w(email gender location birthday)
+      )
     end
 
     context 'when the user has an external account' do
