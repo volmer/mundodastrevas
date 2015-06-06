@@ -15,7 +15,7 @@ module NotificationsHelper
     link_to(
       text,
       notification,
-      class: "notification #{ unread_class }",
+      class: "notification #{unread_class}",
       data: { id: notification.id }
     )
   end

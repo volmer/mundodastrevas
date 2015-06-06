@@ -15,7 +15,7 @@ class OmniauthCompletion
       apply_general_params(auth_data, user)
     end
 
-    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:disable Metrics/MethodLength
     def build_account(auth_data, user)
       ExternalAccount.new(
         user:     user,
@@ -49,9 +49,7 @@ class OmniauthCompletion
 
     def confirm_and_save(user)
       return unless user.valid?
-
-      user.confirm! if user.new_record?
-
+      user.confirm if user.new_record?
       user.save
     end
 

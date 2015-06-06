@@ -22,7 +22,7 @@ module FollowershipsHelper
 
   def followers_count(followable)
     href = send(
-      "#{ followable.class.model_name.param_key }_followers_path", followable
+      "#{followable.class.model_name.param_key}_followers_path", followable
     )
     count = followable.followers.count
     content =

@@ -15,8 +15,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def default_url
     ActionController::Base.helpers.asset_path(
-      "fallback/#{ model.class.model_name.param_key }/"\
-      "#{ version_name || 'original' }.png"
+      "fallback/#{model.class.model_name.param_key}/"\
+      "#{version_name || 'original'}.png"
     )
   end
 

@@ -9,7 +9,7 @@ class NotificationMailer < ActionMailer::Base
     decorator = Notifications.decorator_for(notification)
 
     mail(
-      to: "#{ @user } <#{ @user.email }>",
+      to: "#{@user} <#{@user.email}>",
       subject: decorator.mailer_subject,
       template_name: @notification.event
     )

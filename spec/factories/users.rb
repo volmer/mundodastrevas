@@ -1,5 +1,3 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :user do
     sequence :name do |n|
@@ -10,7 +8,7 @@ FactoryGirl.define do
     password '12345678'
     state 'active'
 
-    before(:create) { |user| user.confirm! }
+    before(:create) { |user| user.confirm }
 
     factory :admin do
       after(:create) do |user, _|

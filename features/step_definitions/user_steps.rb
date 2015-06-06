@@ -42,7 +42,7 @@ Given(/^my email address is "(.*?)"$/) do |email|
   @user.email = email
   @user.skip_confirmation_notification!
   @user.save!
-  @user.confirm!
+  @user.confirm
 end
 
 Given(/^(.*?) has an unconfirmed email "(.*?)"$/) do |user_name, email|
@@ -95,7 +95,7 @@ end
 
 When(/^I confirm my registration$/) do
   user = User.last
-  user.confirm!
+  user.confirm
   user.save!
 end
 
