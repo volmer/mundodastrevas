@@ -1,6 +1,6 @@
 module Users
   class PasswordsController < Devise::PasswordsController
-    prepend_before_filter :require_no_authentication,
+    prepend_before_action :require_no_authentication,
                           except: [:change, :do_change]
 
     def change

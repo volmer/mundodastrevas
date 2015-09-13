@@ -1,7 +1,7 @@
 module ActivitiesHelper
   def activity_content(activity)
     render(
-      'activities/' + activity.key.gsub('.', '/'), activity: activity
+      'activities/' + activity.key.tr('.', '/'), activity: activity
     )
   end
 end
