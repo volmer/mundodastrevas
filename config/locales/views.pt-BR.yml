@@ -76,6 +76,8 @@ pt-BR:
       message: 'Mensagem'
       edit: 'Editar perfil'
       member_since: 'Membro desde'
+      zines: 'Zines'
+      all_zines: 'Ver todos'
     privacies:
       edit:
         title: 'Opções de privacidade'
@@ -123,9 +125,6 @@ pt-BR:
         sign_in: 'Já tem uma conta? Entre aqui'
         forgot_password: 'Esqueceu sua senha?'
         resend_confirmation: 'Não recebeu instruções de confirmação?'
-    add_on:
-      title: 'Zines'
-      all_zines: 'Ver todos'
   notifications:
     index:
       title: 'Notificações'

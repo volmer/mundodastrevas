@@ -29,4 +29,6 @@ Mundodastrevas::Application.configure do
 
   # Mailcatcher
   config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
+
+  config.action_view.raise_on_missing_translations = true
 end
