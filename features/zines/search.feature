@@ -9,14 +9,14 @@ Feature: Search zine
 
   Scenario: Query a term through zine names
     Given there is a zine called "A Feast of Crows"
-    When I fill in "query" with "crow"
-    And I press enter in "query"
+    When I fill in "q" with "crow"
+    And I press enter in "q"
     Then I see the link "A Feast of Crows"
 
   Scenario: Find a term in a zine description
     Given there is a zine with the given attributes:
       | name              | description |
       | A Game of Thrones | Why, ned?   |
-    When I fill in "query" with "ned"
-    And I press enter in "query"
+    When I fill in "q" with "ned"
+    And I press enter in "q"
     And I see the link "A Game of Thrones"

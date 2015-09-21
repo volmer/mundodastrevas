@@ -1,13 +1,11 @@
 class User < ActiveRecord::Base
-  include PgSearch
+  include Searchable
   include Followable
   include DeviseConcern
 
   NAME_FORMAT = /\A[\w-]+\z/
   NAME_RANGE  = 3..16
   PRIVATE_ATTRIBUTES = %w(email gender location birthday)
-
-  multisearchable against: [:name]
 
   store_accessor :privacy
   store_accessor :email_preferences
@@ -98,6 +96,10 @@ class User < ActiveRecord::Base
     end
 
     level.rank
+  end
+
+  def as_indexed_json(*)
+    as_json(only: [:name])
   end
 
   private

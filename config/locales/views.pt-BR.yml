@@ -3,8 +3,6 @@ pt-BR:
     mailer:
       automatic: 'Este é um email automático. Por favor não responda para este endereço.'
       contact: 'Clique aqui para falar conosco'
-    search:
-      submit: 'Pesquisar'
   admin:
     home:
       index:
@@ -148,8 +146,9 @@ pt-BR:
       title: 'Seguindo %{followable}'
   searches:
     show:
-      title_html: 'Pesquisa por <em>%{q}</em>'
-      title: 'Pesquisa por %{q}'
+      placeholder: 'Pesquisar por...'
+      title: 'Pesquisa'
+      title_with_query: 'Pesquisa por %{q}'
       empty: 'Nenhum resultado encontrado.'
   tags:
     show:

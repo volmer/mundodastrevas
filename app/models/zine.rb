@@ -1,8 +1,6 @@
 class Zine < ActiveRecord::Base
-  include PgSearch
+  include Searchable
   include Bootsy::Container
-
-  multisearchable against: [:name, :description]
 
   belongs_to :user
   belongs_to :universe
@@ -36,6 +34,10 @@ class Zine < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def as_indexed_json(*)
+    as_json(only: [:name, :description])
   end
 
   private

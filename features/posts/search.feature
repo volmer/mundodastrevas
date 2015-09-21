@@ -9,14 +9,14 @@ Feature: Search posts
 
   Scenario: Query a term through post names
     Given there is a post called "Brienne"
-    When I fill in "query" with "brienne"
-    And I press enter in "query"
+    When I fill in "q" with "brienne"
+    And I press enter in "q"
     Then I see the link "Brienne"
 
   Scenario: Find a term in a post content
     Given there is a post with the given attributes:
       | name | content     |
       | Arya | Why, ned?   |
-    When I fill in "query" with "ned"
-    And I press enter in "query"
+    When I fill in "q" with "ned"
+    And I press enter in "q"
     And I see the link "Arya"

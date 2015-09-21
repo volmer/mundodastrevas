@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  include PgSearch
+  include Searchable
   include Watchable
   include Taggable
 
@@ -9,8 +9,6 @@ class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :reviews, as: :reviewable, dependent: :destroy
   has_one :activity, as: :subject, dependent: :destroy
-
-  multisearchable against: [:name, :content]
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :content, presence: true, length: { maximum: 66_000 }
@@ -34,6 +32,10 @@ class Post < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def as_indexed_json(*)
+    as_json(only: [:name, :content])
   end
 
   protected

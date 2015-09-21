@@ -1,21 +1,28 @@
-<% content_for :page_title, t('.title', q: params[:query]) %>
+<% content_for :page_title, t(params[:q].present? ? '.title_with_query' : '.title', q: params[:q]) %>
 
-<div class="page-header">
-  <h1><%= t '.title_html', q: params[:query] %></h1>
-</div>
-
-<% if @results.present? %>
-  <ul class="list-unstyled">
-    <% @results.each do |result| %>
-      <li class="search-result">
-        <%= render "searches/#{result.searchable.class.name.underscore}", searchable: result.searchable %>
-      </li>
+<div class="search-page">
+  <%= form_tag(search_path, class: 'form-inline', role: 'search', method: :get) do %>
+    <div class="form-group">
+      <%= text_field_tag :q, params[:q], class: 'form-control input-lg', placeholder: t('.placeholder'), autofocus: true %>
+    </div>
+    <%= button_tag class: 'btn btn-primary btn-lg' do %>
+      <span class="glyphicon glyphicon-search"></span>
     <% end %>
-  </ul>
+  <% end %>
 
-  <%= paginate @results %>
-<% else %>
-  <div class="alert alert-info">
-    <%= t '.empty' %>
-  </div>
-<% end %>
+  <% if params[:q].present? %>
+    <% if @results.present? %>
+      <ul class="list-unstyled">
+        <% @results.each do |result| %>
+          <li class="search-result">
+            <%= render "searches/#{result.class.name.underscore}", searchable: result %>
+          </li>
+        <% end %>
+      </ul>
+
+      <%= paginate @results %>
+    <% else %>
+      <p class="text-info"><%= t '.empty' %></p>
+    <% end %>
+  <% end %>
+</div>

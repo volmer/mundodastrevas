@@ -1,8 +1,4 @@
 class ForumPost < ActiveRecord::Base
-  include PgSearch
-
-  multisearchable against: [:content]
-
   validates :content, presence: true, length: { maximum: 6_000 }
   validates :topic, presence: true
   validates :user_id, presence: true

@@ -11,8 +11,8 @@ Feature: Search
     Given there is a topic called "I want to kill a Lannister" in the "Lannister haters" forum
     And there is a forum post "I just don't know with whom I should start." in the "I want to kill a Lannister" topic
     And there is a forum post "Cersei Lannister?" in the "I want to kill a Lannister" topic
-    When I fill in "query" with "lannister"
-    And I press enter in "query"
+    When I fill in "q" with "lannister"
+    And I press enter in "q"
     Then I see the link "Lannister haters"
     And I see the link "I want to kill a Lannister"
     And I see "I just don't know with whom I should start." on the page
@@ -22,6 +22,6 @@ Feature: Search
     Given there is a forum with the given attributes:
       | name          | description                         |
       | The Gathering | Reunion of the High Wizards of Myr. |
-    When I fill in "query" with "myr"
-    And I press enter in "query"
+    When I fill in "q" with "myr"
+    And I press enter in "q"
     And I see the link "The Gathering"

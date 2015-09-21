@@ -1,7 +1,5 @@
 class Forum < ActiveRecord::Base
-  include PgSearch
-
-  multisearchable against: [:name, :description]
+  include Searchable
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 500 }
@@ -24,5 +22,9 @@ class Forum < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def as_indexed_json(*)
+    as_json(only: [:name, :description])
   end
 end

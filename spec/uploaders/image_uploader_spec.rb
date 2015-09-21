@@ -5,6 +5,7 @@ describe ImageUploader do
   include CarrierWave::Test::Matchers
 
   before(:all) do
+    WebMock.disable!
     described_class.enable_processing = true
     @user = create(:user)
     @uploader = described_class.new(@user, :avatar)
@@ -12,6 +13,7 @@ describe ImageUploader do
   end
 
   after(:all) do
+    WebMock.enable!
     described_class.enable_processing = false
     @uploader.remove!
   end
