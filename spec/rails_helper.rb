@@ -4,7 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'webmock/rspec'
 
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!
 Rails.application.config.active_job.queue_adapter = :test
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -27,7 +27,7 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation if example.metadata[:js]
   end
 
-  config.after(:each) do |example|
+  config.around(:each) do |example|
     DatabaseCleaner.cleaning do
       example.run
     end

@@ -46,7 +46,7 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 2.47.1'
   gem 'webmock', require: false
 end
 
