@@ -3,30 +3,25 @@ require 'rails_helper'
 describe Post do
   subject { build(:post) }
 
-  it { is_expected.to belong_to(:zine) }
-  it { is_expected.to belong_to(:user) }
-  it { is_expected.to have_many(:comments) }
-  it { is_expected.to have_many(:reviews).class_name('Review').dependent(:destroy) }
-  it { is_expected.to have_one(:activity).class_name('Activity').dependent(:destroy) }
+  it 'validates slug' do
+    subject.slug = 'oath'
+    expect(subject).to be_valid
 
-  it { is_expected.to validate_presence_of(:name) }
-  it { is_expected.to validate_length_of(:name).is_at_most(100) }
+    subject.slug = 'nights-watch-oath'
+    expect(subject).to be_valid
 
-  it { is_expected.to validate_presence_of(:content) }
-  it { is_expected.to validate_length_of(:content).is_at_most(66_000) }
+    subject.slug = 'NIGHTS-WATCH-OATH'
+    expect(subject).to be_valid
 
-  it { is_expected.to validate_presence_of(:slug) }
-  it { is_expected.to validate_uniqueness_of(:slug).case_insensitive }
-  it { is_expected.to validate_length_of(:slug).is_at_least(3).is_at_most(100) }
-  it { is_expected.to allow_value('game').for(:slug) }
-  it { is_expected.to allow_value('ga-me').for(:slug) }
-  it { is_expected.to allow_value('GAME').for(:slug) }
-  it { is_expected.to allow_value('game123').for(:slug) }
-  it { is_expected.not_to allow_value('ga_me').for(:slug) }
-  it { is_expected.not_to allow_value('game!').for(:slug) }
+    subject.slug = 'OATH123'
+    expect(subject).to be_valid
 
-  it { is_expected.to validate_presence_of(:zine_id) }
-  it { is_expected.to validate_presence_of(:user_id) }
+    subject.slug = 'nights_watch_oath'
+    expect(subject).not_to be_valid
+
+    subject.slug = 'oath!'
+    expect(subject).not_to be_valid
+  end
 
   it 'is watchable' do
     expect(subject).to be_a_kind_of(Watchable)

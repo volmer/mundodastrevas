@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 describe Tag do
-  it { should have_many(:taggings).dependent(:destroy) }
-
-  it { should validate_presence_of(:name) }
-  it { should validate_length_of(:name).is_at_most(100) }
-  it { should validate_uniqueness_of(:name).case_insensitive }
-
   describe '#to_param' do
     it 'returns its name' do
       subject.name = 'A Song of Ice and Fire'

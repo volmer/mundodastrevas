@@ -21,8 +21,7 @@ module Admin
       authorize(@forum)
 
       if @forum.save
-        redirect_to url_for(@forum),
-                    notice: t('flash.forums.create')
+        redirect_to url_for(@forum), notice: t('flash.forums.create')
       else
         render action: 'new'
       end
@@ -30,8 +29,7 @@ module Admin
 
     def update
       if @forum.update(forum_params)
-        redirect_to url_for(@forum),
-                    notice: t('flash.forums.update')
+        redirect_to url_for(@forum), notice: t('flash.forums.update')
       else
         render action: 'edit'
       end
@@ -39,8 +37,7 @@ module Admin
 
     def destroy
       @forum.destroy
-      redirect_to admin_forums_path,
-                  notice: t('flash.forums.destroy')
+      redirect_to admin_forums_path, notice: t('flash.forums.destroy')
     end
 
     def self.policy_class

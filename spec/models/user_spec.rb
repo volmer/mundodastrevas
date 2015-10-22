@@ -5,50 +5,27 @@ describe User do
 
   it { is_expected.to be_a(Followable) }
 
-  it 'uses devise-encryptable' do
-    expect(subject.devise_modules).to include(:encryptable)
-  end
+  it 'validates name' do
+    subject.name = 'volmaire'
+    expect(subject).to be_valid
 
-  describe 'validations' do
-    it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
-    it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(16) }
+    subject.name = 'vol_maire'
+    expect(subject).to be_valid
 
-    it { is_expected.to allow_value('volmer').for(:name) }
-    it { is_expected.to allow_value('vol_mer').for(:name) }
-    it { is_expected.to allow_value('VOLMER').for(:name) }
-    it { is_expected.to allow_value('vol-mer').for(:name) }
-    it { is_expected.to allow_value('volmer123').for(:name) }
-    it { is_expected.not_to allow_value('volmer!').for(:name) }
-    it { is_expected.not_to allow_value('vol mer').for(:name) }
+    subject.name = 'VOLMAIRE'
+    expect(subject).to be_valid
 
-    it { is_expected.to validate_inclusion_of(:state).in_array(['active', 'blocked']) }
-    it { is_expected.to validate_presence_of(:state) }
+    subject.name = 'vol-maire'
+    expect(subject).to be_valid
 
-    it { is_expected.to validate_length_of(:bio).is_at_most(500) }
-    it { is_expected.to validate_length_of(:location).is_at_most(200) }
-    it { is_expected.to validate_inclusion_of(:gender).in_array(['male', 'female']) }
-    it { is_expected.to allow_value('').for(:gender) }
-    it { is_expected.to allow_value(nil).for(:gender) }
-  end
+    subject.name = 'volmaire123'
+    expect(subject).to be_valid
 
-  describe 'associations' do
-    it { is_expected.to have_many(:followerships).dependent(:destroy) }
-    it { is_expected.to have_and_belong_to_many(:roles) }
-    it { is_expected.to have_many(:notifications).dependent(:destroy) }
-    it { is_expected.to have_many(:external_accounts).dependent(:destroy) }
-    it { is_expected.to have_many(:sent_messages).class_name('Message').dependent(:destroy) }
-    it { is_expected.to have_many(:incoming_messages).class_name('Message').dependent(:destroy) }
-    it { is_expected.to have_many(:reviews).dependent(:destroy) }
-    it { is_expected.to have_many(:watches).dependent(:destroy) }
-    it { is_expected.to have_many(:activities).dependent(:destroy) }
-    it { is_expected.to have_many(:related_activities).class_name('Activity').dependent(:destroy) }
-    it { is_expected.to have_many(:zines).class_name('Zine').dependent(:destroy) }
-    it { is_expected.to have_many(:posts).class_name('Post').dependent(:destroy) }
-    it { is_expected.to have_many(:comments).class_name('Comment').dependent(:destroy) }
-    it { is_expected.to have_many(:topics).class_name('Topic').dependent(:destroy) }
-    it { is_expected.to have_many(:forum_posts).class_name('ForumPost').dependent(:destroy) }
-    it { is_expected.to have_many(:levels).dependent(:destroy) }
+    subject.name = 'volmaire!'
+    expect(subject).not_to be_valid
+
+    subject.name = 'vol maire'
+    expect(subject).not_to be_valid
   end
 
   describe '#avatar' do

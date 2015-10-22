@@ -4,7 +4,7 @@ module NotificationsHelper
   end
 
   def last_notifications(user)
-    user.notifications.order('unread DESC, created_at DESC').limit(4)
+    user.notifications.order(unread: :desc, created_at: :desc).limit(4)
   end
 
   def link_to_notification(notification)

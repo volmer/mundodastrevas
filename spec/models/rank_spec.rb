@@ -3,18 +3,6 @@ require 'rails_helper'
 describe Rank do
   subject(:rank) { build(:rank) }
 
-  it { is_expected.to belong_to(:universe) }
-  it { is_expected.to have_many(:notifications).dependent(:destroy) }
-
-  it { is_expected.to validate_presence_of(:universe_id) }
-  it { is_expected.to validate_presence_of(:value) }
-  it { is_expected.to validate_numericality_of(:value).is_greater_than(0).only_integer }
-  it { is_expected.to validate_uniqueness_of(:value).scoped_to(:universe_id) }
-  it { is_expected.to validate_presence_of(:name) }
-  it { is_expected.to validate_presence_of(:description) }
-  it { is_expected.to validate_length_of(:name).is_at_most(100) }
-  it { is_expected.to validate_length_of(:description).is_at_most(300) }
-
   describe '#to_s' do
     it 'returns its name' do
       subject.name = 'Mortal'

@@ -3,8 +3,6 @@ require 'rails_helper'
 describe Taggable do
   subject(:taggable) { create(:post) } # Post is taggable.
 
-  it { should have_many(:taggings).class_name('Tagging').dependent(:destroy) }
-
   describe '#tags' do
     subject { taggable.tags }
 

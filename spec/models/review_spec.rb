@@ -3,35 +3,6 @@ require 'rails_helper'
 describe Review do
   subject { build(:review) }
 
-  describe 'associations' do
-    it { is_expected.to belong_to(:user) }
-    it { is_expected.to belong_to(:reviewable) }
-    it { is_expected.to have_one(:activity).dependent(:destroy) }
-  end
-
-  describe 'validations' do
-    it { is_expected.to validate_presence_of(:value) }
-    it { is_expected.to validate_presence_of(:user_id) }
-    it { is_expected.to validate_presence_of(:reviewable_id) }
-    it { is_expected.to validate_inclusion_of(:value).in_array(['loved', 'hated']) }
-
-    it 'validates uniqueness of user_id scoped to reviewable' do
-      expect(subject.save).to be true
-
-      other = build(:review)
-
-      expect(other).to be_valid
-
-      other.user = subject.user
-
-      expect(other).to be_valid
-
-      other.reviewable = subject.reviewable
-
-      expect(other).not_to be_valid
-    end
-  end
-
   context 'when a love record is created' do
     subject! { build(:review, value: 'loved') }
 

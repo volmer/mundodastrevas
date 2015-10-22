@@ -31,10 +31,6 @@ describe Watchable do
   let(:user) { create(:user) }
   let(:watch_params) { { active: false } }
 
-  it 'has many watches' do
-    expect(subject).to have_many(:watches).class_name('Watch').dependent(:destroy)
-  end
-
   describe '#set_watcher' do
     subject { watchable.set_watcher(user, watch_params) }
 

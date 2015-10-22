@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 describe Setting, type: :model do
-  it { is_expected.to validate_presence_of(:key) }
-  it { is_expected.to validate_uniqueness_of(:key) }
-
   describe '.[]=' do
     it 'creates a new setting for the given key and value if key does not exist' do
       Setting[:admin_name] = 'Volmer'

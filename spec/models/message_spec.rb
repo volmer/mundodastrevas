@@ -1,14 +1,6 @@
 require 'rails_helper'
 
 describe Message do
-  it { is_expected.to belong_to(:sender).class_name('User') }
-  it { is_expected.to belong_to(:recipient).class_name('User') }
-  it { is_expected.to have_many(:notifications).dependent(:destroy) }
-
-  it { is_expected.to validate_presence_of(:sender_id) }
-  it { is_expected.to validate_presence_of(:recipient_id) }
-  it { is_expected.to validate_length_of(:content).is_at_most(2_000) }
-
   it 'ensures that sender/recipient are different' do
     user = create(:user)
 
@@ -23,10 +15,10 @@ describe Message do
       user2 = create(:user)
       user3 = create(:user)
 
-      m1 = create(:message, sender: user1, recipient: user2)
+      create(:message, sender: user1, recipient: user2)
       m2 = create(:message, sender: user2, recipient: user1)
-      m3 = create(:message, sender: user3, recipient: user2)
-      m4 = create(:message, sender: user3, recipient: user1)
+      create(:message, sender: user3, recipient: user2)
+      create(:message, sender: user3, recipient: user1)
       m5 = create(:message, sender: user1, recipient: user3)
       m6 = create(:message, sender: user2, recipient: user3)
 

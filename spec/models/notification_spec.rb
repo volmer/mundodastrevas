@@ -1,13 +1,6 @@
 require 'rails_helper'
 
 describe Notification do
-  it { is_expected.to belong_to(:user) }
-  it { is_expected.to belong_to(:notifiable) }
-
-  it { is_expected.to validate_presence_of(:event) }
-  it { is_expected.to validate_presence_of(:notifiable_id) }
-  it { is_expected.to validate_presence_of(:user_id) }
-
   it 'validates inlcusion of events' do
     Notifications.events.each do |event|
       subject.event = event

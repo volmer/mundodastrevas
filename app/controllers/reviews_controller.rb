@@ -1,9 +1,7 @@
 class ReviewsController < ApplicationController
   def create
     @review = Review.new(user: current_user, reviewable: find_reviewable)
-
     @review.value = review_params[:value]
-
     authorize(@review)
 
     if @review.save
@@ -15,9 +13,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-
     @review.value = review_params[:value]
-
     authorize(@review)
 
     if @review.save

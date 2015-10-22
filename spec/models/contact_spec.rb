@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 describe Contact do
-  it { is_expected.to validate_presence_of(:message) }
-  it { is_expected.to validate_length_of(:message).is_at_most(6_000) }
-
-  it { is_expected.not_to allow_value('blah').for(:email) }
-  it { is_expected.to allow_value('a@b.com').for(:email) }
-
   context 'with an user' do
     before do
       subject.user = User.new

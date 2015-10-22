@@ -3,16 +3,6 @@ require 'rails_helper'
 describe Topic do
   subject(:topic) { build(:topic) }
 
-  it { is_expected.to validate_presence_of(:name) }
-  it { is_expected.to validate_presence_of(:views) }
-  it { is_expected.to validate_presence_of(:forum_id) }
-  it { is_expected.to validate_presence_of(:user_id) }
-  it { is_expected.to validate_length_of(:name).is_at_most(100) }
-
-  it { is_expected.to belong_to(:user) }
-  it { is_expected.to belong_to(:forum) }
-  it { is_expected.to have_many(:forum_posts).dependent(:destroy) }
-
   it 'is watchable' do
     expect(subject).to be_a_kind_of(Watchable)
   end

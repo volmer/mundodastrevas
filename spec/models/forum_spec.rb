@@ -1,23 +1,27 @@
 require 'rails_helper'
 
 describe Forum do
-  it { is_expected.to validate_presence_of(:name) }
-  it { is_expected.to validate_presence_of(:description) }
-  it { is_expected.to validate_length_of(:name).is_at_most(100) }
-  it { is_expected.to validate_length_of(:description).is_at_most(500) }
-  it { is_expected.to validate_presence_of(:slug) }
-  it { is_expected.to validate_length_of(:slug).is_at_most(100) }
-  it { is_expected.to validate_uniqueness_of(:slug) }
-  it { is_expected.to allow_value('oath').for(:slug) }
-  it { is_expected.to allow_value('nights-watch-oath').for(:slug) }
-  it { is_expected.to allow_value('NIGHTS-WATCH-OATH').for(:slug) }
-  it { is_expected.to allow_value('OATH123').for(:slug) }
-  it { is_expected.not_to allow_value('nights_watch_oath').for(:slug) }
-  it { is_expected.not_to allow_value('oath!').for(:slug) }
+  subject { build(:forum) }
 
-  it { is_expected.to have_many(:topics).dependent(:destroy) }
-  it { is_expected.to have_many(:followers).class_name('Followership').dependent(:destroy) }
-  it { is_expected.to belong_to(:universe) }
+  it 'validates slug' do
+    subject.slug = 'oath'
+    expect(subject).to be_valid
+
+    subject.slug = 'nights-watch-oath'
+    expect(subject).to be_valid
+
+    subject.slug = 'NIGHTS-WATCH-OATH'
+    expect(subject).to be_valid
+
+    subject.slug = 'OATH123'
+    expect(subject).to be_valid
+
+    subject.slug = 'nights_watch_oath'
+    expect(subject).not_to be_valid
+
+    subject.slug = 'oath!'
+    expect(subject).not_to be_valid
+  end
 
   describe '#to_param' do
     it 'returns the forum slug' do

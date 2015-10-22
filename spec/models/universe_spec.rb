@@ -1,27 +1,27 @@
 require 'rails_helper'
 
 describe Universe do
-  it { is_expected.to have_many(:forums).dependent(:nullify) }
-  it { is_expected.to have_many(:zines).dependent(:nullify) }
-  it { is_expected.to have_many(:levels).dependent(:restrict_with_exception) }
-  it { is_expected.to have_many(:ranks).dependent(:restrict_with_exception) }
+  subject { build(:universe) }
 
-  it { is_expected.to validate_presence_of(:name) }
-  it { is_expected.to validate_length_of(:name).is_at_most(100) }
+  it 'validates slug' do
+    subject.slug = 'oath'
+    expect(subject).to be_valid
 
-  it { is_expected.to validate_presence_of(:description) }
-  it { is_expected.to validate_length_of(:description).is_at_most(6_000) }
+    subject.slug = 'nights-watch-oath'
+    expect(subject).to be_valid
 
-  it { is_expected.to validate_presence_of(:slug) }
-  it { is_expected.to validate_uniqueness_of(:slug).case_insensitive }
-  it { is_expected.to validate_length_of(:slug).is_at_least(3).is_at_most(100) }
+    subject.slug = 'NIGHTS-WATCH-OATH'
+    expect(subject).to be_valid
 
-  it { is_expected.to allow_value('game').for(:slug) }
-  it { is_expected.to allow_value('ga-me').for(:slug) }
-  it { is_expected.to allow_value('GAME').for(:slug) }
-  it { is_expected.to allow_value('game123').for(:slug) }
-  it { is_expected.to_not allow_value('ga_me').for(:slug) }
-  it { is_expected.to_not allow_value('game!').for(:slug) }
+    subject.slug = 'OATH123'
+    expect(subject).to be_valid
+
+    subject.slug = 'nights_watch_oath'
+    expect(subject).not_to be_valid
+
+    subject.slug = 'oath!'
+    expect(subject).not_to be_valid
+  end
 
   it 'is a Bootsy container' do
     expect(subject).to be_a_kind_of(Bootsy::Container)

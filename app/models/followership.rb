@@ -17,7 +17,7 @@ class Followership < ActiveRecord::Base
   def user_and_followable_must_be_different
     return if user.blank? || user != followable
 
-    errors[:base] << 'User cannot follow himself/herself.'
+    errors[:base] << 'Users cannot follow themselves.'
   end
 
   def create_follow_activity

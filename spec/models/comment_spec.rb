@@ -3,18 +3,6 @@ require 'rails_helper'
 describe Comment do
   subject { build(:comment) }
 
-  it { is_expected.to belong_to(:post) }
-  it { is_expected.to belong_to(:user) }
-  it { is_expected.to have_many(:reviews).class_name('Review').dependent(:destroy) }
-  it { is_expected.to have_many(:notifications).class_name('Notification').dependent(:destroy) }
-  it { is_expected.to have_one(:activity).class_name('Activity').dependent(:destroy) }
-
-  it { is_expected.to validate_presence_of(:content) }
-  it { is_expected.to validate_length_of(:content).is_at_most(6_000) }
-
-  it { is_expected.to validate_presence_of(:user_id) }
-  it { is_expected.to validate_presence_of(:post_id) }
-
   context 'when a record is created' do
     it 'creates an activity' do
       subject

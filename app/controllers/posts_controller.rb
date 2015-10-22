@@ -5,12 +5,11 @@ class PostsController < ApplicationController
   def index
     authorize(Post.new)
 
-    @posts = Post.order('created_at DESC').limit(10)
+    @posts = Post.order(created_at: :desc).limit(10)
   end
 
   def show
     @post.update_column(:views, @post.views + 1)
-
     @comments = @post.comments.includes(:user).order(created_at: :asc)
 
     @comment = @post.comments.new
