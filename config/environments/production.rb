@@ -91,3 +91,7 @@ Mundodastrevas::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 end
+
+Bugsnag.configure do |config|
+  config.api_key = '71ea335a06390b852d367d8bf01942de'
+end
