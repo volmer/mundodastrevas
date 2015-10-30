@@ -241,7 +241,7 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
-    omniauth-facebook (3.0.0)
+    omniauth-facebook (2.0.1)
       omniauth-oauth2 (~> 1.2)
     omniauth-oauth (1.1.0)
       oauth
@@ -426,7 +426,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mini_magick
-  omniauth-facebook
+  omniauth-facebook (~> 2.0)
   omniauth-twitter
   pg
   pry-rails
