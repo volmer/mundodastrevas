@@ -256,8 +256,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook, '330164793746855', 'f543158ab07816a6182632c32c956ab4',
-    secure_image_url: true,
-    info_fields: 'name,email,verified,location,birthday,about,bio,link,gender'
-  config.omniauth :twitter, 'yAO2DSZeD85ClNYnGVh2qA', 'EHsbEUZfwzDjniKrNDULsavpoXfziHKBtN6lPBCAX0'
+  config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret,
+                  secure_image_url: true,
+                  info_fields: 'name,email,verified,location,birthday,about,bio,link,gender'
+  config.omniauth :twitter, Rails.application.secrets.twitter_api_key, Rails.application.secrets.twitter_api_secret
 end
