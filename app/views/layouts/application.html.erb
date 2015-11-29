@@ -18,7 +18,7 @@
     <div id="content-wrapper">
       <%= render 'layouts/navbar' %>
 
-      <%= content_for(:layout_top) || render('layouts/top') %>
+      <%= content_for :layout_top %>
 
       <div class='container' id='main-container'>
         <%= render 'layouts/alerts' %>
