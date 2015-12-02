@@ -14,7 +14,7 @@
 
     <dd class="external-account <%= provider %>">
       <% if account = @user.external_accounts.find_by(provider: provider) %>
-        <%= link_to t('.connected_as', name: account.name), account.url, target: '_blank' %>
+        <%= link_to t('.connected_as', account: account), account.url, target: '_blank' %>
 
         <%= link_to t('.destroy', provider: provider.to_s.titleize), [:user, account], method: :delete, class: 'btn btn-default btn-xs' %>
       <% else %>

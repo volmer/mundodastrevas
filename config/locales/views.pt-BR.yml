@@ -99,7 +99,7 @@ pt-BR:
         title: 'Contas externas'
         connect: 'Conectar conta do %{provider}'
         destroy: 'Desconectar %{provider}'
-        connected_as: 'Conectado como @%{name}'
+        connected_as: 'Conectado como %{account}'
     registrations:
       destroy:
         title: 'Destruir conta'

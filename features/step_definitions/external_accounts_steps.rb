@@ -6,11 +6,10 @@ Given(/^I have a Facebook account with the following information:$/) do |table|
     uid: '12345',
     info: {
       email: info[:email],
-      nickname: info[:username],
       location: info[:location],
       description: info[:bio],
       image: info[:image].present? ? "http://facebook.com/#{ info[:image] }" : nil,
-      urls: { Facebook: 'http://facebook.com/' + info[:username] }
+      urls: { Facebook: 'http://facebook.com/my_profile' }
     },
     credentials: {
       token: 'abcd',

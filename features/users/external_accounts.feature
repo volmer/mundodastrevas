@@ -13,15 +13,15 @@ Feature: Manage external accounts
 
   Scenario: Connect Facebook account
     Given I have a Facebook account with the following information:
-      | username | email            | bio        | gender | birthday   | location | image     |
-      | theon    | theon@greyjoy.ws | Not human. | female | 10/20/1990 | Pyke     | theon.jpg |
+      | email            | bio        | gender | birthday   | location | image     |
+      | theon@greyjoy.ws | Not human. | female | 10/20/1990 | Pyke     | theon.jpg |
     When I go to the user external accounts page
     And I click on "Conectar conta do Facebook"
     Then I am redirected to the user external accounts page
     And I see the info message "Você entrou com sua conta do Facebook. Bem-vindo!"
-    And I see the link "@theon" which leads to "http://facebook.com/theon" when clicked
+    And I see the link "theon@greyjoy.ws" which leads to "http://facebook.com/my_profile" when clicked
     And I go to my profile page
-    And I see the link "Facebook" which leads to "http://facebook.com/theon" when clicked
+    And I see the link "Facebook" which leads to "http://facebook.com/my_profile" when clicked
     And I see "Not human." on the page
     And I see the field "Sexo" with the value "Feminino"
     And I see the field "Data de nascimento" with the value "20/10/1990"
@@ -46,7 +46,7 @@ Feature: Manage external accounts
     And I click on "Conectar conta do Twitter"
     Then I am redirected to the user external accounts page
     And I see the info message "Você entrou com sua conta do Twitter. Bem-vindo!"
-    And I see the link "@arya.stark" which leads to "http://twitter.com/arya.stark" when clicked
+    And I see the link "arya.stark" which leads to "http://twitter.com/arya.stark" when clicked
     And I go to my profile page
     And I see the link "Twitter" which leads to "http://twitter.com/arya.stark" when clicked
     And I see "Valar Morghulis" on the page
