@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3'
+ruby '2.2.4'
 
 gem 'rails', '4.2.5'
 gem 'pg'
@@ -46,7 +46,7 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'selenium-webdriver', '~> 2.47.1'
+  gem 'selenium-webdriver'
   gem 'webmock', require: false
 end
 
