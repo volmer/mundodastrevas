@@ -34,7 +34,7 @@ set :linked_dirs, %w{public/uploads public/system log tmp/pids bin tmp/cache tmp
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-set :rbenv_ruby, '2.2.4'
+set :rbenv_ruby, '2.3.0'
 set :rbenv_path, '/home/mundodastrevas/.rbenv'
 
 # Default value for bundle flags is '--deployment --quiet'
