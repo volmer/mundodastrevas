@@ -27,7 +27,6 @@ Feature: Manage external accounts
     And I see the field "Data de nascimento" with the value "20/10/1990"
     And I see the field "Localização" with the value "Pyke"
     And I see the image "theon.jpg" as my avatar
-    And I see an activity called "georgerrmartin conectou sua conta do Facebook"
 
   Scenario: Disconnect Facebook account
     Given I've connected my Facebook account
@@ -52,7 +51,6 @@ Feature: Manage external accounts
     And I see "Valar Morghulis" on the page
     And I see the field "Localização" with the value "Bravos"
     And I see the image "arya.jpg" as my avatar
-    And I see an activity called "georgerrmartin conectou sua conta do Twitter"
 
   Scenario: Disconnect Twitter account
     Given I've connected my Twitter account

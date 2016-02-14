@@ -24,8 +24,6 @@ Feature: Create post
     And I see "medieval" on the page
     And I see "gothic" on the page
     And I see "Você está vigiando este post." on the page
-    And I go to my profile page
-    And I see an activity called "georgerrmartin publicou Chapter 1 - Davos em A Storm of Swords"
 
   Scenario Outline: Create a post without a required field
     When I click on "Novo post"

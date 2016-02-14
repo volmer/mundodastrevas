@@ -44,22 +44,6 @@ pt-BR:
       previous: '&lsaquo; Anterior'
       next: 'Próxima &rsaquo;'
       truncate: '...'
-  activities:
-    zines:
-      create_html: '%{user} criou o zine %{zine}'
-    posts:
-      create_html: '%{user} publicou %{post} em %{zine}'
-    comments:
-      create_html: '%{user} comentou em %{post}:'
-    forum_posts:
-      create_html: '%{user} postou no tópico %{topic}:'
-    users:
-      sign_up_html: '%{user} entrou no %{app}'
-    external_accounts:
-      create_html: '%{user} conectou sua conta do %{account}'
-    reviews:
-      loved_html: '%{user} curtiu %{reviewable}'
-      hated_html: '%{user} não curtiu %{reviewable}'
   universes:
     show:
       zines: 'Zines'

@@ -16,19 +16,6 @@ describe ForumPost do
       subject.save
     end
 
-    it 'creates an activity' do
-      subject
-
-      expect { subject.save }.to change { Activity.count }.by(1)
-
-      activity = Activity.last
-
-      expect(activity.user).to eq(subject.user)
-      expect(activity.subject).to eq(subject)
-      expect(activity.key).to eq('forum_posts.create')
-      expect(activity.privacy).to eq('public')
-    end
-
     it 'properly notifies the topic watchers' do
       expect(subject.topic).to receive(:notify_watchers).with(
         subject, 'new_forum_post', subject.user

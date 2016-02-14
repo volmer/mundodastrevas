@@ -5,7 +5,6 @@ class Zine < ActiveRecord::Base
   belongs_to :user
   belongs_to :universe
   has_many :posts, dependent: :destroy
-  has_one :activity, as: :subject, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 66_000 }
@@ -22,8 +21,6 @@ class Zine < ActiveRecord::Base
 
   scope :with_posts, -> { joins(:posts).uniq }
 
-  after_create :create_activity
-
   def to_param
     slug
   end
@@ -34,16 +31,5 @@ class Zine < ActiveRecord::Base
 
   def as_indexed_json(*)
     as_json(only: [:name, :description])
-  end
-
-  private
-
-  def create_activity
-    Activity.create!(
-      user: user,
-      subject: self,
-      key: 'zines.create',
-      privacy: 'public'
-    )
   end
 end

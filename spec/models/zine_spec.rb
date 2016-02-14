@@ -64,19 +64,4 @@ describe Zine do
       expect(subject.count).to eq(1)
     end
   end
-
-  context 'when a record is created' do
-    subject! { build(:zine) }
-
-    it 'creates an activity' do
-      expect { subject.save }.to change { Activity.count }.by(1)
-
-      activity = Activity.last
-
-      expect(activity.user).to eq(subject.user)
-      expect(activity.subject).to eq(subject)
-      expect(activity.key).to eq('zines.create')
-      expect(activity.privacy).to eq('public')
-    end
-  end
 end

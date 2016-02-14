@@ -110,32 +110,24 @@
           <% end %>
         </div>
       <% end %>
-
-      <% if @zines.present? %>
-        <div class="user-zines-add-on">
-          <h3>
-            <%= t '.zines' %>
-          </h3>
-
-          <% @zines.limit(4).each_slice(2) do |row| %>
-            <div class="row">
-              <% row.each do |zine| %>
-                <div class="col-md-6">
-                  <%= render 'zines/panel', zine: zine %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-
-          <%= link_to t('.all_zines'), user_zines_path(@user) %>
-        </div>
-      <% end %>
     </div>
 
-    <div class="col-sm-8">
-      <ul class="media-list">
-        <%= render @activities %>
-      </ul>
-    </div>
+    <% if @zines.present? %>
+      <div class="col-sm-8">
+        <h3><%= t '.zines' %></h3>
+
+        <% @zines.limit(4).each_slice(2) do |row| %>
+          <div class="row">
+            <% row.each do |zine| %>
+              <div class="col-md-6">
+                <%= render 'zines/panel', zine: zine %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= link_to t('.all_zines'), user_zines_path(@user) %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -17,7 +17,6 @@ Feature: Show user
     And I see the field "Email" with the value "catelyn@example.com"
     And I see the field "Localização" with the value "Winterfell"
     And I see the field "Data de nascimento" with the value "22/05/1959"
-    And I see an activity called "catelyn entrou no Mundo das Trevas"
 
   Scenario: Show user to a non signed in user
     Given I am not signed in

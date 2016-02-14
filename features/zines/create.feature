@@ -21,8 +21,6 @@ Feature: Create zine
     And I see "A Storm of Swords" on the page
     And I see "Fire and Blood" on the page
     And I see the image "my_image.jpg"
-    And I go to my profile page
-    And I see an activity called "georgerrmartin criou o zine A Storm of Swords"
 
   Scenario Outline: Create a zine without a required field
     When I click on "Zines"

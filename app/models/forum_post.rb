@@ -9,9 +9,8 @@ class ForumPost < ActiveRecord::Base
            as: :reviewable,
            dependent: :destroy
   has_many :notifications, as: :notifiable, dependent: :destroy
-  has_one :activity, as: :subject, dependent: :destroy
 
-  after_create :touch_topic_and_forum, :create_activity, :notify_topic_watchers
+  after_create :touch_topic_and_forum, :notify_topic_watchers
 
   def to_s
     I18n.t('forum_posts.to_s', user: user)
@@ -22,15 +21,6 @@ class ForumPost < ActiveRecord::Base
   def touch_topic_and_forum
     topic.touch
     topic.forum.touch
-  end
-
-  def create_activity
-    Activity.create!(
-      user: user,
-      subject: self,
-      key: 'forum_posts.create',
-      privacy: 'public'
-    )
   end
 
   def notify_topic_watchers

@@ -159,48 +159,6 @@ describe User do
     end
   end
 
-  context 'when a record is created' do
-    it 'creates an activity' do
-      expect { subject.save }.to change { Activity.count }.by(1)
-
-      activity = Activity.last
-
-      expect(activity.user).to eq(subject)
-      expect(activity.subject).to eq(subject)
-      expect(activity.key).to eq('users.sign_up')
-      expect(activity.privacy).to eq('public')
-    end
-  end
-
-  context 'when privacy settings are changed' do
-    context 'when an external account is set to public' do
-      it 'sets the associated activity to public' do
-        subject.save!
-        create(:external_account, provider: 'twitter', user: subject)
-        activity = Activity.last
-        subject.privacy = { twitter: 'only_me' }
-        subject.save!
-        activity.reload
-
-        expect(activity.privacy).to eq('only_me')
-      end
-    end
-
-    context 'when an external account is set to only_me' do
-      it 'sets the associated activity to only_me' do
-        subject.privacy = { twitter: 'only_me' }
-        subject.save!
-        create(:external_account, provider: 'twitter', user: subject)
-        activity = Activity.last
-        subject.privacy = { twitter: 'public' }
-        subject.save!
-        activity.reload
-
-        expect(activity.privacy).to eq('public')
-      end
-    end
-  end
-
   describe '#rank_in' do
     subject { user.rank_in(universe) }
     let(:user) { create(:user) }

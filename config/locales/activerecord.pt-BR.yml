@@ -1,7 +1,6 @@
 pt-BR:
   activerecord:
     models:
-      activity: 'Atividade'
       comment: 'Comentário'
       contact: 'Contato'
       external_account: 'Conta externa'

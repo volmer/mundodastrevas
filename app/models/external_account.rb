@@ -1,6 +1,5 @@
 class ExternalAccount < ActiveRecord::Base
   belongs_to :user
-  has_one :activity, as: :subject, dependent: :destroy
 
   validates :provider, presence: true
   validates :uid, presence: true, uniqueness: { scope: :provider }
@@ -9,21 +8,7 @@ class ExternalAccount < ActiveRecord::Base
   validates :user_id, uniqueness: { scope: :provider }
   validates :user, presence: true
 
-  after_create :create_activity
-
   def to_s
     name.presence || email
-  end
-
-  private
-
-  def create_activity
-    privacy = user.privacy.try(:[], provider) || 'public'
-    Activity.create!(
-      user: user,
-      subject: self,
-      key: 'external_accounts.create',
-      privacy: privacy
-    )
   end
 end

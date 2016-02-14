@@ -67,17 +67,6 @@ describe Post do
 
       expect(subject).to be_watched_by(subject.user)
     end
-
-    it 'creates an activity' do
-      expect { subject.save }.to change { Activity.count }.by(1)
-
-      activity = Activity.last
-
-      expect(activity.user).to eq(subject.user)
-      expect(activity.subject).to eq(subject)
-      expect(activity.key).to eq('posts.create')
-      expect(activity.privacy).to eq('public')
-    end
   end
 
   context 'when it is updated' do

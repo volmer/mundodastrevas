@@ -30,11 +30,6 @@ class User < ActiveRecord::Base
            dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :watches, dependent: :destroy
-  has_many :activities, dependent: :destroy
-  has_many :related_activities,
-           as: :subject,
-           class_name: 'Activity',
-           dependent: :destroy
 
   mount_uploader :avatar, ImageUploader
 
@@ -47,9 +42,6 @@ class User < ActiveRecord::Base
   validates :bio, length: { maximum: 500 }
   validates :location, length: { maximum: 200 }
   validates :gender, inclusion: { in: %w(male female) }, allow_blank: true
-
-  after_create :create_sign_up_activity
-  after_update :update_activities
 
   cattr_accessor(:email_preferences_keys) do
     Notifications.events
@@ -98,22 +90,5 @@ class User < ActiveRecord::Base
 
   def as_indexed_json(*)
     as_json(only: [:name])
-  end
-
-  private
-
-  def create_sign_up_activity
-    Activity.create!(
-      user: self, subject: self, key: 'users.sign_up', privacy: 'public'
-    )
-  end
-
-  def update_activities
-    return unless changes.include?(:privacy)
-
-    external_accounts.each do |account|
-      account.activity.privacy = privacy[account.provider]
-      account.activity.save if account.activity.changed?
-    end
   end
 end

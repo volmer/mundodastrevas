@@ -8,7 +8,6 @@ class Post < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
   has_many :reviews, as: :reviewable, dependent: :destroy
-  has_one :activity, as: :subject, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :content, presence: true, length: { maximum: 66_000 }
@@ -24,7 +23,7 @@ class Post < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  after_create :touch_zine, :watch_it, :create_activity
+  after_create :touch_zine, :watch_it
 
   def to_param
     slug
@@ -46,16 +45,5 @@ class Post < ActiveRecord::Base
 
   def watch_it
     set_watcher!(user, active: true) if user.present?
-  end
-
-  private
-
-  def create_activity
-    Activity.create!(
-      user: user,
-      subject: self,
-      key: 'posts.create',
-      privacy: 'public'
-    )
   end
 end
