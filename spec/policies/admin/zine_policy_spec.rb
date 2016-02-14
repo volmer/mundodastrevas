@@ -19,36 +19,4 @@ describe Admin::ZinePolicy do
       end
     end
   end
-
-  describe '#edit?' do
-    context 'when user is an admin' do
-      let(:user) { create(:admin) }
-
-      it 'returns true' do
-        expect(subject.edit?).to be true
-      end
-    end
-
-    context 'when user is not an admin' do
-      it 'returns false' do
-        expect(subject.edit?).to be false
-      end
-    end
-  end
-
-  describe '#update?' do
-    context 'when user is an admin' do
-      let(:user) { create(:admin) }
-
-      it 'returns true' do
-        expect(subject.update?).to be true
-      end
-    end
-
-    context 'when user is not an admin' do
-      it 'returns false' do
-        expect(subject.update?).to be false
-      end
-    end
-  end
 end

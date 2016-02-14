@@ -16,7 +16,7 @@
     <% @zines.each do |zine| %>
       <tr class="zine">
         <td>
-          <%= link_to edit_admin_zine_path(zine) do %>
+          <%= link_to zine_path(zine) do %>
             <%= image_tag zine.image.thumb, class: 'mini-avatar' %>
             <%= zine %>
           <% end %>

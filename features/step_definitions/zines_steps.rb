@@ -30,11 +30,6 @@ Given(/^I'm on the "(.*?)" zine page$/) do |zine_name|
   step("I go to the \"#{zine_name}\" zine")
 end
 
-Given(/^"(.*?)" is the featured zine$/) do |name|
-  zine = create(:zine, name: name)
-  Setting[:featured_zine] = zine.id
-end
-
 When(/^I go to the "(.*?)" zine$/) do |zine_name|
   zine = Zine.find_by(name: zine_name)
 
@@ -49,12 +44,4 @@ end
 
 Then(/^I see (\d+) zines$/) do |count|
   expect(page).to have_selector('.zine', count: count)
-end
-
-Then(/^I see "(.*?)" as the featured zine$/) do |name|
-  expect(page).to have_selector('.featured-zine', text: name)
-end
-
-Then(/^there is no featured zine$/) do
-  expect(page).not_to have_selector('.featured-zine')
 end

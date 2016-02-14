@@ -32,10 +32,6 @@ pt-BR:
         submit: 'Atualizar página'
         destroy: 'Excluir página'
     zines:
-      edit:
-        featured: 'Em destaque'
-        title: 'Editar %{zine}'
-        save: 'Salvar zine'
       index:
         title: 'Zines'
         posts: 'Posts'

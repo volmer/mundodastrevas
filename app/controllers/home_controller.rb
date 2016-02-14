@@ -7,7 +7,6 @@ class HomeController < ApplicationController
     @forum_topics = forum_topics
     @universes = Universe.order(name: :asc)
     @comments = comments
-    @featured_zine = Zine.find_by(id: Setting[:featured_zine])
     @new_members = new_members
     @new_levels = new_levels
   end
