@@ -13,7 +13,7 @@ Feature: Update registration
     And I press "Atualizar"
     Then I am redirected to my user page
     And I see the info message "Você atualizou sua conta com sucesso."
-    And I see the page heading "volmer"
+    And I see "volmer" on the page
 
   Scenario: update email
     Given my email address is "volmer@example.com"

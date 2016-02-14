@@ -20,7 +20,7 @@ Feature: Twitter authentication
     And I confirm my registration
     And I sign in with the name "theon" and the password "12345678"
     And I go to my profile page
-    Then I see the page heading "theon"
+    Then I see "theon" on the page
     And I see the field "Email" with the value "theon@greyjoy.ws"
     And I see the field "Localização" with the value "Pyke"
     And I see the image "theon.jpg" as my avatar

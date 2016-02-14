@@ -20,7 +20,7 @@ Feature: Facebook authentication
     And I confirm my registration
     And I sign in with the name "theon" and the password "12345678"
     And I go to my profile page
-    Then I see the page heading "theon"
+    Then I see "theon" on the page
     And I see the link "Facebook" which leads to "http://facebook.com/my_profile" when clicked
     And I see the field "Email" with the value "theon@greyjoy.ws"
     And I see "Not human." on the page
@@ -38,7 +38,7 @@ Feature: Facebook authentication
     Then I am redirected to the root page
     And I see the info message "Você entrou com sua conta do Facebook. Bem-vindo!"
     And I go to my profile page
-    And I see the page heading "theongreyjoy"
+    And I see "theongreyjoy" on the page
     And I see the link "Facebook" which leads to "http://facebook.com/my_profile" when clicked
     And I see the field "Email" with the value "theon@greyjoy.ws"
     And I see "Not human." on the page
@@ -61,7 +61,7 @@ Feature: Facebook authentication
     And I confirm my registration
     And I sign in with the name "jonsnow" and the password "12345678"
     And I go to my profile page
-    Then I see the page heading "jonsnow"
+    Then I see "jonsnow" on the page
     And I see the field "Email" with the value "jon@thewall.ws"
     And I see "I'm no crow." on the page
     And I see the field "Sexo" with the value "Masculino"

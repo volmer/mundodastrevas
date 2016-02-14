@@ -11,7 +11,7 @@ Feature: Show user
   Scenario: Show user to a signed in user
     Given I am signed in
     When I go to catelyn's profile page
-    Then I see the page heading "catelyn"
+    Then I see "catelyn" on the page
     And I see "Duty, family, honor" on the page
     And I see the field "Sexo" with the value "Feminino"
     And I see the field "Email" with the value "catelyn@example.com"
