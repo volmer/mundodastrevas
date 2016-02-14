@@ -8,14 +8,6 @@ Given(/^there is a forum with the given attributes:$/) do |table|
   end
 end
 
-Given(/^I am following the "(.*?)" forum$/) do |forum_name|
-  followership = Followership.new
-  followership.user = @user
-  followership.followable = Forum.find_by(name: forum_name)
-  followership.save!
-end
-
-
 When(/^I go to the "(.*?)" forum$/) do |forum_name|
   forum = Forum.find_by(name: forum_name) || create(:forum, name: forum_name)
 

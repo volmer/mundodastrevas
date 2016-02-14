@@ -14,20 +14,12 @@ pt-BR:
     state_options:
       active: 'Ativo'
       blocked: 'Bloqueado'
-  followership:
-    follow: 'Seguir'
-    unfollow: 'Deixar de seguir'
-    followers:
-      one: 'Seguidor'
-      other: 'Seguidores'
-    following: 'Seguindo'
   role:
     names:
       admin: 'Administrador'
   save: 'Salvar'
   notifications:
     events:
-      new_follower: '%{user} está te seguindo'
       new_message: '%{user} te enviou uma mensagem'
     see_all: 'Ver todas'
     new_rank: 'Parabéns! Agora você é um %{rank} em %{universe}!'
@@ -37,8 +29,6 @@ pt-BR:
     notification:
       new_comment:
         subject: 'Novo comentário em %{post}'
-      new_follower:
-        subject: '%{user} começou a te seguir!'
       new_forum_post:
         subject: 'Nova postagem em %{topic}'
       new_message:
@@ -65,8 +55,6 @@ pt-BR:
       create_html: '%{user} postou no tópico %{topic}:'
     users:
       sign_up_html: '%{user} entrou no %{app}'
-    followerships:
-      create_html: '%{user} começou a seguir %{followable}'
     external_accounts:
       create_html: '%{user} conectou sua conta do %{account}'
     reviews:

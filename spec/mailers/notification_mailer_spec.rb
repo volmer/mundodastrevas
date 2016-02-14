@@ -23,21 +23,6 @@ describe NotificationMailer do
         notification_url)
     end
 
-    describe 'new_follower' do
-      let(:notification) do
-        create(:new_follower_notification, notifiable: followership)
-      end
-
-      let(:follower) { create(:user, name: 'bran') }
-
-      let(:followership) { create(:followership, user: follower) }
-
-      it 'includes the follower name' do
-        subject
-        expect(ActionMailer::Base.deliveries.last.body).to include('bran')
-      end
-    end
-
     describe 'new_message' do
       let(:notification) do
         create(:new_message_notification, notifiable: message)

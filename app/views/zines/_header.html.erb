@@ -1,21 +1,9 @@
 <div class="page-header zine-header">
-  <div class="row">
-    <div class="col-md-8">
-      <h1><%= @zine %></h1>
+  <h1><%= @zine %></h1>
 
-      <% if @zine.universe %>
-        <span class="meta-universe">
-          <%= t '.universe_html', universe: link_to(@zine.universe, universe_path(@zine.universe)) %>
-        </span>
-      <% end %>
-    </div>
-
-    <div class="col-md-4">
-      <div class="pull-right">
-        <%= followers_count @zine %>
-
-        <%= follow_link @zine, current_user %>
-      </div>
-    </div>
-  </div>
+  <% if @zine.universe %>
+    <span class="meta-universe">
+      <%= t '.universe_html', universe: link_to(@zine.universe, universe_path(@zine.universe)) %>
+    </span>
+  <% end %>
 </div>

@@ -22,23 +22,13 @@
     </div>
 
     <div class="col-md-8">
-      <div class="page-header clearfix">
-        <h1 class="pull-left"><%= @user %></h1>
+      <h1><%= @user %></h1>
 
-        <div class="pull-right">
-          <%= followers_count(@user) %>
-
-          <%= following_count(@user) %>
-        </div>
-      </div>
-
-      <div class="clearfix followership-actions">
+      <div class="clearfix user-profile-actions">
         <div class="pull-left">
           <% if @user == current_user %>
             <%= link_to t('.edit'), edit_user_registration_path, class: 'btn btn-default btn-sm' %>
           <% else %>
-            <%= follow_link @user, current_user %>
-
             <%= link_to user_messages_path(@user), class: 'btn btn-default' do %>
               <span class="glyphicon glyphicon-envelope"></span>
 

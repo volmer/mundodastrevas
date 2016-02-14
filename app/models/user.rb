@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   include Searchable
-  include Followable
   include DeviseConcern
 
   NAME_FORMAT = /\A[\w-]+\z/
@@ -16,7 +15,6 @@ class User < ActiveRecord::Base
   has_many :comments,    dependent: :destroy
   has_many :topics,      dependent: :destroy
   has_many :forum_posts, dependent: :destroy
-  has_many :followerships, dependent: :destroy
   has_and_belongs_to_many :roles
   has_many :notifications, dependent: :destroy
   has_many :external_accounts, dependent: :destroy

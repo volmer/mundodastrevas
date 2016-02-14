@@ -3,8 +3,6 @@ require 'rails_helper'
 describe User do
   subject { build :user }
 
-  it { is_expected.to be_a(Followable) }
-
   it 'validates name' do
     subject.name = 'volmaire'
     expect(subject).to be_valid
@@ -64,20 +62,16 @@ describe User do
 
   describe '#email_preferences' do
     it 'stores a hash of email preferences' do
-      subject.email_preferences = { new_follower: false }
+      subject.email_preferences = { new_message: false }
       subject.save!
       subject.reload
 
       expect(subject.email_preferences).to be_a_kind_of(Hash)
-      expect(subject.email_preferences['new_follower']).to eq 'false'
+      expect(subject.email_preferences['new_message']).to eq 'false'
     end
   end
 
   describe '.email_preferences_keys' do
-    it 'contains new_follower' do
-      expect(described_class.email_preferences_keys).to include('new_follower')
-    end
-
     it 'contains new_message' do
       expect(described_class.email_preferences_keys).to include('new_message')
     end

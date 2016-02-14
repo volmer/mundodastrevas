@@ -11,9 +11,6 @@ pt-BR:
         update: 'Suas preferências de email foram atualizadas.'
       external_accounts:
         destroy: 'Você não está mais conectado via %{provider}.'
-    followerships:
-      create: 'Agora você segue %{followable}.'
-      destroy: 'Você parou de seguir %{followable}.'
     unauthorized: 'Você não pode acessar isso.'
     admin:
       users:

@@ -87,7 +87,6 @@ pt-BR:
       edit:
         title: 'Preferências de email'
         keys:
-          new_follower: 'Novos seguidores'
           new_message: 'Novas mensagens'
           new_rank: 'Novos ranks'
           new_comment: 'Comentários em posts que eu estou vigiando'
@@ -139,11 +138,6 @@ pt-BR:
       title: 'Fale conosco'
       submit: 'Enviar mensagem'
       description: 'Tem alguma dúvida, sugestão, reclamação ou deseja comunicar um problema? Entre em contato conosco através do formulário abaixo que responderemos o mais breve possível por email.'
-  followerships:
-    following:
-      title: 'Seguidos por %{user}'
-    followers:
-      title: 'Seguindo %{followable}'
   searches:
     show:
       placeholder: 'Pesquisar por...'

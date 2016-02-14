@@ -41,10 +41,6 @@ Mundodastrevas::Application.routes.draw do
   end
 
   resources :users, only: [:show] do
-    resources :followerships, only: [:create, :destroy], on: :member
-    get 'followers', controller: 'followerships'
-    get 'following', controller: 'followerships'
-
     resources :messages, only: [:index, :create]
   end
 
@@ -69,13 +65,6 @@ Mundodastrevas::Application.routes.draw do
     resources :posts, except: [:index] do
       resources :comments, only: [:create, :destroy]
     end
-
-    resources(
-      :followerships,
-      only: [:create, :destroy],
-      on: :member,
-      controller: 'zine_followerships')
-    get 'followers', controller: 'zine_followerships'
   end
 
   resources :users, only: [] do
@@ -86,12 +75,5 @@ Mundodastrevas::Application.routes.draw do
     resources :topics, except: [:index] do
       resources :forum_posts, only: [:create, :update, :destroy]
     end
-
-    resources(
-      :followerships,
-      only: [:create, :destroy],
-      on: :member,
-      controller: 'forum_followerships')
-    get 'followers', controller: 'forum_followerships'
   end
 end

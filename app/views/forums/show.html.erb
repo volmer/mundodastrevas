@@ -8,19 +8,7 @@
   <% end %>
 <% end %>
 
-<div class="row">
-  <div class="col-md-8">
-    <h1><%= @forum %></h1>
-  </div>
-
-  <div class="col-md-4">
-    <div class="pull-right">
-      <%= followers_count @forum %>
-
-      <%= follow_link @forum, current_user %>
-    </div>
-  </div>
-</div>
+<h1><%= @forum %></h1>
 
 <div class="forum-description">
   <div class="row">

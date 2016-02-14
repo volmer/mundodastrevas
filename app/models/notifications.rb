@@ -3,7 +3,6 @@
 module Notifications
   DECORATORS = {
     new_comment: NewCommentDecorator,
-    new_follower: NewFollowerDecorator,
     new_forum_post: NewForumPostDecorator,
     new_message: NewMessageDecorator,
     new_rank: NewRankDecorator

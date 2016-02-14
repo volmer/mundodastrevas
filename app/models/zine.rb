@@ -4,10 +4,6 @@ class Zine < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :universe
-  has_many :followers,
-           class_name: 'Followership',
-           as: :followable,
-           dependent: :destroy
   has_many :posts, dependent: :destroy
   has_one :activity, as: :subject, dependent: :destroy
 

@@ -10,10 +10,6 @@ class Forum < ActiveRecord::Base
             format: { with: /\A(([a-z]|[A-Z]|[0-9]|-)+)\z/ }
 
   has_many :topics, dependent: :destroy
-  has_many :followers,
-           class_name: 'Followership',
-           as: :followable,
-           dependent: :destroy
   belongs_to :universe
 
   def to_param

@@ -8,6 +8,8 @@ class Notification < ActiveRecord::Base
   validates :user_id, presence: true
   validates :notifiable_id, presence: true
 
+  default_scope { where.not(event: 'new_follower') }
+
   def send!
     save!
     return if user.email_preferences.try(:[], event) == 'false'

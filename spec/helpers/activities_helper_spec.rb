@@ -6,7 +6,7 @@ describe ActivitiesHelper, type: :helper do
   describe '#activity_content' do
     it 'renders the activity partial based on the key' do
       expect(helper).to receive(:render).with(
-        'activities/followerships/create', activity: activity)
+        'activities/posts/create', activity: activity)
 
       helper.activity_content(activity)
     end

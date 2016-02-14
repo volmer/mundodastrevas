@@ -18,13 +18,6 @@ Given(/^there is a zine called "(.*?)"$/) do |name|
   create :zine, name: name
 end
 
-Given(/^I am following the "(.*?)" zine$/) do |zine_name|
-  followership = Followership.new
-  followership.user = @user
-  followership.followable = Zine.find_by(name: zine_name)
-  followership.save!
-end
-
 Given(/^there are (\d+) zines$/) do |count|
   create_list(:zine, count.to_i)
 end
