@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.0'
 
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.5.1'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
@@ -28,6 +28,7 @@ gem 'devise-encryptable'
 gem 'rubocop'
 gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails'
 gem 'elasticsearch-rails'
+gem 'sprockets-rails', '~> 2.3'
 
 group :development do
   gem 'capistrano-rails'

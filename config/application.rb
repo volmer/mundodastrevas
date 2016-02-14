@@ -23,9 +23,6 @@ module Mundodastrevas
     # Default is UTC.
     config.time_zone = 'Brasilia'
 
-    # Remove this option as soon as Rails updates the I18n gem dependency.
-    config.i18n.enforce_available_locales = false
-
     # The default locale is :en and all translations from
     # config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales',
