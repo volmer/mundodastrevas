@@ -61,7 +61,7 @@ class OmniauthCompletion
       )
 
       if account.present?
-        fail 'Another user already owns this account.' if account.user != user
+        raise 'Another user already owns this account.' if account.user != user
       else
         user.external_accounts << build_account(auth_data, user)
       end

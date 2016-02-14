@@ -15,11 +15,7 @@ describe NotificationDeliveryJob, type: :job do
     end
 
     it 'sends an email to the watcher' do
-      expect {
-        subject
-      }.to change {
-        ActionMailer::Base.deliveries.count
-      }
+      expect { subject }.to change { ActionMailer::Base.deliveries.count }
     end
 
     describe 'the notification sent' do
@@ -33,22 +29,20 @@ describe NotificationDeliveryJob, type: :job do
     end
 
     context 'a notification with the same attributes has already been sent' do
-      before { create(:notification, notifiable: notifiable, user: user, event: 'new_comment') }
+      before do
+        create(
+          :notification,
+          notifiable: notifiable,
+          user: user,
+          event: 'new_comment')
+      end
 
       it 'does not creates a new one' do
-        expect {
-          subject
-        }.not_to change {
-          Notification.count
-        }
+        expect { subject }.not_to change { Notification.count }
       end
 
       it 'does not send a new email' do
-        expect {
-          subject
-        }.not_to change {
-          ActionMailer::Base.deliveries.count
-        }
+        expect { subject }.not_to change { ActionMailer::Base.deliveries.count }
       end
     end
   end

@@ -112,7 +112,8 @@ describe DeviseConcern do
     end
 
     it 'sets the avatar from session' do
-      expect(subject.remote_avatar_url).to eq('http://stubbed.com/remote_avatar.jpg')
+      expect(subject.remote_avatar_url).to eq(
+        'http://stubbed.com/remote_avatar.jpg')
     end
 
     context 'with Facebook data' do

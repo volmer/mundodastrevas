@@ -69,11 +69,7 @@ describe Zine do
     subject! { build(:zine) }
 
     it 'creates an activity' do
-      expect {
-        subject.save
-      }.to change{
-        Activity.count
-      }.by(1)
+      expect { subject.save }.to change { Activity.count }.by(1)
 
       activity = Activity.last
 

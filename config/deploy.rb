@@ -26,7 +26,9 @@ set :deploy_to, '/home/mundodastrevas/mundodastrevas'
 # set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{public/uploads public/system log tmp/pids bin tmp/cache tmp/sockets}
+set(
+  :linked_dirs,
+  %w(public/uploads public/system log tmp/pids bin tmp/cache tmp/sockets))
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }

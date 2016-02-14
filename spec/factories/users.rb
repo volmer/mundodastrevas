@@ -8,7 +8,7 @@ FactoryGirl.define do
     password '12345678'
     state 'active'
 
-    before(:create) { |user| user.confirm }
+    before(:create, &:confirm)
 
     factory :admin do
       after(:create) do |user, _|

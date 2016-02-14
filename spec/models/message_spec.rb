@@ -46,26 +46,26 @@ describe Message do
     let(:recipient) { create(:user) }
 
     it 'creates a new notification for the recipient' do
-      expect {
-        subject.save
-      }.to change { subject.recipient.notifications.count }.by(1)
+      expect { subject.save }
+        .to change { subject.recipient.notifications.count }.by(1)
     end
 
     it 'delivers a notification email to the recipient' do
-      expect {
-        subject.save
-      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect { subject.save }
+        .to change { ActionMailer::Base.deliveries.count }.by(1)
 
-      expect(ActionMailer::Base.deliveries.last.to).to match_array([recipient.email])
+      expect(ActionMailer::Base.deliveries.last.to).to match_array(
+        [recipient.email])
     end
 
-    context 'the recipient does not want to receive emails about new messages' do
-      let(:recipient) { create(:user, email_preferences: { new_message: 'false' } ) }
+    context 'the recipient does not want to receive emails for new messages' do
+      let(:recipient) do
+        create(:user, email_preferences: { new_message: 'false' })
+      end
 
       it 'does not deliver a notification email' do
-        expect {
-          subject.save
-        }.not_to change { ActionMailer::Base.deliveries.count }
+        expect { subject.save }
+          .not_to change { ActionMailer::Base.deliveries.count }
       end
     end
   end

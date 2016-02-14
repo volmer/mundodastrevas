@@ -1,13 +1,23 @@
 AllCops:
-  RunRailsCops: true
+  TargetRubyVersion: 2.3
+
   Exclude:
-    - 'config/**/*'
+    - 'config/initializers/*'
     - 'db/**/*'
     - 'features/**/*'
-    - 'spec/**/*'
+    #- 'spec/**/*'
+
+Rails:
+  Enabled: true
+
 Style/Documentation:
   Enabled: false
+
 Metrics/AbcSize:
   Enabled: false
+
 Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false

@@ -26,15 +26,13 @@ describe Notification do
       expect(notification).to be_persisted
     end
 
-    context 'when user does not want to receive emails regarding the given event' do
+    context 'when user does not want to receive emails about the given event' do
       before do
         notification.user.email_preferences = { notification.event => false }
       end
 
       it 'does not send an email' do
-        expect {
-          subject
-        }.not_to change { ActionMailer::Base.deliveries.count }
+        expect { subject }.not_to change { ActionMailer::Base.deliveries.count }
       end
     end
 
@@ -44,17 +42,13 @@ describe Notification do
       end
 
       it 'sends an email' do
-        expect {
-          subject
-        }.to change { ActionMailer::Base.deliveries.count }
+        expect { subject }.to change { ActionMailer::Base.deliveries.count }
       end
     end
 
-    context 'when user did not define preferences about recieving about the given event' do
+    context 'when user did not define preferences' do
       it 'sends an email' do
-        expect {
-          subject
-        }.to change { ActionMailer::Base.deliveries.count }
+        expect { subject }.to change { ActionMailer::Base.deliveries.count }
       end
     end
   end

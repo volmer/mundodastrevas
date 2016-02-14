@@ -14,7 +14,7 @@ describe Rank do
   describe '#levels' do
     subject { rank.levels }
 
-    it 'returns all levels that belong to the same universe and have the same value' do
+    it 'returns all levels with the same universe and value' do
       level_1 = create(:level, universe: rank.universe, value: rank.value)
       level_2 = create(:level, universe: rank.universe, value: rank.value + 1)
       level_3 = create(:level, value: rank.value)
@@ -28,11 +28,11 @@ describe Rank do
   describe '#users' do
     subject { rank.users }
 
-    it 'returns all users that have a level with the same value and universe of the rank' do
+    it 'returns all users that have a level with the same value and universe' do
       level = create(:level, universe: rank.universe, value: rank.value)
-      level_with_different_value = create(:level, universe: rank.universe, value:
-        create(:rank, universe: rank.universe, value: (rank.value + 1)).value
-      )
+      level_with_different_value =
+        create(:level, universe: rank.universe, value:
+          create(:rank, universe: rank.universe, value: (rank.value + 1)).value)
       level_of_another_universe = create(:level, value: rank.value)
 
       expect(subject).to include(level.user)

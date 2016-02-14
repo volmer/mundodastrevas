@@ -70,7 +70,11 @@ Mundodastrevas::Application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    resources :followerships, only: [:create, :destroy], on: :member, controller: 'zine_followerships'
+    resources(
+      :followerships,
+      only: [:create, :destroy],
+      on: :member,
+      controller: 'zine_followerships')
     get 'followers', controller: 'zine_followerships'
   end
 
@@ -83,7 +87,11 @@ Mundodastrevas::Application.routes.draw do
       resources :forum_posts, only: [:create, :update, :destroy]
     end
 
-    resources :followerships, only: [:create, :destroy], on: :member, controller: 'forum_followerships'
+    resources(
+      :followerships,
+      only: [:create, :destroy],
+      on: :member,
+      controller: 'forum_followerships')
     get 'followers', controller: 'forum_followerships'
   end
 end

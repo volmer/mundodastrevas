@@ -24,18 +24,21 @@ describe NotificationsHelper, type: :helper do
     let(:notification) { create(:notification) }
 
     it 'sets the "href" attribute to the notification path' do
-      expect(helper.link_to_notification(notification)).to include("href=\"#{ notification_path(notification) }\"")
+      expect(helper.link_to_notification(notification)).to include(
+        "href=\"#{notification_path(notification)}\"")
     end
 
     it 'sets the "id" data attribute to the notification id' do
-      expect(helper.link_to_notification(notification)).to include("data-id=\"#{ notification.id }\"")
+      expect(helper.link_to_notification(notification)).to include(
+        "data-id=\"#{notification.id}\"")
     end
 
     context 'with an unread notification' do
       it 'adds the classes "notification" and "unread" to the link' do
         notification.unread = true
 
-        expect(helper.link_to_notification(notification)).to include('class="notification unread"')
+        expect(helper.link_to_notification(notification)).to include(
+          'class="notification unread"')
       end
     end
 
@@ -43,7 +46,8 @@ describe NotificationsHelper, type: :helper do
       it 'adds the classes "notification" and "read" to the link' do
         notification.unread = false
 
-        expect(helper.link_to_notification(notification)).to include('class="notification read"')
+        expect(helper.link_to_notification(notification)).to include(
+          'class="notification read"')
       end
     end
   end

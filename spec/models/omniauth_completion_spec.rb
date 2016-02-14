@@ -77,7 +77,6 @@ shared_examples_for 'the created external account' do
   end
 end
 
-
 describe OmniauthCompletion do
   let(:auth_data) do
     {
@@ -107,8 +106,8 @@ describe OmniauthCompletion do
     subject(:complete) { described_class.complete(auth_data, current_user) }
 
     before do
-      stub_request(:any, /stubbed.com/).
-        to_return(
+      stub_request(:any, /stubbed.com/)
+        .to_return(
           status: 200,
           body: File.open(Rails.root.to_s + '/spec/fixtures/image.jpg')
         )
@@ -117,21 +116,24 @@ describe OmniauthCompletion do
     context 'with no current user' do
       let(:current_user) { nil }
 
-      context 'when there is a saved external account for the given auth data' do
-        let!(:existing_account) { create(:external_account, provider: 'bookface', uid: '123') }
+      context 'when there is a saved external account for the given data' do
+        let!(:existing_account) do
+          create(:external_account, provider: 'bookface', uid: '123')
+        end
 
         it 'returns its user' do
           expect(subject).to eq(existing_account.user)
         end
       end
 
-      context 'when there is not a saved external account for the given auth data' do
+      context 'when there is not a saved external account for the given data' do
         context 'when the given auth data includes an email' do
           context 'when there is an user signed up with the given email' do
-            let!(:user) { create(:user, email: 'ops.my.email@example.com' ) }
+            let!(:user) { create(:user, email: 'ops.my.email@example.com') }
 
             it 'creates an external account for the email owner' do
-              expect { subject }.to change{ user.external_accounts.count }.by(1)
+              expect { subject }
+                .to change { user.external_accounts.count }.by(1)
             end
 
             include_examples 'the created external account'
@@ -199,9 +201,15 @@ describe OmniauthCompletion do
     context 'with a current user' do
       let(:current_user) { create(:user) }
 
-      context 'when there is a saved external account for the given auth data' do
+      context 'when there is a saved external account for the given data' do
         context 'when the owner of the external account is the current user' do
-          before { create(:external_account, provider: 'bookface', uid: '123', user: current_user) }
+          before do
+            create(
+              :external_account,
+              provider: 'bookface',
+              uid: '123',
+              user: current_user)
+          end
 
           include_examples 'merge user with auth data'
 
@@ -214,7 +222,7 @@ describe OmniauthCompletion do
           end
         end
 
-        context 'when the owner of the external account is not the current user' do
+        context 'when the owner of the account is not the current user' do
           before { create(:external_account, provider: 'bookface', uid: '123') }
 
           it 'raises an error' do
@@ -223,9 +231,10 @@ describe OmniauthCompletion do
         end
       end
 
-      context 'when there is not a saved external account for the given auth data' do
+      context 'when there is not a saved external account for the given data' do
         it 'creates an external account for the current user' do
-          expect { subject }.to change{ current_user.external_accounts.count }.by(1)
+          expect { subject }
+            .to change { current_user.external_accounts.count }.by(1)
         end
 
         include_examples 'the created external account'

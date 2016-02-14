@@ -7,7 +7,9 @@ describe Notifications::NewForumPostDecorator, type: :decorator do
 
   let(:topic) { create(:topic, name: 'The Dothraki Sea') }
 
-  let(:notification) { build(:notification, notifiable: forum_post, event: 'new_forum_post') }
+  let(:notification) do
+    build(:notification, notifiable: forum_post, event: 'new_forum_post')
+  end
 
   subject(:presenter) { described_class.new(notification) }
 
@@ -15,10 +17,10 @@ describe Notifications::NewForumPostDecorator, type: :decorator do
     subject { presenter.redirect_path }
 
     it 'returns the path to the post topic' do
-      expect(subject).to match(/forums\/(.*?)\/topics\/(.*?)the-dothraki-sea/)
+      expect(subject).to match(%r{forums/(.*?)/topics/(.*?)the-dothraki-sea})
     end
 
-    it 'includes the last page number in path when the topic has more than one page' do
+    it 'includes the last page number in path when there are multiple pages' do
       create_list(:forum_post, 22, topic: topic)
 
       expect(subject).to include('?page=3')

@@ -11,7 +11,8 @@ describe ApplicationHelper, type: :helper do
     it 'adds <p> tags to double linke breaks' do
       text = "Line One\n\nLine Two"
 
-      expect(helper.simple_text(text)).to eq("<p>Line One</p>\n\n<p>Line Two</p>")
+      expect(helper.simple_text(text)).to eq(
+        "<p>Line One</p>\n\n<p>Line Two</p>")
     end
 
     it 'removes any tags but <br> and <p>' do
@@ -34,7 +35,8 @@ describe ApplicationHelper, type: :helper do
       text = 'Visit http://radicaos.com'
 
       expect(helper.simple_text(text)).to eq(
-        '<p>Visit <a target="_blank" href="http://radicaos.com">http://radicaos.com</a></p>'
+        '<p>Visit <a target="_blank" '\
+        'href="http://radicaos.com">http://radicaos.com</a></p>'
       )
     end
 
@@ -147,34 +149,45 @@ describe ApplicationHelper, type: :helper do
       create(:user, name: 'octocat')
 
       text = 'Welcome, @volmer'
-      expect(helper.autolink_mentions(text)).to eq('Welcome, <a href="/users/volmer">@volmer</a>')
+      expect(helper.autolink_mentions(text)).to eq(
+        'Welcome, <a href="/users/volmer">@volmer</a>')
 
       text = 'Welcome @volmer and @octocat'
-      expect(helper.autolink_mentions(text)).to eq('Welcome <a href="/users/volmer">@volmer</a> and <a href="/users/octocat">@octocat</a>')
+      expect(helper.autolink_mentions(text)).to eq(
+        'Welcome <a href="/users/volmer">@volmer</a> '\
+        'and <a href="/users/octocat">@octocat</a>')
 
       text = '@volmer, read this'
-      expect(helper.autolink_mentions(text)).to eq('<a href="/users/volmer">@volmer</a>, read this')
+      expect(helper.autolink_mentions(text)).to eq(
+        '<a href="/users/volmer">@volmer</a>, read this')
 
       text = '@volmer.'
-      expect(helper.autolink_mentions(text)).to eq('<a href="/users/volmer">@volmer</a>.')
+      expect(helper.autolink_mentions(text)).to eq(
+        '<a href="/users/volmer">@volmer</a>.')
 
       text = 'Welcome, @volmer!!'
-      expect(helper.autolink_mentions(text)).to eq('Welcome, <a href="/users/volmer">@volmer</a>!!')
+      expect(helper.autolink_mentions(text)).to eq(
+        'Welcome, <a href="/users/volmer">@volmer</a>!!')
 
       text = '@volmer, @volmer'
-      expect(helper.autolink_mentions(text)).to eq('<a href="/users/volmer">@volmer</a>, <a href="/users/volmer">@volmer</a>')
+      expect(helper.autolink_mentions(text)).to eq(
+        '<a href="/users/volmer">@volmer</a>, '\
+        '<a href="/users/volmer">@volmer</a>')
 
       text = '@volmer, @volmerius'
-      expect(helper.autolink_mentions(text)).to eq('<a href="/users/volmer">@volmer</a>, @volmerius')
+      expect(helper.autolink_mentions(text)).to eq(
+        '<a href="/users/volmer">@volmer</a>, @volmerius')
 
       text = 'welcome@volmer'
       expect(helper.autolink_mentions(text)).to eq('welcome@volmer')
 
       text = 'Welcome, @VOLMER'
-      expect(helper.autolink_mentions(text)).to eq('Welcome, <a href="/users/volmer">@VOLMER</a>')
+      expect(helper.autolink_mentions(text)).to eq(
+        'Welcome, <a href="/users/volmer">@VOLMER</a>')
 
       text = 'Welcome,@VOLMER'
-      expect(helper.autolink_mentions(text)).to eq('Welcome,<a href="/users/volmer">@VOLMER</a>')
+      expect(helper.autolink_mentions(text)).to eq(
+        'Welcome,<a href="/users/volmer">@VOLMER</a>')
     end
 
     it 'does nothing if user does not exist' do

@@ -7,11 +7,7 @@ describe ExternalAccount do
     subject! { build(:external_account) }
 
     it 'creates an activity' do
-      expect {
-        subject.save!
-      }.to change{
-        Activity.count
-      }.by(1)
+      expect { subject.save! }.to change { Activity.count }.by(1)
 
       activity = Activity.last
 
@@ -28,11 +24,7 @@ describe ExternalAccount do
       end
 
       it 'creates a private activity' do
-        expect {
-          subject.save!
-        }.to change{
-          Activity.count
-        }.by(1)
+        expect { subject.save! }.to change { Activity.count }.by(1)
 
         activity = Activity.last
 

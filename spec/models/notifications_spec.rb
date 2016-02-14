@@ -14,8 +14,10 @@ describe Notifications do
       new_follower = build(:new_follower_notification)
       new_message = build(:new_message_notification)
 
-      expect(described_class.decorator_for(new_follower)).to be_a(Notifications::NewFollowerDecorator)
-      expect(described_class.decorator_for(new_message)).to be_a(Notifications::NewMessageDecorator)
+      expect(described_class.decorator_for(new_follower))
+        .to be_a(Notifications::NewFollowerDecorator)
+      expect(described_class.decorator_for(new_message))
+        .to be_a(Notifications::NewMessageDecorator)
     end
   end
 end

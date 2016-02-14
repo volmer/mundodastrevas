@@ -11,17 +11,21 @@ describe FollowershipsHelper, type: :helper do
 
       context 'when user is not following followable' do
         it 'returns a link to create a followership' do
-          expect(subject).to include('href="/users/followableuser/followerships"')
+          expect(subject).to include(
+            'href="/users/followableuser/followerships"')
 
           expect(subject).to include('data-method="post"')
         end
       end
 
       context 'when user is already following followable' do
-        before { create(:followership, user: current_user, followable: followable) }
+        before do
+          create(:followership, user: current_user, followable: followable)
+        end
 
         it 'returns a link to destroy the followership' do
-          expect(subject).to include('href="/users/followableuser/followerships/')
+          expect(subject).to include(
+            'href="/users/followableuser/followerships/')
 
           expect(subject).to include('data-method="delete"')
         end

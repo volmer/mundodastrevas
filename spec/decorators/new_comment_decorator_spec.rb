@@ -3,15 +3,19 @@ require 'rails_helper'
 describe Notifications::NewCommentDecorator, type: :decorator do
   let(:user) { create(:user, name: 'khaldrogo') }
   let(:comment) { create(:comment, user: user, post: post) }
-  let(:post) { create(:post, name: 'The Dothraki Sea', slug: 'the-dothraki-sea') }
-  let(:notification) { build(:notification, notifiable: comment, event: 'new_comment') }
+  let(:post) do
+    create(:post, name: 'The Dothraki Sea', slug: 'the-dothraki-sea')
+  end
+  let(:notification) do
+    build(:notification, notifiable: comment, event: 'new_comment')
+  end
 
   subject { described_class.new(notification) }
 
   describe '#redirect_path' do
     it 'returns the path to the post topic' do
       expect(subject.redirect_path)
-        .to match(/zines\/(.*?)\/posts\/the-dothraki-sea/)
+        .to match(%{zines/(.*?)/posts/the-dothraki-sea})
     end
   end
 

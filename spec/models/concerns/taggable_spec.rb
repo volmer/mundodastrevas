@@ -18,7 +18,8 @@ describe Taggable do
       context 'when there are taggings' do
         before do
           create(:tagging, tag: create(:tag, name: 'nice'), taggable: taggable)
-          create(:tagging, tag: create(:tag, name: 'chapter'), taggable: taggable)
+          create(
+            :tagging, tag: create(:tag, name: 'chapter'), taggable: taggable)
         end
 
         it 'returns the tag names separated by comma' do
@@ -39,27 +40,25 @@ describe Taggable do
     let(:value) { 'amazing' }
 
     context 'when the given tags are diffent from the current ones' do
-      before { create(:tagging, tag: create(:tag, name: 'awesome'), taggable: taggable) }
+      before do
+        create(:tagging, tag: create(:tag, name: 'awesome'), taggable: taggable)
+      end
 
       it 'sets the given value' do
-        expect {
-          subject
-        }.to change {
-          taggable.tags
-        }.from('awesome').to('amazing')
+        expect { subject }.to change { taggable.tags }.from(
+          'awesome').to('amazing')
       end
 
       it 'marks tags as changed' do
-        expect {
-          subject
-        }.to change {
-          taggable.tags_changed?
-        }.from(false).to(true)
+        expect { subject }.to change { taggable.tags_changed? }.from(
+          false).to(true)
       end
     end
 
     context 'when the given tags are already present' do
-      before { create(:tagging, tag: create(:tag, name: 'amazing'), taggable: taggable) }
+      before do
+        create(:tagging, tag: create(:tag, name: 'amazing'), taggable: taggable)
+      end
 
       it 'does not mark tags as changed' do
         subject
@@ -92,27 +91,24 @@ describe Taggable do
         end
 
         context 'when there are duplicated tag names' do
-          before { create(:tagging, tag: create(:tag, name: 'league'), taggable: taggable) }
+          before do
+            create(
+              :tagging, tag: create(:tag, name: 'league'), taggable: taggable)
+          end
 
           it 'does not duplicate taggings' do
-            expect {
-              subject
-            }.to change {
-              taggable.taggings.count
-            }.from(1).to(2)
+            expect { subject }.to change { taggable.taggings.count }.from(
+              1).to(2)
           end
         end
 
-        context 'when there are taggins that are not represented by the tag names' do
+        context 'when taggins are not represented by tag names' do
           let(:tag) { create(:tag, name: 'archer') }
           before { create(:tagging, tag: tag, taggable: taggable) }
 
           it 'removes them' do
-            expect {
-              subject
-            }.to change {
-              tag.reload.taggings.count
-            }.from(1).to(0)
+            expect { subject }.to change { tag.reload.taggings.count }.from(
+              1).to(0)
           end
         end
       end
@@ -128,11 +124,8 @@ describe Taggable do
           end
 
           it 'removes all present taggings' do
-            expect {
-              subject
-            }.to change {
-              taggable.reload.taggings.count
-            }.from(1).to(0)
+            expect { subject }.to change { taggable.reload.taggings.count }
+              .from(1).to(0)
           end
         end
       end
@@ -142,11 +135,7 @@ describe Taggable do
       it 'does not change existent taggings ' do
         create(:tagging, tag: create(:tag, name: 'amazing'), taggable: taggable)
 
-        expect {
-          subject
-        }.not_to change {
-          taggable.taggings
-        }
+        expect { subject }.not_to change { taggable.taggings }
       end
     end
   end

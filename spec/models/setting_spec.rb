@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Setting, type: :model do
   describe '.[]=' do
-    it 'creates a new setting for the given key and value if key does not exist' do
+    it 'creates a new setting for the given key and value if key is not set' do
       Setting[:admin_name] = 'Volmer'
 
       expect(Setting.find_by(key: :admin_name).value).to eq('Volmer')

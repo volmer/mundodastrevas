@@ -4,8 +4,8 @@ class UsersController < ApplicationController
     authorize(@user)
 
     @activities =
-      @user.activities.where(privacy: 'public').includes(:subject)
-      .order(created_at: :desc).page(params[:page])
+      @user.activities.where(privacy: 'public').includes(:subject).order(
+        created_at: :desc).page(params[:page])
 
     @zines = @user.zines.order(updated_at: :desc)
   end

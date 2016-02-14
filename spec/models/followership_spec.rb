@@ -15,11 +15,7 @@ describe Followership do
     it 'creates an activity' do
       subject
 
-      expect {
-        subject.save
-      }.to change{
-        Activity.count
-      }.by(1)
+      expect { subject.save }.to change { Activity.count }.by(1)
 
       activity = Activity.last
 
@@ -30,17 +26,15 @@ describe Followership do
     end
 
     it 'creates a new notification for the followed user' do
-      expect {
-        subject.save
-      }.to change { subject.followable.notifications.count }.by(1)
+      expect { subject.save }
+        .to change { subject.followable.notifications.count }.by(1)
     end
 
     it 'delivers a notification email to the followed user' do
       subject
 
-      expect {
-        subject.save
-      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect { subject.save }.to change { ActionMailer::Base.deliveries.count }
+        .by(1)
 
       expect(ActionMailer::Base.deliveries.last.to).to match_array(
         [subject.followable.email])
@@ -54,9 +48,8 @@ describe Followership do
       end
 
       it 'does not deliver a notification email' do
-        expect {
-          subject.save
-        }.not_to change { ActionMailer::Base.deliveries.count }
+        expect { subject.save }
+          .not_to change { ActionMailer::Base.deliveries.count }
       end
     end
   end

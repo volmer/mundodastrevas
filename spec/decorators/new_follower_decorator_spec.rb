@@ -5,7 +5,9 @@ describe Notifications::NewFollowerDecorator, type: :decorator do
 
   let(:followership) { create(:followership, user: follower) }
 
-  let(:notification) { build(:new_follower_notification, notifiable: followership) }
+  let(:notification) do
+    build(:new_follower_notification, notifiable: followership)
+  end
 
   subject(:presenter) { described_class.new(notification) }
 

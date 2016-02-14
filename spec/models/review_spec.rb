@@ -7,11 +7,7 @@ describe Review do
     subject! { build(:review, value: 'loved') }
 
     it 'creates a public activity' do
-      expect {
-        subject.save!
-      }.to change{
-        Activity.count
-      }.by(1)
+      expect { subject.save! }.to change { Activity.count }.by(1)
 
       activity = Activity.last
 
@@ -26,11 +22,7 @@ describe Review do
     subject! { build(:review, value: 'hated') }
 
     it 'creates a public activity' do
-      expect {
-        subject.save!
-      }.to change{
-        Activity.count
-      }.by(1)
+      expect { subject.save! }.to change { Activity.count }.by(1)
 
       activity = Activity.last
 

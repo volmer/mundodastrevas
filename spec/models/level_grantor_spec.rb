@@ -18,11 +18,8 @@ describe LevelGrantor do
       it 'upgrades the user rank in the universe' do
         create(:rank, universe: universe, value: 1)
 
-        expect {
-          subject
-        }.to change {
-          user.rank_in(universe).value
-        }.from(1).to(2)
+        expect { subject }.to change { user.rank_in(universe).value }
+          .from(1).to(2)
       end
 
       it 'returns the level with its value upgraded' do

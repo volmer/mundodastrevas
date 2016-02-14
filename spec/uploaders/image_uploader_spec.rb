@@ -48,7 +48,8 @@ describe ImageUploader do
 
   describe '#default_url' do
     it 'returns the proper fallback image' do
-      expect(@uploader.default_url).to match(%r{/assets/fallback/user/original.*\.png})
+      expect(@uploader.default_url)
+        .to match(%r{/assets/fallback/user/original.*\.png})
     end
   end
 

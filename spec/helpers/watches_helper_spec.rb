@@ -40,7 +40,9 @@ describe WatchesHelper, type: :helper do
   end
 
   describe '#fields_for_watch' do
-    let(:form) { ActionView::Helpers::FormBuilder.new(:post, watchable, helper, {}) }
+    let(:form) do
+      ActionView::Helpers::FormBuilder.new(:post, watchable, helper, {})
+    end
 
     subject { helper.fields_for_watch(form, watchable, user) }
 
@@ -71,7 +73,10 @@ describe WatchesHelper, type: :helper do
     end
 
     context 'with a label' do
-      subject { helper.fields_for_watch(form, watchable, user, 'Watch by checking here.') }
+      subject do
+        helper.fields_for_watch(
+          form, watchable, user, 'Watch by checking here.')
+      end
 
       it 'includes the label' do
         expect(subject).to include('Watch by checking here.')

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :setting do
-    key "MyString"
-    value "MyString"
+    key 'my_setting'
+    value 'My value'
   end
 end

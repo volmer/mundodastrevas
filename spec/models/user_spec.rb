@@ -111,9 +111,8 @@ describe User do
     end
 
     it 'raises an error if nothing is found' do
-      expect {
-        described_class.find_by_name!('unexistent')
-      }.to raise_error(ActiveRecord::RecordNotFound)
+      expect { described_class.find_by_name!('unexistent') }
+        .to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
@@ -168,11 +167,7 @@ describe User do
 
   context 'when a record is created' do
     it 'creates an activity' do
-      expect {
-        subject.save
-      }.to change{
-        Activity.count
-      }.by(1)
+      expect { subject.save }.to change { Activity.count }.by(1)
 
       activity = Activity.last
 
@@ -230,11 +225,7 @@ describe User do
           let!(:rank) { create(:rank, universe: universe, value: 1) }
 
           it 'sets the user level in the given universe to 1' do
-            expect {
-              subject
-            }.to change {
-              user.levels.count
-            }.by(1)
+            expect { subject }.to change { user.levels.count }.by(1)
 
             new_level = user.levels.last
 
@@ -251,13 +242,13 @@ describe User do
       context 'when the user has a level in the given universe' do
         let!(:level) { create(:level, user: user, universe: universe) }
 
-        context 'when the given universe does not have a rank with the level value' do
+        context 'when the given universe does not have a rank for level' do
           it 'returns nil' do
             expect(subject).to be_nil
           end
         end
 
-        context 'when the given universe have a rank with the same value as the user level' do
+        context 'when universe has a rank for the user level' do
           let!(:rank) { create(:rank, universe: universe, value: level.value) }
 
           it 'returns the rank' do

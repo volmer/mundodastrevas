@@ -13,7 +13,7 @@ describe Topic do
       subject.name = 'Wildlings among us'
     end
 
-    it 'starts with the topic id followed by an hyphen and the topic name paremeterized' do
+    it 'is the topic id and the topic name paremeterized' do
       expect(subject.to_param).to eq('123-wildlings-among-us')
     end
   end
@@ -26,9 +26,8 @@ describe Topic do
     end
 
     it 'raises an error if topic does not exist' do
-      expect {
-        described_class.find_by_slug!('fake')
-      }.to raise_error(ActiveRecord::RecordNotFound)
+      expect { described_class.find_by_slug!('fake') }
+        .to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 

@@ -5,7 +5,7 @@ module Notifications
     include ::Draper::LazyHelpers
 
     def redirect_path
-      fail 'Not yet implemented'
+      raise 'Not yet implemented'
     end
 
     def text

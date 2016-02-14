@@ -8,20 +8,25 @@ describe NotificationMailer do
 
     it 'sends the email to the notification user' do
       subject
-      expect(ActionMailer::Base.deliveries.last.to).to match_array([notification.user.email])
+      expect(ActionMailer::Base.deliveries.last.to).to match_array(
+        [notification.user.email])
     end
 
     it 'includes a link to the notification' do
       subject
 
       options = Rails.application.config.action_mailer.default_url_options
-      notification_url = Rails.application.routes.url_helpers.notification_url(notification, options)
+      notification_url = Rails.application.routes.url_helpers.notification_url(
+        notification, options)
 
-      expect(ActionMailer::Base.deliveries.last.body).to include(notification_url)
+      expect(ActionMailer::Base.deliveries.last.body).to include(
+        notification_url)
     end
 
     describe 'new_follower' do
-      let(:notification) { create(:new_follower_notification, notifiable: followership) }
+      let(:notification) do
+        create(:new_follower_notification, notifiable: followership)
+      end
 
       let(:follower) { create(:user, name: 'bran') }
 
@@ -34,7 +39,9 @@ describe NotificationMailer do
     end
 
     describe 'new_message' do
-      let(:notification) { create(:new_message_notification, notifiable: message) }
+      let(:notification) do
+        create(:new_message_notification, notifiable: message)
+      end
 
       let(:message) { create(:message, content: 'We do not sow.') }
 
@@ -42,7 +49,8 @@ describe NotificationMailer do
 
       it 'includes the message content' do
         subject
-        expect(ActionMailer::Base.deliveries.last.body).to include('We do not sow.')
+        expect(ActionMailer::Base.deliveries.last.body).to include(
+          'We do not sow.')
       end
     end
   end

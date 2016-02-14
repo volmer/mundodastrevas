@@ -13,9 +13,9 @@ describe WatchesRetrievalJob, type: :job do
     end
 
     it 'enqueues a notification delivery job for each active watcher' do
-      expect {
+      expect do
         job.perform(watchable, notifiable, 'new_comment')
-      }.to have_enqueued_job(NotificationDeliveryJob).exactly(4).times
+      end.to have_enqueued_job(NotificationDeliveryJob).exactly(4).times
     end
 
     context 'with an user to skip' do
@@ -24,15 +24,15 @@ describe WatchesRetrievalJob, type: :job do
       before { create(:watch, watchable: watchable, user: user_to_skip) }
 
       it 'does not enqueue a job to the user' do
-        expect {
+        expect do
           job.perform(watchable, notifiable, 'new_comment', user_to_skip)
-        }.not_to have_enqueued_job(NotificationDeliveryJob)
+        end.not_to have_enqueued_job(NotificationDeliveryJob)
       end
 
       it 'enqueues jobs to other watchers as usual' do
-        expect {
+        expect do
           job.perform(watchable, notifiable, 'new_comment', user_to_skip)
-        }.to have_enqueued_job(NotificationDeliveryJob).exactly(4).times
+        end.to have_enqueued_job(NotificationDeliveryJob).exactly(4).times
       end
     end
   end

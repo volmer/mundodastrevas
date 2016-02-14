@@ -7,11 +7,7 @@ describe Comment do
     it 'creates an activity' do
       subject
 
-      expect {
-        subject.save
-      }.to change{
-        Activity.count
-      }.by(1)
+      expect { subject.save }.to change { Activity.count }.by(1)
 
       activity = Activity.last
 

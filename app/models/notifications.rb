@@ -7,7 +7,7 @@ module Notifications
     new_forum_post: NewForumPostDecorator,
     new_message: NewMessageDecorator,
     new_rank: NewRankDecorator
-  }
+  }.freeze
 
   def self.decorator_for(notification)
     DECORATORS[notification.event.to_sym].new(notification)

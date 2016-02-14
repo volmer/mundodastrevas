@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   NAME_FORMAT = /\A[\w-]+\z/
   NAME_RANGE  = 3..16
-  PRIVATE_ATTRIBUTES = %w(email gender location birthday)
+  PRIVATE_ATTRIBUTES = %w(email gender location birthday).freeze
 
   store_accessor :privacy
   store_accessor :email_preferences

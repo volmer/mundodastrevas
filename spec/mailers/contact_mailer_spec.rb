@@ -14,11 +14,13 @@ describe ContactMailer do
     before { described_class.contact_email(contact).deliver_now }
 
     it 'sends the email to the address configured as contact destination' do
-      expect(ActionMailer::Base.deliveries.last.to).to eq([Rails.application.config.contacts_destination])
+      expect(ActionMailer::Base.deliveries.last.to).to eq(
+        [Rails.application.config.contacts_destination])
     end
 
     it 'includes the contact message' do
-      expect(ActionMailer::Base.deliveries.last.body).to include('Growing strong.')
+      expect(ActionMailer::Base.deliveries.last.body).to include(
+        'Growing strong.')
     end
 
     it 'includes the contact name' do
@@ -26,7 +28,8 @@ describe ContactMailer do
     end
 
     it 'includes the contact email' do
-      expect(ActionMailer::Base.deliveries.last.body).to include('loras@tyrell.com')
+      expect(ActionMailer::Base.deliveries.last.body).to include(
+        'loras@tyrell.com')
     end
 
     context 'with a contact sent by a signed in user' do

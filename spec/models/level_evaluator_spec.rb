@@ -12,7 +12,7 @@ describe LevelEvaluator do
     context 'the given reviewable has received at least 3 reviews' do
       before { create_list(:review, 3, reviewable: reviewable) }
 
-      it 'is true when the given reviewable has more positive than negative reviews' do
+      it 'is true when reviewable has more positive than negative reviews' do
         create_list(:review, 4, reviewable: reviewable, value: 'loved')
 
         expect(subject).to be true
@@ -40,21 +40,21 @@ describe LevelEvaluator do
     end
 
     it 'increases 1 point for each forum post published' do
-      expect {
+      expect do
         create_list(:forum_post, 3, user: user, universe: universe)
-      }.to change { calculator.score }.by(3)
+      end.to change { calculator.score }.by(3)
     end
 
     it 'increases 3 points for each zine post published' do
-      expect {
+      expect do
         create_list(:post, 2, user: user, universe: universe)
-      }.to change { calculator.score }.by(6)
+      end.to change { calculator.score }.by(6)
     end
 
     it 'increases 1 point for each comment published' do
-      expect {
+      expect do
         create_list(:comment, 4, user: user, universe: universe)
-      }.to change { calculator.score }.by(4)
+      end.to change { calculator.score }.by(4)
     end
 
     context 'with relevant records' do
@@ -63,21 +63,21 @@ describe LevelEvaluator do
       end
 
       it 'increases 2 points for each relevant forum post published' do
-        expect {
+        expect do
           create_list(:forum_post, 3, user: user, universe: universe)
-        }.to change { calculator.score }.by(6)
+        end.to change { calculator.score }.by(6)
       end
 
       it 'increases 6 points for each relevant zine post published' do
-        expect {
+        expect do
           create_list(:post, 2, user: user, universe: universe)
-        }.to change { calculator.score }.by(12)
+        end.to change { calculator.score }.by(12)
       end
 
       it 'increases 2 point for each relevant comment published' do
-        expect {
+        expect do
           create_list(:comment, 4, user: user, universe: universe)
-        }.to change { calculator.score }.by(8)
+        end.to change { calculator.score }.by(8)
       end
     end
   end
