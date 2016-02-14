@@ -13,17 +13,13 @@ module Admin
     end
 
     def update
-      if @zine.update(zine_params)
-        if params[:featured]
-          Setting[:featured_zine] = @zine.id
-        elsif Setting[:featured_zine] == @zine.id.to_s
-          Setting[:featured_zine] = nil
-        end
-
-        redirect_to admin_zines_path, notice: t('flash.zines.update')
-      else
-        render action: 'edit'
+      if params[:featured]
+        Setting[:featured_zine] = @zine.id
+      elsif Setting[:featured_zine] == @zine.id.to_s
+        Setting[:featured_zine] = nil
       end
+
+      redirect_to admin_zines_path, notice: t('flash.zines.update')
     end
 
     private
@@ -36,10 +32,6 @@ module Admin
       end
 
       authorize(@zine)
-    end
-
-    def zine_params
-      params.require(:zine).permit(:starred)
     end
   end
 end

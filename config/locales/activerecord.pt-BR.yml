@@ -27,7 +27,6 @@ pt-BR:
         slug: 'URL amigável'
         description: 'Descrição'
         image: 'Imagem de capa'
-        starred: 'Estrelado'
         user_id: 'Usuário'
       post:
         name: 'Nome'

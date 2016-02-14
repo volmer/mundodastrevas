@@ -19,11 +19,9 @@
         boolean: :vertical_boolean
       }
     ) do |f| %>
-      <%= f.input :starred %>
-
       <div class="form-group">
         <div class="checkbox">
-          <label for="zine_starred">
+          <label for="featured">
             <%= check_box_tag 'featured', '1', (Setting[:featured_zine] == @zine.id.to_s) || params[:featured] %>
             <%= t '.featured' %>
           </label>

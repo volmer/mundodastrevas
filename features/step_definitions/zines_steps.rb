@@ -51,11 +51,6 @@ Then(/^I see (\d+) zines$/) do |count|
   expect(page).to have_selector('.zine', count: count)
 end
 
-Then(/^I the "(.*?)" zine is starred$/) do |name|
-  line = find('tr', text: name)
-  expect(line).to have_selector('.glyphicon-star')
-end
-
 Then(/^I see "(.*?)" as the featured zine$/) do |name|
   expect(page).to have_selector('.featured-zine', text: name)
 end

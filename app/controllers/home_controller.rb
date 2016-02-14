@@ -15,9 +15,8 @@ class HomeController < ApplicationController
   private
 
   def featured_zines
-    @featured_zines ||= Zine.with_posts.includes(:posts).where(
-      starred: true
-    ).order(last_post_at: :desc).limit(4)
+    @featured_zines ||= Zine.with_posts.includes(:posts).order(
+      last_post_at: :desc).limit(4)
   end
 
   def featured_posts
