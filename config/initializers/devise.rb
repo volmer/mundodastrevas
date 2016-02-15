@@ -259,5 +259,4 @@ Devise.setup do |config|
   config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret,
                   secure_image_url: true,
                   info_fields: 'name,email,verified,location,birthday,about,bio,link,gender'
-  config.omniauth :twitter, Rails.application.secrets.twitter_api_key, Rails.application.secrets.twitter_api_secret
 end

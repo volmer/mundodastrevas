@@ -58,7 +58,6 @@ pt-BR:
         roles: 'Papéis'
         state: 'Estado'
         facebook: 'Facebook'
-        twitter: 'Twitter'
         current_sign_in_at: 'Último login'
       page:
         title: 'Título'

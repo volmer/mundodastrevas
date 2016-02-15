@@ -36,28 +36,3 @@ Feature: Manage external accounts
     And I see the info message "Você não está mais conectado via Facebook."
     And I go to my profile page
     And within my profile I do not see the link "Facebook"
-
-  Scenario: Connect Twitter account
-    Given I have a Twitter account with the following information:
-      | username   | bio             | location | image    |
-      | arya.stark | Valar Morghulis | Bravos   | arya.jpg |
-    When I go to the user external accounts page
-    And I click on "Conectar conta do Twitter"
-    Then I am redirected to the user external accounts page
-    And I see the info message "Você entrou com sua conta do Twitter. Bem-vindo!"
-    And I see the link "arya.stark" which leads to "http://twitter.com/arya.stark" when clicked
-    And I go to my profile page
-    And I see the link "Twitter" which leads to "http://twitter.com/arya.stark" when clicked
-    And I see "Valar Morghulis" on the page
-    And I see the field "Localização" with the value "Bravos"
-    And I see the image "arya.jpg" as my avatar
-
-  Scenario: Disconnect Twitter account
-    Given I've connected my Twitter account
-    When I go to the user external accounts page
-    And I click on "Desconectar Twitter"
-    Then I am redirected to the user external accounts page
-    And I see the info message "Você não está mais conectado via Twitter."
-    And I go to my profile page
-    And within my profile I do not see the link "Twitter"
-

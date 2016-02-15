@@ -69,7 +69,6 @@ Feature: Privacy settings
     Examples:
       | provider |
       | Facebook |
-      | Twitter  |
 
   Scenario Outline: Set an external account as private
     Given I've connected my <provider> account
@@ -84,4 +83,3 @@ Feature: Privacy settings
     Examples:
       | provider |
       | Facebook |
-      | Twitter  |

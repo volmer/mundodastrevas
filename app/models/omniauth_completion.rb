@@ -10,7 +10,6 @@ class OmniauthCompletion
     end
 
     def populate(user, auth_data)
-      apply_twitter_specific_params(auth_data, user)
       apply_facebook_specific_params(auth_data, user)
       apply_general_params(auth_data, user)
     end
@@ -65,14 +64,6 @@ class OmniauthCompletion
       else
         user.external_accounts << build_account(auth_data, user)
       end
-    end
-
-    def apply_twitter_specific_params(auth_data, user)
-      return if auth_data[:provider] != 'twitter'
-      return if user.avatar.present?
-
-      image = auth_data[:info][:image].gsub!('_normal', '')
-      user.remote_avatar_url = image
     end
 
     def apply_facebook_specific_params(auth_data, user)

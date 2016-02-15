@@ -4,10 +4,6 @@ module Users
       complete('facebook')
     end
 
-    def twitter
-      complete('twitter')
-    end
-
     private
 
     def complete(provider)
@@ -40,15 +36,9 @@ module Users
 
     def redirect_unpersisted_user
       logger.info "User could not be registered: #{@user.errors.inspect}"
-
-      cleanup_twitter_data
       session['devise.omniauth_data'] = request.env['omniauth.auth']
 
       redirect_to new_user_registration_url
-    end
-
-    def cleanup_twitter_data
-      request.env['omniauth.auth'].delete('extra') if @provider == 'twitter'
     end
   end
 end
