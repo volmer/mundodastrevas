@@ -16,9 +16,11 @@ Feature: Email preferences
     And the field "<field>" is not checked
 
     Examples:
-      | field            |
-      | Novos seguidores |
-      | Novas mensagens  |
+      | field                                            |
+      | Comentários em posts que eu estou vigiando       |
+      | Novas postagens em tópicos que eu estou vigiando |
+      | Novas mensagens                                  |
+      | Novos ranks                                      |
 
   Scenario Outline: Enable emails
     When I click on "Preferências de email"
@@ -29,16 +31,20 @@ Feature: Email preferences
     And the field "<field>" is checked
 
     Examples:
-      | field            |
-      | Novos seguidores |
-      | Novas mensagens  |
+      | field                                            |
+      | Comentários em posts que eu estou vigiando       |
+      | Novas postagens em tópicos que eu estou vigiando |
+      | Novas mensagens                                  |
+      | Novos ranks                                      |
 
   Scenario Outline: Emails are enabled by default
     When I click on "Preferências de email"
     Then the field "<field>" is checked
 
     Examples:
-      | field            |
-      | Novos seguidores |
-      | Novas mensagens  |
+      | field                                            |
+      | Comentários em posts que eu estou vigiando       |
+      | Novas postagens em tópicos que eu estou vigiando |
+      | Novas mensagens                                  |
+      | Novos ranks                                      |
 
