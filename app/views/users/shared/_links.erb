@@ -2,7 +2,7 @@
   <p>
     <% resource_class.omniauth_providers.each do |provider| %>
       <%= link_to user_omniauth_authorize_path(provider), class: 'btn btn-default btn-block btn-omniauth btn-lg' do %>
-        <%= image_tag "omniauth/#{ provider }/logo.png" %>
+        <%= image_tag "social/#{provider}.png" %>
         <%= t '.sign_in_with', provider: provider.to_s.titleize %>
       <% end %>
     <% end %>

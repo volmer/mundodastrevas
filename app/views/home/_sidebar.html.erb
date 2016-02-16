@@ -1,24 +1,9 @@
 <div class="col-md-3 mundodastrevas-sidebar">
   <div class="row">
     <div class="col-sm-6 col-md-12">
-      <section class="facebook-like">
-        <div class="fb-page"
-          data-href="https://www.facebook.com/mundodastrevas"
-          data-adapt-container-width="true"
-          data-hide-cover="false"
-          data-show-facepile="false"
-          data-show-posts="false"
-          data-small-header="false">
-        </div>
-      </section>
-
-      <section class="twitter-widget">
-        <a href="https://twitter.com/mundodastrevas"
-          class="twitter-follow-button"
-          data-show-count="false"
-          data-size="large">
-          Siga @mundodastrevas
-        </a>
+      <section class="social-links">
+        <%= link_to image_tag('social/facebook.png'), 'https://facebook.com/mundodastrevas', target: '_blank' %>
+        <%= link_to image_tag('social/twitter.png'), target: '_blank' %>
       </section>
 
       <section class="panel panel-default new-users">

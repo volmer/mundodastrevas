@@ -14,18 +14,14 @@ section.new-users {
   }
 }
 
-section.facebook-like {
-  overflow: hidden;
-}
+section.social-links {
+  display: flex;
+  justify-content: space-around;
 
-section.twitter-widget {
-  text-align: center;
-}
-
-section.ads {
-  height: 280px;
-  text-align: center;
-  border-radius: 4px;
+  img {
+    height: 40px;
+    width: auto;
+  }
 }
 
 .faux-image {
