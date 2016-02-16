@@ -28,6 +28,7 @@ gem 'rubocop'
 gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails'
 gem 'elasticsearch-rails'
 gem 'sprockets-rails', '~> 2.3'
+gem 'cucumber-rails', require: false
 
 group :development do
   gem 'capistrano-rails'
@@ -44,7 +45,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'webmock', require: false
