@@ -26,142 +26,31 @@ describe DeviseConcern do
 
   describe '.new_with_session' do
     let(:session) do
-      {
-        'devise.omniauth_data' => {
-          provider: 'bookface',
-          uid: '123',
-
-          credentials: {
-            token: 'abcd',
-            secret: 'wxyz'
-          },
-
-          info: {
-            nickname: 'cindy14',
-            verified: true,
-            description: 'My awesome bio.',
-            location: 'The Twins',
-            urls: {
-              Bookface: 'http://bookface.com/cindy14'
-            },
-            image: 'http://stubbed.com/remote_avatar.jpg',
-            email: 'ops.my.email@example.com'
-          }
-        }
-      }
+      { 'devise.omniauth_data' => { omniauth_data: {} } }
     end
 
     let(:params) { {} }
 
     subject { User.new_with_session(params, session) }
 
-    context 'when name is included in params' do
-      let(:params) { { name: 'volmer' } }
-
-      it 'sets the value from params' do
-        expect(subject.name).to eq('volmer')
-      end
+    before do
+      allow(OmniauthCompletion).to receive(:populate).with(
+        kind_of(User), omniauth_data: {}) { |u, _| u.name = 'touched' }
+      allow(OmniauthCompletion).to receive(:build_account).with(
+        { omniauth_data: {} }, kind_of(User)).and_return(account)
     end
 
-    context 'when name is not included in params' do
-      it 'sets the value from session' do
-        expect(subject.name).to eq('cindy14')
-      end
-    end
+    let(:account) { build(:external_account) }
 
-    context 'when email is included in params' do
-      let(:params) { { email: 'volmer@email.com' } }
-
-      it 'sets the value from params' do
-        expect(subject.email).to eq('volmer@email.com')
-      end
-    end
-
-    context 'when email is not included in params' do
-      it 'sets the value from session' do
-        expect(subject.email).to eq('ops.my.email@example.com')
-      end
-    end
-
-    context 'when bio is included in params' do
-      let(:params) { { bio: 'Pragmatic one.' } }
-
-      it 'sets the value from params' do
-        expect(subject.bio).to eq('Pragmatic one.')
-      end
-    end
-
-    context 'when bio is not included in params' do
-      it 'sets the value from session' do
-        expect(subject.bio).to eq('My awesome bio.')
-      end
-    end
-
-    context 'when location is included in params' do
-      let(:params) { { location: 'Sao Paulo' } }
-
-      it 'sets the value from params' do
-        expect(subject.location).to eq('Sao Paulo')
-      end
-    end
-
-    context 'when location is not included in params' do
-      it 'sets the value from session' do
-        expect(subject.location).to eq('The Twins')
-      end
-    end
-
-    it 'sets the avatar from session' do
-      expect(subject.remote_avatar_url).to eq(
-        'http://stubbed.com/remote_avatar.jpg')
-    end
-
-    context 'with Facebook data' do
-      before do
-        session['devise.omniauth_data'][:provider] = 'facebook'
-
-        session['devise.omniauth_data'][:extra] = {
-          raw_info: {
-            birthday: '10/20/1990',
-            gender: 'female'
-          }
-        }
-      end
-
-      context 'when birthday is included in params' do
-        let(:params) { { birthday: Date.new(1991, 11, 11) } }
-
-        it 'sets the value from params' do
-          expect(subject.birthday).to eq(Date.new(1991, 11, 11))
-        end
-      end
-
-      context 'when birthday is not included in params' do
-        it 'sets the value from session' do
-          expect(subject.birthday).to eq(Date.new(1990, 10, 20))
-        end
-      end
-
-      context 'when gender is included in params' do
-        let(:params) { { gender: 'male' } }
-
-        it 'sets the value from params' do
-          expect(subject.gender).to eq('male')
-        end
-      end
-
-      context 'when gender is not included in params' do
-        it 'sets the value from session' do
-          expect(subject.gender).to eq('female')
-        end
-      end
+    it 'builds an user based on the omniauth data from session' do
+      expect(subject.name).to eq('touched')
     end
 
     context 'when the built user is valid' do
       let(:params) { { password: '12345678' } }
 
-      it 'builds an account to the user' do
-        expect(subject.external_accounts.first.user).to eq(subject)
+      it 'builds an account for the user' do
+        expect(subject.external_accounts.first).to eq(account)
       end
     end
   end

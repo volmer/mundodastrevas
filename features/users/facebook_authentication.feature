@@ -5,22 +5,17 @@ Feature: Facebook authentication
 
   Background:
     Given I have a Facebook account with the following information:
-      | email            | bio        | gender | birthday   | location | image     |
-      | theon@greyjoy.ws | Not human. | female | 10/20/1990 | Pyke     | theon.jpg |
+      | email            | name          | bio        | gender | birthday   | location | image     |
+      | theon@greyjoy.ws | Theon Greyjoy | Not human. | female | 10/20/1990 | Pyke     | theon.jpg |
     And I am not signed in
 
   Scenario: Sign up successfully
     Given I am on the new user session page
     When I click on "Entrar com Facebook"
-    And I fill in "Nome" with "theon"
-    And I see the field "Email" filled in with "theon@greyjoy.ws"
-    And I fill in "Senha" with "12345678"
-    And I fill in "Confirmação da senha" with "12345678"
-    And I click on "Cadastrar"
-    And I confirm my registration
-    And I sign in with the name "theon" and the password "12345678"
+    Then I am redirected to the root page
+    And I see the info message "Você entrou com sua conta do Facebook. Bem-vindo!"
     And I go to my profile page
-    Then I see "theon" on the page
+    And I see "theon" on the page
     And I see the link "Facebook" which leads to "http://facebook.com/my_profile" when clicked
     And I see the field "Email" with the value "theon@greyjoy.ws"
     And I see "Not human." on the page
@@ -49,19 +44,19 @@ Feature: Facebook authentication
 
   Scenario: Complete sign up with some invalid Facebook data
     Given I have a Facebook account with the following information:
-      | email          | bio          | gender | birthday   | location | image   |
-      | jon@thewall.ws | I'm no crow. | male   | 08/16/1991 | The Wall | jon.jpg |
+      | name     | bio          | gender | birthday   | location | image   |
+      | Jon Snow | I'm no crow. | male   | 08/16/1991 | The Wall | jon.jpg |
     And I am on the new user session page
     When I click on "Entrar com Facebook"
-    And I fill in "Nome" with "jonsnow"
-    And I see the field "Email" filled in with "jon@thewall.ws"
+    And I see the field "Nome" filled in with "jon-snow"
+    And I fill in "Email" with "jon@thewall.ws"
     And I fill in "Senha" with "12345678"
     And I fill in "Confirmação da senha" with "12345678"
     And I click on "Cadastrar"
     And I confirm my registration
-    And I sign in with the name "jonsnow" and the password "12345678"
+    And I sign in with the name "jon-snow" and the password "12345678"
     And I go to my profile page
-    Then I see "jonsnow" on the page
+    Then I see "jon-snow" on the page
     And I see the field "Email" with the value "jon@thewall.ws"
     And I see "I'm no crow." on the page
     And I see the field "Sexo" with the value "Masculino"

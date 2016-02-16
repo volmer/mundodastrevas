@@ -1,4 +1,6 @@
 class OmniauthCompletion
+  class ThirdPartyAccountError < StandardError; end
+
   class << self
     def complete(auth_data, user = nil)
       user ||= find_or_create_user(auth_data)
@@ -14,21 +16,10 @@ class OmniauthCompletion
       apply_general_params(auth_data, user)
     end
 
-    # rubocop:disable Metrics/MethodLength
     def build_account(auth_data, user)
-      ExternalAccount.new(
-        user:     user,
-        provider: auth_data[:provider],
-        token:    auth_data[:credentials][:token],
-        secret:   auth_data[:credentials][:secret],
-        verified: auth_data[:info][:verified],
-        name:     auth_data[:info][:nickname],
-        uid:      auth_data[:uid],
-        email:    auth_data[:info][:email],
-        url:      auth_data[:info][:urls][
-          auth_data[:provider].titleize.to_sym
-        ]
-      )
+      account = ExternalAccount.new
+      assign_account_attributes(account, auth_data, user)
+      account
     end
 
     private
@@ -39,6 +30,7 @@ class OmniauthCompletion
       )
 
       if account.present?
+        update_account(account, auth_data)
         account.user
       else
         User.find_by(email: auth_data[:info][:email]) ||
@@ -60,7 +52,8 @@ class OmniauthCompletion
       )
 
       if account.present?
-        raise 'Another user already owns this account.' if account.user != user
+        raise ThirdPartyAccountError if account.user != user
+        update_account(account, auth_data)
       else
         user.external_accounts << build_account(auth_data, user)
       end
@@ -79,7 +72,8 @@ class OmniauthCompletion
 
     def apply_general_params(auth_data, user)
       user.email = auth_data[:info][:email] if user.email.blank?
-      user.name ||= auth_data[:info][:nickname]
+      user.name ||=
+        auth_data[:info][:name].first(User::NAME_RANGE.max).parameterize
       user.bio ||= auth_data[:info][:description]
       user.location ||= auth_data[:info][:location]
       user.remote_avatar_url ||= auth_data[:info][:image] if user.avatar.blank?
@@ -97,5 +91,26 @@ class OmniauthCompletion
       birthday = auth_data[:extra][:raw_info][:birthday]
       Date.strptime(birthday, '%m/%d/%Y') if birthday
     end
+
+    def update_account(account, auth_data)
+      assign_account_attributes(account, auth_data, account.user)
+      account.save!
+    end
+
+    # rubocop:disable Metrics/MethodLength
+    def assign_account_attributes(external_account, auth_data, user)
+      external_account.assign_attributes(
+        user:     user,
+        provider: auth_data[:provider],
+        token:    auth_data[:credentials][:token],
+        verified: auth_data[:info][:verified],
+        uid:      auth_data[:uid],
+        email:    auth_data[:info][:email],
+        url:      auth_data[:info][:urls][
+          auth_data[:provider].titleize.to_sym
+        ]
+      )
+    end
+    # rubocop:enable Metrics/MethodLength
   end
 end

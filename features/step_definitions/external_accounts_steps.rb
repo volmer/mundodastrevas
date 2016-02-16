@@ -6,6 +6,7 @@ Given(/^I have a Facebook account with the following information:$/) do |table|
     uid: '12345',
     info: {
       email: info[:email],
+      name: info[:name],
       location: info[:location],
       description: info[:bio],
       image: info[:image].present? ? "http://facebook.com/#{ info[:image] }" : nil,
