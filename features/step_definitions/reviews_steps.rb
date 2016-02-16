@@ -31,7 +31,7 @@ When(/^I check the forum post as "(.*?)"$/) do |value|
 end
 
 When(/^I check the comment as "(.*?)"$/) do |value|
-  2.times { find(".zine-comment .btn.#{value}").click } # Selenium bug
+  find(".zine-comment .btn.#{value}").click
 end
 
 Then(/^I see "(.*?)" in the "(.*?)" post counter$/) do |count, type|
