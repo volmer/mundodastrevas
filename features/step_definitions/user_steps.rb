@@ -9,32 +9,33 @@ Given(/^I am not signed in$/) do
   end
 end
 
-Given /^I am signed in$/ do
-  step "I am signed in as \"#{ @user.presence || 'someone' }\""
+Given(/^I am signed in$/) do
+  step "I am signed in as \"#{@user.presence || 'someone'}\""
   step 'I do not see the link "Entrar"'
 end
 
-Given /^I am signed in as "(.*?)"$/ do |name|
-  password = 12345678
+Given(/^I am signed in as "(.*?)"$/) do |name|
+  password = 12_345_678
 
   if @user.blank? || (@user.name != name)
-    @user = User.find_by(name: name) || create(:user, name: name, password: password)
+    @user =
+      User.find_by(name: name) || create(:user, name: name, password: password)
   end
 
-  step "I sign in with the name \"#{ name }\" and the password \"#{ password }\""
+  step "I sign in with name \"#{name}\" and password \"#{password}\""
 end
 
-Given /^there are users signed up with the following data:$/ do |table|
+Given(/^there are users signed up with the following data:$/) do |table|
   table.hashes.each do |line|
     create :user, line
   end
 end
 
-Given /^there is an user signed up with the following data:$/ do |table|
+Given(/^there is an user signed up with the following data:$/) do |table|
   step 'there are users signed up with the following data:', table
 end
 
-Given /^I am signed up with the following data:$/ do |table|
+Given(/^I am signed up with the following data:$/) do |table|
   @user = create :user, table.hashes.first
 end
 
@@ -65,14 +66,14 @@ Given(/^"(.*?)" is blocked$/) do |user_name|
 end
 
 Given('I am blocked') do
-  step("\"#{ @user }\" is blocked")
+  step("\"#{@user}\" is blocked")
 end
 
-When(/^I sign in with the name "(.*?)" and the password "(.*?)"$/) do |name, password|
+When(/^I sign in with name "(.*?)" and password "(.*?)"$/) do |name, password|
   step 'I am not signed in'
   step 'I go to the new user session page'
-  step "I fill in \"Nome ou email\" with \"#{ name }\""
-  step "I fill in \"Senha\" with \"#{ password }\""
+  step "I fill in \"Nome ou email\" with \"#{name}\""
+  step "I fill in \"Senha\" with \"#{password}\""
   step 'I press "Entrar"'
 end
 
@@ -90,7 +91,7 @@ end
 When(/^I go to my profile page$/) do
   name = find('#user-menu').text
 
-  step("I go to #{ name }'s profile page")
+  step("I go to #{name}'s profile page")
 end
 
 When(/^I confirm my registration$/) do
@@ -100,14 +101,15 @@ When(/^I confirm my registration$/) do
 end
 
 Then(/^I see the image "(.*?)" as my avatar$/) do |file_name|
-  expect(page).to have_selector(:xpath, "//img[contains(@src, '#{file_name}')]", visible: true)
+  expect(page).to have_selector(
+    :xpath, "//img[contains(@src, '#{file_name}')]", visible: true)
 end
 
-Then /^I am successfully signed in as "(.*?)"$/ do |name|
+Then(/^I am successfully signed in as "(.*?)"$/) do |name|
   expect(find('.navbar')).to have_content(name)
 end
 
-Then /^my password is now "(.*?)"$/ do |password|
+Then(/^my password is now "(.*?)"$/) do |password|
   @user.reload
   expect(@user.valid_password?(password)).to be true
 end

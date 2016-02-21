@@ -16,7 +16,7 @@ Feature: Facebook authentication
     And I see the info message "Você entrou com sua conta do Facebook. Bem-vindo!"
     And I go to my profile page
     And I see "theon" on the page
-    And I see the link "Facebook" which leads to "http://facebook.com/my_profile" when clicked
+    And I see the link "Facebook" which leads to the "http://facebook.com/my_profile" URL
     And I see the field "Email" with the value "theon@greyjoy.ws"
     And I see "Not human." on the page
     And I see the field "Sexo" with the value "Feminino"
@@ -34,7 +34,7 @@ Feature: Facebook authentication
     And I see the info message "Você entrou com sua conta do Facebook. Bem-vindo!"
     And I go to my profile page
     And I see "theongreyjoy" on the page
-    And I see the link "Facebook" which leads to "http://facebook.com/my_profile" when clicked
+    And I see the link "Facebook" which leads to the "http://facebook.com/my_profile" URL
     And I see the field "Email" with the value "theon@greyjoy.ws"
     And I see "Not human." on the page
     And I see the field "Sexo" with the value "Feminino"
@@ -54,7 +54,7 @@ Feature: Facebook authentication
     And I fill in "Confirmação da senha" with "12345678"
     And I click on "Cadastrar"
     And I confirm my registration
-    And I sign in with the name "jon-snow" and the password "12345678"
+    And I sign in with name "jon-snow" and password "12345678"
     And I go to my profile page
     Then I see "jon-snow" on the page
     And I see the field "Email" with the value "jon@thewall.ws"
@@ -63,4 +63,4 @@ Feature: Facebook authentication
     And I see the field "Data de nascimento" with the value "16/08/1991"
     And I see the field "Localização" with the value "The Wall"
     And I see the image "jon.jpg" as my avatar
-    And I see the link "Facebook" which leads to "http://facebook.com/my_profile" when clicked
+    And I see the link "Facebook" which leads to the "http://facebook.com/my_profile" URL

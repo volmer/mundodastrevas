@@ -4,7 +4,7 @@ Feature: View forum posts
   I want to view forum posts in a topic
 
   Background:
-    Given there is a topic called "Who is your favorite knight?" in the "Knights" forum
+    Given there is a topic called "Who is your favorite knight?" in "Knights"
 
   Scenario: View a forum post
     Given there is a forum post "Bronn!" in the "Who is your favorite knight?" topic

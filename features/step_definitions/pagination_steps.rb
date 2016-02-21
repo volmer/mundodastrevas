@@ -6,5 +6,5 @@ end
 Then(/^I see (.*?) in the page (\d+)$/) do |items, page|
   within('.pagination') { click_on page }
 
-  step("I see #{ items }")
+  step("I see #{items}")
 end

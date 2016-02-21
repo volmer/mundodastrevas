@@ -1,5 +1,5 @@
 Given(/^I am an admin$/) do
-  step("\"#{ @user }\" is an admin")
+  step("\"#{@user}\" is an admin")
 end
 
 Given(/^"(.*?)" is an admin$/) do |user_name|

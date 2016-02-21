@@ -1,1 +1,1 @@
- OmniAuth.config.test_mode = true
+OmniAuth.config.test_mode = true

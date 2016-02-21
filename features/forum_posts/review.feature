@@ -5,7 +5,7 @@ Feature: Review forum post
   I want to review a forum post
 
   Background:
-    Given there is a topic called "Who is your favorite knight?" in the "Knights" forum
+    Given there is a topic called "Who is your favorite knight?" in "Knights"
     And I am signed in
     And there is a forum post "Loras S2" in the "Who is your favorite knight?" topic
 

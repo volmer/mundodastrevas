@@ -9,7 +9,7 @@ Feature: View post
       | A Dance With Dragons | dragons |
 
   Scenario: View a post directly
-    Given within the zine "A Dance With Dragons" there is a post with the given attributes:
+    Given within the zine "A Dance With Dragons" there is a post with:
       | name     | content          | slug     |
       | Daenerys | She is betrayed. | daenerys |
     When I access the path "/zines/dragons/posts/daenerys"

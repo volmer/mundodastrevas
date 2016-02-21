@@ -10,7 +10,7 @@ Given(/^davos has commented on the "(.*?)" post$/) do |post_name|
   step('I fill in "comment_content" with "My comment"')
   step('I click on "Comentar"')
 
-  step("I am signed in as \"#{ watcher }\"")
+  step("I am signed in as \"#{watcher}\"")
 end
 
 Then(/^I don't see any notifications$/) do

@@ -1,4 +1,4 @@
-Given(/^within "(.*?)" there is a rank with the following attributes:$/) do |universe_name, table|
+Given(/^within "(.*?)" there is a rank with:$/) do |universe_name, table|
   universe = Universe.find_by(name: universe_name)
 
   table.hashes.each do |line|
@@ -6,9 +6,9 @@ Given(/^within "(.*?)" there is a rank with the following attributes:$/) do |uni
   end
 end
 
-Given(/^I have earned the rank "(.*?)" in "(.*?)"$/) do |rank_name, universe_name|
+Given(/^I have earned the rank "(.*?)" in "(.*?)"$/) do |name, universe_name|
   universe = Universe.find_by(name: universe_name)
-  rank = universe.ranks.find_by(name: rank_name)
+  rank = universe.ranks.find_by(name: name)
 
   create_list(:comment, 10, user: @user, universe: universe)
 

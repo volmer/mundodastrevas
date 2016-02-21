@@ -1,5 +1,5 @@
-Given(/^there is a post named "(.*?)" tagged as "(.*?)"$/) do |post_name, tag_name|
-  post = create(:post, name: post_name)
+Given(/^there is a post named "(.*?)" tagged as "(.*?)"$/) do |post, tag_name|
+  post = create(:post, name: post)
   tag = Tag.find_by(name: tag_name) || create(:tag, name: tag_name)
   create(:tagging, tag: tag, taggable: post)
 end

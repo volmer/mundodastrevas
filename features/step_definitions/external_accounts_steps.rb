@@ -9,7 +9,7 @@ Given(/^I have a Facebook account with the following information:$/) do |table|
       name: info[:name],
       location: info[:location],
       description: info[:bio],
-      image: info[:image].present? ? "http://facebook.com/#{ info[:image] }" : nil,
+      image: info[:image] ? "http://facebook.com/#{info[:image]}" : nil,
       urls: { Facebook: 'http://facebook.com/my_profile' }
     },
     credentials: {
@@ -24,8 +24,8 @@ Given(/^I have a Facebook account with the following information:$/) do |table|
     }
   }
 
-  stub_request(:any, /facebook.com/).
-    to_return(
+  stub_request(:any, /facebook.com/)
+    .to_return(
       status: 200,
       body: File.read(Rails.root.to_s + '/spec/fixtures/image.jpg')
     )

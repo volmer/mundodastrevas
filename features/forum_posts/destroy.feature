@@ -4,7 +4,7 @@ Feature: Destroy forum post
   I want to destroy my
 
   Background:
-    Given there is a topic called "Who is your favorite knight?" in the "Knights" forum
+    Given there is a topic called "Who is your favorite knight?" in "Knights"
     And I am signed in
     And I've posted "Loras S2" in the "Who is your favorite knight?" topic
 

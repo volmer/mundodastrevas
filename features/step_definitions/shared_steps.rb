@@ -22,7 +22,7 @@ When(/^I don't fill in "(.*?)"$/) do |field|
   fill_in field, with: ''
 end
 
-When(/^for "(.*?)" I choose "(.*?)"$/) do |field, value|
+When(/^for "(.*?)" I choose "(.*?)"$/) do |_field, value|
   choose(value) unless value.blank?
 end
 
@@ -42,8 +42,8 @@ When(/^from "(.*?)" I select "(.*?)"$/) do |field, option|
   select(option, from: field)
 end
 
-When(/^I attach the file "(.*?)" to "(.*?)"$/) do |file_name, field|
-  attach_file(field, Rails.root.to_s + '/features/support/fixtures/' + file_name)
+When(/^I attach the file "(.*?)" to "(.*?)"$/) do |file, field|
+  attach_file(field, Rails.root.to_s + '/features/support/fixtures/' + file)
 end
 
 When(/^I uncheck "(.*?)"$/) do |checkbox|
@@ -59,17 +59,18 @@ Then(/^I am redirected to the (.*?) page$/) do |page_name|
 end
 
 Then(/^I see the (.*?) message "(.*?)"$/) do |type, message|
-  expect(page).to have_selector(".alert-#{ type }", text: message)
+  expect(page).to have_selector(".alert-#{type}", text: message)
 end
 
 Then(/^I see the following (.*?) message:$/) do |type, message|
-  message.gsub!("\n", ' ')
+  message.tr!("\n", ' ')
   step "I see the #{type} message \"#{message}\""
 end
 
-Then(/^I see the field "(.*?)" with the error "(.*?)"$/) do |field_class, message|
-  form_group = first(".form-group.#{ field_class }") || first('.form-group', text: field_class)
-  expect(form_group).to have_content(message)
+Then(/^I see the field "(.*?)" with the error "(.*?)"$/) do |klass, msg|
+  form_group =
+    first(".form-group.#{klass}") || first('.form-group', text: klass)
+  expect(form_group).to have_content(msg)
 end
 
 Then(/^I see no errors in the field "(.*?)"$/) do |field|
@@ -105,7 +106,7 @@ Then(/^the select "(.*?)" is set to "(.*?)"$/) do |select, value|
   expect(page).to have_select(select, selected: value)
 end
 
-Then(/^I see the link "(.*?)" which leads to "(.*?)" when clicked$/) do |link, href|
+Then(/^I see the link "(.*?)" which leads to the "(.*?)" URL$/) do |link, href|
   expect(page).to have_link(link, href: href)
 end
 
@@ -122,5 +123,5 @@ Then(/^I see the field "(.*?)" filled in with "(.*?)"$/) do |field, value|
 end
 
 Then(/^I see the image "(.*?)"$/) do |image|
-  expect(page).to have_selector(:xpath, "//img[contains(@src, '#{ image }')]")
+  expect(page).to have_selector(:xpath, "//img[contains(@src, '#{image}')]")
 end

@@ -5,7 +5,7 @@ Feature: Watch a topic
 
   Background:
     Given I am signed in
-    And there is a topic called "Treason!" in the "Small Council" forum
+    And there is a topic called "Treason!" in "Small Council"
 
   Scenario: Watch through a form submission
     When I go to the "Small Council" forum

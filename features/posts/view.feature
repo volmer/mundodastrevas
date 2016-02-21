@@ -7,10 +7,10 @@ Feature: View post
     Given there is a zine with the given attributes:
       | name                 | slug    |
       | A Dance With Dragons | dragons |
-    And within the zine "A Dance With Dragons" there is a post with the given attributes:
+    And within the zine "A Dance With Dragons" there is a post with:
       | name     | content          |
       | Daenerys | She is betrayed. |
-    And within the zine "A Dance With Dragons" there is a post with the given attributes:
+    And within the zine "A Dance With Dragons" there is a post with:
       | name | content  |
       | Jon  | He dies. |
     And there is a post with the given attributes:
@@ -26,7 +26,7 @@ Feature: View post
     And I don't see "Cersei" on the page
 
   Scenario: View a post directly
-    Given within the zine "A Dance With Dragons" there is a post with the given attributes:
+    Given within the zine "A Dance With Dragons" there is a post with:
       | name     | content          | slug     |
       | Daenerys | She is betrayed. | daenerys |
     When I access the path "/zines/dragons/posts/daenerys"

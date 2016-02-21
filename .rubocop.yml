@@ -4,8 +4,6 @@ AllCops:
   Exclude:
     - 'config/initializers/*'
     - 'db/**/*'
-    - 'features/**/*'
-    #- 'spec/**/*'
 
 Rails:
   Enabled: true

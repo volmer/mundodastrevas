@@ -64,7 +64,7 @@ Feature: Privacy settings
     Then I am redirected to the edit user privacy page
     And I see the info message "Suas preferências foram atualizadas."
     And I can see the link "<provider>" in my profile page
-    And the user "volmer" can see the link "<provider>" in my profile page
+    And user "volmer" can see the link "<provider>"
 
     Examples:
       | provider |
@@ -78,7 +78,7 @@ Feature: Privacy settings
     Then I am redirected to the edit user privacy page
     And I see the info message "Suas preferências foram atualizadas."
     And I can see the link "<provider>" in my profile page
-    And the user "volmer" cannot see the link "<provider>" in my profile page
+    And user "volmer" cannot see the link "<provider>"
 
     Examples:
       | provider |

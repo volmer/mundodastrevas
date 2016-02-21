@@ -19,9 +19,9 @@ Feature: Manage external accounts
     And I click on "Conectar conta do Facebook"
     Then I am redirected to the user external accounts page
     And I see the info message "Você entrou com sua conta do Facebook. Bem-vindo!"
-    And I see the link "theon@greyjoy.ws" which leads to "http://facebook.com/my_profile" when clicked
+    And I see the link "theon@greyjoy.ws" which leads to the "http://facebook.com/my_profile" URL
     And I go to my profile page
-    And I see the link "Facebook" which leads to "http://facebook.com/my_profile" when clicked
+    And I see the link "Facebook" which leads to the "http://facebook.com/my_profile" URL
     And I see "Not human." on the page
     And I see the field "Sexo" with the value "Feminino"
     And I see the field "Data de nascimento" with the value "20/10/1990"

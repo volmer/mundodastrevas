@@ -5,7 +5,7 @@ Feature: Update topic
 
   Background:
     Given I am signed in
-    And I've created a topic called "Treason!" in the "Small Council" forum
+    And I've created a topic called "Treason!" in "Small Council"
 
   Scenario: Successfully update a topic
     When I go to the "Small Council" forum

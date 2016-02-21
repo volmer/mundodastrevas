@@ -1,11 +1,11 @@
-Given(/^there is a forum post "(.*?)" in the "(.*?)" topic$/) do |content, topic_name|
-  topic = Topic.find_by(name: topic_name)
+Given(/^there is a forum post "(.*?)" in the "(.*?)" topic$/) do |content, name|
+  topic = Topic.find_by(name: name)
 
   create(:forum_post, topic: topic, content: content)
 end
 
-Given(/^there are (\d+) forum posts in the "(.*?)" topic$/) do |count, topic_name|
-  topic = Topic.find_by(name: topic_name)
+Given(/^there are (\d+) forum posts in the "(.*?)" topic$/) do |count, name|
+  topic = Topic.find_by(name: name)
   create_list(:forum_post, count.to_i, topic: topic)
 end
 
@@ -22,7 +22,7 @@ When(/^within my forum post I click on "(.*?)"$/) do |link|
 end
 
 When(/^within my forum post I fill in "(.*?)" with "(.*?)"$/) do |editor, value|
-  page.execute_script("Bootsy.areas['#{ editor }'].editor.setValue('#{ value }')")
+  page.execute_script("Bootsy.areas['#{editor}'].editor.setValue('#{value}')")
 end
 
 When(/^within the forum post I click on "(.*?)"$/) do |link|
@@ -32,7 +32,8 @@ When(/^within the forum post I click on "(.*?)"$/) do |link|
 end
 
 Then(/^I see "(.*?)" in the editor$/) do |value|
-  editor_value = page.evaluate_script('Bootsy.areas.forum_post_content.editor.getValue()')
+  editor_value =
+    page.evaluate_script('Bootsy.areas.forum_post_content.editor.getValue()')
 
   expect(editor_value).to include(value)
 end

@@ -12,8 +12,8 @@ Given(/^I have a post called "(.*?)"$/) do |name|
   create(:post, user: @user, name: name)
 end
 
-Given(/^within "(.*?)" there is a post called "(.*?)"$/) do |zine_name, post_name|
-  zine = Zine.find_by(name: zine_name)
+Given(/^within "(.*?)" there is a post called "(.*?)"$/) do |name, post_name|
+  zine = Zine.find_by(name: name)
 
   create(:post, zine: zine, name: post_name)
 end
@@ -36,7 +36,7 @@ Given(/^I'm on the edit post page$/) do
   visit edit_zine_post_path(post.zine, post)
 end
 
-Given(/^within the zine "(.*?)" there is a post with the given attributes:$/) do |name, table|
+Given(/^within the zine "(.*?)" there is a post with:$/) do |name, table|
   zine = Zine.find_by(name: name)
 
   table.hashes.each do |line|

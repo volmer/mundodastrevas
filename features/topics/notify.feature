@@ -5,7 +5,7 @@ Feature: Notify watchers
 
   Background:
     Given I am signed in as "volmer"
-    And there is a topic called "Treason!" in the "Small Council" forum
+    And there is a topic called "Treason!" in "Small Council"
     And I am watching the topic "Treason!"
 
   Scenario: Notify watchers

@@ -6,7 +6,7 @@ Feature: Notify new rank
   Background:
     Given I am signed in as "volmer"
     And there is an universe called "Changeling: the Lost"
-    And within "Changeling: the Lost" there is a rank with the following attributes:
+    And within "Changeling: the Lost" there is a rank with:
       | name      | description                  |
       | Enchanted | Just the tip of the iceberg. |
 

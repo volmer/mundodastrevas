@@ -5,7 +5,7 @@ Feature: Create forum post
 
   Background:
     Given I am signed in as "Ned"
-    And there is a topic called "Treason!" in the "Small Council" forum
+    And there is a topic called "Treason!" in "Small Council"
 
   Scenario: Successfully post in a topic
     When I go to the "Small Council" forum
