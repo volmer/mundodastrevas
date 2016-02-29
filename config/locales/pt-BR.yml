@@ -4,7 +4,7 @@ pt-BR:
   user:
     show: 'Perfil'
     registration:
-      edit: 'Editar conta'
+      edit: 'Configurações'
     session:
       new: 'Entrar'
       destroy: 'Sair'

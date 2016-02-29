@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>">
   <head>
-    <meta charset="UTF-8">
+    <%= render 'layouts/head' %>
 
     <title>
       <%= [content_for(:page_title), Rails.application.config.app_name].reject(&:blank?).join(' · ') %>
@@ -10,8 +10,6 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
 
     <%= csrf_meta_tags %>
-
-    <%= render 'layouts/head' %>
   </head>
 
   <body>

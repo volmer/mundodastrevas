@@ -1,7 +1,7 @@
 class ForumsController < ApplicationController
   def show
     @forum = Forum.find_by!(slug: params[:id])
-    @topics = @forum.topics.order(updated_at: :desc).page(params[:page])
+    @topics = @forum.topics.recent.page(params[:page])
 
     authorize(@forum)
   end

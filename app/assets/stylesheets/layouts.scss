@@ -15,7 +15,7 @@ body {
 }
 
 /* Set the fixed height of the footer here */
-#sticky-footer {
+.page-footer {
   background-color: $footer-color;
   background-image: image-url('footer.jpg');
   background-position: left bottom;
@@ -39,27 +39,49 @@ body {
   }
 }
 
-.navbar {
-  margin-bottom: 0;
+.page-footer a {
+  font-size: 15px;
 }
 
-#content-wrapper > .container {
-  margin-bottom: 60px;
-}
+.page-footer .social-links {
+  display: flex;
+  justify-content: space-around;
 
-.navbar-form .form-control {
-  background-color: $gray-dark;
-  border-color: $gray;
-
-  &:focus {
-    background-color: $body-bg;
+  a {
+    font-size: 2rem;
   }
 }
 
-.navbar-brand {
-  font-weight: 500;
+#content-wrapper > .container {
+  padding-top: $spacer;
+  margin-bottom: 60px;
 }
 
 .layout-top {
-  margin-bottom: 30px;
+  margin-bottom: $spacer;
+}
+
+.navbar .nav-img {
+  padding: 0;
+
+  img {
+    width: 40px;
+    border-radius: 20px;
+  }
+}
+
+.navbar .nav-item .btn {
+  border-radius: 2rem;
+}
+
+.navbar-brand {
+  font-family: $headings-font-family;
+  font-size: 27px;
+  padding: 0;
+  text-shadow: 1px 1px 10px #d0d0d0;
+  transition: all .5s ease-in-out;
+
+  &:hover {
+    text-shadow: 1px 1px 30px #ffffff;
+  }
 }

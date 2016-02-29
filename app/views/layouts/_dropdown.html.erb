@@ -1,0 +1,37 @@
+<% if user_signed_in? %>
+  <div class="collapse" id="userMenu">
+    <div class="container p-a-1">
+      <ul class="list-unstyled text-xs-right">
+        <li><%= link_to t('user.show'), current_user %></li>
+        <li><%= link_to t('user.registration.edit'), edit_user_registration_path %></li>
+
+        <li>
+          <%= link_to messages_path do %>
+            <%= t 'messages.index.title' %>
+            <% messages_count = Message.distinct_for(current_user).where(recipient_id: current_user, read: false).count %>
+
+            <% if messages_count > 0 %>
+              <span class="badge"><%= messages_count %></span>
+            <% end %>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to user_zines_path(current_user) do %>
+            <span class="glyphicon glyphicon-book"></span>
+            <%= raw t('zines.user_index.my') %>
+          <% end %>
+        </li>
+
+        <% if current_user.admin? %>
+          <li><%= link_to t('link.admin'), admin_root_path, class: 'text-warning' %></li>
+        <% end %>
+
+        <li>
+          <%= link_to t('user.session.destroy'), destroy_user_session_path,
+            class: 'text-danger', method: :delete %>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>
