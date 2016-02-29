@@ -2,6 +2,11 @@
   <div class='container'>
     <%= link_to 'MdT', root_path, title: Rails.application.config.app_name, class: 'navbar-brand' %>
 
+    <ul class="nav navbar-nav hidden-xs-down">
+      <li class="nav-item"><%= link_to t('zines.index.title'), zines_path, class: 'nav-link' %></li>
+      <li class="nav-item"><%= link_to t('forums.index.title'), forums_path, class: 'nav-link' %></li>
+    </ul>
+
     <ul class="nav navbar-nav pull-xs-right">
       <li class="nav-item">
         <%= link_to search_path, title: t('searches.show.title'), class: 'nav-link btn btn-secondary-outline' do %>
@@ -15,7 +20,9 @@
             <i class="fa fa-flag"></i>
 
             <% if unread_notifications_count(current_user) > 0 %>
-              <span class="badge"><%= unread_notifications_count(current_user) %></span>
+              <span class="label label-pill label-primary">
+                <%= unread_notifications_count(current_user) %>
+              </span>
             <% end %>
           <% end %>
         </li>
@@ -23,7 +30,7 @@
 
       <li class="nav-item">
         <% if user_signed_in? %>
-          <%= link_to current_user, class: 'nav-link nav-img', data: { toggle: 'collapse', target: '#userMenu' } do %>
+          <%= link_to current_user, title: current_user, class: 'nav-link nav-img user-menu', data: { toggle: 'collapse', target: '#userMenu' } do %>
             <%= image_tag current_user.avatar.thumb.url %>
           <% end %>
         <% else %>

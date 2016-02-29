@@ -33,7 +33,7 @@ describe ReviewsHelper, type: :helper do
 
     it 'is btn btn-default and the given value' do
       expect(helper.review_btn_class('amazing', review)).to eq(
-        'btn btn-default amazing'
+        'btn btn-secondary amazing'
       )
     end
 
@@ -42,7 +42,7 @@ describe ReviewsHelper, type: :helper do
 
       it 'is also active' do
         expect(helper.review_btn_class('amazing', review)).to eq(
-          'btn btn-default amazing active'
+          'btn btn-secondary amazing active'
         )
       end
     end
@@ -52,7 +52,7 @@ describe ReviewsHelper, type: :helper do
 
       it 'is also disabled' do
         expect(helper.review_btn_class('amazing', review)).to eq(
-          'btn btn-default amazing disabled'
+          'btn btn-secondary amazing disabled'
         )
       end
     end

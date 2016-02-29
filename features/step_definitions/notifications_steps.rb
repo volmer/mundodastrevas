@@ -2,8 +2,8 @@ Given(/^I have (\d+) unread notification(s)?$/) do |count, _|
   create_list :notification, count.to_i, user: @user
 end
 
-When(/^I open the notifications menu$/) do
-  click_on 'notifications-menu'
+When(/^I click on the first notification$/) do
+  find('.notification', match: :first).click
 end
 
 Then(/^I see (\d+) unread notification(s)?$/) do |count, _|

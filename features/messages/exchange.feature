@@ -14,11 +14,9 @@ Feature: Exchange messages
     And I click on "Enviar"
     Then I see "Hello, bran! Winter is coming!" on the page
 
-  @javascript
   Scenario: Receive a message
     Given bran has sent me the message: "Yes, brace yourself!"
-    When I go to the root page
-    And I open the notifications menu
+    When I go to the notifications page
     Then I see 1 unread notification
     And I click on "bran te enviou uma mensagem"
     Then I see "Yes, brace yourself!" on the page

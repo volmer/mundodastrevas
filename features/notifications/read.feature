@@ -9,22 +9,17 @@ Feature: Read Notifications
     And I have 3 unread notifications
     And I am on the root page
 
-  Scenario: Read the last notifications by the navbar menu
-    When I open the notifications menu
+  Scenario: Read notifications
+    When I click on "Notificações"
     And I see 3 unread notifications
-    And I go to the root page
-    And I open the notifications menu
-    Then I see 3 read notifications
-
-  Scenario: Read the notifications in the notifications page
-    When I go to the notifications page
-    And I see 3 unread notifications
+    And I click on the first notification
     And I go to the notifications page
-    Then I see 3 read notifications
+    Then I see 1 read notification
+    And I see 2 unread notifications
 
   Scenario: Paginate notifications
     Given I have 20 unread notifications
-    When I go to the notifications page
+    When I click on "Notificações"
     Then I see 3 pages
     And I see 10 unread notifications
-    And I see 3 read notifications in the page 3
+    And I see 3 unread notifications in the page 3

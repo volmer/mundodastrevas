@@ -1,25 +1,31 @@
 <ul class="nav nav-tabs user-tabs">
-  <li class="<%= 'active' if active == :edit %>">
-    <%= link_to t('users.registrations.edit.title'), edit_user_registration_path %>
+  <li class="nav-item">
+    <%= link_to t('users.registrations.edit.title'), edit_user_registration_path,
+      class: ['nav-link', active == :edit ? 'active' : ''] %>
   </li>
 
-  <li class="<%= 'active' if active == :passwords %>">
-    <%= link_to t('users.passwords.change.title'), change_user_password_path %>
+  <li class="nav-item <%= 'active' if active == :passwords %>">
+    <%= link_to t('users.passwords.change.title'), change_user_password_path,
+      class: ['nav-link', active == :passwords ? 'active' : ''] %>
   </li>
 
-  <li class="<%= 'active' if active == :privacies %>">
-    <%= link_to t('users.privacies.edit.title'), edit_user_privacy_path %>
+  <li class="nav-item <%= 'active' if active == :privacies %>">
+    <%= link_to t('users.privacies.edit.title'), edit_user_privacy_path,
+      class: ['nav-link', active == :privacies ? 'active' : ''] %>
   </li>
 
-  <li class="<%= 'active' if active == :email_preferences %>">
-    <%= link_to t('users.email_preferences.edit.title'), edit_user_email_preferences_path %>
+  <li class="nav-item <%= 'active' if active == :email_preferences %>">
+    <%= link_to t('users.email_preferences.edit.title'), edit_user_email_preferences_path,
+      class: ['nav-link', active == :email_preferences ? 'active' : ''] %>
   </li>
 
-  <li class="<%= 'active' if active == :external_accounts %>">
-    <%= link_to t('users.external_accounts.index.title'), user_external_accounts_path %>
+  <li class="nav-item <%= 'active' if active == :external_accounts %>">
+    <%= link_to t('users.external_accounts.index.title'), user_external_accounts_path,
+      class: ['nav-link', active == :external_accounts ? 'active' : ''] %>
   </li>
 
-  <li class="<%= 'active' if active == :destroy %>">
-    <%= link_to t('users.registrations.destroy.title'), destroy_user_registration_path %>
+  <li class="nav-item <%= 'active' if active == :destroy %>">
+    <%= link_to t('users.registrations.destroy.title'), destroy_user_registration_path,
+      class: ['nav-link', active == :destroy ? 'active' : ''] %>
   </li>
 </ul>

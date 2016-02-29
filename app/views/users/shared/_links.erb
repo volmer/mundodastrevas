@@ -1,25 +1,25 @@
 <% if resource_class.omniauth_providers.present? %>
   <p>
     <% resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to user_omniauth_authorize_path(provider), class: 'btn btn-default btn-block btn-omniauth btn-lg' do %>
-        <%= image_tag "social/#{provider}.png" %>
+      <%= link_to user_omniauth_authorize_path(provider), class: 'btn btn-primary-outline btn-block btn-lg' do %>
+        <i class="fa fa-<%= provider %>-official"></i>
         <%= t '.sign_in_with', provider: provider.to_s.titleize %>
       <% end %>
     <% end %>
   </p>
 
-  <p class="text-center"><%= t '.or' %></p>
+  <p class="text-xs-center"><%= t '.or' %></p>
 <% end %>
 
 <% if controller_name != 'registrations' %>
   <p>
-    <%= link_to t('.sign_up'), new_registration_path(resource_class), class: 'btn btn-default btn-block btn-lg' %>
+    <%= link_to t('.sign_up'), new_registration_path(resource_class), class: 'btn btn-primary-outline btn-block btn-lg' %>
   </p>
 <% end %>
 
 <% if controller_name != 'sessions' %>
   <p>
-    <%= link_to t('.sign_in'), new_session_path(resource_class), class: 'btn btn-default btn-block btn-lg' %>
+    <%= link_to t('.sign_in'), new_session_path(resource_class), class: 'btn btn-primary-outline btn-block btn-lg' %>
   </p>
 <% end %>
 

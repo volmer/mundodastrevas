@@ -1,5 +1,5 @@
 Then(/^I see (\d+) pages$/) do |pages|
-  last_page = all('.pagination .page a').last
+  last_page = all('.pagination .page').last
   expect(last_page.text).to eq pages
 end
 

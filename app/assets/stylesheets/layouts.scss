@@ -53,12 +53,8 @@ body {
 }
 
 #content-wrapper > .container {
-  padding-top: $spacer;
+  padding-top: $spacer * 2;
   margin-bottom: 60px;
-}
-
-.layout-top {
-  margin-bottom: $spacer;
 }
 
 .navbar .nav-img {

@@ -8,7 +8,7 @@ Feature: Update registration
 
   Scenario: update name
     When I open my user menu
-    And I click on "Editar conta"
+    And I click on "Configurações"
     And I fill in "Nome" with "volmer"
     And I press "Atualizar"
     Then I am redirected to my user page
@@ -18,7 +18,7 @@ Feature: Update registration
   Scenario: update email
     Given my email address is "volmer@example.com"
     When I open my user menu
-    And I click on "Editar conta"
+    And I click on "Configurações"
     And I fill in "Email" with "mynewemail@example.com"
     And I press "Atualizar"
     Then I am redirected to my user page
@@ -33,7 +33,7 @@ Feature: Update registration
 
   Scenario: update bio
     When I open my user menu
-    And I click on "Editar conta"
+    And I click on "Configurações"
     And I fill in "Bio" with the following text:
       """
       Night gathers, and now my watch begins. It shall not end until my death.
@@ -52,7 +52,7 @@ Feature: Update registration
 
   Scenario Outline: update gender
     When I open my user menu
-    And I click on "Editar conta"
+    And I click on "Configurações"
     And for "Sexo" I choose "<gender>"
     And I press "Atualizar"
     Then I am redirected to my user page
@@ -66,7 +66,7 @@ Feature: Update registration
 
   Scenario: update avatar
     When I open my user menu
-    And I click on "Editar conta"
+    And I click on "Configurações"
     And I attach the file "my_image.jpg" to "Avatar"
     And I press "Atualizar"
     Then I am redirected to my user page
@@ -76,7 +76,7 @@ Feature: Update registration
 
   Scenario Outline: update other fields
     When I open my user menu
-    And I click on "Editar conta"
+    And I click on "Configurações"
     And I fill in "<field>" with "<value>"
     And I press "Atualizar"
     Then I am redirected to my user page

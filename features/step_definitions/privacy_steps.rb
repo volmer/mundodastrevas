@@ -12,18 +12,18 @@ Then(/^the user "(.*?)" can(not)? see my "(.*?)"$/) do |name, negation, field|
   end
 end
 
-Then(/^I can see my "(.*?)"$/) do |field|
+Then(/^I can(not)? see my "(.*?)"$/) do |negation, field|
   step('I go to my profile page')
 
   within('#main-container') do
-    expect(page).to have_content(field)
+    expect(page).send(negation.blank? ? :to : :not_to, have_content(field))
   end
 end
 
-Then(/^I can see the link "(.*?)" in my profile page$/) do |link|
+Then(/^I can(not)? see the link "(.*?)" in my profile page$/) do |not_to, link|
   step('I go to my profile page')
 
-  expect(page).to have_link(link)
+  expect(page).send(not_to.blank? ? :to : :not_to, have_link(link))
 end
 
 Then(/^user "(.*?)" can(not)? see the link "(.*?)"$/) do |name, negation, link|
