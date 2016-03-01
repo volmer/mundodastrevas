@@ -61,12 +61,12 @@ pt-BR:
     index:
       title: 'Fóruns'
       more: 'Ver mais'
+      recent_topics: 'Tópicos recentes'
+      recent_forum_posts: 'Postagens recentes'
     show:
       new: 'Novo tópico'
       invite: 'Deseja participar deste fórum? Entre aqui!'
   topics:
-    recent:
-      title: 'Tópicos recentes'
     index:
       topic: 'Últimos tópics'
       forum_posts: 'Postagens'
@@ -89,8 +89,6 @@ pt-BR:
         other: '%{count} postagens'
   forum_posts:
     to_s: 'o post de %{user}'
-    recent:
-      title: 'Postagens recentes'
     forum_post:
       edit: 'Editar'
       destroy: 'Apagar'

@@ -3,6 +3,11 @@ img.mini-avatar {
   border-radius: 1rem;
 }
 
+.avatar-left {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+
 .nav-tabs {
   margin-bottom: $spacer;
 }

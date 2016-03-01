@@ -14,5 +14,5 @@ Given(/^I have exchanged messages with (\d+) users$/) do |count|
 end
 
 Then(/^I see (\d+) messages$/) do |count|
-  expect(page).to have_selector('.message', count: count)
+  expect(page).to have_selector('.messages a', count: count)
 end

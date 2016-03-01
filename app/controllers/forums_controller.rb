@@ -11,7 +11,7 @@ class ForumsController < ApplicationController
 
     @forums = Forum.order(updated_at: :desc)
 
-    @recent_topics = Topic.order(created_at: :desc).limit(5)
-    @recent_posts = ForumPost.order(created_at: :desc).limit(5)
+    @topics = Topic.order(created_at: :desc).limit(5)
+    @posts = ForumPost.order(created_at: :desc).limit(5)
   end
 end

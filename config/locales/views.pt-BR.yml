@@ -156,6 +156,3 @@ pt-BR:
       unwatch: 'Parar de vigiar'
     fields:
       label: 'Notifique-me sobre este item'
-  home:
-    sidebar:
-      featured_zine: 'Zine em destaque'

@@ -4,10 +4,10 @@ window.Raddar.Forums = window.Raddar.Forums || {}
 Raddar.Forums.editPost = ($post) ->
   Raddar.Forums.cancelEditPost()
   $post.find('.post').hide()
-  $post.find('.editor').removeClass('hide')
+  $post.find('.editor').removeAttr('hidden')
 
 Raddar.Forums.cancelEditPost = ($post) ->
-  $('.forum-post .editor').addClass('hide')
+  $('.forum-post .editor').attr('hidden', true)
   $('.forum-post .post').show()
 
 Raddar.Forums.quotePost = ($post) ->

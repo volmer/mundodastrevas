@@ -3,13 +3,13 @@ Given(/^I have (\d+) unread notification(s)?$/) do |count, _|
 end
 
 When(/^I click on the first notification$/) do
-  find('.notification', match: :first).click
+  find('.notifications a', match: :first).click
 end
 
 Then(/^I see (\d+) unread notification(s)?$/) do |count, _|
-  expect(page).to have_selector('.notification.unread', count: count)
+  expect(page).to have_selector('.notifications .unread', count: count)
 end
 
 Then(/^I see (\d+) read notification(s)?$/) do |count, _|
-  expect(page).to have_selector('.notification.read', count: count)
+  expect(page).to have_selector('.notifications .read', count: count)
 end

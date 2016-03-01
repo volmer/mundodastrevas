@@ -12,7 +12,7 @@
           <% user = (message.sender == current_user ? message.recipient : message.sender) %>
 
           <%= link_to user_messages_path(user), class: 'list-group-item' do %>
-            <%= image_tag user.avatar.thumb.url, class: 'pull-left img-circle' %>
+            <%= image_tag user.avatar.thumb.url, class: 'avatar-left img-circle' %>
             <h5><%= user %></h5>
             <p><%= truncate_rich message.content %></p>
             <p class="clearfix">

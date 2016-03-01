@@ -1,6 +1,6 @@
 .forum-post {
   margin-bottom: 20px;
-  background-color: #f5f5f5;
+  background-color: $gray-lighter;
   padding: 10px 0;
 
   .user {
@@ -43,8 +43,7 @@
     }
 
     time {
-      font-size: 11px;
-      color: #fff;
+      font-size: .7rem;
     }
   }
 }
