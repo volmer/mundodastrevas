@@ -12,30 +12,19 @@
           <% user = (message.sender == current_user ? message.recipient : message.sender) %>
 
           <%= link_to user_messages_path(user), class: 'list-group-item' do %>
-            <div class="media message">
-              <%= image_tag user.avatar.thumb.url, class: 'media-object pull-left img-circle' %>
-
-              <div class="media-body">
-                <h1 class="media-heading">
-                  <%= user %>
-                </h1>
-
-                <p>
-                  <%= truncate_rich message.content %>
-                </p>
-
-                <%= time_tag message.created_at, format: :short %>
-              </div>
-            </div>
+            <%= image_tag user.avatar.thumb.url, class: 'pull-left img-circle' %>
+            <h5><%= user %></h5>
+            <p><%= truncate_rich message.content %></p>
+            <p class="clearfix">
+              <%= time_tag message.created_at, format: :short %>
+            </p>
           <% end %>
         <% end %>
       </div>
 
       <%= paginate @messages %>
     <% else %>
-      <div class="alert alert-info">
-        <%= t '.empty_html' %>
-      </div>
+      <div class="alert alert-info"><%= t '.empty_html' %></div>
     <% end %>
   </div>
 </div>

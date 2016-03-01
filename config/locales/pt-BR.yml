@@ -39,10 +39,14 @@ pt-BR:
       subject: 'Novo contato de %{name}'
   views:
     pagination:
-      first: '&laquo; Primeira'
-      last: 'Última &raquo;'
-      previous: '&lsaquo; Anterior'
-      next: 'Próxima &rsaquo;'
+      first_html: '&laquo;'
+      first_title: 'Primeira página'
+      last_html: '&raquo;'
+      last_title: 'Última página'
+      previous_html: '&lsaquo;'
+      previous_title: 'Página anterior'
+      next_html: '&rsaquo;'
+      next_title: 'Próxima página'
       truncate: '...'
   universes:
     show:
