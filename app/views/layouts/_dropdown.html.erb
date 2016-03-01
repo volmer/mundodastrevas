@@ -1,37 +1,38 @@
 <% if user_signed_in? %>
   <div class="collapse" id="userMenu">
     <div class="container p-a-1">
-      <ul class="list-unstyled text-xs-right">
-        <li><%= link_to t('user.show'), current_user %></li>
-        <li><%= link_to t('user.registration.edit'), edit_user_registration_path %></li>
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-6 col-lg-3 col-lg-offset-9">
+          <ul class="list-group">
+            <%= link_to t('user.show'), current_user, class: 'list-group-item' %>
+            <%= link_to t('user.registration.edit'), edit_user_registration_path,
+              class: 'list-group-item' %>
 
-        <li>
-          <%= link_to messages_path do %>
-            <%= t 'messages.index.title' %>
-            <% messages_count = Message.distinct_for(current_user).where(recipient_id: current_user, read: false).count %>
+            <%= link_to messages_path, class: 'list-group-item' do %>
+              <%= t 'messages.index.title' %>
+              <% messages_count = Message.distinct_for(current_user)
+                .where(recipient_id: current_user, read: false).count %>
 
-            <% if messages_count > 0 %>
-              <span class="badge"><%= messages_count %></span>
+              <% if messages_count > 0 %>
+                <span class="badge"><%= messages_count %></span>
+              <% end %>
             <% end %>
-          <% end %>
-        </li>
 
-        <li>
-          <%= link_to user_zines_path(current_user) do %>
-            <span class="glyphicon glyphicon-book"></span>
-            <%= raw t('zines.user_index.my') %>
-          <% end %>
-        </li>
+            <%= link_to user_zines_path(current_user), class: 'list-group-item' do %>
+              <span class="glyphicon glyphicon-book"></span>
+              <%= raw t('zines.user_index.my') %>
+            <% end %>
 
-        <% if current_user.admin? %>
-          <li><%= link_to t('link.admin'), admin_root_path, class: 'text-warning' %></li>
-        <% end %>
+            <% if current_user.admin? %>
+              <%= link_to t('link.admin'), admin_root_path,
+                class: 'text-warning list-group-item' %>
+            <% end %>
 
-        <li>
-          <%= link_to t('user.session.destroy'), destroy_user_session_path,
-            class: 'text-danger', method: :delete %>
-        </li>
-      </ul>
+            <%= link_to t('user.session.destroy'), destroy_user_session_path,
+              class: 'text-danger list-group-item', method: :delete %>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
