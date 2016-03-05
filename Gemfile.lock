@@ -10,7 +10,8 @@ GIT
 
 GIT
   remote: git://github.com/volmer/bootsy.git
-  revision: c4c05b7178b243907fdb20acf806d3a12eaad205
+  revision: b95a967035af81d8abf3dbb463e0a7411b29adf5
+  branch: bootstrap-4
   specs:
     bootsy (2.2.1)
       carrierwave (~> 0.10)
