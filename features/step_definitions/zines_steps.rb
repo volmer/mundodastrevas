@@ -43,5 +43,5 @@ Then(/^I am redirected to "(.*?)" zine$/) do |zine_name|
 end
 
 Then(/^I see (\d+) zines$/) do |count|
-  expect(page).to have_selector('.zine', count: count)
+  expect(page).to have_selector('.zine-list-item', count: count)
 end

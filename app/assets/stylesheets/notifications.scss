@@ -1,14 +1,8 @@
-.notification.unread {
+.notifications .unread {
   font-weight: bold;
 }
 
-table.notifications {
-  .time {
-    width: 120px;
-  }
-}
-
-.dropdown-menu a.notification {
-  width: 200px;
-  white-space: normal;
+.notifications time {
+  display: block;
+  font-size: .7rem;
 }

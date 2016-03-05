@@ -18,7 +18,7 @@
 <div class="user-profile">
   <div class="row">
     <div class="col-md-4 avatar">
-      <%= image_tag @user.avatar.medium.url, class: 'img-circle img-thumbnail img-responsive' %>
+      <%= image_tag @user.avatar.medium.url, class: 'img-circle img-thumbnail img-fluid' %>
     </div>
 
     <div class="col-md-8">
@@ -27,37 +27,35 @@
       <div class="clearfix user-profile-actions">
         <div class="pull-left">
           <% if @user == current_user %>
-            <%= link_to t('.edit'), edit_user_registration_path, class: 'btn btn-default btn-sm' %>
+            <%= link_to t('.edit'), edit_user_registration_path, class: 'btn btn-primary-outline btn-sm' %>
           <% else %>
-            <%= link_to user_messages_path(@user), class: 'btn btn-default' do %>
-              <span class="glyphicon glyphicon-envelope"></span>
-
+            <%= link_to user_messages_path(@user), class: 'btn btn-primary-outline' do %>
+              <i class="fa fa-envelope"></i>
               <%= t '.message' %>
             <% end %>
           <% end %>
         </div>
 
-        <ul class="external-accounts list-inline pull-right">
+        <div class="pull-xs-right external-accounts">
           <% @user.external_accounts.each do |account| %>
             <% if policy(@user).read_field?(account.provider) %>
-              <li>
-                <%= link_to image_tag("social/#{account.provider}.png"),
-                  account.url,
-                  target: '_blank',
-                  title: account.provider.titleize %>
-              </li>
+              <%= link_to account.url,
+                target: '_blank',
+                title: account.provider.titleize do %>
+                <i class="fa fa-<%= account.provider %>-official"></i>
+              <% end %>
             <% end %>
           <% end %>
-        </ul>
+        </div>
       </div>
 
       <% if @user.bio.present? %>
-        <blockquote>
+        <blockquote class="blockquote">
           <%= simple_text @user.bio %>
         </blockquote>
       <% end %>
 
-      <dl class="dl-horizontal">
+      <dl>
         <% if policy(@user).read_field?(:email) %>
           <dt><%= User.human_attribute_name('email') %></dt>
           <dd class="email">
@@ -99,10 +97,7 @@
                 <div class="user-rank clearfix">
                   <%= image_tag level.universe.image.thumb.url, class: 'img-rounded' %>
 
-                  <h1>
-                    <%= level.rank %>
-                  </h1>
-
+                  <h6><%= level.rank %></h6>
                   <%= level.rank.description %>
                 </div>
               <% end %>
@@ -120,7 +115,16 @@
           <div class="row">
             <% row.each do |zine| %>
               <div class="col-md-6">
-                <%= render 'zines/panel', zine: zine %>
+                <section class="list-group zine-card">
+                  <%= link_to '', zine_path(zine), class: 'list-group-item cover',
+                    style: "background-image: url('#{ zine.image.url }')" %>
+
+                  <%= link_to zine_path(zine), class: 'list-group-item' do %>
+                    <h4 class="list-group-item-heading">
+                      <%= zine %>
+                    </h4>
+                  <% end %>
+                </section>
               </div>
             <% end %>
           </div>

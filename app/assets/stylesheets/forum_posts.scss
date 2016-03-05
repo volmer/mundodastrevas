@@ -1,11 +1,11 @@
 .forum-post {
   margin-bottom: 20px;
-  background-color: $well-bg;
+  background-color: $gray-lighter;
   padding: 10px 0;
 
   .user {
     text-align: center;
-    border-right: 1px solid $well-border;
+    border-right: 1px solid #f0f0f0;
 
     a {
       font-size: 15px;
@@ -30,21 +30,20 @@
   }
 
   .meta {
-    border-top: 1px solid $well-border;
+    border-top: 1px solid #f0f0f0;
     padding: 10px 10px 0 0;
 
     .actions {
       float: right;
     }
 
-    form.raddar-ratings-review {
+    .review-form {
       display: inline;
       margin-right: 10px;
     }
 
     time {
-      font-size: 11px;
-      color: $gray-light;
+      font-size: .7rem;
     }
   }
 }

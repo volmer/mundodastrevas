@@ -7,49 +7,37 @@
 <% content_for :layout_top do %>
   <div class="universe-header" style="background-image: url('<%= @universe.image.url %>')">
     <div class="container">
-      <h1>
-        <%= @universe %>
-      </h1>
+      <h1><%= @universe %></h1>
     </div>
   </div>
 <% end %>
 
 <section class="description">
-  <p class="lead text-justify">
-    <%= strip_tags @universe.description %>
-  </p>
+  <p class="lead text-justify"><%= strip_tags @universe.description %></p>
 </section>
 
-<ul class="nav nav-tabs nav-justified universe-nav">
-  <li class="active"><%= link_to t('.zines'), '#zines', data: { toggle: 'tab' } %></li>
+<ul class="nav nav-tabs universe-nav">
+  <li class="nav-item active"><%= link_to t('.zines'), '#zines', class: 'nav-link', data: { toggle: 'tab' } %></li>
 
   <% if @forum.present? %>
-    <li><%= link_to t('.forum'), '#forum', data: { toggle: 'tab' } %></li>
+    <li class="nav-item"><%= link_to t('.forum'), '#forum', class: 'nav-link', data: { toggle: 'tab' } %></li>
   <% end %>
 
   <% if @ranks.present? %>
-    <li><%= link_to t('.ranks'), '#ranks', data: { toggle: 'tab' } %></li>
+    <li class="nav-item"><%= link_to t('.ranks'), '#ranks', class: 'nav-link', data: { toggle: 'tab' } %></li>
   <% end %>
 </ul>
 
 <div class="tab-content">
   <section class="tab-pane fade in active" id="zines">
-    <div class="page-header">
-      <h2>
-        <%= t '.zines' %>
-      </h2>
-    </div>
+    <h2><%= t '.zines' %></h2>
 
     <%= render 'zines/list', zines: @zines %>
   </section>
 
   <% if @forum.present? %>
     <section class="tab-pane fade" id="forum">
-      <div class="page-header">
-        <h2>
-          <%= t '.forum' %>
-        </h2>
-      </div>
+      <h2><%= t '.forum' %></h2>
 
       <%= render 'topics/index', topics: @forum_topics, forum: @forum %>
 
@@ -58,36 +46,31 @@
   <% end %>
 
   <section class="tab-pane fade" id="ranks">
-    <div class="page-header">
-      <h2>
-        <%= t '.ranks' %>
-      </h2>
-    </div>
+    <h2><%= t '.ranks' %></h2>
 
-    <% @ranks.each do |rank| %>
-      <div class="page-header">
-        <h3>
-          <%= rank %>
+    <% @ranks.each_slice(3) do |row| %>
+      <div class="row">
+        <% row.each do |rank| %>
+          <div class="col-md-4">
+            <div class="card text-xs-center">
+              <h3 class="card-header"><%= rank %></h3>
+              <div class="card-block">
+                <p class="card-text"><%= rank.description %></p>
+              </div>
+              <div class="card-footer">
+                <% rank.users.first(12).each do |user| %>
+                  <%= link_to image_tag(user.avatar.thumb.url, class: 'mini-avatar'),
+                    user_path(user), title: user.name %>
+                <% end %>
 
-          <small>
-            <%= rank.description %>
-          </small>
-        </h3>
-      </div>
-
-      <% rank.users.first(24).each_slice(12) do |row| %>
-        <div class="row">
-          <% row.each do |user| %>
-            <div class="col-md-1 col-sm-2 col-xs-3">
-              <%= link_to image_tag(user.avatar.thumb.url, class: 'img-circle'), user_path(user), title: user.name, class: 'thumbnail' %>
+                <% if (others = (rank.users.count - 12)) > 0 %>
+                  <%= t '.and_others', count: others %>
+                <% end %>
+              </div>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-
-      <% if (others = (rank.users.count - 20)) > 0 %>
-        <%= t '.and_others', count: others %>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </section>
 </div>

@@ -1,26 +1,44 @@
-<header class="navbar navbar-inverse navbar-static-top" role="navigation">
+<nav class="navbar navbar-full navbar-dark bg-inverse">
   <div class='container'>
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+    <%= link_to 'MdT', root_path, title: Rails.application.config.app_name, class: 'navbar-brand' %>
 
-      <%= link_to Rails.application.config.app_name, root_path, class: 'navbar-brand' %>
-    </div>
+    <ul class="nav navbar-nav hidden-xs-down">
+      <li class="nav-item"><%= link_to t('zines.index.title'), zines_path, class: 'nav-link' %></li>
+      <li class="nav-item"><%= link_to t('forums.index.title'), forums_path, class: 'nav-link' %></li>
+    </ul>
 
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <%= render 'layouts/main_links' %>
+    <ul class="nav navbar-nav pull-xs-right">
+      <li class="nav-item">
+        <%= link_to search_path, title: t('searches.show.title'), class: 'nav-link btn btn-secondary-outline' do %>
+          <i class="fa fa-search"></i>
+        <% end %>
+      </li>
 
-      <%= render 'layouts/search' %>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to notifications_path, title: t('notifications.index.title'), class: 'nav-link btn btn-secondary-outline' do %>
+            <i class="fa fa-flag"></i>
 
-      <ul class="nav navbar-nav navbar-right">
-        <%= render 'layouts/notifications' %>
+            <% if unread_notifications_count(current_user) > 0 %>
+              <span class="label label-pill label-info">
+                <%= unread_notifications_count(current_user) %>
+              </span>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
 
-        <%= render 'layouts/user_menu' %>
-      </ul>
-    </div>
+      <li class="nav-item">
+        <% if user_signed_in? %>
+          <%= link_to current_user, title: current_user, class: 'nav-link nav-img user-menu', data: { toggle: 'collapse', target: '#userMenu' } do %>
+            <%= image_tag current_user.avatar.thumb.url %>
+          <% end %>
+        <% else %>
+          <%= link_to t('user.session.new'), new_user_session_path, class: 'nav-link btn btn-secondary-outline' %>
+        <% end %>
+      </li>
+    </ul>
   </div>
-</header>
+</nav>
+
+<%= render 'layouts/dropdown' %>

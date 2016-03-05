@@ -1,18 +1,60 @@
 <% content_for :page_title, t('.title') %>
 <% content_for :page_canonical_url, zines_url %>
 
-<div class="page-header">
-  <h1>
-    <%= t '.title' %>
-  </h1>
-</div>
+<h1><%= t '.title' %></h1>
 
 <div class="row">
   <div class="col-md-8">
-    <%= render 'list_with_last_post', zines: @zines %>
+    <% @zines.each do |zine| %>
+      <div class="list-item-with-image zine-list-item">
+        <% post = zine.posts.order(created_at: :desc).first %>
+
+        <%= link_to [zine, post] do %>
+          <%= image_tag post.image.small.url %>
+        <% end %>
+
+        <h4><%= link_to post, zine_post_path(zine, post) %></h4>
+        <p><em><%= link_to zine, zine_path(zine) %></em></p>
+        <p>
+          <%= truncate_rich(post.content, length: 150) do %>
+            <%= link_to t('.more'), [zine, post] %>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
+
+    <%= paginate @zines %>
   </div>
 
-  <%= render 'sidebar', tags: @tags, posts: @most_read_posts %>
+  <div class="col-md-4">
+    <div class="card card-block">
+      <%= link_to t('.new'), new_zine_path, class: 'btn btn-primary btn-block' if policy(Zine.new).new? %>
+
+      <% unless user_signed_in? %>
+        <%= link_to t('.invite'), new_user_session_path, class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </div>
+
+    <h4><%= t '.tags' %></h4>
+
+    <div class="list-group">
+      <% @tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag), class: 'list-group-item' %>
+      <% end %>
+    </div>
+
+    <h4><%= t '.most_read' %></h4>
+
+    <div class="list-group">
+      <% @most_read_posts.each do |post| %>
+        <%= link_to [post.zine, post], class: 'list-group-item list-item-with-image' do %>
+          <%= image_tag post.image.thumb.url %>
+          <h6><%= post %></h6>
+          <%= truncate_rich post.content, length: 100 %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <%= auto_discovery_link_tag(:atom, { action: 'index' }, { title: 'atom Feed' }) %>

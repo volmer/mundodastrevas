@@ -16,12 +16,4 @@ class NotificationsController < ApplicationController
 
     redirect_to Notifications.decorator_for(@notification).redirect_path
   end
-
-  def read
-    @notification = Notification.find(params[:notification_id])
-    authorize(@notification)
-    @notification.update_attribute(:unread, false)
-
-    head :no_content
-  end
 end

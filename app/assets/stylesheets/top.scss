@@ -1,7 +1,6 @@
 .page-top{
   background-color: #0E1236;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 40px 20px 0;
   border-bottom: 18px solid black;
   box-shadow: 0 1px 12px black;
 
@@ -12,8 +11,7 @@
   }
 
   h1 {
-    margin: 40px 0 0;
-    font-size: 5em;
+    font-size: 4rem;
     font-weight: bold;
 
     a {
@@ -32,6 +30,8 @@
     font-family: $headings-font-family;
     color: #DCDCDC;
     text-shadow: 0 0 4px #0E1236;
+    padding-bottom: $spacer;
+    margin-bottom: 0;
   }
 }
 

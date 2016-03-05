@@ -5,7 +5,6 @@ Feature: Home Page
 
   Scenario: Access the home page
     When I go to the root page
-    Then I see "Mundo das Trevas" in the page
-    And I see "Nos fóruns" on the page
-    And I see "Posts recentes" on the page
-    And I see "Comentários" on the page
+    Then I see "Mundo das Trevas" on the page
+    And I see the link "Mais zines"
+    And I see the link "Mais fóruns"

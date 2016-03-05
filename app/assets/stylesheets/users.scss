@@ -1,17 +1,5 @@
-.btn-omniauth img {
-  width: 20px;
-}
-
-ul.external-accounts {
-  margin-bottom: 0;
-
-  img {
-    width: 40px;
-  }
-}
-
-.user-tabs {
-  margin-bottom: 30px;
+.user-profile .external-accounts {
+  font-size: 2rem;
 }
 
 .user-profile-top {
@@ -67,15 +55,28 @@ ul.external-accounts {
     margin-right: 10px;
   }
 
-  h1 {
-    font-size: 14px;
-    margin-top: 0;
-  }
-
-  font-size: 11px;
+  font-size: .8rem;
   color: #777;
 }
 
 .new_user {
   margin-bottom: 20px;
+}
+
+.zine-card {
+  text-align: center;
+  margin-bottom: $spacer;
+
+  .cover {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+    height: 140px;
+    transition: all .5s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }

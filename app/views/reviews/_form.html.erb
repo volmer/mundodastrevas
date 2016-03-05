@@ -1,11 +1,11 @@
 <% review = review_by_current_user(reviewable) %>
 
-<%= form_for(review, remote: true, html: { class: 'raddar-ratings-review' }) do |f| %>
+<%= form_for(review, remote: true, html: { class: 'review-form' }) do |f| %>
   <div class="btn-group btn-group-sm" data-toggle="buttons">
     <%= f.label :value, value: 'loved', class: review_btn_class('loved', review), title: t('.loved') do %>
-      <%= f.radio_button :value, :loved %>
+      <%= f.radio_button :value, :loved, autocomplete: 'off' %>
 
-      <span class="glyphicon glyphicon-thumbs-up"></span>
+      <i class="fa fa-thumbs-up"></i>
 
       <span class="count">
         <%= reviewable.reviews.where(value: 'loved').count %>
@@ -13,9 +13,9 @@
     <% end %>
 
     <%= f.label :value, value: 'hated', class: review_btn_class('hated', review), title: t('.hated') do %>
-      <%= f.radio_button :value, :hated %>
+      <%= f.radio_button :value, :hated, autocomplete: 'off' %>
 
-      <span class="glyphicon glyphicon-thumbs-down"></span>
+      <i class="fa fa-thumbs-down"></i>
 
       <span class="count">
         <%= reviewable.reviews.where(value: 'hated').count %>

@@ -7,16 +7,12 @@
   <%= f.hidden_field :active %>
 
   <% if watch.active %>
-    <%= f.button :submit, class: 'btn btn-default' do %>
-      <span class="glyphicon glyphicon-eye-open"></span>
-
-      <%= t '.watch' %>
+    <%= f.button :submit, class: 'btn btn-primary-outline' do %>
+      <i class="fa fa-eye-open"></i> <%= t '.watch' %>
     <% end %>
   <% else %>
-    <%= f.button :submit, class: 'btn btn-default btn-sm' do %>
-      <span class="glyphicon glyphicon-eye-close"></span>
-
-      <%= t '.unwatch' %>
+    <%= f.button :submit, class: 'btn btn-primary-outline btn-sm' do %>
+      <i class="fa fa-eye-close"></i> <%= t '.unwatch' %>
     <% end %>
   <% end %>
 <% end %>

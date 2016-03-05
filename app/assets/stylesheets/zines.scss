@@ -1,59 +1,35 @@
-.zine-author {
-  .panel-body, .list-group {
-    text-align: center;
-
-    h1 {
-      font-size: 20px;
-    }
-
-    p.bio {
-      font-style: italic;
-    }
-  }
-}
-
-.zine-full {
-  .description {
-    padding-bottom: 20px;
-    border-bottom: 1px solid $default-border-color;
-    margin-bottom: 30px;
-  }
-}
-
-.zine-panel {
+.zine-author .card-block {
   text-align: center;
 
-  .cover {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.6;
-    height: 140px;
-    transition: all .5s ease-in-out;
-
-    &:hover {
-      opacity: 1;
-    }
+  .bio {
+    font-style: italic;
   }
+}
+
+.zine-description {
+  @include clearfix;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $default-border-color;
+  margin-bottom: 30px;
 }
 
 .zines-invite {
   background-color: #eee;
-  font-size: 20px;
+  font-size: 1.4rem;
   text-align: center;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: $spacer;
+  margin-bottom: $spacer;
+}
+
+.meta-universe {
+  font-family: serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: $gray-light;
 }
 
 .zine-image {
-  margin-bottom: 30px;
-  width: 100%;
   display: block;
-}
-
-.zine-header .meta-universe {
-  font-family: serif;
-  font-style: italic;
-  font-size: 16px;
-  color: #666;
+  margin-bottom: $spacer;
+  width: 100%;
 }

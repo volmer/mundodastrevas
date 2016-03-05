@@ -1,8 +1,28 @@
 img.mini-avatar {
-  width: 20px;
-  border-radius: 3px;
+  width: 2rem;
+  border-radius: 1rem;
 }
 
-.pagination-container {
-  text-align: center;
+.avatar-left {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+
+.nav-tabs {
+  margin-bottom: $spacer;
+}
+
+.list-item-with-image {
+  @include clearfix;
+  margin-bottom: $spacer;
+
+  img {
+    margin-right: 10px;
+    float: left;
+    border-radius: 5px;
+  }
+}
+
+ul.wysihtml5-toolbar .btn, ul.wysihtml5-toolbar .dropdown-item {
+  font-size: .9rem;
 }

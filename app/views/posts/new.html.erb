@@ -1,13 +1,6 @@
 <% content_for :page_title, t('.title') %>
 
-<div class="page-header">
-  <h1>
-    <%= t '.title' %>
-
-    <small>
-      <%= @zine %>
-    </small>
-  </h1>
-</div>
+<h1><%= t '.title' %></h1>
+<h5><%= @zine %></h5>
 
 <%= render 'form', submit: t('.submit') %>

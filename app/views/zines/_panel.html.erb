@@ -1,9 +1,0 @@
-<section class="list-group zine-panel">
-  <%= link_to '', zine_path(zine), class: 'list-group-item cover', style: "background-image: url('#{ zine.image.url }')" %>
-
-  <%= link_to zine_path(zine), class: 'list-group-item' do %>
-    <h4 class="list-group-item-heading">
-      <%= zine %>
-    </h4>
-  <% end %>
-</section>

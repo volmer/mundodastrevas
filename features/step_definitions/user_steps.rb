@@ -3,7 +3,7 @@ Given(/^I am not signed in$/) do
     step('I go to the root page')
 
     unless find('.navbar').has_content?('Entrar')
-      step 'I open my user menu'
+      find('.user-menu').click
       click_link 'Sair'
     end
   end
@@ -79,7 +79,7 @@ end
 
 When 'I open my user menu' do
   within '.navbar' do
-    click_link 'user-menu'
+    click_link @user.name
   end
 end
 
@@ -89,9 +89,8 @@ When(/^I go to (.*?)'s profile page$/) do |user_name|
 end
 
 When(/^I go to my profile page$/) do
-  name = find('#user-menu').text
-
-  step("I go to #{name}'s profile page")
+  find('.user-menu').click
+  click_link 'Perfil'
 end
 
 When(/^I confirm my registration$/) do
@@ -106,7 +105,7 @@ Then(/^I see the image "(.*?)" as my avatar$/) do |file_name|
 end
 
 Then(/^I am successfully signed in as "(.*?)"$/) do |name|
-  expect(find('.navbar')).to have_content(name)
+  expect(find('.navbar')).to have_link(name)
 end
 
 Then(/^my password is now "(.*?)"$/) do |password|

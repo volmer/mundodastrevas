@@ -4,6 +4,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def read_field?(field)
-    (@record.privacy.try(:[], field.to_s) != 'only_me') || (@user == @record)
+    (@record.privacy.try(:[], field.to_s) != 'only_me') || @record == @user
   end
 end

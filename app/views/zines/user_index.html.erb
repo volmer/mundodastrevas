@@ -4,16 +4,20 @@
 <% content_for :page_canonical_url, user_zines_url(@user) %>
 <% content_for :page_image, URI(root_url) + @user.avatar.url %>
 
-<div class="page-header">
-  <h1>
-    <%= t '.title', user: @user %>
-  </h1>
-</div>
+<h1><%= t '.title', user: @user %></h1>
 
 <div class="row">
-  <%= render 'user_sidebar', user: @user, zines: @zines %>
+  <div class="col-lg-4 col-sm-6">
+    <%= render 'author', user: @user %>
 
-  <div class="col-md-8">
+    <% if current_user == @user %>
+      <div class="card card-block">
+        <%= link_to t('.new'), new_zine_path, class: 'btn btn-primary btn-block' if policy(Zine.new).new? %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-lg-8 col-md-6">
     <% if @zines.any? %>
       <%= render 'list', zines: @zines %>
     <% else %>

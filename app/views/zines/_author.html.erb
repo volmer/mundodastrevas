@@ -1,35 +1,23 @@
-<section class="panel panel-default zine-author">
-  <div class="panel-heading">
-    <h1 class="panel-title">
-      <%= t '.title' %>
-    </h1>
-  </div>
+<div class="card zine-author">
+  <div class="card-header"><%= t '.title' %></div>
 
-  <div class="panel-body">
-    <%= link_to image_tag(user.avatar.small.url, class: 'img-circle img-thumbnail img-responsive'), user_path(user) %>
+  <div class="card-block">
+    <%= link_to image_tag(user.avatar.small.url, class: 'img-circle img-thumbnail img-fluid'), user_path(user) %>
+    <h3 class="card-title"><%= link_to user, user_path(user) %></h3>
+    <p class="card-text bio"><%= truncate_rich user.bio %></p>
 
-    <h1>
-      <%= link_to user, user_path(user) %>
-    </h1>
-
-    <p class="bio">
-      <%= truncate_rich user.bio %>
-    </p>
-
-    <% if @zine.try(:universe) %>
-      <% if rank = user.levels.where(universe: @zine.universe).first.try(:rank) %>
-        <p>
-          <%= t '.level_html',
-                universe: link_to(@zine.universe, universe_path(@zine.universe)),
-                user: user,
-                rank: rank,
-                description: rank.description %>
-        </p>
-      <% end %>
+    <% if @zine.try(:universe) && rank = user.levels.where(universe: @zine.universe).first.try(:rank) %>
+      <p class="card-text">
+        <%= t '.level_html',
+          universe: link_to(@zine.universe, universe_path(@zine.universe)),
+          user: user,
+          rank: rank,
+          description: rank.description %>
+      </p>
     <% end %>
   </div>
 
-  <div class="list-group">
-    <%= link_to t('.zines', count: user.zines.count), user_zines_path(user), class: 'list-group-item' %>
+  <div class="card-block">
+    <%= link_to t('.zines', count: user.zines.count), user_zines_path(user), class: 'card-link' %>
   </div>
-</section>
+</div>

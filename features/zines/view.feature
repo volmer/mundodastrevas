@@ -32,7 +32,6 @@ Feature: View zine
     Then I see "A Game of Thrones" on the page
     And I see "Why, Ned?" on the page
 
-  @javascript
   Scenario: View my zines only
     Given I am signed in as "volmer"
     And I have a zine with the given attributes:

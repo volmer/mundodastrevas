@@ -1,4 +1,4 @@
-<footer id="sticky-footer">
+<footer class="page-footer">
   <div class="container">
     <div class="row">
       <div class="col-sm-4 col-xs-6">
@@ -21,14 +21,18 @@
         </ul>
       </div>
 
-      <div class="col-sm-4 col-xs-6">
-        <h1>Siga as Trevas</h1>
+      <div class="col-md-3 col-sm-4 col-xs-12 social-links">
+        <%= link_to 'http://facebook.com/mundodastrevas', title: 'Mundo das Trevas no Facebook', target: '_blank' do %>
+          <i class="fa fa-facebook-official"></i>
+        <% end %>
 
-        <ul class="list-unstyled">
-          <li><%= link_to 'Facebook', 'http://facebook.com/mundodastrevas', target: '_blank' %></li>
-          <li><%= link_to 'Twitter', 'http://twitter.com/mundodastrevas', target: '_blank' %></li>
-          <li><%= link_to 'Feed', posts_path, target: '_blank' %></li>
-        </ul>
+        <%= link_to 'http://twitter.com/mundodastrevas', title: 'Mundo das Trevas no Twitter', target: '_blank' do %>
+          <i class="fa fa-twitter"></i>
+        <% end %>
+
+        <%= link_to posts_path, title: 'Feed do Mundo das Trevas', target: '_blank' do %>
+          <i class="fa fa-feed"></i>
+        <% end %>
       </div>
     </div>
 

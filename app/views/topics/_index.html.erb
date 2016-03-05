@@ -21,7 +21,7 @@
         <td>
           <% if post = topic.forum_posts.last %>
             <%= link_to forum_topic_path(forum, topic) do %>
-              <%= image_tag post.user.avatar.thumb.url %>
+              <%= image_tag post.user.avatar.thumb.url, class: 'mini-avatar' %>
 
               <%= post.user %>,
 
