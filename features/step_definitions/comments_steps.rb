@@ -22,7 +22,7 @@ Given(/^davos wrote a new comment on the post "(.*?)"$/) do |post_name|
 end
 
 When(/^within my comment I click on "(.*?)"$/) do |link|
-  within('.zine-comment') do
+  within('.comment') do
     click_on link
   end
 end

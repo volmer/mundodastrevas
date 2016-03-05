@@ -17,11 +17,11 @@
 <div class="row">
   <div class="col-md-8">
     <% if @zine.image.file.present? %>
-      <p><%= image_tag @zine.image.url, class: 'img-fluid' %></p>
+      <%= image_tag @zine.image.url, class: 'zine-image img-fluid' %>
     <% end %>
 
     <% if policy(@zine).edit? %>
-      <p><%= link_to t('.edit'), edit_zine_path(@zine), class: 'btn btn-secondary' %></p>
+      <p><%= link_to t('.edit'), edit_zine_path(@zine), class: 'btn btn-secondary btn-sm' %></p>
     <% end %>
 
     <div class="zine-description"><%= sanitize @zine.description %></div>

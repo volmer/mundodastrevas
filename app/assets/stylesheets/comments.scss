@@ -1,12 +1,9 @@
-.zine-comments {
-  form h3 {
-    margin-top: 0;
-    font-size: 19px;
-    color: #555;
-  }
+.new-comment h3 {
+  margin-top: 0;
+  color: #555;
 }
 
-.zine-comment, .new-zine-comment {
+.comment, .new-comment {
   border-top: 1px solid $default-border-color;
   margin: 40px 0 20px;
   padding-top: 20px;
@@ -15,7 +12,6 @@
     text-align: center;
 
     a {
-      font-size: 15px;
       font-weight: bold;
       display: block;
     }
@@ -30,6 +26,8 @@
   }
 
   .meta {
+    @include clearfix;
+
     .actions {
       float: right;
       text-align: right;
@@ -37,11 +35,11 @@
 
     .review-form {
       display: inline;
-      margin-right: 10px;
+      margin-right: $spacer / 2;
     }
 
     time {
-      font-size: 11px;
+      font-size: .7rem;
       color: #999;
     }
   }

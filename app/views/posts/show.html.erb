@@ -7,8 +7,23 @@
 <% content_for :page_updated_at, @post.updated_at %>
 <% content_for :page_see_also, zine_url(@zine) %>
 
+<% content_for :head_extra do %>
+  <%# Facebook %>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=330164793746855";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <%# Twitter %>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<% end %>
+
 <% content_for :layout_top do %>
-  <div class="zine-post-top"
+  <div class="post-top"
     <% if @zine.image.file %>
       style="background-image: url(<%= @zine.image.url %>)"
     <% elsif @post.image.file %>
@@ -20,36 +35,25 @@
 
 <div class="row">
   <div class="col-lg-8 col-lg-offset-2 col-md-9 col-md-offset-1">
-    <div class="zine-post">
-      <div class="page-header">
-        <h1>
-          <%= @post %>
-        </h1>
+    <div class="post">
+      <h1><%= @post %></h1>
 
-        <div class="clearfix">
-          <span class="author-and-date">
-            <%= t '.author_and_date.html',
-              user: link_to(@post.user, user_path(@post.user)),
-              date: time_tag(@post.created_at.to_date, format: :long) %>
-          </span>
+      <p class="author-and-date">
+        <%= t '.author_and_date.html',
+          user: link_to(@post.user, user_path(@post.user)),
+          date: time_tag(@post.created_at.to_date, format: :long) %>
 
-          <div class="pull-right">
-            <%= link_to t('.edit'), edit_zine_post_path(@zine, @post), class: 'btn btn-default' if policy(@post).edit? %>
-          </div>
-        </div>
-      </div>
+        <%= link_to t('.edit'), edit_zine_post_path(@zine, @post),
+          class: 'btn btn-secondary btn-sm pull-xs-right' if policy(@post).edit? %>
+      </p>
 
-      <% if @post.image.file.present? %>
-        <%= image_tag @post.image.url, class: 'zine-image' %>
-      <% end %>
+      <%= image_tag @post.image.url, class: 'zine-image img-fluid' if @post.image.file.present? %>
 
-      <div class="content clearfix">
-        <%= sanitize @post.content %>
-      </div>
+      <div class="content"><%= sanitize @post.content %></div>
 
       <%= render 'posts/footer' %>
 
-      <div class="well well-sm zine-navigator">
+      <div class="card card-block">
         <%= link_to @zine, @zine, class: 'zine-link', title: t('.index') %>
 
         <ul class="pager">
@@ -62,16 +66,14 @@
             </li>
           <% else %>
             <li class="previous disabled">
-              <%= link_to '#' do %>
+              <%= link_to 'javascript:void(0);' do %>
                 &larr;
                 <%= t '.previous' %>
               <% end %>
             </li>
           <% end %>
 
-          <li>
-            <%= link_to t('.index'), @zine, title: @zine %>
-          </li>
+          <li><%= link_to t('.index'), @zine, title: @zine %></li>
 
           <% if next_post = @zine.posts.where('created_at > ?', @post.created_at).order(created_at: :asc).first %>
             <li class="next">

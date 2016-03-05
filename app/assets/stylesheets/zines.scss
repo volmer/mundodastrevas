@@ -15,10 +15,10 @@
 
 .zines-invite {
   background-color: #eee;
-  font-size: 20px;
+  font-size: 1.4rem;
   text-align: center;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: $spacer;
+  margin-bottom: $spacer;
 }
 
 .meta-universe {
@@ -26,4 +26,10 @@
   font-style: italic;
   font-size: 1.1rem;
   color: $gray-light;
+}
+
+.zine-image {
+  display: block;
+  margin-bottom: $spacer;
+  width: 100%;
 }

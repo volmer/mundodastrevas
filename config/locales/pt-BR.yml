@@ -117,6 +117,7 @@ pt-BR:
       first_zine: 'Clique aqui para criar seu primeiro zine!'
       my: 'Meus zines'
       new: 'Novo zine'
+    list:
       more: '(continuar lendo)'
     new:
       title: 'Novo zine'
@@ -163,11 +164,9 @@ pt-BR:
     to_s: 'o comentário de %{user}'
     index:
       invite: 'Deseja adicionar um comentário? Entre aqui!'
-    new:
       label: 'Adicionar comentário'
       submit: 'Comentar'
       watch: 'Avise-me sobre novos comentários neste post'
-    comment:
       updated_at: 'Atualizado em'
       destroy: 'Apagar'
   link:

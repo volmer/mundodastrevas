@@ -19,7 +19,7 @@ Given(/^I've reviewed the post "(.*?)" as negative$/) do |name|
 end
 
 When(/^I check the post as "(.*?)"$/) do |value|
-  within('.zine-post') do
+  within('.post') do
     find(".btn.#{value}").click
   end
 end
@@ -31,11 +31,11 @@ When(/^I check the forum post as "(.*?)"$/) do |value|
 end
 
 When(/^I check the comment as "(.*?)"$/) do |value|
-  find(".zine-comment .btn.#{value}").click
+  find(".comment .btn.#{value}").click
 end
 
 Then(/^I see "(.*?)" in the "(.*?)" post counter$/) do |count, type|
-  within('.zine-post') do
+  within('.post') do
     button = find(".btn.#{type}")
 
     expect(button).to have_content(count)
@@ -43,7 +43,7 @@ Then(/^I see "(.*?)" in the "(.*?)" post counter$/) do |count, type|
 end
 
 Then(/^I see "(.*?)" in the "(.*?)" comment counter$/) do |count, type|
-  within('.zine-comment') do
+  within('.comment') do
     button = find(".btn.#{type}")
 
     expect(button).to have_content(count)

@@ -8,15 +8,11 @@
 
   <% if watch.active %>
     <%= f.button :submit, class: 'btn btn-primary-outline' do %>
-      <span class="glyphicon glyphicon-eye-open"></span>
-
-      <%= t '.watch' %>
+      <i class="fa fa-eye-open"></i> <%= t '.watch' %>
     <% end %>
   <% else %>
     <%= f.button :submit, class: 'btn btn-primary-outline btn-sm' do %>
-      <span class="glyphicon glyphicon-eye-close"></span>
-
-      <%= t '.unwatch' %>
+      <i class="fa fa-eye-close"></i> <%= t '.unwatch' %>
     <% end %>
   <% end %>
 <% end %>
