@@ -63,5 +63,5 @@ When(/^I go to the "(.*?)" post$/) do |name|
 end
 
 Then(/^I see (\d+) posts$/) do |count|
-  expect(page).to have_selector('.zine-post', count: count)
+  expect(page).to have_selector('.post-list-item', count: count)
 end

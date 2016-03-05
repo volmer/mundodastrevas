@@ -1,23 +1,16 @@
-.zine-author {
-  .panel-body, .list-group {
-    text-align: center;
+.zine-author .card-block {
+  text-align: center;
 
-    h1 {
-      font-size: 20px;
-    }
-
-    p.bio {
-      font-style: italic;
-    }
+  .bio {
+    font-style: italic;
   }
 }
 
-.zine-full {
-  .description {
-    padding-bottom: 20px;
-    border-bottom: 1px solid $default-border-color;
-    margin-bottom: 30px;
-  }
+.zine-description {
+  @include clearfix;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $default-border-color;
+  margin-bottom: 30px;
 }
 
 .zines-invite {
@@ -28,15 +21,9 @@
   margin-bottom: 20px;
 }
 
-.zine-image {
-  margin-bottom: 30px;
-  width: 100%;
-  display: block;
-}
-
-.zine-header .meta-universe {
+.meta-universe {
   font-family: serif;
   font-style: italic;
-  font-size: 16px;
-  color: #666;
+  font-size: 1.1rem;
+  color: $gray-light;
 }

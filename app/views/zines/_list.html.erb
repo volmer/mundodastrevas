@@ -1,20 +1,16 @@
 <% zines.each do |zine| %>
-  <div class="media zine">
-    <%= link_to zine, class: 'media-left' do %>
+  <div class="list-item-with-image">
+    <%= link_to zine do %>
       <%= image_tag zine.image.small.url %>
     <% end %>
 
-    <div class="media-body">
-      <h3 class="media-heading">
-        <%= link_to zine, zine %>
-      </h3>
+    <h3><%= link_to zine, zine %></h3>
 
-      <p>
-        <%= truncate_rich(zine.description) do %>
-          <%= link_to t('.more'), zine %>
-        <% end %>
-      </p>
-    </div>
+    <p>
+      <%= truncate_rich(zine.description) do %>
+        <%= link_to t('.more'), zine %>
+      <% end %>
+    </p>
   </div>
 <% end %>
 

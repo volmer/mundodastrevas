@@ -144,8 +144,6 @@ pt-BR:
     show:
       title: 'Tag: %{tag}'
       empty: 'Nada foi encontrado com a tag %{tag}.'
-    panel:
-      title: 'Tags'
   reviews:
     form:
       loved: 'Curti isso!'

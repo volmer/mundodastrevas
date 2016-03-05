@@ -11,3 +11,14 @@ img.mini-avatar {
 .nav-tabs {
   margin-bottom: $spacer;
 }
+
+.list-item-with-image {
+  @include clearfix;
+  margin-bottom: $spacer;
+
+  img {
+    margin-right: 10px;
+    float: left;
+    border-radius: 5px;
+  }
+}

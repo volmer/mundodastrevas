@@ -103,25 +103,21 @@ pt-BR:
       submit: 'Atualizar postagem'
       cancel: 'Cancelar'
   zines:
-    header:
-      universe_html: 'Um zine de %{universe}'
     index:
       title: 'Zines'
-    list:
       more: '(continuar lendo)'
-    list_with_last_post:
-      more: '(continuar lendo)'
-    invite_panel:
       new: 'Novo zine'
       invite: 'Deseja criar um zine? Entre aqui!'
+      most_read: 'Mais lidos'
+      tags: 'Tags'
     user_index:
       title: 'Zines de %{user}'
       no_zines: '%{user} ainda não publicou nenhum zine.'
       no_zines_user: 'Você ainda não tem nenhum zine publicado.'
       first_zine: 'Clique aqui para criar seu primeiro zine!'
       my: 'Meus zines'
-    user_sidebar:
       new: 'Novo zine'
+      more: '(continuar lendo)'
     new:
       title: 'Novo zine'
       submit: 'Criar zine'
@@ -132,8 +128,11 @@ pt-BR:
       confirm: 'Você confirma a exclusão deste zine, incluindo todos os posts e comentários?'
     show:
       edit: 'Editar'
-    show_sidebar:
+      universe_html: 'Um zine de %{universe}'
       new_post: 'Novo post'
+      posts: 'Posts em %{zine}'
+      empty: 'Ainda não existem posts neste zine.'
+      more: '(continuar lendo)'
     author:
       title: 'O Autor'
       zines:
@@ -156,13 +155,6 @@ pt-BR:
       previous: 'Anterior'
       next: 'Próximo'
       index: 'Índice'
-    most_read:
-      title: 'Mais lidos'
-    list:
-      empty: 'Ainda não existem posts neste zine.'
-      more: '(continuar lendo)'
-    panel:
-      title: 'Posts em %{zine}'
     footer:
       tags: 'Tags'
       rate: 'Avalie este post'
