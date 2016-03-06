@@ -17,7 +17,7 @@
       <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to notifications_path, title: t('notifications.index.title'), class: 'nav-link btn btn-secondary-outline' do %>
-            <i class="fa fa-flag"></i>
+            <i class="fa fa-bell"></i>
 
             <% if unread_notifications_count(current_user) > 0 %>
               <span class="label label-pill label-info">
