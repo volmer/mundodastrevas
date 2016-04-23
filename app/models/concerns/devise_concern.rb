@@ -4,25 +4,9 @@ module DeviseConcern
   extend ActiveSupport::Concern
 
   included do
-    attr_accessor :login
-
     devise :database_authenticatable, :registerable, :omniauthable,
            :recoverable, :rememberable, :trackable, :validatable,
-           :confirmable, :encryptable, authentication_keys: [:login]
-
-    def self.find_for_database_authentication(warden_conditions)
-      conditions = warden_conditions.dup
-      login = conditions.delete(:login)
-
-      if login
-        where(conditions).find_by(
-          'lower(name) = :value OR lower(email) = :value',
-          value: login.downcase
-        )
-      else
-        find_by(conditions)
-      end
-    end
+           :confirmable, :encryptable
 
     def active_for_authentication?
       super && active?
