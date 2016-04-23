@@ -1,6 +1,5 @@
 class Page < ActiveRecord::Base
   include Bootsy::Container
-  include Searchable
 
   validates :slug,
             presence: true,
@@ -16,9 +15,5 @@ class Page < ActiveRecord::Base
 
   def to_s
     title
-  end
-
-  def as_indexed_json(*)
-    as_json(only: [:title, :content])
   end
 end

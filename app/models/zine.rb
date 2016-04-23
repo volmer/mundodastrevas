@@ -1,5 +1,4 @@
 class Zine < ActiveRecord::Base
-  include Searchable
   include Bootsy::Container
 
   belongs_to :user
@@ -27,9 +26,5 @@ class Zine < ActiveRecord::Base
 
   def to_s
     name
-  end
-
-  def as_indexed_json(*)
-    as_json(only: [:name, :description])
   end
 end

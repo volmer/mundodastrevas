@@ -1,5 +1,4 @@
 class Post < ActiveRecord::Base
-  include Searchable
   include Watchable
   include Taggable
 
@@ -31,10 +30,6 @@ class Post < ActiveRecord::Base
 
   def to_s
     name
-  end
-
-  def as_indexed_json(*)
-    as_json(only: [:name, :content])
   end
 
   protected

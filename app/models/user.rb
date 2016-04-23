@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include Searchable
   include DeviseConcern
 
   NAME_FORMAT = /\A[\w-]+\z/
@@ -86,9 +85,5 @@ class User < ActiveRecord::Base
     end
 
     level.rank
-  end
-
-  def as_indexed_json(*)
-    as_json(only: [:name])
   end
 end

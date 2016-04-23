@@ -1,6 +1,4 @@
 class Forum < ActiveRecord::Base
-  include Searchable
-
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 500 }
   validates :slug,
@@ -18,9 +16,5 @@ class Forum < ActiveRecord::Base
 
   def to_s
     name
-  end
-
-  def as_indexed_json(*)
-    as_json(only: [:name, :description])
   end
 end

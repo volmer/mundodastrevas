@@ -27,8 +27,6 @@ gem 'recaptcha', require: 'recaptcha/rails'
 gem 'simple_form'
 gem 'devise-encryptable'
 gem 'rubocop'
-gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails'
-gem 'elasticsearch-rails'
 gem 'sprockets-rails'
 gem 'cucumber-rails', require: false
 

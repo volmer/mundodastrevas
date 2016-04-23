@@ -1,28 +1,16 @@
-<% content_for :page_title, t(params[:q].present? ? '.title_with_query' : '.title', q: params[:q]) %>
+<% content_for :page_title, t('.title') %>
 
 <div class="search-page">
-  <%= form_tag(search_path, class: 'form-inline', role: 'search', method: :get) do %>
-    <div class="form-group">
-      <%= text_field_tag :q, params[:q], class: 'form-control input-lg', placeholder: t('.placeholder'), autofocus: true %>
-    </div>
-    <%= button_tag class: 'btn btn-primary' do %>
-      <i class="fa fa-search"></i>
-    <% end %>
-  <% end %>
-
-  <% if params[:q].present? %>
-    <% if @results.present? %>
-      <ul class="list-unstyled">
-        <% @results.each do |result| %>
-          <li class="search-result">
-            <%= render "searches/#{result.class.name.underscore}", searchable: result %>
-          </li>
-        <% end %>
-      </ul>
-
-      <%= paginate @results %>
-    <% else %>
-      <p class="text-info"><%= t '.empty' %></p>
-    <% end %>
-  <% end %>
+  <script>
+    (function() {
+      var cx = '004538313788983189179:go_nqtkjgoi';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+  <gcse:search></gcse:search>
 </div>

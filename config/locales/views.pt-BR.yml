@@ -136,10 +136,7 @@ pt-BR:
       description: 'Tem alguma dúvida, sugestão, reclamação ou deseja comunicar um problema? Entre em contato conosco através do formulário abaixo que responderemos o mais breve possível por email.'
   searches:
     show:
-      placeholder: 'Pesquisar por...'
       title: 'Pesquisa'
-      title_with_query: 'Pesquisa por %{q}'
-      empty: 'Nenhum resultado encontrado.'
   tags:
     show:
       title: 'Tag: %{tag}'

@@ -1,5 +1,4 @@
 class Topic < ActiveRecord::Base
-  include Searchable
   include Watchable
 
   validates :name, presence: true, length: { maximum: 100 }
@@ -28,10 +27,6 @@ class Topic < ActiveRecord::Base
   def self.find_by_slug!(slug)
     id = slug.split('-').first
     find_by!(id: id)
-  end
-
-  def as_indexed_json(*)
-    as_json(only: [:name], include: { forum_posts: { only: [:content] } })
   end
 
   protected
