@@ -29,7 +29,7 @@ gem 'devise-encryptable'
 gem 'rubocop'
 gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails'
 gem 'elasticsearch-rails'
-gem 'sprockets-rails', '~> 2.3'
+gem 'sprockets-rails'
 gem 'cucumber-rails', require: false
 
 group :development do
