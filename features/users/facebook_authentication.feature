@@ -51,7 +51,6 @@ Feature: Facebook authentication
     And I see the field "Nome" filled in with "jon-snow"
     And I fill in "Email" with "jon@thewall.ws"
     And I fill in "Senha" with "12345678"
-    And I fill in "Confirmação da senha" with "12345678"
     And I click on "Cadastrar"
     And I confirm my registration
     And I sign in with name "jon-snow" and password "12345678"

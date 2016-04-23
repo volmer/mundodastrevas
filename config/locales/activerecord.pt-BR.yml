@@ -52,7 +52,6 @@ pt-BR:
         avatar: 'Avatar'
         remember_me: 'Lembrar'
         email: 'Email'
-        password_confirmation: 'Confirmação da senha'
         bio: 'Bio'
         current_password: 'Senha atual'
         roles: 'Papéis'

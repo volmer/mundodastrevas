@@ -14,18 +14,10 @@ Feature: Change password
 
   Scenario: Successful password change
     When I fill in "Nova senha" with "mypassword66"
-    And I fill in "Confirmação da senha" with "mypassword66"
     And I fill in "Senha atual" with "12345678"
     And I press "Alterar"
     Then I see the info message "Senha alterada!"
     And my password is now "mypassword66"
-
-  Scenario: Wrong Confirmação da senha
-    When I fill in "Nova senha" with "123456"
-    And I fill in "Confirmação da senha" with "111111"
-    And I press "Alterar"
-    Then I see the danger message "Verifique os erros abaixo:"
-    And I see the field "Confirmação da senha" with the error "não está de acordo com a confirmação"
 
   Scenario: Wrong Senha atual
     When I fill in "Senha atual" with "111111"
@@ -35,7 +27,6 @@ Feature: Change password
 
   Scenario: Nova senha is less than 8 characters long
     When I fill in "Nova senha" with "1234567"
-    And I fill in "Confirmação da senha" with "1234567"
     And I fill in "Senha atual" with "12345678"
     And I press "Alterar"
     And I see the field "Nova senha" with the error "é muito curto"

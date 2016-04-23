@@ -10,9 +10,7 @@ module Users
     def do_change
       @user = current_user
 
-      user_params = params.required(:user).permit(
-        :password, :current_password, :password_confirmation
-      )
+      user_params = params.required(:user).permit(:password, :current_password)
 
       if @user.update_with_password(user_params)
         sign_in @user, bypass: true

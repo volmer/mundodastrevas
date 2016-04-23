@@ -11,7 +11,6 @@ Feature: User sign up
     When I fill in "Nome" with "volmer"
     And I fill in "Email" with "volmer@example.com"
     And I fill in "Senha" with "12345678"
-    And I fill in "Confirmação da senha" with "12345678"
     And I click on "Cadastrar"
     Then I am redirected to the root page
     And I see the info message "Uma mensagem com um link de confirmação foi enviado para o seu email. Por favor, abra o link para ativar sua conta."
@@ -21,7 +20,6 @@ Feature: User sign up
     When I fill in "Nome" with "<name>"
     And I fill in "Email" with "<email>"
     And I fill in "Senha" with "<password>"
-    And I fill in "Confirmação da senha" with "<password>"
     And I click on "Cadastrar"
     Then I see the danger message "Verifique os erros abaixo:"
     And I see the field "<invalid field>" with the error "não pode ficar em branco"
@@ -93,10 +91,3 @@ Feature: User sign up
     And I click on "Cadastrar"
     Then I see the danger message "Verifique os erros abaixo:"
     And I see the field "Email" with the error "já está em uso"
-
-  Scenario: Sign up with a wrong password confirmation
-    When I fill in "Senha" with "12345678"
-    And I fill in "Confirmação da senha" with "111111"
-    And I click on "Cadastrar"
-    Then I see the danger message "Verifique os erros abaixo:"
-    And I see the field "Confirmação da senha" with the error "não está de acordo com a confirmação"
