@@ -2,8 +2,8 @@ Then(/^the user "(.*?)" can(not)? see my "(.*?)"$/) do |name, negation, field|
   step('I am not signed in')
 
   pwd = 12_345_678
-  create :user, name: name, password: pwd
-  step("I sign in with name \"#{name}\" and password \"#{pwd}\"")
+  user = create(:user, name: name, password: pwd)
+  step("I sign in with email \"#{user.email}\" and password \"#{pwd}\"")
 
   step("I go to #{@user}'s profile page")
 
@@ -30,8 +30,8 @@ Then(/^user "(.*?)" can(not)? see the link "(.*?)"$/) do |name, negation, link|
   step('I am not signed in')
 
   password = 12_345_678
-  create :user, name: name, password: password
-  step("I sign in with name \"#{name}\" and password \"#{password}\"")
+  user = create(:user, name: name, password: password)
+  step("I sign in with email \"#{user.email}\" and password \"#{password}\"")
 
   step("I go to #{@user}'s profile page")
 

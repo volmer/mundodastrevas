@@ -7,7 +7,7 @@ Feature: Change password
     Given I am signed up with the following data:
       | name   | email              | password |
       | volmer | volmer@example.com | 12345678 |
-    And I sign in with name "volmer" and password "12345678"
+    And I sign in with email "volmer@example.com" and password "12345678"
     And I open my user menu
     And I click on "Configurações"
     And I click on "Alterar senha"

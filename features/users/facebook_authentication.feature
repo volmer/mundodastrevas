@@ -53,7 +53,7 @@ Feature: Facebook authentication
     And I fill in "Senha" with "12345678"
     And I click on "Cadastrar"
     And I confirm my registration
-    And I sign in with name "jon-snow" and password "12345678"
+    And I sign in with email "jon@thewall.ws" and password "12345678"
     And I go to my profile page
     Then I see "jon-snow" on the page
     And I see the field "Email" with the value "jon@thewall.ws"

@@ -4,7 +4,7 @@ FactoryGirl.define do
       "user#{n}"
     end
 
-    email { "#{name}@example.com" }
+    email { "#{name.downcase}@example.com" }
     password '12345678'
     state 'active'
 

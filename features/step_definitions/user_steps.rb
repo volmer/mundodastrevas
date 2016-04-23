@@ -15,14 +15,14 @@ Given(/^I am signed in$/) do
 end
 
 Given(/^I am signed in as "(.*?)"$/) do |name|
-  password = 12_345_678
+  password = '12345678'
 
   if @user.blank? || (@user.name != name)
     @user =
       User.find_by(name: name) || create(:user, name: name, password: password)
   end
 
-  step "I sign in with name \"#{name}\" and password \"#{password}\""
+  step "I sign in with email \"#{@user.email}\" and password \"#{password}\""
 end
 
 Given(/^there are users signed up with the following data:$/) do |table|
@@ -69,10 +69,10 @@ Given('I am blocked') do
   step("\"#{@user}\" is blocked")
 end
 
-When(/^I sign in with name "(.*?)" and password "(.*?)"$/) do |name, password|
+When(/^I sign in with email "(.*?)" and password "(.*?)"$/) do |email, password|
   step 'I am not signed in'
   step 'I go to the new user session page'
-  step "I fill in \"Nome ou email\" with \"#{name}\""
+  step "I fill in \"Email\" with \"#{email}\""
   step "I fill in \"Senha\" with \"#{password}\""
   step 'I press "Entrar"'
 end
