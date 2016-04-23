@@ -7,20 +7,18 @@
 <%= render 'users/shared/tabs', active: :external_accounts %>
 
 <dl>
-  <% User.omniauth_providers.each do |provider| %>
-    <dt><%= provider.to_s.titleize %></dt>
+  <dt>Facebook</dt>
 
-    <dd>
-      <% if account = @user.external_accounts.find_by(provider: provider) %>
-        <%= link_to t('.connected_as', account: account), account.url, target: '_blank' %>
+  <dd>
+    <% if account = @user.external_accounts.find_by(provider: 'facebook') %>
+      <%= link_to t('.connected_as', account: account), account.url, target: '_blank' %>
 
-        <%= link_to t('.destroy', provider: provider.to_s.titleize), [:user, account], method: :delete, class: 'btn btn-primary-outline btn-xs' %>
-      <% else %>
-        <%= link_to user_omniauth_authorize_path(provider), class: 'btn btn-primary' do %>
-          <i class="fa fa-<%= provider %>-official" %></i>
-          <%= t '.connect', provider: provider.to_s.titleize %>
-        <% end %>
+      <%= link_to t('.destroy', provider: 'Facebook'), [:user, account], method: :delete, class: 'btn btn-primary-outline btn-xs' %>
+    <% else %>
+      <%= link_to user_facebook_omniauth_authorize_path, class: 'btn btn-primary' do %>
+        <i class="fa fa-facebook-official" %></i>
+        <%= t '.connect', provider: 'Facebook' %>
       <% end %>
-    </dd>
-  <% end %>
+    <% end %>
+  </dd>
 </dl>

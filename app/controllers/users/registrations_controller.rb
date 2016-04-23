@@ -29,11 +29,11 @@ module Users
     private
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) do |u|
+      devise_parameter_sanitizer.permit(:sign_up) do |u|
         u.permit(:name, :email, :password, :password_confirmation)
       end
 
-      devise_parameter_sanitizer.for(:account_update) do |u|
+      devise_parameter_sanitizer.permit(:account_update) do |u|
         u.permit(:name, :email, :gender, :bio, :location, :birthday, :avatar)
       end
     end
