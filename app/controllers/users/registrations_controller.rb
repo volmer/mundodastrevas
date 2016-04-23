@@ -29,13 +29,13 @@ module Users
     private
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up) do |u|
-        u.permit(:name, :email, :password, :password_confirmation)
-      end
+      devise_parameter_sanitizer.permit(
+        :sign_up, keys: [:name, :email, :password, :password_confirmation])
 
-      devise_parameter_sanitizer.permit(:account_update) do |u|
-        u.permit(:name, :email, :gender, :bio, :location, :birthday, :avatar)
-      end
+      devise_parameter_sanitizer.permit(
+        :account_update,
+        keys: [:name, :email, :gender, :bio, :location, :birthday, :avatar]
+      )
     end
 
     def message_for_update(unconfirmed_email)

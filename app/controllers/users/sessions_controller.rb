@@ -5,7 +5,7 @@ module Users
     private
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:login) }
+      devise_parameter_sanitizer.permit(:sign_in, keys: [:login])
     end
   end
 end
