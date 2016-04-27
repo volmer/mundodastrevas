@@ -1,8 +1,6 @@
-window.Raddar = window.Raddar || {}
+window.Reviews = window.Reviews || {}
 
-Raddar.Reviews = Raddar.Reviews || {}
-
-Raddar.Reviews.init = ->
+Reviews.init = ->
   $(document).on 'ajax:beforeSend', '.review-form', ->
     $(@).find('.btn').addClass('disabled')
 
@@ -34,5 +32,4 @@ Raddar.Reviews.init = ->
     form = $(@).closest('form')
     form.submit()
 
-$ ->
-  Raddar.Reviews.init()
+$(Reviews.init)

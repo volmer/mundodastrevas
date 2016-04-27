@@ -24,10 +24,6 @@
         <div class="actions">
           <%= render 'reviews/form', reviewable: forum_post %>
 
-          <% if policy(forum_post).create? %>
-            <%= link_to t('.quote'), '#quote', class: 'btn btn-primary-outline btn-sm' %>
-          <% end %>
-
           <% if policy(forum_post).update? %>
             <%= link_to t('.edit'), '#edit', class: 'btn btn-primary-outline btn-sm' %>
           <% end %>

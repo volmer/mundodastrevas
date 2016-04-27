@@ -84,7 +84,6 @@ pt-BR:
       destroy: 'Apagar'
       updated_at: 'Atualizado em'
       confirm: 'Você confirma a exclusão desta postagem?'
-      quote: 'Citar'
     new:
       submit: 'Postar'
       watch: 'Avise-me sobre novas postagens neste tópico'
