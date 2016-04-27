@@ -3,15 +3,23 @@ class NotificationMailer < ActionMailer::Base
 
   def notify(notification)
     @notification = notification
-    @user         = notification.user
-    @notifiable   = notification.notifiable
-
-    decorator = Notifications.decorator_for(notification)
+    @user = notification.user
+    @notifiable = notification.notifiable
 
     mail(
       to: "#{@user} <#{@user.email}>",
-      subject: decorator.mailer_subject,
+      subject: subject,
       template_name: @notification.event
+    )
+  end
+
+  private
+
+  def subject
+    t(
+      @notification.event,
+      scope: 'mailers.notification',
+      notifiable: @notifiable
     )
   end
 end

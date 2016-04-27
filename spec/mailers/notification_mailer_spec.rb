@@ -32,10 +32,12 @@ describe NotificationMailer do
 
       subject { described_class.notify(notification).deliver_now }
 
-      it 'includes the message content' do
+      it 'sends the proper subject and body' do
         subject
-        expect(ActionMailer::Base.deliveries.last.body).to include(
-          'We do not sow.')
+
+        email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("Mensagem de #{message.sender}")
+        expect(email.body).to include('We do not sow.')
       end
     end
   end

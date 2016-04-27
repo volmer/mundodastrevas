@@ -69,4 +69,11 @@ describe Message do
       end
     end
   end
+
+  describe '#to_s' do
+    it 'describes the sender' do
+      expect(subject.to_s).to eq(
+        "Mensagem de #{subject.sender}")
+    end
+  end
 end

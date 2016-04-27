@@ -13,7 +13,7 @@ class ForumPost < ActiveRecord::Base
   after_create :touch_topic_and_forum, :notify_topic_watchers
 
   def to_s
-    I18n.t('forum_posts.to_s', user: user)
+    I18n.t('descriptive_name.forum_post', user: user, topic: topic)
   end
 
   protected

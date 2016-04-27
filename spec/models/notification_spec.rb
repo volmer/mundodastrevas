@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Notification do
   it 'validates inlcusion of events' do
-    Notifications.events.each do |event|
+    Notification::EVENTS.each do |event|
       subject.event = event
       subject.valid?
 

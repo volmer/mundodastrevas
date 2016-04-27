@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   validates :gender, inclusion: { in: %w(male female) }, allow_blank: true
 
   cattr_accessor(:email_preferences_keys) do
-    Notifications.events
+    Notification::EVENTS
   end
 
   def self.find_by_name!(name)

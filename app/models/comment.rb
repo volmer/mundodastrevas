@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
   after_create :notify_watchers
 
   def to_s
-    I18n.t('comments.to_s', user: user)
+    I18n.t('descriptive_name.comment', user: user, post: post)
   end
 
   private

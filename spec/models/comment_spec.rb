@@ -14,10 +14,9 @@ describe Comment do
   end
 
   describe '#to_s' do
-    it 'describes the author' do
-      author = subject.user.name
-
-      expect(subject.to_s).to eq("o comentário de #{author}")
+    it 'describes the author and post' do
+      expect(subject.to_s).to eq(
+        "Comentário de #{subject.user} em #{subject.post}")
     end
   end
 end

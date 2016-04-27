@@ -13,8 +13,8 @@ Feature: Notify watchers
     Given there is an user called "davos"
     And davos wrote a new comment on the post "Arya"
     When I go to the notifications page
-    Then I see "davos comentou em Arya." on the page
-    And I receive an email titled "Novo comentário em Arya"
+    Then I see "Comentário de davos em Arya" on the page
+    And I receive an email titled "Comentário de davos em Arya"
     And the email I've received contains "volmer"
     And the email I've received contains "davos"
     And the email I've received contains "Arya"
@@ -25,5 +25,5 @@ Feature: Notify watchers
     And there is an user called "davos"
     And davos wrote a new comment on the post "Arya"
     When I go to the notifications page
-    Then I see "davos comentou em Arya." on the page
+    Then I see "Comentário de davos em Arya" on the page
     And I don't receive any emails

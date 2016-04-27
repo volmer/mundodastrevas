@@ -19,24 +19,14 @@ pt-BR:
       admin: 'Administrador'
   save: 'Salvar'
   notifications:
-    events:
-      new_message: '%{user} te enviou uma mensagem'
     see_all: 'Ver todas'
-    new_rank: 'Parabéns! Agora você é um %{rank} em %{universe}!'
-    new_comment: '%{user} comentou em %{post}.'
-    new_forum_post: '%{user} postou em %{topic}.'
+    new_rank: 'Parabéns! Agora você é um %{rank}!'
   mailers:
     notification:
-      new_comment:
-        subject: 'Novo comentário em %{post}'
-      new_forum_post:
-        subject: 'Nova postagem em %{topic}'
-      new_message:
-        subject: '%{user} te enviou uma mensagem'
-      new_rank:
-        subject: 'Parabéns, agora você é um %{rank}!'
-    contact:
-      subject: 'Novo contato de %{name}'
+      new_message: '%{notifiable}'
+      new_rank: 'Parabéns! Agora você é um %{notifiable}!'
+      new_comment: '%{notifiable}'
+      new_forum_post: '%{notifiable}'
   views:
     pagination:
       first_html: '&laquo;'
@@ -161,7 +151,6 @@ pt-BR:
       rate: 'Avalie este post'
       watching: 'Você está vigiando este post.'
   comments:
-    to_s: 'o comentário de %{user}'
     index:
       invite: 'Deseja adicionar um comentário? Entre aqui!'
       label: 'Adicionar comentário'
@@ -171,3 +160,7 @@ pt-BR:
       destroy: 'Apagar'
   link:
     admin: 'Administração'
+  descriptive_name:
+    message: 'Mensagem de %{sender}'
+    comment: 'Comentário de %{user} em %{post}'
+    forum_post: 'Postagem de %{user} em %{topic}'

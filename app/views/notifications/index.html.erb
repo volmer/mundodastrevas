@@ -7,7 +7,7 @@
     <div class="list-group notifications">
       <% @notifications.each do |notification| %>
         <%= link_to notification, class: ['list-group-item', notification.unread ? 'unread' : 'read'] do %>
-          <%= Notifications.decorator_for(notification).text %>
+          <%= render "notifications/#{notification.event}", notifiable: notification.notifiable %>
           <%= time_tag notification.created_at, format: :short %>
         <% end %>
       <% end %>

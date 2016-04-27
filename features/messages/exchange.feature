@@ -18,5 +18,5 @@ Feature: Exchange messages
     Given bran has sent me the message: "Yes, brace yourself!"
     When I go to the notifications page
     Then I see 1 unread notification
-    And I click on "bran te enviou uma mensagem"
+    And I click on "Mensagem de bran"
     Then I see "Yes, brace yourself!" on the page

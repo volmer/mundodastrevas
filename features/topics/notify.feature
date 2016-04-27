@@ -12,8 +12,8 @@ Feature: Notify watchers
     Given there is an user called "davos"
     And davos wrote a new post on the topic "Treason!"
     When I go to the notifications page
-    Then I see "davos postou em Treason!." on the page
-    And I receive an email titled "Nova postagem em Treason!"
+    Then I see "Postagem de davos em Treason!" on the page
+    And I receive an email titled "Postagem de davos em Treason!"
     And the email I've received contains "volmer"
     And the email I've received contains "davos"
     And the email I've received contains "Treason!"
@@ -24,5 +24,5 @@ Feature: Notify watchers
     And there is an user called "davos"
     And davos wrote a new post on the topic "Treason!"
     When I go to the notifications page
-    Then I see "davos postou em Treason!." on the page
+    Then I see "Postagem de davos em Treason!" on the page
     And I don't receive any emails

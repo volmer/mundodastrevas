@@ -35,6 +35,10 @@ class Message < ActiveRecord::Base
     ).order('created_at DESC')
   end)
 
+  def to_s
+    I18n.t('descriptive_name.message', sender: sender)
+  end
+
   private
 
   def sender_and_recipient_must_be_different

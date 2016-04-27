@@ -12,8 +12,8 @@ Feature: Notify watchers
     Given there is an user called "davos"
     And davos has commented on the "Awesome post" post
     When I go to the notifications page
-    Then I see "davos comentou em Awesome post." on the page
-    And I receive an email titled "Novo comentário em Awesome post"
+    Then I see "Comentário de davos em Awesome post" on the page
+    And I receive an email titled "Comentário de davos em Awesome post"
     And the email contains "davos"
     And the email contains "Awesome post"
 
@@ -29,5 +29,5 @@ Feature: Notify watchers
     And there is an user called "davos"
     And davos has commented on the "Awesome post" post
     When I go to the notifications page
-    Then I see "davos comentou em Awesome post." on the page
+    Then I see "Comentário de davos em Awesome post" on the page
     And I don't receive any emails

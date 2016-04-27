@@ -13,8 +13,8 @@ Feature: Notify new rank
   Scenario: Get notified about a new rank
     Given I have earned the rank "Enchanted" in "Changeling: the Lost"
     When I go to the notifications page
-    Then I see "Parabéns! Agora você é um Enchanted em Changeling: the Lost!" on the page
-    And I receive an email titled "Parabéns, agora você é um Enchanted!"
+    Then I see "Parabéns! Agora você é um Enchanted!" on the page
+    And I receive an email titled "Parabéns! Agora você é um Enchanted!"
     And the email contains "volmer"
     And the email contains "Enchanted"
     And the email contains "Changeling: the Lost"
