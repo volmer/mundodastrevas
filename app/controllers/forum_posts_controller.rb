@@ -60,8 +60,8 @@ class ForumPostsController < ApplicationController
   end
 
   def respond_to_creation_error
-    @forum_posts = @topic.forum_posts.order(
-      created_at: :asc).page(params[:page])
+    @forum_posts = @topic.forum_posts.order(created_at: :asc).page(
+      params[:page])
     render(template: 'topics/show')
   end
 end

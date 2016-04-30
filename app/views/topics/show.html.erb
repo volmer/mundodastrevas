@@ -34,7 +34,9 @@
     <li class="active"><%= @topic %></li>
   </ol>
 
-  <%= render @forum_posts %>
+  <% @forum_posts.each do |forum_post| %>
+    <%= render forum_post %>
+  <% end %>
 
   <%= paginate @forum_posts %>
 
