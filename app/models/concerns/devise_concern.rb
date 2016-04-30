@@ -1,12 +1,10 @@
-require Rails.root + 'lib/devise/encryptable/encryptors/dark_encryptor'
-
 module DeviseConcern
   extend ActiveSupport::Concern
 
   included do
     devise :database_authenticatable, :registerable, :omniauthable,
            :recoverable, :rememberable, :trackable, :validatable,
-           :confirmable, :encryptable
+           :confirmable
 
     def active_for_authentication?
       super && active?
