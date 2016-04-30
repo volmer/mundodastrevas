@@ -27,13 +27,13 @@ gem 'simple_form'
 gem 'rubocop'
 gem 'sprockets-rails'
 gem 'cucumber-rails', require: false
+gem 'brakeman', require: false
 
 group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-sidekiq'
   gem 'capistrano3-unicorn'
-  gem 'brakeman', require: false
 end
 
 group :development, :test do
