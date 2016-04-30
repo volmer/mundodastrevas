@@ -3,7 +3,7 @@ module Admin
     before_action :set_page, only: [:edit, :update, :destroy]
 
     def index
-      @pages = Page.order(params[:order]).order(title: :asc).page(params[:page])
+      @pages = Page.order(title: :asc).page(params[:page])
       authorize(Page.new)
     end
 

@@ -2,7 +2,7 @@ module Admin
   class UsersController < Admin::ApplicationController
     def index
       authorize(self)
-      @users = User.order(params[:order]).order(name: :asc).page(
+      @users = User.order(name: :asc).page(
         params[:page]
       ).per(20)
     end

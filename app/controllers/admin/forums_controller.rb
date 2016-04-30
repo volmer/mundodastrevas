@@ -4,7 +4,7 @@ module Admin
 
     def index
       authorize(Forum.new)
-      @forums = Forum.order(params[:order]).order(name: :asc)
+      @forums = Forum.order(name: :asc)
     end
 
     def new
