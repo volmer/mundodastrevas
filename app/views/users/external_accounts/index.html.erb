@@ -11,7 +11,7 @@
 
   <dd>
     <% if account = @user.external_accounts.find_by(provider: 'facebook') %>
-      <%= link_to t('.connected_as', account: account), account.url, target: '_blank' %>
+      <%= t '.connected_as', account: account %>
 
       <%= link_to t('.destroy', provider: 'Facebook'), [:user, account], method: :delete, class: 'btn btn-primary-outline btn-xs' %>
     <% else %>

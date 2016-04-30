@@ -19,7 +19,7 @@ Feature: Manage external accounts
     And I click on "Conectar conta do Facebook"
     Then I am redirected to the user external accounts page
     And I see the info message "Você entrou com sua conta do Facebook. Bem-vindo!"
-    And I see the link "theon@greyjoy.ws" which leads to the "http://facebook.com/my_profile" URL
+    And I see "theon@greyjoy.ws" on the page
     And I go to my profile page
     And I see the link "Facebook" which leads to the "http://facebook.com/my_profile" URL
     And I see "Not human." on the page
