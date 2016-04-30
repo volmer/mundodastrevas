@@ -74,7 +74,7 @@ Mundodastrevas::Application.configure do
     address:         'smtp.sendgrid.net',
     port:            '587',
     authentication:  :plain,
-    user_name:       'mundodastrevas',
+    user_name:       Rails.application.secrets.sendgrid_username,
     password:        Rails.application.secrets.sendgrid_password,
     domain:          'mundodastrevas.com'
   }
