@@ -75,7 +75,7 @@ Mundodastrevas::Application.configure do
     port:            '587',
     authentication:  :plain,
     user_name:       'mundodastrevas',
-    password:        'jtBWLaxc6vu^QVAm,y3Mqr6BWqLTidLYf7BfsXNC',
+    password:        Rails.application.secrets.sendgrid_password,
     domain:          'mundodastrevas.com'
   }
 
@@ -98,5 +98,5 @@ Mundodastrevas::Application.configure do
 end
 
 Bugsnag.configure do |config|
-  config.api_key = '71ea335a06390b852d367d8bf01942de'
+  config.api_key = Rails.application.secrets.bugsnag_api_key
 end
