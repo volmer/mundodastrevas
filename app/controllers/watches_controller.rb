@@ -1,14 +1,16 @@
 class WatchesController < ApplicationController
+  before_action :find_watchable
+
   def create
     @watch = Watch.new(
       user: current_user,
-      watchable: find_watchable,
+      watchable: @watchable,
       active: watch_params[:active]
     )
 
     authorize(@watch)
     set_flash_message if @watch.save
-    redirect_to params[:watchable_path]
+    redirect_to redirect_path
   end
 
   def update
@@ -17,7 +19,7 @@ class WatchesController < ApplicationController
 
     @watch.active = watch_params[:active]
     set_flash_message if @watch.save
-    redirect_to params[:watchable_path]
+    redirect_to redirect_path
   end
 
   private
@@ -27,7 +29,7 @@ class WatchesController < ApplicationController
   end
 
   def find_watchable
-    @watchable ||= watch_params[:watchable_type].constantize.find(
+    @watchable = watch_params[:watchable_type].constantize.find(
       watch_params[:watchable_id]
     )
   end
@@ -39,5 +41,14 @@ class WatchesController < ApplicationController
       else
         t('flash.watches.unwatch', watchable: find_watchable.to_s)
       end
+  end
+
+  def redirect_path
+    case watch_params[:watchable_type]
+    when 'Post'
+      zine_post_path(@watchable.zine, @watchable)
+    when 'Topic'
+      forum_topic_path(@watchable.forum, @watchable)
+    end
   end
 end

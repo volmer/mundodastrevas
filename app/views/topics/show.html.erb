@@ -24,7 +24,7 @@
       <div class="pull-xs-right">
         <%= t('.watching') if @topic.watched_by?(current_user) %>
 
-        <%= watch_button @topic, current_user, forum_topic_path(@forum, @topic) %>
+        <%= watch_button @topic, current_user %>
       </div>
     <% end %>
   </div>

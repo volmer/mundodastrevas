@@ -1,13 +1,9 @@
 module WatchesHelper
-  def watch_button(watchable, user, watchable_path = nil)
+  def watch_button(watchable, user)
     watch = watchable.watches.find_or_initialize_by(user: user)
-    watchable_path = url_for(watchable) if watchable_path.blank?
     watch.active = !watch.active if watch.persisted?
 
-    render 'watches/form',
-           watchable: watchable,
-           watchable_path: watchable_path,
-           watch: watch
+    render 'watches/form', watchable: watchable, watch: watch
   end
 
   def fields_for_watch(form, watchable, user, label = nil)

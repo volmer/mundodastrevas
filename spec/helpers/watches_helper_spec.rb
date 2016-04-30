@@ -29,14 +29,6 @@ describe WatchesHelper, type: :helper do
         expect(subject).to include('Vigiar')
       end
     end
-
-    context 'with a watchable path' do
-      subject { helper.watch_button(watchable, user, '/path/to/watchable') }
-
-      it 'includes the watchable path' do
-        expect(subject).to include('/path/to/watchable')
-      end
-    end
   end
 
   describe '#fields_for_watch' do
