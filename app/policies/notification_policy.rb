@@ -7,7 +7,7 @@ class NotificationPolicy < ApplicationPolicy
     @user.present? && @record.user == @user
   end
 
-  def read?
-    @user.present? && @record.user == @user
+  def destroy?
+    @user.present?
   end
 end

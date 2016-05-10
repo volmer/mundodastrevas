@@ -37,18 +37,18 @@ describe NotificationPolicy do
     end
   end
 
-  describe '#read?' do
-    context 'when user owns the notification' do
-      let(:record) { Notification.new(user: user) }
-
+  describe '#destroy?' do
+    context 'when user is signed in' do
       it 'returns true' do
-        expect(subject.read?).to be true
+        expect(subject.destroy?).to be true
       end
     end
 
-    context 'when user does not own the notification' do
+    context 'when user is not signed in' do
+      let(:user) { nil }
+
       it 'returns false' do
-        expect(subject.read?).to be false
+        expect(subject.destroy?).to be false
       end
     end
   end

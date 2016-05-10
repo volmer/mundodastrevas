@@ -121,6 +121,8 @@ pt-BR:
   notifications:
     index:
       title: 'Notificações'
+      empty: 'Não existem notificações no momento.'
+      clear: 'Apagar tudo'
   messages:
     index:
       title: 'Mensagens'

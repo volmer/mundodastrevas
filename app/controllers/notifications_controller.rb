@@ -17,6 +17,14 @@ class NotificationsController < ApplicationController
     redirect_to redirect_path
   end
 
+  def destroy
+    authorize(Notification.new)
+
+    current_user.notifications.delete_all
+
+    redirect_to notifications_path
+  end
+
   private
 
   def redirect_path

@@ -23,3 +23,8 @@ Feature: Read Notifications
     Then I see 3 pages
     And I see 10 unread notifications
     And I see 3 unread notifications in the page 3
+
+  Scenario: Clear all
+    When I click on "Notificações"
+    And I click on "Apagar tudo"
+    Then I see 0 notifications

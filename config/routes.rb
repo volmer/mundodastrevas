@@ -9,7 +9,9 @@ Mundodastrevas::Application.routes.draw do
   resources :contacts, only: [:new, :create]
   resources :messages, only: [:index]
 
-  resources :notifications, only: [:index, :show]
+  resources :notifications, only: [:index, :show] do
+    delete :destroy, on: :collection
+  end
 
   devise_for :users,
              controllers: {
