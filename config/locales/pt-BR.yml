@@ -27,6 +27,8 @@ pt-BR:
       new_rank: 'Parabéns! Agora você é um %{notifiable}!'
       new_comment: '%{notifiable}'
       new_forum_post: '%{notifiable}'
+    contact:
+      subject: 'Novo contato de %{name}'
   views:
     pagination:
       first_html: '&laquo;'
