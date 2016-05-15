@@ -34,7 +34,8 @@ describe NotificationDeliveryJob, type: :job do
           :notification,
           notifiable: notifiable,
           user: user,
-          event: 'new_comment')
+          event: 'new_comment'
+        )
       end
 
       it 'does not creates a new one' do

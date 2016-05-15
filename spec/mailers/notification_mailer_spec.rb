@@ -9,7 +9,8 @@ describe NotificationMailer do
     it 'sends the email to the notification user' do
       subject
       expect(ActionMailer::Base.deliveries.last.to).to match_array(
-        [notification.user.email])
+        [notification.user.email]
+      )
     end
 
     it 'includes a link to the notification' do
@@ -17,10 +18,12 @@ describe NotificationMailer do
 
       options = Rails.application.config.action_mailer.default_url_options
       notification_url = Rails.application.routes.url_helpers.notification_url(
-        notification, options)
+        notification, options
+      )
 
       expect(ActionMailer::Base.deliveries.last.body).to include(
-        notification_url)
+        notification_url
+      )
     end
 
     describe 'new_message' do

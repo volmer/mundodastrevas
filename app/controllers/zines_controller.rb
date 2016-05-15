@@ -69,7 +69,8 @@ class ZinesController < ApplicationController
     @user = User.find_by!(name: params[:user_id])
 
     @zines = @user.zines.order(
-      'COALESCE(last_post_at, created_at) DESC').page(params[:page])
+      'COALESCE(last_post_at, created_at) DESC'
+    ).page(params[:page])
 
     render 'user_index'
   end

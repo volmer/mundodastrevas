@@ -35,9 +35,11 @@ describe DeviseConcern do
 
     before do
       allow(OmniauthCompletion).to receive(:populate).with(
-        kind_of(User), omniauth_data: {}) { |u, _| u.name = 'touched' }
+        kind_of(User), omniauth_data: {}
+      ) { |u, _| u.name = 'touched' }
       allow(OmniauthCompletion).to receive(:build_account).with(
-        { omniauth_data: {} }, kind_of(User)).and_return(account)
+        { omniauth_data: {} }, kind_of(User)
+      ).and_return(account)
     end
 
     let(:account) { build(:external_account) }

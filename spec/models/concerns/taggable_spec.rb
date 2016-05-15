@@ -19,7 +19,8 @@ describe Taggable do
         before do
           create(:tagging, tag: create(:tag, name: 'nice'), taggable: taggable)
           create(
-            :tagging, tag: create(:tag, name: 'chapter'), taggable: taggable)
+            :tagging, tag: create(:tag, name: 'chapter'), taggable: taggable
+          )
         end
 
         it 'returns the tag names separated by comma' do
@@ -46,12 +47,14 @@ describe Taggable do
 
       it 'sets the given value' do
         expect { subject }.to change { taggable.tags }.from(
-          'awesome').to('amazing')
+          'awesome'
+        ).to('amazing')
       end
 
       it 'marks tags as changed' do
         expect { subject }.to change { taggable.tags_changed? }.from(
-          false).to(true)
+          false
+        ).to(true)
       end
     end
 
@@ -93,12 +96,14 @@ describe Taggable do
         context 'when there are duplicated tag names' do
           before do
             create(
-              :tagging, tag: create(:tag, name: 'league'), taggable: taggable)
+              :tagging, tag: create(:tag, name: 'league'), taggable: taggable
+            )
           end
 
           it 'does not duplicate taggings' do
             expect { subject }.to change { taggable.taggings.count }.from(
-              1).to(2)
+              1
+            ).to(2)
           end
         end
 
@@ -108,7 +113,8 @@ describe Taggable do
 
           it 'removes them' do
             expect { subject }.to change { tag.reload.taggings.count }.from(
-              1).to(0)
+              1
+            ).to(0)
           end
         end
       end

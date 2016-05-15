@@ -31,6 +31,7 @@ class ReviewsController < ApplicationController
 
   def find_reviewable
     review_params[:reviewable_type].constantize.find(
-      review_params[:reviewable_id])
+      review_params[:reviewable_id]
+    )
   end
 end

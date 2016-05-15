@@ -34,7 +34,8 @@ class MessagesController < ApplicationController
     @messages = Message.all_between(current_user, @user)
 
     current_user.incoming_messages.where(sender_id: @user.id).update_all(
-      read: true)
+      read: true
+    )
 
     render 'user_index'
   end

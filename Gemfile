@@ -46,6 +46,7 @@ group :test do
   gem 'database_cleaner'
   gem 'poltergeist'
   gem 'webmock', require: false
+  gem 'test_after_commit' # TODO: remove on Rails 5
 end
 
 group :production do

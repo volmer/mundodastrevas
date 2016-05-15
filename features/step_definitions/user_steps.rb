@@ -101,7 +101,8 @@ end
 
 Then(/^I see the image "(.*?)" as my avatar$/) do |file_name|
   expect(page).to have_selector(
-    :xpath, "//img[contains(@src, '#{file_name}')]", visible: true)
+    :xpath, "//img[contains(@src, '#{file_name}')]", visible: true
+  )
 end
 
 Then(/^I am successfully signed in as "(.*?)"$/) do |name|

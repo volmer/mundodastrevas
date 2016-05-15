@@ -44,7 +44,8 @@ describe ForumPost do
   describe '#to_s' do
     it 'describes the author and topic' do
       expect(subject.to_s).to eq(
-        "Postagem de #{subject.user} em #{subject.topic}")
+        "Postagem de #{subject.user} em #{subject.topic}"
+      )
     end
   end
 end

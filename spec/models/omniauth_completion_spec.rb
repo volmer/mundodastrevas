@@ -22,7 +22,8 @@ describe OmniauthCompletion do
 
     before do
       stub_request(:any, /stubbed.com/).to_return(status: 200, body: File.open(
-        Rails.root.to_s + '/spec/fixtures/image.jpg'))
+        Rails.root.to_s + '/spec/fixtures/image.jpg'
+      ))
     end
 
     describe '.complete' do
@@ -79,7 +80,8 @@ describe OmniauthCompletion do
 
           it 'has the url to the external user page' do
             expect(external_account.url).to eq(
-              'https://facebook.com/my_profile')
+              'https://facebook.com/my_profile'
+            )
           end
         end
       end
@@ -190,7 +192,8 @@ describe OmniauthCompletion do
           context 'when the owner of the account is not the current user' do
             it 'raises an error' do
               expect { subject }.to raise_error(
-                OmniauthCompletion::ThirdPartyAccountError)
+                OmniauthCompletion::ThirdPartyAccountError
+              )
             end
           end
         end
@@ -279,7 +282,8 @@ describe OmniauthCompletion do
 
       it 'sets the avatar URL from auth data in its large variant' do
         expect(user.remote_avatar_url).to eq(
-          'https://stubbed.com/remote_avatar.jpg?type=large')
+          'https://stubbed.com/remote_avatar.jpg?type=large'
+        )
       end
 
       context 'when birthday is present in user' do

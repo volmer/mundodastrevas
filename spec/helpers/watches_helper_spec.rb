@@ -67,7 +67,8 @@ describe WatchesHelper, type: :helper do
     context 'with a label' do
       subject do
         helper.fields_for_watch(
-          form, watchable, user, 'Watch by checking here.')
+          form, watchable, user, 'Watch by checking here.'
+        )
       end
 
       it 'includes the label' do

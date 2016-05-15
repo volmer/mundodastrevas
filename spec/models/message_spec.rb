@@ -55,7 +55,8 @@ describe Message do
         .to change { ActionMailer::Base.deliveries.count }.by(1)
 
       expect(ActionMailer::Base.deliveries.last.to).to match_array(
-        [recipient.email])
+        [recipient.email]
+      )
     end
 
     context 'the recipient does not want to receive emails for new messages' do
@@ -73,7 +74,8 @@ describe Message do
   describe '#to_s' do
     it 'describes the sender' do
       expect(subject.to_s).to eq(
-        "Mensagem de #{subject.sender}")
+        "Mensagem de #{subject.sender}"
+      )
     end
   end
 end
