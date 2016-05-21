@@ -17,6 +17,7 @@ production:
   database: mundodastrevas_production
   pool: 3
   username: mundodastrevas
+  password:
   host: localhost
   port: 5432
 
