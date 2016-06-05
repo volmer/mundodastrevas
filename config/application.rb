@@ -34,8 +34,6 @@ module Mundodastrevas
     config.assets.initialize_on_precompile = false
     config.assets.compress = true
 
-    config.active_record.raise_in_transactional_callbacks = true
-
     config.active_job.queue_adapter = :sidekiq
 
     # The name of your app. It is used in views and mailers.

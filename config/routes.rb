@@ -45,7 +45,7 @@ Mundodastrevas::Application.routes.draw do
   end
 
   namespace :admin do
-    root 'home#index'
+    root to: 'home#index', as: 'root'
 
     resources :users, only: [:index, :show, :update]
     resources :pages, except: [:show]
