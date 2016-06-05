@@ -81,3 +81,12 @@ body {
     text-shadow: 1px 1px 30px #ffffff;
   }
 }
+
+// Temporary fix for Bootstrap 4
+.form-group.file {
+  height: inherit;
+
+  input {
+    opacity: inherit;
+  }
+}
