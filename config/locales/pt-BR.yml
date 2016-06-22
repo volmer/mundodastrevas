@@ -149,7 +149,7 @@ pt-BR:
       index: 'Índice'
     footer:
       tags: 'Tags'
-      rate: 'Avalie este post'
+      rate: 'Avalie este post:'
       watching: 'Você está vigiando este post.'
   comments:
     index:
