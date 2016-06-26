@@ -1,6 +1,5 @@
 AllCops:
   TargetRubyVersion: 2.3
-
   Exclude:
     - 'config/initializers/*'
     - 'db/**/*'

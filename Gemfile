@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '~> 5.0.0.rc1'
+gem 'rails', '~> 5.0.0.rc2'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
@@ -24,7 +24,7 @@ gem 'pundit'
 gem 'rails_autolink'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'simple_form'
-gem 'rubocop'
+gem 'rubocop', '0.40.0'
 gem 'sprockets-rails'
 gem 'cucumber-rails', require: false
 gem 'brakeman', require: false
@@ -37,7 +37,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '3.5.0.beta3'
+  gem 'rspec-rails', '3.5.0.beta4'
   gem 'factory_girl_rails'
   gem 'pry-rails'
 end
