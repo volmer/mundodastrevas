@@ -4,6 +4,6 @@ module TagsHelper
       link_to tagging.tag, tag_path(tagging.tag), class: 'label label-default'
     end
 
-    links.join(' ').html_safe
+    safe_join(links)
   end
 end

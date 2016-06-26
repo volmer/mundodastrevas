@@ -43,7 +43,7 @@ describe ImageUploader do
   end
 
   it 'makes the image readable and not executable' do
-    expect(@uploader).to have_permissions(0666)
+    expect(@uploader).to have_permissions(0o666)
   end
 
   describe '#default_url' do

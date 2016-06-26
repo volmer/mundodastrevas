@@ -24,7 +24,7 @@ gem 'pundit'
 gem 'rails_autolink'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'simple_form'
-gem 'rubocop', '0.40.0'
+gem 'rubocop'
 gem 'sprockets-rails'
 gem 'cucumber-rails', require: false
 gem 'brakeman', require: false
