@@ -32,21 +32,12 @@ class NotificationsController < ApplicationController
     when 'new_comment'
       zine_post_path(notifiable.post.zine, notifiable.post)
     when 'new_forum_post'
-      forum_post_path
+      forum_topic_path(notifiable.topic.forum, notifiable.topic)
     when 'new_message'
       user_messages_path(notifiable.sender)
     when 'new_rank'
       universe_path(notifiable.universe, anchor: 'tab-ranks')
     end
-  end
-
-  def forum_post_path
-    path_options = {}
-    last_page = notifiable.topic.forum_posts.page.num_pages
-
-    path_options[:page] = last_page if last_page > 1
-
-    forum_topic_path(notifiable.topic.forum, notifiable.topic, path_options)
   end
 
   def notifiable
