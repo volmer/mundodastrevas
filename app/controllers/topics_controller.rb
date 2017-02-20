@@ -58,7 +58,7 @@ class TopicsController < ApplicationController
   end
 
   def set_topic
-    @topic = @forum.topics.find_by!(slug: params[:id])
+    @topic = @forum.topics.find_using_slug(params[:id])
 
     authorize(@topic)
   end
