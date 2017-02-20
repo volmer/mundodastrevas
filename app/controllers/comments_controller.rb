@@ -9,7 +9,6 @@ class CommentsController < ApplicationController
     authorize(@comment)
 
     if @comment.save
-      @comment.post.set_watcher!(current_user, params[:comment][:watch])
       redirect_to [@zine, @post], notice: t('flash.comments.create')
     else
       @comments = @post.comments.order(created_at: :asc)

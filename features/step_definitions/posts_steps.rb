@@ -50,12 +50,6 @@ Given(/^the zine "(.*?)" has (\d+) posts$/) do |name, count|
   create_list(:post, count.to_i, zine: zine)
 end
 
-Given(/^I am watching the post "(.*?)"$/) do |name|
-  post = Post.find_by(name: name)
-
-  post.watches.create!(user: @user)
-end
-
 When(/^I go to the "(.*?)" post$/) do |name|
   post = Post.find_by(name: name)
 

@@ -44,23 +44,6 @@ describe User do
     end
   end
 
-  describe '#email_preferences' do
-    it 'stores a hash of email preferences' do
-      subject.email_preferences = { new_message: false }
-      subject.save!
-      subject.reload
-
-      expect(subject.email_preferences).to be_a_kind_of(Hash)
-      expect(subject.email_preferences['new_message']).to eq 'false'
-    end
-  end
-
-  describe '.email_preferences_keys' do
-    it 'contains new_message' do
-      expect(described_class.email_preferences_keys).to include('new_message')
-    end
-  end
-
   describe '.find_using_name' do
     it 'retrieves the user with the given name, case insensitive' do
       subject.name = 'Bran'

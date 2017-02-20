@@ -15,15 +15,7 @@ pt-BR:
       active: 'Ativo'
       blocked: 'Bloqueado'
   save: 'Salvar'
-  notifications:
-    see_all: 'Ver todas'
-    new_rank: 'Parabéns! Agora você é um %{rank}!'
   mailers:
-    notification:
-      new_message: '%{notifiable}'
-      new_rank: 'Parabéns! Agora você é um %{notifiable}!'
-      new_comment: '%{notifiable}'
-      new_forum_post: '%{notifiable}'
     contact:
       subject: 'Novo contato de %{name}'
   views:
@@ -71,7 +63,6 @@ pt-BR:
     show:
       edit: 'Editar'
       invite: 'Deseja postar neste tópico? Entre aqui!'
-      watching: 'Você está vigiando este tópico'
       created_by_html: 'Criado por %{user}'
       forum_posts:
         one: '1 postagem'
@@ -85,7 +76,6 @@ pt-BR:
       confirm: 'Você confirma a exclusão desta postagem?'
     new:
       submit: 'Postar'
-      watch: 'Avise-me sobre novas postagens neste tópico'
       title: 'Postar no tópico'
     edit:
       submit: 'Atualizar postagem'
@@ -147,13 +137,11 @@ pt-BR:
     footer:
       tags: 'Tags'
       rate: 'Avalie este post:'
-      watching: 'Você está vigiando este post.'
   comments:
     index:
       invite: 'Deseja adicionar um comentário? Entre aqui!'
       label: 'Adicionar comentário'
       submit: 'Comentar'
-      watch: 'Avise-me sobre novos comentários neste post'
       updated_at: 'Atualizado em'
       destroy: 'Apagar'
   descriptive_name:

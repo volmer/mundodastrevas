@@ -7,14 +7,9 @@ pt-BR:
         update: 'Suas preferências foram atualizadas.'
       sessions:
         blocked: 'Sua conta está bloqueada. Entre em contato conosco.'
-      email_preferences:
-        update: 'Suas preferências de email foram atualizadas.'
     unauthorized: 'Você não pode acessar isso.'
     contacts:
       create: 'Muito obrigado pela sua mensagem. Vamos te responder por email em breve.'
-    watches:
-      watch: 'Agora você está vigiando %{watchable}.'
-      unwatch: 'Você parou de vigiar %{watchable}.'
     zines:
       create: 'Zine criado!'
       update: 'Zine atualizado!'

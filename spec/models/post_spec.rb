@@ -23,10 +23,6 @@ describe Post do
     expect(subject).not_to be_valid
   end
 
-  it 'is watchable' do
-    expect(subject).to be_a_kind_of(Watchable)
-  end
-
   it 'is taggable' do
     expect(subject).to be_a_kind_of(Taggable)
   end
@@ -60,12 +56,6 @@ describe Post do
       expect(subject.zine).to receive(:touch).with(:last_post_at)
 
       subject.save
-    end
-
-    it 'sets its user as its watcher' do
-      subject.save
-
-      expect(subject).to be_watched_by(subject.user)
     end
   end
 

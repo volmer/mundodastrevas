@@ -1,14 +1,11 @@
 class Message < ActiveRecord::Base
   belongs_to :sender, class_name: 'User', inverse_of: :sent_messages
   belongs_to :recipient, class_name: 'User', inverse_of: :incoming_messages
-  has_many :notifications, as: :notifiable, dependent: :destroy
 
   validates :sender_id, presence: true
   validates :recipient_id, presence: true
   validates :content, length: { maximum: 2_000 }
   validate :sender_and_recipient_must_be_different
-
-  after_create :notify_recipient
 
   scope(:distinct_for, lambda do |user|
     joins(
@@ -45,13 +42,5 @@ class Message < ActiveRecord::Base
     return if sender.blank? || sender != recipient
 
     errors[:base] << 'User cannot send a message to himself/herself.'
-  end
-
-  def notify_recipient
-    notification            = Notification.new
-    notification.user       = recipient
-    notification.event      = 'new_message'
-    notification.notifiable = self
-    notification.send!
   end
 end

@@ -25,14 +25,6 @@ describe LevelGrantor do
       it 'returns the level with its value upgraded' do
         expect(subject.value).to eq 2
       end
-
-      it 'schedules a notification job with proper arguments' do
-        expect(RankNotificationJob).to receive(:perform_later).with(
-          user, instance_of(Rank)
-        )
-
-        subject
-      end
     end
 
     it 'returns nil when user cannot level up' do

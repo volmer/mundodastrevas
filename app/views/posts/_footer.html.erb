@@ -11,16 +11,5 @@
       <strong><%= t '.rate' %></strong>
       <%= render 'reviews/form', reviewable: @post %>
     </div>
-
-    <div class="col-xs-6">
-      <% if user_signed_in? %>
-        <div class="clearfix">
-          <div class="pull-xs-right">
-            <small><%= t('.watching') if @post.watched_by?(current_user) %></small>
-            <%= watch_button @post, current_user %>
-          </div>
-        </div>
-      <% end %>
-    </div>
   </div>
 </div>

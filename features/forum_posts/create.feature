@@ -14,7 +14,6 @@ Feature: Create forum post
     And I click on "Postar"
     Then I see the info message "Postado!"
     And I see "I told you!" on the page
-    And I see "Você está vigiando este tópico" on the page
 
   Scenario: Create post with the right page
     Given there are 10 forum posts in the "Treason!" topic

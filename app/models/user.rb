@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   PRIVATE_ATTRIBUTES = %w(email gender location birthday).freeze
 
   store_accessor :privacy
-  store_accessor :email_preferences
 
   has_many :levels,      dependent: :destroy
   has_many :zines,       dependent: :destroy
@@ -14,7 +13,6 @@ class User < ActiveRecord::Base
   has_many :comments,    dependent: :destroy
   has_many :topics,      dependent: :destroy
   has_many :forum_posts, dependent: :destroy
-  has_many :notifications, dependent: :destroy
   has_many :sent_messages,
            class_name: 'Message',
            inverse_of: :sender,
@@ -26,7 +24,6 @@ class User < ActiveRecord::Base
            foreign_key: 'recipient_id',
            dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :watches, dependent: :destroy
 
   mount_uploader :avatar, ImageUploader
 
@@ -39,10 +36,6 @@ class User < ActiveRecord::Base
   validates :bio, length: { maximum: 500 }
   validates :location, length: { maximum: 200 }
   validates :gender, inclusion: { in: %w(male female) }, allow_blank: true
-
-  cattr_accessor(:email_preferences_keys) do
-    Notification::EVENTS
-  end
 
   def self.find_using_name!(name)
     find_by!('LOWER(name) = ?', name.downcase)

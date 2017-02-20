@@ -23,7 +23,6 @@ Feature: Create post
     And I see the image "my_image.jpg"
     And I see "medieval" on the page
     And I see "gothic" on the page
-    And I see "Você está vigiando este post." on the page
 
   Scenario Outline: Create a post without a required field
     When I click on "Novo post"

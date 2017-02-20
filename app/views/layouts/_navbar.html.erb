@@ -19,20 +19,6 @@
           <% end %>
         </li>
 
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to notifications_path, title: t('notifications.index.title'), class: 'nav-link' do %>
-              <i class="fa fa-bell"></i>
-
-              <% if unread_notifications_count(current_user) > 0 %>
-                <span class="label label-pill label-info">
-                  <%= unread_notifications_count(current_user) %>
-                </span>
-              <% end %>
-            <% end %>
-          </li>
-        <% end %>
-
         <li class="nav-item">
           <% if user_signed_in? %>
             <%= link_to current_user, title: current_user, class: 'nav-link nav-img user-menu', data: { toggle: 'collapse', target: '#userMenu' } do %>

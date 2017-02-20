@@ -1,8 +1,7 @@
 # Public: Concede a new level to an user
 # in an universe.
 class LevelGrantor
-  # Public: Upgrade the user level value by 1
-  # and schedule a notification to the user.
+  # Public: Upgrade the user level value by 1.
   #
   # user - the User that will have the level upgraded.
   # universe - the Universe context to be evaluated.
@@ -18,8 +17,6 @@ class LevelGrantor
     level = Level.find_by(user: user, universe: universe)
     level.value += 1
     level.save!
-
-    RankNotificationJob.perform_later(user, level.rank)
 
     level
   end

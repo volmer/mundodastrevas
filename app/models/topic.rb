@@ -1,6 +1,4 @@
 class Topic < ActiveRecord::Base
-  include Watchable
-
   validates :name, presence: true, length: { maximum: 100 }
   validates :views, presence: true
   validates :forum_id, presence: true
@@ -12,7 +10,7 @@ class Topic < ActiveRecord::Base
 
   accepts_nested_attributes_for :forum_posts
 
-  after_create :touch_forum, :watch_it
+  after_create :touch_forum
 
   scope :recent, -> { order(updated_at: :desc) }
 
@@ -33,9 +31,5 @@ class Topic < ActiveRecord::Base
 
   def touch_forum
     forum.touch
-  end
-
-  def watch_it
-    set_watcher!(user, active: true)
   end
 end

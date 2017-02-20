@@ -30,16 +30,6 @@ pt-BR:
           only_me: 'Somente eu'
           public: 'Público'
         submit: 'Salvar'
-    email_preferences:
-      edit:
-        title: 'Preferências de email'
-        keys:
-          new_message: 'Novas mensagens'
-          new_rank: 'Novos ranks'
-          new_comment: 'Comentários em posts que eu estou vigiando'
-          new_forum_post: 'Novas postagens em tópicos que eu estou vigiando'
-        submit: 'Salvar'
-        description: 'Avise-me por email sobre:'
     registrations:
       destroy:
         title: 'Destruir conta'
@@ -53,11 +43,6 @@ pt-BR:
         title: 'Entrar'
         submit: 'Entrar'
         forgot_password: 'Esqueceu sua senha?'
-  notifications:
-    index:
-      title: 'Notificações'
-      empty: 'Não existem notificações no momento.'
-      clear: 'Apagar tudo'
   messages:
     index:
       title: 'Mensagens'
@@ -82,9 +67,3 @@ pt-BR:
     form:
       loved: 'Curti isso!'
       hated: 'Não gostei.'
-  watches:
-    form:
-      watch: 'Vigiar'
-      unwatch: 'Parar de vigiar'
-    fields:
-      label: 'Notifique-me sobre este item'

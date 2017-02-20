@@ -17,7 +17,6 @@ Feature: Create topic
     And I see "Let's discuss our next move" on the page
     And I see "Criado por volmer" on the page
     And I see "1 post" on the page
-    And I see "Você está vigiando este tópico" on the page
 
   Scenario Outline: Create a topic without a required field
     When I go to the "Small Council" forum

@@ -16,7 +16,6 @@ Feature: Create comment
     And I see "A Storm of Swords" on the page
     And I see "Arya" on the page
     And I see "Great post!" on the page
-    And I see "Você está vigiando este post." on the page
 
   Scenario: Create a comment without a content
     When I fill in "comment_content" with ""

@@ -4,7 +4,6 @@ class Rank < ActiveRecord::Base
            foreign_key: 'value',
            primary_key: 'value'
   has_many :users, through: :levels
-  has_many :notifications, as: :notifiable, dependent: :destroy
 
   validates :universe_id, presence: true
   validates :value,

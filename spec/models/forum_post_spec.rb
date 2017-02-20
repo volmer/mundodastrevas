@@ -15,14 +15,6 @@ describe ForumPost do
 
       subject.save
     end
-
-    it 'properly notifies the topic watchers' do
-      expect(subject.topic).to receive(:notify_watchers).with(
-        subject, 'new_forum_post', subject.user
-      )
-
-      subject.save
-    end
   end
 
   context 'when it is updated' do

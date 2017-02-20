@@ -1,5 +1,4 @@
 class Post < ActiveRecord::Base
-  include Watchable
   include Taggable
 
   belongs_to :zine
@@ -22,7 +21,7 @@ class Post < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  after_create :touch_zine, :watch_it
+  after_create :touch_zine
 
   def to_param
     slug
@@ -36,9 +35,5 @@ class Post < ActiveRecord::Base
 
   def touch_zine
     zine.try(:touch, :last_post_at)
-  end
-
-  def watch_it
-    set_watcher!(user, active: true) if user.present?
   end
 end

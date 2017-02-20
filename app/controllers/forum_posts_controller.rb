@@ -51,7 +51,6 @@ class ForumPostsController < ApplicationController
   end
 
   def respond_to_create
-    @forum_post.topic.set_watcher!(current_user, params[:forum_post][:watch])
     path = forum_topic_path(
       @forum, @topic, page: @topic.forum_posts.page(1).total_pages
     )

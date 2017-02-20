@@ -8,9 +8,8 @@ class ForumPost < ActiveRecord::Base
   has_many :reviews,
            as: :reviewable,
            dependent: :destroy
-  has_many :notifications, as: :notifiable, dependent: :destroy
 
-  after_create :touch_topic_and_forum, :notify_topic_watchers
+  after_create :touch_topic_and_forum
 
   def to_s
     I18n.t('descriptive_name.forum_post', user: user, topic: topic)
@@ -21,11 +20,5 @@ class ForumPost < ActiveRecord::Base
   def touch_topic_and_forum
     topic.touch
     topic.forum.touch
-  end
-
-  def notify_topic_watchers
-    topic.notify_watchers(
-      self, 'new_forum_post', user
-    )
   end
 end

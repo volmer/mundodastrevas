@@ -1,17 +1,12 @@
 Mundodastrevas::Application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
-  resources :watches, only: [:create, :update]
   resources :reviews, only: [:create, :update]
   resources :tags, only: [:show]
   resource :search, only: [:show]
   resources :pages, only: [:show]
   resources :contacts, only: [:new, :create]
   resources :messages, only: [:index]
-
-  resources :notifications, only: [:index, :show] do
-    delete :destroy, on: :collection
-  end
 
   devise_for :users,
              controllers: {
@@ -35,7 +30,6 @@ Mundodastrevas::Application.routes.draw do
 
   namespace 'users', as: 'user' do
     resource :privacy, only: [:edit, :update]
-    resource :email_preferences, only: [:edit, :update]
   end
 
   resources :users, only: [:show] do

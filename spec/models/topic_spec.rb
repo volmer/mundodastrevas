@@ -3,10 +3,6 @@ require 'rails_helper'
 describe Topic do
   subject(:topic) { build(:topic) }
 
-  it 'is watchable' do
-    expect(subject).to be_a_kind_of(Watchable)
-  end
-
   describe '#to_param' do
     before do
       subject.id   = 123
@@ -44,12 +40,6 @@ describe Topic do
       expect(subject.forum).to receive(:touch)
 
       subject.save
-    end
-
-    it 'sets the post user as a watcher' do
-      subject.save
-
-      expect(subject).to be_watched_by(subject.user)
     end
   end
 
