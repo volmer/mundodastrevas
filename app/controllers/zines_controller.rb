@@ -21,8 +21,7 @@ class ZinesController < ApplicationController
     authorize(@zine)
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @zine = Zine.new(zine_params)

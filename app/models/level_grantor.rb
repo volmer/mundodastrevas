@@ -13,14 +13,14 @@ class LevelGrantor
   def self.level_up!(user, universe)
     evaluator = LevelEvaluator.new(user, universe)
 
-    if evaluator.can_level_up?
-      level = Level.find_by(user: user, universe: universe)
-      level.value += 1
-      level.save!
+    return unless evaluator.can_level_up?
 
-      RankNotificationJob.perform_later(user, level.rank)
+    level = Level.find_by(user: user, universe: universe)
+    level.value += 1
+    level.save!
 
-      level
-    end
+    RankNotificationJob.perform_later(user, level.rank)
+
+    level
   end
 end

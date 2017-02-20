@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @user = User.find_by_name!(params[:user_id])
+    @user = User.find_by!(name: params[:user_id])
 
     @message = Message.new(message_params)
     @message.sender = current_user
@@ -30,7 +30,7 @@ class MessagesController < ApplicationController
   end
 
   def user_messages
-    @user = User.find_by_name!(params[:user_id])
+    @user = User.find_by!(name: params[:user_id])
     @messages = Message.all_between(current_user, @user)
 
     current_user.incoming_messages.where(sender_id: @user.id).update_all(

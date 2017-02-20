@@ -12,8 +12,7 @@ module Admin
       authorize(@forum)
     end
 
-    def edit
-    end
+    def edit; end
 
     def create
       @forum = Forum.new(forum_params)

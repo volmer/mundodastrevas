@@ -38,7 +38,7 @@ class ForumPostsController < ApplicationController
   end
 
   def set_topic
-    @topic = @forum.topics.find_by_slug!(params[:topic_id])
+    @topic = @forum.topics.find_by!(slug: params[:topic_id])
   end
 
   def set_forum_post

@@ -15,13 +15,13 @@ describe Rank do
     subject { rank.levels }
 
     it 'returns all levels with the same universe and value' do
-      level_1 = create(:level, universe: rank.universe, value: rank.value)
-      level_2 = create(:level, universe: rank.universe, value: rank.value + 1)
-      level_3 = create(:level, value: rank.value)
+      level1 = create(:level, universe: rank.universe, value: rank.value)
+      level2 = create(:level, universe: rank.universe, value: rank.value + 1)
+      level3 = create(:level, value: rank.value)
 
-      expect(subject).to include(level_1)
-      expect(subject).not_to include(level_2)
-      expect(subject).not_to include(level_3)
+      expect(subject).to include(level1)
+      expect(subject).not_to include(level2)
+      expect(subject).not_to include(level3)
     end
   end
 

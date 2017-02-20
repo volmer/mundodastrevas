@@ -2,32 +2,32 @@ source 'https://rubygems.org'
 
 ruby '2.4.0'
 
-gem 'rails', '~> 5.0'
-gem 'pg'
-gem 'sass-rails'
-gem 'uglifier'
-gem 'coffee-rails'
-gem 'jquery-rails'
-gem 'jbuilder'
-gem 'unicorn'
-gem 'sidekiq'
 gem 'bootstrap'
-gem 'font-awesome-sass'
-gem 'rails-assets-tether'
 gem 'bootsy', github: 'volmer/bootsy', branch: 'bootstrap-4'
+gem 'brakeman', require: false
 gem 'carrierwave'
+gem 'coffee-rails'
+gem 'cucumber-rails', require: false
 gem 'devise'
+gem 'font-awesome-sass'
+gem 'jbuilder'
+gem 'jquery-rails'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'omniauth-facebook'
+gem 'pg'
 gem 'pundit'
+gem 'rails', '~> 5.0'
+gem 'rails-assets-tether'
 gem 'rails_autolink'
 gem 'recaptcha', require: 'recaptcha/rails'
-gem 'simple_form'
 gem 'rubocop'
+gem 'sass-rails'
+gem 'sidekiq'
+gem 'simple_form'
 gem 'sprockets-rails'
-gem 'cucumber-rails', require: false
-gem 'brakeman', require: false
+gem 'uglifier'
+gem 'unicorn'
 
 group :development do
   gem 'capistrano-rails'
@@ -37,9 +37,9 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :test do
@@ -49,6 +49,6 @@ group :test do
 end
 
 group :production do
-  gem 'skylight'
   gem 'bugsnag'
+  gem 'skylight'
 end

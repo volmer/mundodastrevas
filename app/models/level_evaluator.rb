@@ -79,7 +79,7 @@ class LevelEvaluator
       level += 1
     end
 
-    (points - score) > 0 ? (points - score) : 0
+    (points - score).positive? ? (points - score) : 0
   end
 
   # Public: Check if the user can have its level upgraded
@@ -91,7 +91,7 @@ class LevelEvaluator
   # false otherwise.
   def can_level_up?
     @user.active? &&
-      to_next_level == 0 &&
+      to_next_level.zero? &&
       intended_level <= (universe.highest_rank.try(:value) || 0)
   end
 

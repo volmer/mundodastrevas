@@ -20,8 +20,7 @@ class TopicsController < ApplicationController
     @topic.forum_posts << ForumPost.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @topic = @forum.topics.new(topic_params)
@@ -59,7 +58,7 @@ class TopicsController < ApplicationController
   end
 
   def set_topic
-    @topic = @forum.topics.find_by_slug!(params[:id])
+    @topic = @forum.topics.find_by!(slug: params[:id])
 
     authorize(@topic)
   end

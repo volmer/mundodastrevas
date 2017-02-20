@@ -21,8 +21,7 @@ class PostsController < ApplicationController
     authorize(@post)
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @post = @zine.posts.new(post_params)

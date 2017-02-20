@@ -16,5 +16,11 @@ Metrics/AbcSize:
 Rails/HasAndBelongsToMany:
   Enabled: false
 
+Rails/SkipsModelValidations:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
   Enabled: false

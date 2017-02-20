@@ -22,11 +22,11 @@ describe Topic do
     let(:topic) { create(:topic) }
 
     it 'returns the topic that generated the given slug' do
-      expect(described_class.find_by_slug!(topic.to_param)).to eq(topic)
+      expect(described_class.find_by!(slug: topic.to_param)).to eq(topic)
     end
 
     it 'raises an error if topic does not exist' do
-      expect { described_class.find_by_slug!('fake') }
+      expect { described_class.find_by!(slug: 'fake') }
         .to raise_error(ActiveRecord::RecordNotFound)
     end
   end

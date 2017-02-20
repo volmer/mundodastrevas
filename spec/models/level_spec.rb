@@ -8,10 +8,10 @@ describe Level do
 
     it 'returns rank that belong to the same universe and has the same value' do
       create(:rank, value: level.value)
-      rank_2 = create(:rank, universe: level.universe, value: level.value)
+      rank2 = create(:rank, universe: level.universe, value: level.value)
       create(:rank, universe: level.universe, value: level.value + 1)
 
-      expect(subject).to eq(rank_2)
+      expect(subject).to eq(rank2)
     end
   end
 end
