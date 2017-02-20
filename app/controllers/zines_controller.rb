@@ -65,7 +65,7 @@ class ZinesController < ApplicationController
   end
 
   def user_zines_index
-    @user = User.find_using_nme!(params[:user_id])
+    @user = User.find_using_name!(params[:user_id])
 
     @zines = @user.zines.order(
       'COALESCE(last_post_at, created_at) DESC'
