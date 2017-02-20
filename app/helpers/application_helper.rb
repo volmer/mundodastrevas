@@ -20,7 +20,7 @@ module ApplicationHelper
 
   def autolink_mentions(text)
     each_mention_on(text) do |name, occurence|
-      if (user = User.find_by(name: name))
+      if (user = User.find_using_name(name))
         mention = "@#{name}"
         occurence.sub(mention, link_to(mention, user_path(user)))
       else
@@ -34,7 +34,7 @@ module ApplicationHelper
 
     each_mention_on(text) do |name, _|
       unless users.map(&:name).include?(name)
-        user = User.find_by(name: name)
+        user = User.find_using_name(name)
         users << user if user
       end
     end

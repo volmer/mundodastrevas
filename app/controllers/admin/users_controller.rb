@@ -8,12 +8,12 @@ module Admin
     end
 
     def show
-      @user = User.find_by!(name: params[:id])
+      @user = User.find_using_nme!(params[:id])
       authorize(self)
     end
 
     def update
-      @user = User.find_by!(name: params[:id])
+      @user = User.find_using_nme!(params[:id])
       authorize(self)
 
       if @user.update_attributes(user_params)

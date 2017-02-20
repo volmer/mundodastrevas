@@ -24,7 +24,7 @@ class Topic < ActiveRecord::Base
     name
   end
 
-  def self.find_by_slug!(slug)
+  def self.find_using_slug(slug)
     id = slug.split('-').first
     find_by!(id: id)
   end

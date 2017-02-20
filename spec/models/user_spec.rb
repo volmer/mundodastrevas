@@ -77,35 +77,35 @@ describe User do
     end
   end
 
-  describe '.find_by_name' do
+  describe '.find_using_name' do
     it 'retrieves the user with the given name, case insensitive' do
       subject.name = 'Bran'
       subject.save!
 
-      expect(described_class.find_by(name: 'Bran')).to eq subject
-      expect(described_class.find_by(name: 'bran')).to eq subject
-      expect(described_class.find_by(name: 'BRAN')).to eq subject
+      expect(described_class.find_using_name('Bran')).to eq subject
+      expect(described_class.find_using_name('bran')).to eq subject
+      expect(described_class.find_using_name('BRAN')).to eq subject
     end
 
     it 'returns nil if nothing is found' do
       expect(
-        described_class.find_by(name: 'unexistent')
+        described_class.find_using_name('unexistent')
       ).to be_nil
     end
   end
 
-  describe '.find_by_name!' do
+  describe '.find_using_name!' do
     it 'retrieves the user with the given name, case insensitive' do
       subject.name = 'Bran'
       subject.save!
 
-      expect(described_class.find_by!(name: 'Bran')).to eq subject
-      expect(described_class.find_by!(name: 'bran')).to eq subject
-      expect(described_class.find_by!(name: 'BRAN')).to eq subject
+      expect(described_class.find_using_name!('Bran')).to eq subject
+      expect(described_class.find_using_name!('bran')).to eq subject
+      expect(described_class.find_using_name!('BRAN')).to eq subject
     end
 
     it 'raises an error if nothing is found' do
-      expect { described_class.find_by!(name: 'unexistent') }
+      expect { described_class.find_using_name!('unexistent') }
         .to raise_error(ActiveRecord::RecordNotFound)
     end
   end

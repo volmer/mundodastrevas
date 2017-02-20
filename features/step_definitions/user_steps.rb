@@ -19,7 +19,8 @@ Given(/^I am signed in as "(.*?)"$/) do |name|
 
   if @user.blank? || (@user.name != name)
     @user =
-      User.find_by(name: name) || create(:user, name: name, password: password)
+      User.find_using_name(name) ||
+      create(:user, name: name, password: password)
   end
 
   step "I sign in with email \"#{@user.email}\" and password \"#{password}\""
@@ -47,7 +48,7 @@ Given(/^my email address is "(.*?)"$/) do |email|
 end
 
 Given(/^(.*?) has an unconfirmed email "(.*?)"$/) do |user_name, email|
-  user = User.find_by(name: user_name)
+  user = User.find_using_name(user_name)
   user.email = email
   user.skip_confirmation_notification!
   user.save!
@@ -58,7 +59,7 @@ Given(/^there is an user called "(.*?)"$/) do |name|
 end
 
 Given(/^"(.*?)" is blocked$/) do |user_name|
-  user = User.find_by(name: user_name)
+  user = User.find_using_name(user_name)
 
   user.state = 'blocked'
 
@@ -84,7 +85,7 @@ When 'I open my user menu' do
 end
 
 When(/^I go to (.*?)'s profile page$/) do |user_name|
-  user = User.find_by(name: user_name)
+  user = User.find_using_name(user_name)
   visit user_path(user)
 end
 
@@ -125,7 +126,7 @@ Then(/^I see the field "(.*?)" with the value "(.*?)"$/) do |field, value|
 end
 
 Then(/^I am redirected to (.*?)'s profile page$/) do |user_name|
-  user = User.find_by(name: user_name)
+  user = User.find_using_name(user_name)
 
   expect(current_path).to eq user_path(user)
 end

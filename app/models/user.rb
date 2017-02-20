@@ -46,11 +46,11 @@ class User < ActiveRecord::Base
     Notification::EVENTS
   end
 
-  def self.find_by_name!(name)
+  def self.find_using_name!(name)
     find_by!('LOWER(name) = ?', name.downcase)
   end
 
-  def self.find_by_name(name)
+  def self.find_using_name(name)
     find_by('LOWER(name) = ?', name.downcase)
   end
 

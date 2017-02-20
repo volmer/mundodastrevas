@@ -3,7 +3,7 @@ Given(/^I am an admin$/) do
 end
 
 Given(/^"(.*?)" is an admin$/) do |user_name|
-  user = User.find_by(name: user_name)
+  user = User.find_using_name(user_name)
   role = Role.find_or_create_by(name: 'admin')
   user.roles << role
 end
