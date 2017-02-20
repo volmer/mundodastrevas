@@ -19,11 +19,6 @@
       class: ['nav-link', active == :email_preferences ? 'active' : ''] %>
   </li>
 
-  <li class="nav-item <%= 'active' if active == :external_accounts %>">
-    <%= link_to t('users.external_accounts.index.title'), user_external_accounts_path,
-      class: ['nav-link', active == :external_accounts ? 'active' : ''] %>
-  </li>
-
   <li class="nav-item <%= 'active' if active == :destroy %>">
     <%= link_to t('users.registrations.destroy.title'), destroy_user_registration_path,
       class: ['nav-link', active == :destroy ? 'active' : ''] %>

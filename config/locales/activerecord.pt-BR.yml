@@ -3,7 +3,6 @@ pt-BR:
     models:
       comment: 'Comentário'
       contact: 'Contato'
-      external_account: 'Conta externa'
       forum: 'Fórum'
       forum_post: 'Post em fórum'
       level: 'Nível'
@@ -56,7 +55,6 @@ pt-BR:
         current_password: 'Senha atual'
         roles: 'Papéis'
         state: 'Estado'
-        facebook: 'Facebook'
         current_sign_in_at: 'Último login'
       page:
         title: 'Título'

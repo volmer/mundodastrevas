@@ -35,18 +35,6 @@
             <% end %>
           <% end %>
         </div>
-
-        <div class="pull-xs-right external-accounts">
-          <% @user.external_accounts.each do |account| %>
-            <% if policy(@user).read_field?(account.provider) %>
-              <%= link_to account.url,
-                target: '_blank',
-                title: account.provider.titleize do %>
-                <i class="fa fa-<%= account.provider %>-official"></i>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
       </div>
 
       <% if @user.bio.present? %>

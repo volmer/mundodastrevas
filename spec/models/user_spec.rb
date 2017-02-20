@@ -116,17 +116,6 @@ describe User do
         %w(email gender location birthday)
       )
     end
-
-    context 'when the user has an external account' do
-      subject(:user) { create(:user) }
-      before { create(:external_account, provider: 'github', user: user) }
-
-      it 'includes the provider name for the external account' do
-        subject.reload
-
-        expect(subject.privacy_keys).to include('github')
-      end
-    end
   end
 
   describe '#to_s' do

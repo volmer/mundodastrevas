@@ -1,9 +1,9 @@
 <% content_for :page_title, t('.title') %>
 
-<h1><%= t '.title' %></h1>
-
-<div class="row">
+<div class="row justify-content-md-center">
   <div class="col-md-4">
+    <h1><%= t '.title' %></h1>
+
     <%= simple_form_for(resource,
       as: resource_name,
       url: session_path(resource_name)
@@ -14,9 +14,9 @@
 
       <%= f.button :submit, t('.submit'), class: 'btn-lg' %>
     <% end %>
-  </div>
 
-  <div class="col-md-4 col-md-offset-2">
-    <%= render 'users/shared/links' %>
+    <ul class="list-unstyled">
+      <li><%= link_to t('.forgot_password'), new_password_path(resource_name) %></li>
+    </ul>
   </div>
 </div>

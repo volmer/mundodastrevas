@@ -1,8 +1,6 @@
 pt-BR:
   devise:
     confirmations:
-      confirmed: 'Agora sua conta está confirmada!'
-      send_instructions: 'Em instantes você receberá um email com instruções para confirmar a sua conta.'
       send_paranoid_instructions: 'Caso seu email exista em nossa base você receberá um email em instantes com instruções sobre como confirmar sua conta.'
     failure:
       already_authenticated: 'Você já está logado.'
@@ -12,18 +10,12 @@ pt-BR:
       last_attempt: "Você tem mais uma tentativa antes da sua conta ser bloqueada."
       not_found_in_database: "Email ou senha inválida."
       timeout: "A sua sessão expirou. Por favor faça login novamente para continuar."
-      unauthenticated: "Você precisa registrar-se ou fazer login para continuar."
-      unconfirmed: "Você deve confirmar sua conta antes de continuar."
+      unauthenticated: "Você precisa fazer login para continuar."
     mailer:
-      confirmation_instructions:
-        subject: "Instruções para confirmar sua conta"
       reset_password_instructions:
         subject: "Instruções para redefinir sua senha"
       unlock_instructions:
         subject: "Instruções para desbloqueio de conta"
-    omniauth_callbacks:
-      failure: "Não foi possível autorizar você através do %{kind} porque \"%{reason}\"."
-      success: "Você entrou com sua conta do %{kind}. Bem-vindo!"
     passwords:
       no_token: "Você não pode acessar esta página sem que seja a partir de um email de reinicialização de senha. Se você chegou aqui através de um email de reinicialização de senha, por favor verifique se você usou a URL completa que foi informada."
       send_instructions: "Você receberá um email com instruções para redefinir sua senha em poucos minutos."
@@ -32,10 +24,6 @@ pt-BR:
       updated_not_active: "Sua senha foi alterada com sucesso."
     registrations:
       destroyed: "Até mais! Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve."
-      signed_up: "Bem-vindo! Você se cadastrou com sucesso."
-      signed_up_but_inactive: "Você se cadastrou com sucesso. Porém, sua conta ainda não está ativada."
-      signed_up_but_locked: "Você se cadastrou com sucesso. Porém, sua conta está bloqueada."
-      signed_up_but_unconfirmed: "Uma mensagem com um link de confirmação foi enviado para o seu email. Por favor, abra o link para ativar sua conta."
       update_needs_confirmation: "Você atualizou sua conta, mas precisamos verificar seu novo endereço de email. Por favor, acesse seu email e clique no link de confirmação para finalizar a atualização da sua conta."
       updated: "Você atualizou sua conta com sucesso."
     sessions:

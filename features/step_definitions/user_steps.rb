@@ -94,12 +94,6 @@ When(/^I go to my profile page$/) do
   click_link 'Perfil'
 end
 
-When(/^I confirm my registration$/) do
-  user = User.last
-  user.confirm
-  user.save!
-end
-
 Then(/^I see the image "(.*?)" as my avatar$/) do |file_name|
   expect(page).to have_selector(
     :xpath, "//img[contains(@src, '#{file_name}')]", visible: true

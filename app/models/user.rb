@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
   has_many :forum_posts, dependent: :destroy
   has_and_belongs_to_many :roles
   has_many :notifications, dependent: :destroy
-  has_many :external_accounts, dependent: :destroy
   has_many :sent_messages,
            class_name: 'Message',
            inverse_of: :sender,
@@ -59,7 +58,7 @@ class User < ActiveRecord::Base
   end
 
   def privacy_keys
-    PRIVATE_ATTRIBUTES + external_accounts.map(&:provider)
+    PRIVATE_ATTRIBUTES
   end
 
   def to_s

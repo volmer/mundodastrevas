@@ -61,10 +61,6 @@ pt-BR:
         title: 'Criar nova senha'
         password_label: 'Nova senha'
         submit: 'Criar senha'
-    confirmations:
-      new:
-        title: 'Reenviar instruções de confirmação'
-        submit: 'Reenviar instruções de confirmação'
     show:
       unconfirmed_email: 'Aguardando confirmação para %{email}'
       message: 'Mensagem'
@@ -89,20 +85,11 @@ pt-BR:
           new_forum_post: 'Novas postagens em tópicos que eu estou vigiando'
         submit: 'Salvar'
         description: 'Avise-me por email sobre:'
-    external_accounts:
-      index:
-        title: 'Contas externas'
-        connect: 'Conectar conta do %{provider}'
-        destroy: 'Desconectar %{provider}'
-        connected_as: 'Conectado como %{account}'
     registrations:
       destroy:
         title: 'Destruir conta'
         alert: 'Ao destruir sua conta o seu perfil e todas as suas criações serão apagados. Se mesmo assim você deseja destruir sua conta informe sua senha abaixo:'
         submit: 'Eu entendo as consequências. Destrua minha conta.'
-      new:
-        title: 'Cadastre-se!'
-        submit: 'Cadastrar'
       edit:
         title: 'Editar perfil'
         submit: 'Atualizar'
@@ -110,14 +97,7 @@ pt-BR:
       new:
         title: 'Entrar'
         submit: 'Entrar'
-    shared:
-      links:
-        or: 'ou'
-        sign_in_with: 'Entrar com %{provider}'
-        sign_up: 'Cadastre-se!'
-        sign_in: 'Já tem uma conta? Entre aqui'
         forgot_password: 'Esqueceu sua senha?'
-        resend_confirmation: 'Não recebeu instruções de confirmação?'
   notifications:
     index:
       title: 'Notificações'

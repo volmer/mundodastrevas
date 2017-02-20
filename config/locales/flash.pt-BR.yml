@@ -9,8 +9,6 @@ pt-BR:
         blocked: 'Sua conta está bloqueada. Entre em contato conosco.'
       email_preferences:
         update: 'Suas preferências de email foram atualizadas.'
-      external_accounts:
-        destroy: 'Você não está mais conectado via %{provider}.'
     unauthorized: 'Você não pode acessar isso.'
     admin:
       users:

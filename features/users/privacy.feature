@@ -55,31 +55,3 @@ Feature: Privacy settings
       | Sexo               |
       | Localização        |
       | Data de nascimento |
-
-  Scenario Outline: Set an external account as public
-    Given I've connected my <provider> account
-    When I click on "Opções de privacidade"
-    And from "<provider>" I select "Público"
-    And I click on "Salvar"
-    Then I am redirected to the edit user privacy page
-    And I see the info message "Suas preferências foram atualizadas."
-    And I can see the link "<provider>" in my profile page
-    And user "volmer" can see the link "<provider>"
-
-    Examples:
-      | provider |
-      | Facebook |
-
-  Scenario Outline: Set an external account as private
-    Given I've connected my <provider> account
-    When I click on "Opções de privacidade"
-    And from "<provider>" I select "Somente eu"
-    And I click on "Salvar"
-    Then I am redirected to the edit user privacy page
-    And I see the info message "Suas preferências foram atualizadas."
-    And I can see the link "<provider>" in my profile page
-    And user "volmer" cannot see the link "<provider>"
-
-    Examples:
-      | provider |
-      | Facebook |

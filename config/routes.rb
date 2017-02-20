@@ -18,8 +18,7 @@ Mundodastrevas::Application.routes.draw do
                registrations: 'users/registrations',
                sessions: 'users/sessions',
                passwords: 'users/passwords',
-               confirmations: 'users/confirmations',
-               omniauth_callbacks: 'users/omniauth_callbacks'
+               confirmations: 'users/confirmations'
              },
              module: :devise
 
@@ -37,7 +36,6 @@ Mundodastrevas::Application.routes.draw do
   namespace 'users', as: 'user' do
     resource :privacy, only: [:edit, :update]
     resource :email_preferences, only: [:edit, :update]
-    resources :external_accounts, only: [:index, :destroy]
   end
 
   resources :users, only: [:show] do

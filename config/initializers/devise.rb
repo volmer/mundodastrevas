@@ -252,11 +252,4 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   config.parent_controller = 'ApplicationController'
-
-  # ==> OmniAuth
-  # Add a new OmniAuth provider. Check the wiki for more information on setting
-  # up on your models and hooks.
-  config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret,
-                  secure_image_url: true,
-                  info_fields: 'name,email,verified,location,birthday,about,bio,link,gender'
 end
