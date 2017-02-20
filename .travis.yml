@@ -6,3 +6,6 @@ before_script:
 bundler_args: '--without development production'
 services:
   - elasticsearch
+before_install:
+  - gem update --system
+  - gem --version
