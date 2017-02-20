@@ -44,22 +44,6 @@ describe User do
     end
   end
 
-  describe '#admin?' do
-    context 'when it has the admin role' do
-      subject { create :admin }
-
-      it 'returns true' do
-        expect(subject.admin?).to be true
-      end
-    end
-
-    context 'when it does not have the admin role' do
-      it 'returns false' do
-        expect(subject.admin?).to be false
-      end
-    end
-  end
-
   describe '#email_preferences' do
     it 'stores a hash of email preferences' do
       subject.email_preferences = { new_message: false }

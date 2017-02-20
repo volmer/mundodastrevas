@@ -10,13 +10,6 @@ pt-BR:
       email_preferences:
         update: 'Suas preferências de email foram atualizadas.'
     unauthorized: 'Você não pode acessar isso.'
-    admin:
-      users:
-        update: 'As configurações para %{user} foram atualizadas com sucesso.'
-      pages:
-        create: 'Página criada!'
-        update: 'Página atualizada.'
-        destroy: 'Página excluída.'
     contacts:
       create: 'Muito obrigado pela sua mensagem. Vamos te responder por email em breve.'
     watches:

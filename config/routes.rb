@@ -42,15 +42,6 @@ Mundodastrevas::Application.routes.draw do
     resources :messages, only: [:index, :create]
   end
 
-  namespace :admin do
-    root to: 'home#index', as: 'root'
-
-    resources :users, only: [:index, :show, :update]
-    resources :pages, except: [:show]
-    resources :zines, only: [:index, :edit, :update], controller: 'zines'
-    resources :forums, except: [:show], controller: 'forums'
-  end
-
   resources :universes, only: [:show]
 
   # Redirect old URLs to the new ones

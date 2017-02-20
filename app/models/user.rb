@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   has_many :comments,    dependent: :destroy
   has_many :topics,      dependent: :destroy
   has_many :forum_posts, dependent: :destroy
-  has_and_belongs_to_many :roles
   has_many :notifications, dependent: :destroy
   has_many :sent_messages,
            class_name: 'Message',
@@ -51,10 +50,6 @@ class User < ActiveRecord::Base
 
   def self.find_using_name(name)
     find_by('LOWER(name) = ?', name.downcase)
-  end
-
-  def admin?
-    roles.exists?(name: 'admin')
   end
 
   def privacy_keys

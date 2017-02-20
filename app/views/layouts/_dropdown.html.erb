@@ -23,11 +23,6 @@
               <%= raw t('zines.user_index.my') %>
             <% end %>
 
-            <% if current_user.admin? %>
-              <%= link_to t('link.admin'), admin_root_path,
-                class: 'text-warning list-group-item' %>
-            <% end %>
-
             <%= link_to t('user.session.destroy'), destroy_user_session_path,
               class: 'text-danger list-group-item', method: :delete %>
           </ul>

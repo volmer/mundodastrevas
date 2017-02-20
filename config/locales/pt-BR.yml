@@ -14,9 +14,6 @@ pt-BR:
     state_options:
       active: 'Ativo'
       blocked: 'Bloqueado'
-  role:
-    names:
-      admin: 'Administrador'
   save: 'Salvar'
   notifications:
     see_all: 'Ver todas'
@@ -159,8 +156,6 @@ pt-BR:
       watch: 'Avise-me sobre novos comentários neste post'
       updated_at: 'Atualizado em'
       destroy: 'Apagar'
-  link:
-    admin: 'Administração'
   descriptive_name:
     message: 'Mensagem de %{sender}'
     comment: 'Comentário de %{user} em %{post}'

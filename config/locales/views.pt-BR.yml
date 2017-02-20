@@ -3,51 +3,6 @@ pt-BR:
     mailer:
       automatic: 'Este é um email automático. Por favor não responda para este endereço.'
       contact: 'Clique aqui para falar conosco'
-  admin:
-    home:
-      index:
-        title: 'Administração'
-        greeting: 'Bem-vindo à administração do Mundo das Trevas, %{user}.'
-        statistics: 'Estatísticas globais'
-        users:
-          registered: 'Usuários registrados'
-          confirmed: 'Usuários confirmados'
-          blocked: 'Usuários bloqueados'
-        messages: 'Mensagens enviadas'
-    users:
-      show:
-        title: 'Gerenciar %{user}'
-      index:
-        title: 'Usuários'
-        confirmed: 'Confirmado?'
-    pages:
-      index:
-        title: 'Páginas'
-        new: 'Nova página'
-      new:
-        title: 'Nova página'
-        submit: 'Criar página'
-      edit:
-        title: 'Editar página'
-        submit: 'Atualizar página'
-        destroy: 'Excluir página'
-    zines:
-      index:
-        title: 'Zines'
-        posts: 'Posts'
-    forums:
-      index:
-        title: 'Fóruns'
-        new: 'Novo fórum'
-        topics: 'Tópicos'
-      edit:
-        title: 'Editar fórum'
-        submit: 'Atualizar fórum'
-        destroy: 'Apagar fórum'
-        confirm: 'Você confirma a destruição deste fórum e de todos os seus tópicos e postagens?'
-      new:
-        title: 'Novo fórum'
-        submit: 'Criar fórum'
   users:
     passwords:
       change:
