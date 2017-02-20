@@ -1,43 +1,49 @@
-<nav class="navbar navbar-full navbar-dark bg-inverse">
-  <div class='container'>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <div class="container">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
     <%= link_to 'MdT', root_path, title: Rails.application.config.app_name, class: 'navbar-brand' %>
 
-    <ul class="nav navbar-nav hidden-xs-down">
-      <li class="nav-item"><%= link_to t('zines.index.title'), zines_path, class: 'nav-link' %></li>
-      <li class="nav-item"><%= link_to t('forums.index.title'), forums_path, class: 'nav-link' %></li>
-    </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><%= link_to t('zines.index.title'), zines_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to t('forums.index.title'), forums_path, class: 'nav-link' %></li>
+      </ul>
 
-    <ul class="nav navbar-nav pull-xs-right">
-      <li class="nav-item">
-        <%= link_to search_path, title: t('searches.show.title'), class: 'nav-link btn btn-secondary-outline' do %>
-          <i class="fa fa-search"></i>
-        <% end %>
-      </li>
-
-      <% if user_signed_in? %>
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <%= link_to notifications_path, title: t('notifications.index.title'), class: 'nav-link btn btn-secondary-outline' do %>
-            <i class="fa fa-bell"></i>
-
-            <% if unread_notifications_count(current_user) > 0 %>
-              <span class="label label-pill label-info">
-                <%= unread_notifications_count(current_user) %>
-              </span>
-            <% end %>
+          <%= link_to search_path, title: t('searches.show.title'), class: 'nav-link' do %>
+            <i class="fa fa-search"></i>
           <% end %>
         </li>
-      <% end %>
 
-      <li class="nav-item">
         <% if user_signed_in? %>
-          <%= link_to current_user, title: current_user, class: 'nav-link nav-img user-menu', data: { toggle: 'collapse', target: '#userMenu' } do %>
-            <%= image_tag current_user.avatar.thumb.url %>
-          <% end %>
-        <% else %>
-          <%= link_to t('user.session.new'), new_user_session_path, class: 'nav-link btn btn-secondary-outline' %>
+          <li class="nav-item">
+            <%= link_to notifications_path, title: t('notifications.index.title'), class: 'nav-link' do %>
+              <i class="fa fa-bell"></i>
+
+              <% if unread_notifications_count(current_user) > 0 %>
+                <span class="label label-pill label-info">
+                  <%= unread_notifications_count(current_user) %>
+                </span>
+              <% end %>
+            <% end %>
+          </li>
         <% end %>
-      </li>
-    </ul>
+
+        <li class="nav-item">
+          <% if user_signed_in? %>
+            <%= link_to current_user, title: current_user, class: 'nav-link nav-img user-menu', data: { toggle: 'collapse', target: '#userMenu' } do %>
+              <%= image_tag current_user.avatar.thumb.url %>
+            <% end %>
+          <% else %>
+            <%= link_to t('user.session.new'), new_user_session_path, class: 'nav-link' %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 
