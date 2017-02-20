@@ -8,16 +8,6 @@
             <%= link_to t('user.registration.edit'), edit_user_registration_path,
               class: 'list-group-item' %>
 
-            <%= link_to messages_path, class: 'list-group-item' do %>
-              <%= t 'messages.index.title' %>
-              <% messages_count = Message.distinct_for(current_user)
-                .where(recipient_id: current_user, read: false).count %>
-
-              <% if messages_count > 0 %>
-                <span class="badge"><%= messages_count %></span>
-              <% end %>
-            <% end %>
-
             <%= link_to user_zines_path(current_user), class: 'list-group-item' do %>
               <span class="glyphicon glyphicon-book"></span>
               <%= raw t('zines.user_index.my') %>

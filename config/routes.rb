@@ -6,7 +6,6 @@ Mundodastrevas::Application.routes.draw do
   resource :search, only: [:show]
   resources :pages, only: [:show]
   resources :contacts, only: [:new, :create]
-  resources :messages, only: [:index]
 
   devise_for :users,
              controllers: {
@@ -32,9 +31,7 @@ Mundodastrevas::Application.routes.draw do
     resource :privacy, only: [:edit, :update]
   end
 
-  resources :users, only: [:show] do
-    resources :messages, only: [:index, :create]
-  end
+  resources :users, only: [:show]
 
   resources :universes, only: [:show]
 

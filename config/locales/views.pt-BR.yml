@@ -18,7 +18,6 @@ pt-BR:
         submit: 'Criar senha'
     show:
       unconfirmed_email: 'Aguardando confirmação para %{email}'
-      message: 'Mensagem'
       edit: 'Editar perfil'
       member_since: 'Membro desde'
       zines: 'Zines'
@@ -43,14 +42,6 @@ pt-BR:
         title: 'Entrar'
         submit: 'Entrar'
         forgot_password: 'Esqueceu sua senha?'
-  messages:
-    index:
-      title: 'Mensagens'
-      empty_html: 'Não existem mensagens no momento. Para enviar uma mensagem, vá até o perfil do usuário desejado e clique em <strong>Mensagem</strong>.'
-    user_index:
-      title: 'Mensagens com %{user}'
-    new:
-      submit: 'Enviar mensagem'
   contacts:
     new:
       title: 'Fale conosco'

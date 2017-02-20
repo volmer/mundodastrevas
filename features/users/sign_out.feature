@@ -1,4 +1,4 @@
-@javascript
+@javascript @wip
 Feature: User sign out
   In order to protect my account from unauthorized access
   As an user

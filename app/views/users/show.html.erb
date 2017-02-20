@@ -24,18 +24,13 @@
     <div class="col-md-8">
       <h1><%= @user %></h1>
 
-      <div class="clearfix user-profile-actions">
-        <div class="pull-left">
-          <% if @user == current_user %>
+      <% if @user == current_user %>
+        <div class="clearfix user-profile-actions">
+          <div class="pull-left">
             <%= link_to t('.edit'), edit_user_registration_path, class: 'btn btn-primary-outline btn-sm' %>
-          <% else %>
-            <%= link_to user_messages_path(@user), class: 'btn btn-primary-outline' do %>
-              <i class="fa fa-envelope"></i>
-              <%= t '.message' %>
-            <% end %>
-          <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
 
       <% if @user.bio.present? %>
         <blockquote class="blockquote">
