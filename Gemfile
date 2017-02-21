@@ -22,7 +22,6 @@ gem 'rails_autolink'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'rubocop'
 gem 'sass-rails'
-gem 'sidekiq'
 gem 'simple_form'
 gem 'sprockets-rails'
 gem 'uglifier'
@@ -31,7 +30,6 @@ gem 'unicorn'
 group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano-sidekiq'
   gem 'capistrano3-unicorn'
 end
 

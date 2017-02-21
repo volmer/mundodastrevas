@@ -23,7 +23,6 @@ require 'capistrano/deploy'
 
 require 'capistrano/rails'
 require 'capistrano/rbenv'
-require 'capistrano/sidekiq'
 require 'capistrano3/unicorn'
 require 'capistrano/scm/git'
 
