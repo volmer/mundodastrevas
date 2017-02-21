@@ -2,10 +2,4 @@
   <%= image_tag(post.user.avatar.small.url, class: 'img-responsive img-thumbnail img-circle') %>
 
   <div class="name"><%= post.user %></div>
-
-  <% if post.user.rank_in(post.topic.forum.universe).present? %>
-    <%= link_to post.user.rank_in(post.topic.forum.universe),
-      universe_path(post.topic.forum.universe, anchor: 'tab-ranks'),
-      class: 'label label-primary rank' %>
-  <% end %>
 </div>

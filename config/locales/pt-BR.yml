@@ -33,7 +33,6 @@ pt-BR:
     show:
       zines: 'Zines'
       forum: 'Fórum'
-      ranks: 'Ranks'
       more: 'Ver mais'
       and_others:
         one: 'e um outro.'
@@ -99,7 +98,6 @@ pt-BR:
       zines:
         one: '1 zine publicado'
         other: '%{count} zines publicados'
-      level_html: 'Em %{universe} %{user} é <strong>%{rank}</strong>: <em>"%{description}"</em>'
   posts:
     show:
       edit: 'Editar'

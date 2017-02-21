@@ -48,20 +48,4 @@ describe Universe do
       expect(subject.image).to be_an_instance_of(ImageUploader)
     end
   end
-
-  describe '#highest_rank' do
-    it 'returns one of its ranks with the highest value' do
-      universe = create(:universe)
-
-      create(:rank, universe: universe, value: 2)
-      highest = create(:rank, universe: universe, value: 3)
-      create(:rank, universe: universe, value: 1)
-
-      expect(universe.highest_rank).to eq(highest)
-    end
-
-    it 'returns nil when it has no ranks' do
-      expect(subject.highest_rank).to be_nil
-    end
-  end
 end

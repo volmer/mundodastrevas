@@ -5,15 +5,5 @@
     <%= image_tag user.avatar.small.url, class: 'img-circle img-thumbnail img-fluid' %>
     <h3 class="card-title"><%= user %></h3>
     <p class="card-text bio"><%= truncate_rich user.bio %></p>
-
-    <% if @zine.try(:universe) && rank = user.levels.where(universe: @zine.universe).first.try(:rank) %>
-      <p class="card-text">
-        <%= t '.level_html',
-          universe: link_to(@zine.universe, universe_path(@zine.universe)),
-          user: user,
-          rank: rank,
-          description: rank.description %>
-      </p>
-    <% end %>
   </div>
 </div>

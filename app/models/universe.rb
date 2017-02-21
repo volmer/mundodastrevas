@@ -5,8 +5,6 @@ class Universe < ActiveRecord::Base
 
   has_many :forums, dependent: :nullify
   has_many :zines, dependent: :nullify
-  has_many :levels, dependent: :restrict_with_exception
-  has_many :ranks, dependent: :restrict_with_exception
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 6_000 }
@@ -24,9 +22,5 @@ class Universe < ActiveRecord::Base
 
   def to_s
     name
-  end
-
-  def highest_rank
-    ranks.order(value: :desc).first
   end
 end

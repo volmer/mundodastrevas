@@ -8,12 +8,6 @@ Given(/^there is an universe called "(.*?)"$/) do |name|
   create :universe, name: name
 end
 
-Given(/^the "(.*?)" universe has ranks with users$/) do |name|
-  universe = Universe.find_by!(name: name)
-  rank = create(:rank, universe: universe)
-  create(:level, value: rank.value, universe: universe)
-end
-
 When(/^I open the "(.*?)" universe page$/) do |name|
   universe = Universe.find_by!(name: name)
 

@@ -22,10 +22,6 @@
   <% if @forum.present? %>
     <li class="nav-item"><%= link_to t('.forum'), '#forum', class: 'nav-link', data: { toggle: 'tab' } %></li>
   <% end %>
-
-  <% if @ranks.present? %>
-    <li class="nav-item"><%= link_to t('.ranks'), '#ranks', class: 'nav-link', data: { toggle: 'tab' } %></li>
-  <% end %>
 </ul>
 
 <div class="tab-content">
@@ -44,32 +40,4 @@
       <%= link_to t('.more'), @forum %>
     </section>
   <% end %>
-
-  <section class="tab-pane fade" id="ranks">
-    <h2><%= t '.ranks' %></h2>
-
-    <% @ranks.each_slice(3) do |row| %>
-      <div class="row">
-        <% row.each do |rank| %>
-          <div class="col-md-4">
-            <div class="card text-xs-center">
-              <h3 class="card-header"><%= rank %></h3>
-              <div class="card-block">
-                <p class="card-text"><%= rank.description %></p>
-              </div>
-              <div class="card-footer">
-                <% rank.users.first(12).each do |user| %>
-                  <%= image_tag user.avatar.thumb.url, class: 'mini-avatar', alt: user.name %>
-                <% end %>
-
-                <% if (others = (rank.users.count - 12)) > 0 %>
-                  <%= t '.and_others', count: others %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </section>
 </div>

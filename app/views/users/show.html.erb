@@ -65,25 +65,4 @@
       </dl>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-sm-4">
-      <% if current_user.levels.present? %>
-        <div class="list-group">
-          <% current_user.levels.each do |level| %>
-            <% if level.rank.present? %>
-              <%= link_to universe_path(level.universe, anchor: 'tab-ranks'), class: 'list-group-item' do %>
-                <div class="user-rank clearfix">
-                  <%= image_tag level.universe.image.thumb.url, class: 'img-rounded' %>
-
-                  <h6><%= level.rank %></h6>
-                  <%= level.rank.description %>
-                </div>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  </div>
 </div>

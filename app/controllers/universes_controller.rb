@@ -4,7 +4,6 @@ class UniversesController < ApplicationController
 
     authorize(@universe)
 
-    @ranks = @universe.ranks.order(value: :desc)
     @zines = @universe.zines.with_posts.where("zines.image <> ''").order(
       last_post_at: :desc
     ).page(params[:page])
