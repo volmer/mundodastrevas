@@ -43,11 +43,3 @@ pt-BR:
   searches:
     show:
       title: 'Pesquisa'
-  tags:
-    show:
-      title: 'Tag: %{tag}'
-      empty: 'Nada foi encontrado com a tag %{tag}.'
-  reviews:
-    form:
-      loved: 'Curti isso!'
-      hated: 'Não gostei.'

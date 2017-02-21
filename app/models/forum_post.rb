@@ -5,9 +5,6 @@ class ForumPost < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :topic
-  has_many :reviews,
-           as: :reviewable,
-           dependent: :destroy
 
   after_create :touch_topic_and_forum
 

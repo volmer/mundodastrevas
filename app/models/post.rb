@@ -3,7 +3,6 @@ class Post < ActiveRecord::Base
   belongs_to :user
 
   has_many :comments, dependent: :destroy
-  has_many :reviews, as: :reviewable, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :content, presence: true, length: { maximum: 66_000 }
