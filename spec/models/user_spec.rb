@@ -32,18 +32,6 @@ describe User do
     end
   end
 
-  describe '#privacy' do
-    it 'stores a hash of privacy options' do
-      subject.privacy = { email: 'public', location: 'only_me' }
-      subject.save!
-      subject.reload
-
-      expect(subject.privacy).to be_a_kind_of(Hash)
-      expect(subject.privacy['email']).to eq 'public'
-      expect(subject.privacy['location']).to eq 'only_me'
-    end
-  end
-
   describe '.find_using_name' do
     it 'retrieves the user with the given name, case insensitive' do
       subject.name = 'Bran'
@@ -74,14 +62,6 @@ describe User do
     it 'raises an error if nothing is found' do
       expect { described_class.find_using_name!('unexistent') }
         .to raise_error(ActiveRecord::RecordNotFound)
-    end
-  end
-
-  describe '#privacy_keys' do
-    it 'returns an array of private attributes' do
-      expect(subject.privacy_keys).to eq(
-        %w(email gender location birthday)
-      )
     end
   end
 

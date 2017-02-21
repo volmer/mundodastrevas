@@ -21,7 +21,7 @@
 
         <li class="nav-item">
           <% if user_signed_in? %>
-            <%= link_to current_user, title: current_user, class: 'nav-link nav-img user-menu', data: { toggle: 'collapse', target: '#userMenu' } do %>
+            <%= link_to user_path, title: current_user, class: 'nav-link nav-img user-menu', data: { toggle: 'collapse', target: '#userMenu' } do %>
               <%= image_tag current_user.avatar.thumb.url %>
             <% end %>
           <% else %>

@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
-  def show
-    @user = User.find_using_name!(params[:id])
-    authorize(@user)
+  skip_after_action :verify_authorized
 
-    @zines = @user.zines.order(updated_at: :desc)
+  def show
+    @zines = current_user.zines.order(updated_at: :desc)
   end
 end

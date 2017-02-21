@@ -25,7 +25,7 @@
 
       <p class="author-and-date">
         <%= t '.author_and_date.html',
-          user: link_to(@post.user, user_path(@post.user)),
+          user: @post.user,
           date: time_tag(@post.created_at.to_date, format: :long) %>
 
         <%= link_to t('.edit'), edit_zine_post_path(@zine, @post),

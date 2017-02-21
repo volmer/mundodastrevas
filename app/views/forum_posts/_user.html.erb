@@ -1,10 +1,7 @@
 <div class="col-md-2 user">
-  <%= link_to image_tag(post.user.avatar.small.url, class: 'img-responsive img-thumbnail img-circle'), user_path(post.user) %>
+  <%= image_tag(post.user.avatar.small.url, class: 'img-responsive img-thumbnail img-circle') %>
 
-  <div class="name">
-    <%= link_to post.user, user_path(post.user) %>
-  </div>
-
+  <div class="name"><%= post.user %></div>
 
   <% if post.user.rank_in(post.topic.forum.universe).present? %>
     <%= link_to post.user.rank_in(post.topic.forum.universe),

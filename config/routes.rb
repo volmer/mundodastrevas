@@ -27,11 +27,7 @@ Mundodastrevas::Application.routes.draw do
 
   root 'home#index'
 
-  namespace 'users', as: 'user' do
-    resource :privacy, only: [:edit, :update]
-  end
-
-  resources :users, only: [:show]
+  resource :user, only: [:show]
 
   resources :universes, only: [:show]
 

@@ -14,7 +14,7 @@
   <h1><%= @topic %></h1>
 
   <div class="clearfix">
-    <%= t '.created_by_html', user: link_to(@topic.user, user_path(@topic.user)) %>
+    <%= t '.created_by_html', user: @topic.user %>
     <span class="text-muted">·</span>
     <%= t '.forum_posts', count: @topic.forum_posts.count %>
 

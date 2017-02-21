@@ -59,8 +59,7 @@
               </div>
               <div class="card-footer">
                 <% rank.users.first(12).each do |user| %>
-                  <%= link_to image_tag(user.avatar.thumb.url, class: 'mini-avatar'),
-                    user_path(user), title: user.name %>
+                  <%= image_tag user.avatar.thumb.url, class: 'mini-avatar', alt: user.name %>
                 <% end %>
 
                 <% if (others = (rank.users.count - 12)) > 0 %>

@@ -1,15 +1,15 @@
-<% content_for :page_title, @user %>
-<% content_for :page_description, strip_tags(@user.bio) %>
-<% content_for :page_author, @user %>
+<% content_for :page_title, current_user %>
+<% content_for :page_description, strip_tags(current_user.bio) %>
+<% content_for :page_author, current_user %>
 <% content_for :page_type, 'profile' %>
-<% content_for :page_image, URI(root_url) + @user.avatar.url %>
-<% content_for :canonical_url, user_url(@user) %>
-<% content_for :page_updated_at, @user.updated_at %>
+<% content_for :page_image, URI(root_url) + current_user.avatar.url %>
+<% content_for :canonical_url, user_url(current_user) %>
+<% content_for :page_updated_at, current_user.updated_at %>
 
 <% content_for :layout_top do %>
   <div class="user-profile-top"
-    <% if @user.avatar.file %>
-      style="background-image: url(<%= asset_path(@user.avatar.medium.url) %>)"
+    <% if current_user.avatar.file %>
+      style="background-image: url(<%= asset_path(current_user.avatar.medium.url) %>)"
     <% end %>
     >
   </div>
@@ -18,63 +18,59 @@
 <div class="user-profile">
   <div class="row">
     <div class="col-md-4 avatar">
-      <%= image_tag @user.avatar.medium.url, class: 'img-circle img-thumbnail img-fluid' %>
+      <%= image_tag current_user.avatar.medium.url, class: 'img-circle img-thumbnail img-fluid' %>
     </div>
 
     <div class="col-md-8">
-      <h1><%= @user %></h1>
+      <h1><%= current_user %></h1>
 
-      <% if @user == current_user %>
-        <div class="clearfix user-profile-actions">
-          <div class="pull-left">
-            <%= link_to t('.edit'), edit_user_registration_path, class: 'btn btn-primary-outline btn-sm' %>
-          </div>
+      <div class="clearfix user-profile-actions">
+        <div class="pull-left">
+          <%= link_to t('.edit'), edit_user_registration_path, class: 'btn btn-primary-outline btn-sm' %>
         </div>
-      <% end %>
+      </div>
 
-      <% if @user.bio.present? %>
+      <% if current_user.bio.present? %>
         <blockquote class="blockquote">
-          <%= simple_text @user.bio %>
+          <%= simple_text current_user.bio %>
         </blockquote>
       <% end %>
 
       <dl>
-        <% if policy(@user).read_field?(:email) %>
-          <dt><%= User.human_attribute_name('email') %></dt>
-          <dd class="email">
-            <%= @user.email %>
-            <% if @user == current_user && @user.pending_reconfirmation? %>
-               <small class="text-warning"><%= t '.unconfirmed_email', email: @user.unconfirmed_email %></small>
-            <% end %>
-          </dd>
-        <% end %>
+        <dt><%= User.human_attribute_name('email') %></dt>
+        <dd class="email">
+          <%= current_user.email %>
+          <% if current_user == current_user && current_user.pending_reconfirmation? %>
+             <small class="text-warning"><%= t '.unconfirmed_email', email: current_user.unconfirmed_email %></small>
+          <% end %>
+        </dd>
 
-        <% if policy(@user).read_field?(:gender) && @user.gender.present? %>
+        <% if current_user.gender.present? %>
           <dt><%= User.human_attribute_name('gender') %></dt>
-          <dd><%= t @user.gender, scope: 'user.gender_options' %></dd>
+          <dd><%= t current_user.gender, scope: 'user.gender_options' %></dd>
         <% end %>
 
-        <% if policy(@user).read_field?(:location) && @user.location.present? %>
+        <% if current_user.location.present? %>
           <dt><%= User.human_attribute_name('location') %></dt>
-          <dd><%= @user.location %></dd>
+          <dd><%= current_user.location %></dd>
         <% end %>
 
-        <% if policy(@user).read_field?(:birthday) && @user.birthday.present? %>
+        <% if current_user.birthday.present? %>
           <dt><%= User.human_attribute_name('birthday') %></dt>
-          <dd><%= l @user.birthday %></dd>
+          <dd><%= l current_user.birthday %></dd>
         <% end %>
 
         <dt><%= t '.member_since' %></dt>
-        <dd><%= l @user.created_at.to_date, format: :long %></dd>
+        <dd><%= l current_user.created_at.to_date, format: :long %></dd>
       </dl>
     </div>
   </div>
 
   <div class="row">
     <div class="col-sm-4">
-      <% if @user.levels.present? %>
+      <% if current_user.levels.present? %>
         <div class="list-group">
-          <% @user.levels.each do |level| %>
+          <% current_user.levels.each do |level| %>
             <% if level.rank.present? %>
               <%= link_to universe_path(level.universe, anchor: 'tab-ranks'), class: 'list-group-item' do %>
                 <div class="user-rank clearfix">
@@ -113,7 +109,7 @@
           </div>
         <% end %>
 
-        <%= link_to t('.all_zines'), user_zines_path(@user) %>
+        <%= link_to t('.all_zines'), user_zines_path(current_user) %>
       </div>
     <% end %>
   </div>

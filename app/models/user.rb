@@ -3,9 +3,6 @@ class User < ActiveRecord::Base
 
   NAME_FORMAT = /\A[\w-]+\z/
   NAME_RANGE  = 3..16
-  PRIVATE_ATTRIBUTES = %w(email gender location birthday).freeze
-
-  store_accessor :privacy
 
   has_many :levels,      dependent: :destroy
   has_many :zines,       dependent: :destroy
@@ -33,10 +30,6 @@ class User < ActiveRecord::Base
 
   def self.find_using_name(name)
     find_by('LOWER(name) = ?', name.downcase)
-  end
-
-  def privacy_keys
-    PRIVATE_ATTRIBUTES
   end
 
   def to_s

@@ -40,16 +40,6 @@ describe ApplicationHelper, type: :helper do
         'href="http://radicaos.com">http://radicaos.com</a></p>'
       )
     end
-
-    it 'autolinks mentions' do
-      create(:user, name: 'volmer')
-
-      text = 'Welcome @volmer'
-
-      expect(helper.simple_text(text)).to eq(
-        '<p>Welcome <a href="/users/volmer">@volmer</a></p>'
-      )
-    end
   end
 
   describe '#truncate_rich' do
@@ -141,122 +131,6 @@ describe ApplicationHelper, type: :helper do
       expect(helper.truncate_rich('This is a "quoted" text.')).to eq(
         'This is a &quot;quoted&quot; text.'
       )
-    end
-  end
-
-  describe '#autolink_mentions' do
-    it 'replace a mention with a link to the user profile' do
-      create(:user, name: 'volmer')
-      create(:user, name: 'octocat')
-
-      text = 'Welcome, @volmer'
-      expect(helper.autolink_mentions(text)).to eq(
-        'Welcome, <a href="/users/volmer">@volmer</a>'
-      )
-
-      text = 'Welcome @volmer and @octocat'
-      expect(helper.autolink_mentions(text)).to eq(
-        'Welcome <a href="/users/volmer">@volmer</a> '\
-        'and <a href="/users/octocat">@octocat</a>'
-      )
-
-      text = '@volmer, read this'
-      expect(helper.autolink_mentions(text)).to eq(
-        '<a href="/users/volmer">@volmer</a>, read this'
-      )
-
-      text = '@volmer.'
-      expect(helper.autolink_mentions(text)).to eq(
-        '<a href="/users/volmer">@volmer</a>.'
-      )
-
-      text = 'Welcome, @volmer!!'
-      expect(helper.autolink_mentions(text)).to eq(
-        'Welcome, <a href="/users/volmer">@volmer</a>!!'
-      )
-
-      text = '@volmer, @volmer'
-      expect(helper.autolink_mentions(text)).to eq(
-        '<a href="/users/volmer">@volmer</a>, '\
-        '<a href="/users/volmer">@volmer</a>'
-      )
-
-      text = '@volmer, @volmerius'
-      expect(helper.autolink_mentions(text)).to eq(
-        '<a href="/users/volmer">@volmer</a>, @volmerius'
-      )
-
-      text = 'welcome@volmer'
-      expect(helper.autolink_mentions(text)).to eq('welcome@volmer')
-
-      text = 'Welcome, @VOLMER'
-      expect(helper.autolink_mentions(text)).to eq(
-        'Welcome, <a href="/users/volmer">@VOLMER</a>'
-      )
-
-      text = 'Welcome,@VOLMER'
-      expect(helper.autolink_mentions(text)).to eq(
-        'Welcome,<a href="/users/volmer">@VOLMER</a>'
-      )
-    end
-
-    it 'does nothing if user does not exist' do
-      text = 'Welcome, @volmer'
-
-      expect(helper.autolink_mentions(text)).to eq(text)
-    end
-
-    it 'is blank if nil is given' do
-      expect(helper.autolink_mentions(nil)).to eq('')
-    end
-  end
-
-  describe '#mentioned_users' do
-    let!(:user_1) { create(:user, name: 'volmer') }
-    let!(:user_2) { create(:user, name: 'octocat') }
-
-    it 'returns all users mentioned in the given string' do
-      text = 'Welcome, @volmer'
-      expect(helper.mentioned_users(text)).to contain_exactly(user_1)
-
-      text = 'Welcome @volmer and @octocat'
-      expect(helper.mentioned_users(text)).to contain_exactly(user_1, user_2)
-
-      text = '@volmer, read this'
-      expect(helper.mentioned_users(text)).to contain_exactly(user_1)
-
-      text = '@volmer.'
-      expect(helper.mentioned_users(text)).to contain_exactly(user_1)
-
-      text = 'Welcome, @volmer!!'
-      expect(helper.mentioned_users(text)).to contain_exactly(user_1)
-
-      text = '@volmer, @volmerius'
-      expect(helper.mentioned_users(text)).to contain_exactly(user_1)
-
-      text = 'welcome@volmer'
-      expect(helper.mentioned_users(text)).to be_empty
-
-      text = 'Welcome, @VOLMER'
-      expect(helper.mentioned_users(text)).to contain_exactly(user_1)
-
-      text = 'Welcome,@VOLMER'
-      expect(helper.mentioned_users(text)).to contain_exactly(user_1)
-    end
-
-    it 'does not return the same user twice' do
-      text = 'Hey @volmer, @volmer'
-      expect(helper.mentioned_users(text)).to contain_exactly(user_1)
-    end
-
-    it 'is empty if user does not exist' do
-      text = 'Welcome, @volmerius'
-
-      expect(helper.mentioned_users(text)).to be_empty
-    end
-
-    it 'is empty if nil is given' do
-      expect(helper.mentioned_users(nil)).to be_empty
     end
   end
 end

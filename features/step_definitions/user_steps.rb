@@ -47,11 +47,10 @@ Given(/^my email address is "(.*?)"$/) do |email|
   @user.confirm
 end
 
-Given(/^(.*?) has an unconfirmed email "(.*?)"$/) do |user_name, email|
-  user = User.find_using_name(user_name)
-  user.email = email
-  user.skip_confirmation_notification!
-  user.save!
+Given(/^I have an unconfirmed email "(.*?)"$/) do |email|
+  @user.email = email
+  @user.skip_confirmation_notification!
+  @user.save!
 end
 
 Given(/^there is an user called "(.*?)"$/) do |name|
@@ -82,11 +81,6 @@ When 'I open my user menu' do
   within '.navbar' do
     click_link @user.name
   end
-end
-
-When(/^I go to (.*?)'s profile page$/) do |user_name|
-  user = User.find_using_name(user_name)
-  visit user_path(user)
 end
 
 When(/^I go to my profile page$/) do
