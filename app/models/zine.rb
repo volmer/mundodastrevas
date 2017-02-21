@@ -2,7 +2,6 @@ class Zine < ActiveRecord::Base
   include Bootsy::Container
 
   belongs_to :user
-  belongs_to :universe
   has_many :posts, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 100 }

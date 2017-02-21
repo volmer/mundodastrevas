@@ -8,12 +8,6 @@
 
 <h1><%= @zine %></h1>
 
-<% if @zine.universe %>
-  <p class="meta-universe">
-    <%= t '.universe_html', universe: link_to(@zine.universe, universe_path(@zine.universe)) %>
-  </p>
-<% end %>
-
 <div class="row">
   <div class="col-md-8">
     <% if @zine.image.file.present? %>

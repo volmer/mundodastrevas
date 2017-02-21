@@ -48,11 +48,7 @@
   <div class="col-md-4">
     <% @forums.each do |forum| %>
       <div class="card forum-home-card">
-        <div class="card-header text-xs-center" style="
-          <% if forum.universe.present? %>
-            background-image: url(<%= forum.universe.image.medium.url %>)
-          <% end %>
-          ">
+        <div class="card-header text-xs-center">
           <%= link_to forum, forum %>
         </div>
         <ul class="list-group list-group-flush">

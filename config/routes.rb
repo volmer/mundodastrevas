@@ -26,8 +26,6 @@ Mundodastrevas::Application.routes.draw do
 
   resource :user, only: [:show]
 
-  resources :universes, only: [:show]
-
   # Redirect old URLs to the new ones
   get '/pubs/:id', to: redirect('/zines/%{id}')
   get '/pubs/:zine_id/stuffs/:id', to: redirect('/zines/%{zine_id}/posts/%{id}')

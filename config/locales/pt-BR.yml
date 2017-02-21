@@ -29,14 +29,6 @@ pt-BR:
       next_html: '&rsaquo;'
       next_title: 'Próxima página'
       truncate: '...'
-  universes:
-    show:
-      zines: 'Zines'
-      forum: 'Fórum'
-      more: 'Ver mais'
-      and_others:
-        one: 'e um outro.'
-        other: 'e %{count} outros.'
   forums:
     index:
       title: 'Fóruns'
@@ -88,7 +80,6 @@ pt-BR:
       more: '(continuar lendo)'
     show:
       edit: 'Editar'
-      universe_html: 'Um zine de %{universe}'
       new_post: 'Novo post'
       posts: 'Posts em %{zine}'
       empty: 'Ainda não existem posts neste zine.'
@@ -106,8 +97,6 @@ pt-BR:
       previous: 'Anterior'
       next: 'Próximo'
       index: 'Índice'
-    footer:
-      rate: 'Avalie este post:'
   comments:
     index:
       updated_at: 'Atualizado em'

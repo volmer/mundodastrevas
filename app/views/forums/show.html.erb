@@ -1,13 +1,6 @@
 <% content_for :page_title, @forum %>
 <% content_for :page_description, strip_tags(@forum.description) %>
 
-<% if @forum.universe %>
-  <% content_for :layout_top do %>
-    <div class="universe-header" style="background-image: url('<%= @forum.universe.image.url %>')">
-    </div>
-  <% end %>
-<% end %>
-
 <h1><%= @forum %></h1>
 
 <div class="forum-description">

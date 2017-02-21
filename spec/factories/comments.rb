@@ -1,9 +1,5 @@
 FactoryGirl.define do
   factory :comment do
-    transient do
-      universe nil
-    end
-
     post
 
     content "A Song of Ice and Fire is a series of epic fantasy novels written
@@ -15,11 +11,5 @@ FactoryGirl.define do
       The Winds of Winter, is still underway."
 
     user
-
-    after(:create) do |comment, evaluator|
-      zine = comment.post.zine
-      zine.universe = evaluator.universe
-      zine.save!
-    end
   end
 end

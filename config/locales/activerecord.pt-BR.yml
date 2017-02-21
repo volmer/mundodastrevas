@@ -9,12 +9,10 @@ pt-BR:
       post: 'Post'
       setting: 'Configuração'
       topic: 'Tópico'
-      universe: 'Universo'
       user: 'Usuário'
       zine: 'Zine'
     attributes:
       zine:
-        universe: 'Universo'
         name: 'Nome'
         slug: 'URL amigável'
         description: 'Descrição'

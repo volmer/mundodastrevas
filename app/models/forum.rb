@@ -8,7 +8,6 @@ class Forum < ActiveRecord::Base
             format: { with: /\A(([a-z]|[A-Z]|[0-9]|-)+)\z/ }
 
   has_many :topics, dependent: :destroy
-  belongs_to :universe
 
   def to_param
     slug

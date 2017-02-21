@@ -1,9 +1,5 @@
 FactoryGirl.define do
   factory :post do
-    transient do
-      universe nil
-    end
-
     name 'Chapter XIX - Brienne'
 
     content "Brienne gazes out at the Quiet Isle, set in the middle of the
@@ -22,11 +18,5 @@ FactoryGirl.define do
     end
 
     user
-
-    after(:create) do |post, evaluator|
-      zine = post.zine
-      zine.universe = evaluator.universe
-      zine.save!
-    end
   end
 end
