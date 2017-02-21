@@ -84,27 +84,9 @@ pt-BR:
     index:
       title: 'Zines'
       more: '(continuar lendo)'
-      new: 'Novo zine'
-      invite: 'Deseja criar um zine? Entre aqui!'
       most_read: 'Mais lidos'
-      tags: 'Tags'
-    user_index:
-      title: 'Zines de %{user}'
-      no_zines: '%{user} ainda não publicou nenhum zine.'
-      no_zines_user: 'Você ainda não tem nenhum zine publicado.'
-      first_zine: 'Clique aqui para criar seu primeiro zine!'
-      my: 'Meus zines'
-      new: 'Novo zine'
     list:
       more: '(continuar lendo)'
-    new:
-      title: 'Novo zine'
-      submit: 'Criar zine'
-    edit:
-      title: 'Editar zine'
-      submit: 'Atualizar zine'
-      destroy: 'Apagar zine'
-      confirm: 'Você confirma a exclusão deste zine, incluindo todos os posts e comentários?'
     show:
       edit: 'Editar'
       universe_html: 'Um zine de %{universe}'
@@ -119,14 +101,6 @@ pt-BR:
         other: '%{count} zines publicados'
       level_html: 'Em %{universe} %{user} é <strong>%{rank}</strong>: <em>"%{description}"</em>'
   posts:
-    new:
-      title: 'Novo post'
-      submit: 'Criar post'
-    edit:
-      title: 'Editar post'
-      submit: 'Atualizar post'
-      destroy: 'Apagar post'
-      confirm: 'Você confirma a exclusão deste post, incluindo todos os comentários?'
     show:
       edit: 'Editar'
       author_and_date:
@@ -135,15 +109,10 @@ pt-BR:
       next: 'Próximo'
       index: 'Índice'
     footer:
-      tags: 'Tags'
       rate: 'Avalie este post:'
   comments:
     index:
-      invite: 'Deseja adicionar um comentário? Entre aqui!'
-      label: 'Adicionar comentário'
-      submit: 'Comentar'
       updated_at: 'Atualizado em'
-      destroy: 'Apagar'
   descriptive_name:
     comment: 'Comentário de %{user} em %{post}'
     forum_post: 'Postagem de %{user} em %{topic}'

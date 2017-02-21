@@ -22,36 +22,9 @@
 
           <div class="actions">
             <%= render 'reviews/form', reviewable: comment %>
-            <%= link_to t('.destroy'), [comment.post.zine, comment.post, comment],
-              method: :delete, class: 'btn btn-sm' if policy(comment).destroy? %>
           </div>
         </div>
       </div>
     </div>
   </div>
-<% end %>
-
-<% if policy(@comment).create? %>
-  <div class="new-comment">
-    <div class="row">
-      <div class="col-md-2 col-xs-3 user">
-        <%= image_tag(current_user.avatar.small.url, class: 'img-fluid img-circle') %>
-      </div>
-
-      <div class="col-md-10 col-xs-9">
-        <%= simple_form_for([@zine, @post, @comment]) do |f| %>
-        <h5><%= t '.label' %></h5>
-
-        <%= f.error_notification %>
-        <%= f.input :content, label: false, input_html: { rows: 6 } %>
-
-        <div class="actions"><%= f.button :submit, t('.submit') %></div>
-      <% end %>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-<% unless user_signed_in? %>
-  <div class="zines-invite"><%= link_to t('.invite'), new_user_session_path %></div>
 <% end %>

@@ -85,32 +85,5 @@
         </div>
       <% end %>
     </div>
-
-    <% if @zines.present? %>
-      <div class="col-sm-8">
-        <h3><%= t '.zines' %></h3>
-
-        <% @zines.limit(4).each_slice(2) do |row| %>
-          <div class="row">
-            <% row.each do |zine| %>
-              <div class="col-md-6">
-                <section class="list-group zine-card">
-                  <%= link_to '', zine_path(zine), class: 'list-group-item cover',
-                    style: "background-image: url('#{ zine.image.url }')" %>
-
-                  <%= link_to zine_path(zine), class: 'list-group-item' do %>
-                    <h4 class="list-group-item-heading">
-                      <%= zine %>
-                    </h4>
-                  <% end %>
-                </section>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-
-        <%= link_to t('.all_zines'), user_zines_path(current_user) %>
-      </div>
-    <% end %>
   </div>
 </div>

@@ -1,6 +1,4 @@
 class Post < ActiveRecord::Base
-  include Taggable
-
   belongs_to :zine
   belongs_to :user
 

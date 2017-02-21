@@ -20,10 +20,6 @@
       <%= image_tag @zine.image.url, class: 'zine-image img-fluid' %>
     <% end %>
 
-    <% if policy(@zine).edit? %>
-      <p><%= link_to t('.edit'), edit_zine_path(@zine), class: 'btn btn-secondary btn-sm' %></p>
-    <% end %>
-
     <div class="zine-description"><%= sanitize @zine.description %></div>
 
     <% @posts.each do |post| %>
@@ -51,12 +47,6 @@
 
   <div class="col-md-4">
     <%= render 'author', user: @zine.user %>
-
-    <% if policy(@zine.posts.new).create? %>
-      <div class="card card-block">
-        <%= link_to t('.new_post'), new_zine_post_path(@zine), class: 'btn btn-primary btn-block' %>
-      </div>
-    <% end %>
 
     <h5><%= t '.posts', zine: @zine %></h5>
 

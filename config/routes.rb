@@ -2,7 +2,6 @@ Mundodastrevas::Application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
   resources :reviews, only: [:create, :update]
-  resources :tags, only: [:show]
   resource :search, only: [:show]
   resources :pages, only: [:show]
   resources :contacts, only: [:new, :create]
@@ -37,14 +36,8 @@ Mundodastrevas::Application.routes.draw do
 
   resources :posts, path: '/feed', only: [:index], defaults: { format: 'atom' }
 
-  resources :zines do
-    resources :posts, except: [:index] do
-      resources :comments, only: [:create, :destroy]
-    end
-  end
-
-  resources :users, only: [] do
-    resources :zines, only: [:index]
+  resources :zines, only: [:index, :show] do
+    resources :posts, only: [:index, :show]
   end
 
   resources :forums, only: [:show, :index] do

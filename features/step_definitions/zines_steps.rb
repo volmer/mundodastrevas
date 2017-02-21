@@ -4,16 +4,6 @@ Given(/^there is a zine with the given attributes:$/) do |table|
   end
 end
 
-Given(/^I have a zine with the given attributes:$/) do |table|
-  table.hashes.each do |line|
-    create :zine, line.merge(user: @user)
-  end
-end
-
-Given(/^I have a zine called "(.*?)"$/) do |name|
-  create(:zine, user: @user, name: name)
-end
-
 Given(/^there is a zine called "(.*?)"$/) do |name|
   create :zine, name: name
 end

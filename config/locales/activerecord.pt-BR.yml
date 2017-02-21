@@ -10,7 +10,6 @@ pt-BR:
       post: 'Post'
       rank: 'Rank'
       setting: 'Configuração'
-      tag: 'Tag'
       topic: 'Tópico'
       universe: 'Universo'
       user: 'Usuário'
@@ -28,7 +27,6 @@ pt-BR:
         slug: 'URL amigável'
         content: 'Conteúdo'
         image: 'Imagem'
-        tags: 'Tags'
       comment:
         content: 'Conteúdo'
       forum:

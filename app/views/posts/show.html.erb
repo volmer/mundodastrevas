@@ -1,7 +1,6 @@
 <% content_for :page_title, @post %>
 <% content_for :page_author, @post.user %>
 <% content_for :page_description, truncate_rich(@post.content) %>
-<% content_for :page_keywords, [@zine, @post.tags].reject(&:blank?).join(', ') %>
 <% content_for :page_canonical_url, zine_post_url(@zine, @post) %>
 <% content_for :page_image, URI(root_url) + @post.image.url %>
 <% content_for :page_updated_at, @post.updated_at %>
@@ -27,9 +26,6 @@
         <%= t '.author_and_date.html',
           user: @post.user,
           date: time_tag(@post.created_at.to_date, format: :long) %>
-
-        <%= link_to t('.edit'), edit_zine_post_path(@zine, @post),
-          class: 'btn btn-secondary btn-sm pull-xs-right' if policy(@post).edit? %>
       </p>
 
       <%= image_tag @post.image.url, class: 'zine-image img-fluid' if @post.image.file.present? %>

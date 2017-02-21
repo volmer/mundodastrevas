@@ -23,10 +23,6 @@ describe Post do
     expect(subject).not_to be_valid
   end
 
-  it 'is taggable' do
-    expect(subject).to be_a_kind_of(Taggable)
-  end
-
   describe '#to_param' do
     it 'returns its slug' do
       subject.slug = 'a-song-of-ice-and-fire'

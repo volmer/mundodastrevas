@@ -18,4 +18,3 @@ Feature: View comments
     When I go to the "Arya" post
     Then I see "Great post!" on the page
     And I see "I loved it too!" on the page
-    And I see "Deseja adicionar um comentário? Entre aqui!" on the page

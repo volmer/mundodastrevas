@@ -1,11 +1,4 @@
 <div class="post-footer">
-  <% if @post.tags.present? %>
-    <p>
-      <strong><%= t '.tags' %></strong>
-      <%= render_tags @post %>
-    </p>
-  <% end %>
-
   <div class="row">
     <div class="col-xs-6">
       <strong><%= t '.rate' %></strong>

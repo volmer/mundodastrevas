@@ -27,22 +27,6 @@
   </div>
 
   <div class="col-md-4">
-    <div class="card card-block">
-      <%= link_to t('.new'), new_zine_path, class: 'btn btn-primary btn-block' if policy(Zine.new).new? %>
-
-      <% unless user_signed_in? %>
-        <%= link_to t('.invite'), new_user_session_path, class: 'btn btn-primary btn-block' %>
-      <% end %>
-    </div>
-
-    <h4><%= t '.tags' %></h4>
-
-    <div class="list-group">
-      <% @tags.each do |tag| %>
-        <%= link_to tag.name, tag_path(tag), class: 'list-group-item' %>
-      <% end %>
-    </div>
-
     <h4><%= t '.most_read' %></h4>
 
     <div class="list-group">

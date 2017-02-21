@@ -8,11 +8,6 @@
             <%= link_to t('user.registration.edit'), edit_user_registration_path,
               class: 'list-group-item' %>
 
-            <%= link_to user_zines_path(current_user), class: 'list-group-item' do %>
-              <span class="glyphicon glyphicon-book"></span>
-              <%= raw t('zines.user_index.my') %>
-            <% end %>
-
             <%= link_to t('user.session.destroy'), destroy_user_session_path,
               class: 'text-danger list-group-item', method: :delete %>
           </ul>
