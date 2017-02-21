@@ -10,10 +10,6 @@
     <%= t '.created_by_html', user: @topic.user %>
     <span class="text-muted">·</span>
     <%= t '.forum_posts', count: @topic.forum_posts.count %>
-
-    <% if user_signed_in? && policy(@topic).edit? %>
-      <%= link_to t('.edit'), edit_forum_topic_path(@forum, @topic), class: 'btn btn-xs' %>
-    <% end %>
   </div>
 
   <ol class="breadcrumb">

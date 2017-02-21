@@ -20,25 +20,7 @@
             <%= time_tag forum_post.updated_at, format: :short %>
           </em>
         <% end %>
-
-        <div class="actions">
-          <% if policy(forum_post).update? %>
-            <%= link_to t('.edit'), '#edit', class: 'btn btn-primary-outline btn-sm' %>
-          <% end %>
-
-          <% if policy(forum_post).destroy? %>
-            <%= link_to t('.destroy'), [forum_post.topic.forum, forum_post.topic, forum_post],
-              method: :delete, data: { confirm: t('.confirm') },
-              class: 'btn btn-danger-outline btn-sm' %>
-          <% end %>
-        </div>
       </div>
     </div>
-
-    <% if policy(forum_post).update? %>
-      <div class="col-md-8 editor" hidden>
-        <%= render 'forum_posts/edit', post: forum_post %>
-      </div>
-    <% end %>
   </div>
 </div>

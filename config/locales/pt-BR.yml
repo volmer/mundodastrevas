@@ -46,11 +46,6 @@ pt-BR:
     new:
       title: 'Novo tópico'
       submit: 'Criar tópico'
-    edit:
-      title: 'Editar tópico'
-      submit: 'Atualizar tópico'
-      destroy: 'Apagar tópico'
-      confirm: 'Você confirma a destruição deste tópico?'
     show:
       edit: 'Editar'
       invite: 'Deseja postar neste tópico? Entre aqui!'
@@ -68,9 +63,6 @@ pt-BR:
     new:
       submit: 'Postar'
       title: 'Postar no tópico'
-    edit:
-      submit: 'Atualizar postagem'
-      cancel: 'Cancelar'
   zines:
     index:
       title: 'Zines'

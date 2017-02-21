@@ -20,8 +20,6 @@ class TopicsController < ApplicationController
     @topic.forum_posts << ForumPost.new
   end
 
-  def edit; end
-
   def create
     @topic = @forum.topics.new(topic_params)
     @topic.user = current_user
@@ -35,20 +33,6 @@ class TopicsController < ApplicationController
     else
       render action: 'new'
     end
-  end
-
-  def update
-    if @topic.update(topic_params)
-      redirect_to [@forum, @topic], notice: t('flash.topics.update')
-    else
-      render action: 'edit'
-    end
-  end
-
-  def destroy
-    @topic.destroy
-
-    redirect_to @forum, notice: t('flash.topics.destroy')
   end
 
   private

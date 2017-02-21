@@ -1,7 +1,6 @@
 class ForumPostsController < ApplicationController
   before_action :set_forum
   before_action :set_topic
-  before_action :set_forum_post, only: [:update, :destroy]
 
   def create
     @forum_post = @topic.forum_posts.new(post_params)
@@ -16,21 +15,6 @@ class ForumPostsController < ApplicationController
     end
   end
 
-  def update
-    target_path = forum_topic_path(@forum, @topic, page: params[:page])
-
-    if @forum_post.update(post_params)
-      redirect_to target_path, notice: t('flash.forum_posts.update')
-    else
-      redirect_to target_path
-    end
-  end
-
-  def destroy
-    @forum_post.destroy
-    redirect_to [@forum, @topic], notice: t('flash.forum_posts.destroy')
-  end
-
   private
 
   def set_forum
@@ -39,11 +23,6 @@ class ForumPostsController < ApplicationController
 
   def set_topic
     @topic = @forum.topics.find_using_slug(params[:topic_id])
-  end
-
-  def set_forum_post
-    @forum_post = @topic.forum_posts.find(params[:id])
-    authorize(@forum_post)
   end
 
   def post_params
