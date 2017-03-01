@@ -1,9 +1,0 @@
-<h3><%= t '.title' %></h3>
-
-<%= simple_form_for([@forum, @topic, @forum_post]) do |f| %>
-  <%= f.error_notification %>
-
-  <%= f.input :content, label: false, input_html: { rows: 5 } %>
-
-  <%= f.button :submit, t('.submit'), class: 'btn-lg' %>
-<% end %>
