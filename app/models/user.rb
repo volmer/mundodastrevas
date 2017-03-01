@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  include DeviseConcern
-
   NAME_FORMAT = /\A[\w-]+\z/
   NAME_RANGE  = 3..16
 
@@ -22,23 +20,7 @@ class User < ActiveRecord::Base
   validates :location, length: { maximum: 200 }
   validates :gender, inclusion: { in: %w(male female) }, allow_blank: true
 
-  def self.find_using_name!(name)
-    find_by!('LOWER(name) = ?', name.downcase)
-  end
-
-  def self.find_using_name(name)
-    find_by('LOWER(name) = ?', name.downcase)
-  end
-
   def to_s
     name
-  end
-
-  def to_param
-    name
-  end
-
-  def active?
-    state == 'active'
   end
 end

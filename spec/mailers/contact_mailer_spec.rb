@@ -5,8 +5,7 @@ describe ContactMailer do
     Contact.new(
       message: 'Growing strong.',
       name: 'Loras',
-      email: 'loras@tyrell.com',
-      user: try(:user)
+      email: 'loras@tyrell.com'
     )
   end
 
@@ -38,22 +37,6 @@ describe ContactMailer do
     it 'sets the subject' do
       expect(ActionMailer::Base.deliveries.last.subject)
         .to eq('Novo contato de Loras')
-    end
-
-    context 'with a contact sent by a signed in user' do
-      let(:user) { create(:user) }
-
-      it 'includes a link to the user page' do
-        options = Rails.application.config.action_mailer.default_url_options
-        user_url = Rails.application.routes.url_helpers.user_url(user, options)
-
-        expect(ActionMailer::Base.deliveries.last.body).to include(user_url)
-      end
-
-      it 'sets the subject' do
-        expect(ActionMailer::Base.deliveries.last.subject)
-          .to eq("Novo contato de #{user}")
-      end
     end
   end
 end

@@ -1,8 +1,8 @@
 class TopicsController < ApplicationController
-  before_action :set_forum
-  before_action :set_topic
-
   def show
+    @forum = Forum.find_by!(slug: params[:forum_id])
+    @topic = @forum.topics.find_using_slug(params[:id])
+
     @topic.update_column(:views, @topic.views + 1)
 
     @forum_posts = @topic.forum_posts.order(
@@ -10,17 +10,5 @@ class TopicsController < ApplicationController
     ).page(params[:page])
 
     @forum_post = @topic.forum_posts.new
-  end
-
-  private
-
-  def set_forum
-    @forum = Forum.find_by!(slug: params[:forum_id])
-  end
-
-  def set_topic
-    @topic = @forum.topics.find_using_slug(params[:id])
-
-    authorize(@topic)
   end
 end

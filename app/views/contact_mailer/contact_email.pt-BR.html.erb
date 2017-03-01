@@ -1,8 +1,4 @@
-<% if @contact.guest? %>
-  <h1>Novo contato de um visitante</h1>
-<% else %>
-  <h1>Novo contato do usuário <%= link_to @contact.user, user_url(@contact.user) %></h1>
-<% end %>
+<h1>Novo contato de um visitante</h1>
 
 <dl>
   <dt>Nome</dt>
