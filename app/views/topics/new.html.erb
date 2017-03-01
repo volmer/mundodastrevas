@@ -11,7 +11,7 @@
       <%= f.input :name, autofocus: true %>
 
       <%= f.simple_fields_for(:forum_posts) do |sf| %>
-        <%= sf.input :content, as: :bootsy, label: false, input_html: { rows: 6 } %>
+        <%= sf.input :content, label: false, input_html: { rows: 6 } %>
       <% end %>
     </div>
   </div>

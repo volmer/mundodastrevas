@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.4.0'
 
 gem 'bootstrap'
-gem 'bootsy', github: 'volmer/bootsy', branch: 'bootstrap-4'
 gem 'brakeman', require: false
 gem 'carrierwave'
 gem 'coffee-rails'

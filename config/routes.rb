@@ -1,6 +1,4 @@
 Mundodastrevas::Application.routes.draw do
-  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-
   resource :search, only: [:show]
   resources :pages, only: [:show]
   resources :contacts, only: [:new, :create]

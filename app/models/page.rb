@@ -1,6 +1,4 @@
 class Page < ActiveRecord::Base
-  include Bootsy::Container
-
   validates :slug,
             presence: true,
             length: { maximum: 150 },

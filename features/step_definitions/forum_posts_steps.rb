@@ -21,21 +21,10 @@ When(/^within my forum post I click on "(.*?)"$/) do |link|
   end
 end
 
-When(/^within my forum post I fill in "(.*?)" with "(.*?)"$/) do |editor, value|
-  page.execute_script("Bootsy.areas['#{editor}'].editor.setValue('#{value}')")
-end
-
 When(/^within the forum post I click on "(.*?)"$/) do |link|
   within('.forum-post') do
     click_on link
   end
-end
-
-Then(/^I see "(.*?)" in the editor$/) do |value|
-  editor_value =
-    page.evaluate_script('Bootsy.areas.forum_post_content.editor.getValue()')
-
-  expect(editor_value).to include(value)
 end
 
 Then(/^I see (\d+) forum posts$/) do |count|

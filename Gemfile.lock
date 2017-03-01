@@ -1,12 +1,3 @@
-GIT
-  remote: git://github.com/volmer/bootsy.git
-  revision: e05d061c90a926cd98787b68149e45298ab715fe
-  branch: bootstrap-4
-  specs:
-    bootsy (2.2.2)
-      carrierwave (~> 0.11)
-      mini_magick (~> 4.5)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -315,7 +306,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap
-  bootsy!
   brakeman
   bugsnag
   capistrano-rails

@@ -3,7 +3,7 @@
 <%= simple_form_for([@forum, @topic, @forum_post]) do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :content, as: :bootsy, label: false, input_html: { rows: 10 } %>
+  <%= f.input :content, label: false, input_html: { rows: 5 } %>
 
   <%= f.button :submit, t('.submit'), class: 'btn-lg' %>
 <% end %>

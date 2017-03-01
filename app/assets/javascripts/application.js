@@ -14,6 +14,4 @@
 //= require jquery_ujs
 //= require tether
 //= require bootstrap-sprockets
-//= require bootsy
-//= require bootsy/locales/pt-BR
 //= require_tree .
