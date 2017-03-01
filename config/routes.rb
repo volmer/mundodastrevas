@@ -35,7 +35,7 @@ Mundodastrevas::Application.routes.draw do
   end
 
   resources :forums, only: [:show, :index] do
-    resources :topics, only: [:show, :new, :create] do
+    resources :topics, only: [:show] do
       resources :forum_posts, only: [:create]
     end
   end

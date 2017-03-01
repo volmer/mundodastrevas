@@ -24,4 +24,3 @@ Feature: View forum
     When I access the path "/forums/brothers-without-banners"
     Then I see "Brothers Without Banners" on the page
     And I see "For the people!" on the page
-    And I see the link "Deseja participar deste fórum? Entre aqui!"

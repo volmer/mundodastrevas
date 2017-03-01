@@ -4,19 +4,7 @@
 <h1><%= @forum %></h1>
 
 <div class="forum-description">
-  <div class="row">
-    <div class="col-md-8">
-      <%= simple_text @forum.description %>
-    </div>
-
-    <div class="col-md-4">
-      <%= link_to t('.new'), new_forum_topic_path(@forum), class: 'btn btn-primary btn-lg pull-right' if policy(Topic.new).new? %>
-
-      <% unless user_signed_in? %>
-        <%= link_to t('.invite'), new_user_session_path, class: 'btn btn-default btn-block' %>
-      <% end %>
-    </div>
-  </div>
+  <%= simple_text @forum.description %>
 </div>
 
 <%= render 'topics/index', topics: @topics, forum: @forum %>
