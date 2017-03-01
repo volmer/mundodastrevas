@@ -22,18 +22,4 @@
   <% end %>
 
   <%= paginate @forum_posts %>
-
-  <% if policy(@forum_post).create? %>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <%= render 'forum_posts/new', post: @forum_post %>
-      </div>
-    </div>
-  <% end %>
-
-  <% unless user_signed_in? %>
-    <div class="forum-invite">
-      <%= link_to t('.invite'), new_user_session_path %>
-    </div>
-  <% end %>
 </div>

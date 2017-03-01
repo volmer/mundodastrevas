@@ -8,7 +8,6 @@ Feature: View topics
     When I go to the "Knights" forum
     And I click on "Who is your favorite knight?"
     Then I see "Who is your favorite knight?" on the page
-    And I see the link "Deseja postar neste tópico? Entre aqui!"
 
   Scenario: List topics
     Given there is a topic called "Who is your favorite knight?" in "Knights"
