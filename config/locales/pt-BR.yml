@@ -53,16 +53,7 @@ pt-BR:
       forum_posts:
         one: '1 postagem'
         other: '%{count} postagens'
-  forum_posts:
-    to_s: 'o post de %{user}'
-    forum_post:
-      edit: 'Editar'
-      destroy: 'Apagar'
-      updated_at: 'Atualizado em'
-      confirm: 'Você confirma a exclusão desta postagem?'
-    new:
-      submit: 'Postar'
-      title: 'Postar no tópico'
+      post_updated_at: 'Atualizado em'
   zines:
     index:
       title: 'Zines'
@@ -89,9 +80,7 @@ pt-BR:
       previous: 'Anterior'
       next: 'Próximo'
       index: 'Índice'
-  comments:
-    index:
-      updated_at: 'Atualizado em'
+      comment_updated_at: 'Atualizado em'
   descriptive_name:
     comment: 'Comentário de %{user} em %{post}'
     forum_post: 'Postagem de %{user} em %{topic}'

@@ -19,46 +19,11 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-8">
-    <% @featured_posts.each_slice(2) do |row| %>
-      <div class="row">
-        <% row.each do |post| %>
-          <div class="col-sm-6">
-            <%= link_to zine_post_path(post.zine, post), class: 'featured-zine' do %>
-              <div class="faux-image" style="background-image: url('<%= post.image.url %>')">
-              </div>
-
-              <div class="caption">
-                <h1><%= post %></h1>
-                <p class="zine-name"><%= post.zine %></p>
-              </div>
-            <% end %>
-          </div>
-        <% end%>
-      </div>
-    <% end %>
-
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <p><%= link_to 'Mais zines', zines_path, class: 'btn btn-primary-outline btn-block' %></p>
-      </div>
-    </div>
+  <div class="col">
+    <%= link_to 'Zines', zines_path, class: 'btn btn-primary btn-lg btn-block' %>
   </div>
 
-  <div class="col-md-4">
-    <% @forums.each do |forum| %>
-      <div class="card forum-home-card">
-        <div class="card-header text-xs-center">
-          <%= link_to forum, forum %>
-        </div>
-        <ul class="list-group list-group-flush">
-          <% forum.topics.recent.limit(2).each do |topic| %>
-            <li class="list-group-item"><%= link_to topic, forum_topic_path(topic.forum, topic) %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <%= link_to 'Mais fóruns', forums_path, class: 'btn btn-primary-outline btn-block' %>
+  <div class="col">
+    <%= link_to 'Fóruns', forums_path, class: 'btn btn-primary btn-lg btn-block' %>
   </div>
 </div>

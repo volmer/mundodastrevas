@@ -13,21 +13,77 @@
   </head>
 
   <body>
-    <div id="content-wrapper">
-      <%= render 'layouts/navbar' %>
+    <div class="main-area">
+      <nav class="navbar navbar-inverse bg-inverse">
+        <div class="container">
+          <%= link_to 'MdT', root_path, title: Rails.application.config.app_name, class: 'navbar-brand' %>
+
+          <ul class="navbar-nav pull-right">
+            <li class="nav-item">
+              <%= link_to search_path, title: t('searches.show.title'), class: 'nav-link' do %>
+                <i class="fa fa-search"></i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <% flash.each do |type, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-#{ type.to_s == 'alert' ? 'danger' : 'info' }" %>
+      <% end %>
 
       <% if content_for?(:layout_top) %>
         <div class="layout-top"><%= content_for :layout_top %></div>
       <% end %>
 
-      <div class='container' id='main-container'>
-        <%= render 'layouts/alerts' %>
-
+      <div class="container main-container">
         <%= content_for?(:content) ? yield(:content) : yield %>
       </div>
     </div>
 
-    <%= render 'layouts/footer' %>
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 col-xs-6">
+            <h1>Ajuda e FAQ</h1>
+
+            <ul class="list-unstyled">
+              <li><%= link_to 'O que é RPG?', '/pages/o-que-e-rpg' %></li>
+              <li><%= link_to 'O que é Storytelling?', '/pages/o-que-e-storytelling' %></li>
+            </ul>
+          </div>
+
+          <div class="col-sm-4 col-xs-6">
+            <h1>Sobre nós</h1>
+
+            <ul class="list-unstyled">
+              <li><%= link_to 'Entre em contato', new_contact_path %></li>
+              <li><%= link_to 'Termos de Uso', '/pages/terms' %></li>
+            </ul>
+          </div>
+
+          <div class="col-md-3 col-sm-4 col-xs-12 social-links">
+            <%= link_to 'http://facebook.com/mundodastrevas', title: 'Mundo das Trevas no Facebook', target: '_blank' do %>
+              <i class="fa fa-facebook-official"></i>
+            <% end %>
+
+            <%= link_to 'http://twitter.com/mundodastrevas', title: 'Mundo das Trevas no Twitter', target: '_blank' do %>
+              <i class="fa fa-twitter"></i>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="legal">
+          <p>
+            <small>
+              Os conteúdos aqui publicados são de responsabilidade de seus autores. Não os copie sem permissão.
+            </small>
+          </p>
+
+          <p>&copy; Comunidade Mundo das Trevas <%= Time.now.year %></p>
+        </div>
+      </div>
+    </footer>
 
     <%= javascript_include_tag 'application' %>
   </body>

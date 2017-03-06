@@ -1,26 +1,19 @@
 html,
 body {
   height: 100%;
-  /* The html and body elements cannot have any padding or margin. */
 }
 
-/* Wrapper for page content to push down footer */
-#content-wrapper {
-  min-height: 100%;
-  height: auto;
-  /* Negative indent footer by its height */
-  margin: 0 auto -220px;
-  /* Pad bottom by footer height */
-  padding: 0 0 220px;
-}
-
-/* Set the fixed height of the footer here */
-.page-footer {
-  background-color: $footer-color;
+body {
   background-image: image-url('footer.jpg');
   background-position: left bottom;
   background-repeat: repeat-x;
-  height: 590px;
+}
+
+.main-area {
+  background-color: $main-bg-color;
+}
+
+.page-footer {
   padding: 40px 0 20px;
 
   h1 {
@@ -37,37 +30,19 @@ body {
     text-align: center;
     margin-top: 70px;
   }
-}
+  .social-links {
+    display: flex;
+    justify-content: space-around;
 
-.page-footer a {
-  font-size: 15px;
-}
-
-.page-footer .social-links {
-  display: flex;
-  justify-content: space-around;
-
-  a {
-    font-size: 2rem;
+    a {
+      font-size: 2rem;
+    }
   }
 }
 
-#content-wrapper > .container {
+.main-container {
   padding-top: $spacer * 2;
-  margin-bottom: 60px;
-}
-
-.navbar .nav-img {
-  padding: 0;
-
-  img {
-    width: 40px;
-    border-radius: 20px;
-  }
-}
-
-.navbar .nav-item .btn {
-  border-radius: 2rem;
+  padding-bottom: $spacer * 2;
 }
 
 .navbar-brand {
@@ -79,14 +54,5 @@ body {
 
   &:hover {
     text-shadow: 1px 1px 30px #ffffff;
-  }
-}
-
-// Temporary fix for Bootstrap 4
-.form-group.file {
-  height: inherit;
-
-  input {
-    opacity: inherit;
   }
 }

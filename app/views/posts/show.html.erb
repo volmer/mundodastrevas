@@ -73,6 +73,31 @@
       </div>
     </div>
 
-    <%= render 'comments/index' %>
+    <% @comments.each do |comment| %>
+      <div class="comment">
+        <div class="row">
+          <div class="col-md-2 col-xs-3 user">
+            <%= image_tag(comment.user.avatar.small.url, class: 'img-fluid img-circle') %>
+            <%= comment.user %>
+          </div>
+
+          <div class="col-md-10 col-xs-9">
+            <div class="content"><%= simple_text comment.content %></div>
+
+            <div class="meta">
+              <%= time_tag comment.created_at, format: :short %>
+
+              <% if comment.created_at != comment.updated_at %>
+                -
+                <em>
+                  <%= t '.comment_updated_at' %>
+                  <%= time_tag comment.updated_at, format: :short %>
+                </em>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -18,7 +18,36 @@
   </ol>
 
   <% @forum_posts.each do |forum_post| %>
-    <%= render forum_post %>
+    <div class="forum-post">
+      <div class="row">
+        <div class="col-md-2 user">
+          <%= image_tag(forum_post.user.avatar.small.url, class: 'img-responsive img-thumbnail img-circle') %>
+
+          <div class="name"><%= forum_post.user %></div>
+        </div>
+
+        <div class="col-md-10 post">
+          <div class="row">
+            <div class="col-md-10 content">
+              <%= sanitize forum_post.content %>
+            </div>
+          </div>
+
+          <div class="meta clearfix">
+            <%= time_tag forum_post.created_at, format: :short %>
+
+            <% if forum_post.created_at != forum_post.updated_at %>
+              -
+              <em>
+                <%= t '.post_updated_at' %>
+
+                <%= time_tag forum_post.updated_at, format: :short %>
+              </em>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 
   <%= paginate @forum_posts %>
