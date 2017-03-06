@@ -64,11 +64,7 @@ pt-BR:
       posts: 'Posts em %{zine}'
       empty: 'Ainda não existem posts neste zine.'
       more: '(continuar lendo)'
-    author:
-      title: 'O Autor'
-      zines:
-        one: '1 zine publicado'
-        other: '%{count} zines publicados'
+      author: 'O Autor'
   posts:
     show:
       edit: 'Editar'

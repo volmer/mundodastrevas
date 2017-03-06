@@ -18,7 +18,7 @@
 <% end %>
 
 <div class="row">
-  <div class="col-lg-8 col-lg-offset-2 col-md-9 col-md-offset-1">
+  <div class="col-lg-8 offset-lg-2 col-md-9 offset-md-1">
     <div class="post">
       <h1><%= @post %></h1>
 
@@ -32,44 +32,34 @@
 
       <div class="content"><%= sanitize @post.content %></div>
 
-      <div class="card card-block">
-        <%= link_to @zine, @zine, class: 'zine-link', title: t('.index') %>
+      <div class="card">
+        <div class="card-block zine-link">
+          <p><%= link_to @zine, @zine, title: t('.index') %></p>
 
-        <ul class="pager">
-          <% if previous_post = @zine.posts.where('created_at < ?', @post.created_at).order(created_at: :desc).first %>
-            <li class="previous">
-              <%= link_to zine_post_path(@zine, previous_post), title: previous_post do %>
-                &larr;
-                <%= t '.previous' %>
+          <div class="btn-group" role="group">
+            <% if previous_post = @zine.posts.where('created_at < ?', @post.created_at).order(created_at: :desc).first %>
+              <%= link_to zine_post_path(@zine, previous_post), class: 'btn btn-secondary', title: previous_post do %>
+                &larr; <%= t '.previous' %>
               <% end %>
-            </li>
-          <% else %>
-            <li class="previous disabled">
-              <%= link_to 'javascript:void(0);' do %>
-                &larr;
-                <%= t '.previous' %>
-              <% end %>
-            </li>
-          <% end %>
+            <% else %>
+              <button type="button" class="btn btn-secondary" disabled>
+                &larr; <%= t '.previous' %>
+              </button>
+            <% end %>
 
-          <li><%= link_to t('.index'), @zine, title: @zine %></li>
+            <%= link_to t('.index'), @zine, title: @zine, class: 'btn btn-secondary' %>
 
-          <% if next_post = @zine.posts.where('created_at > ?', @post.created_at).order(created_at: :asc).first %>
-            <li class="next">
-              <%= link_to [@zine, next_post], title: next_post do %>
-                <%= t '.next' %>
-                &rarr;
+            <% if next_post = @zine.posts.where('created_at > ?', @post.created_at).order(created_at: :asc).first %>
+              <%= link_to [@zine, next_post], class: 'btn btn-secondary', title: next_post do %>
+                <%= t '.next' %> &rarr;
               <% end %>
-            </li>
-          <% else %>
-            <li class="next disabled">
-              <%= link_to 'javascript:void(0);' do %>
-                <%= t '.next' %>
-                &rarr;
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
+            <% else %>
+              <button type="button" class="btn btn-secondary" disabled>
+                <%= t '.next' %> &rarr;
+              </button>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -77,7 +67,7 @@
       <div class="comment">
         <div class="row">
           <div class="col-md-2 col-xs-3 user">
-            <%= image_tag(comment.user.avatar.small.url, class: 'img-fluid img-circle') %>
+            <%= image_tag(comment.user.avatar.small.url, class: 'img-fluid rounded-circle') %>
             <%= comment.user %>
           </div>
 

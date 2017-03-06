@@ -33,10 +33,3 @@ Feature: View post
     Then I see "A Dance With Dragons" on the page
     And I see "Daenerys" on the page
     And I see "She is betrayed." on the page
-
-  Scenario: Paginate posts
-    Given the zine "A Dance With Dragons" has 21 posts
-    When I go to the "A Dance With Dragons" zine
-    Then I see 3 pages
-    And I see 10 posts
-    And I see 3 posts in the page 3

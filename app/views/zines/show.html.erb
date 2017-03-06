@@ -4,7 +4,6 @@
 <% content_for :page_canonical_url, zine_url(@zine) %>
 <% content_for :page_image, URI(root_url) + @zine.image.url %>
 <% content_for :page_updated_at, @zine.updated_at %>
-<% content_for :page_see_also, zine_post_url(@zine, @zine.posts.first) if @zine.posts.any? %>
 
 <h1><%= @zine %></h1>
 
@@ -15,6 +14,8 @@
     <% end %>
 
     <div class="zine-description"><%= sanitize @zine.description %></div>
+
+    <h2><%= t '.posts', zine: @zine %></h2>
 
     <% @posts.each do |post| %>
       <div class="list-item-with-image post-list-item">
@@ -32,22 +33,20 @@
       </div>
     <% end %>
 
-    <%= paginate @posts %>
-
     <% if @posts.empty? %>
       <div class="alert alert-info"><%= t '.empty' %></div>
     <% end %>
   </div>
 
   <div class="col-md-4">
-    <%= render 'author', user: @zine.user %>
+    <div class="card zine-author">
+      <div class="card-header"><%= t '.author' %></div>
 
-    <h5><%= t '.posts', zine: @zine %></h5>
-
-    <div class="list-group">
-      <% @zine.posts.order(created_at: :desc).each do |post| %>
-        <%= link_to post, zine_post_path(@zine, post), class: 'list-group-item' %>
-      <% end %>
+      <div class="card-block">
+        <%= image_tag @zine.user.avatar.small.url, class: 'rounded-circle img-thumbnail img-fluid' %>
+        <h3 class="card-title"><%= @zine.user %></h3>
+        <p class="card-text bio"><%= truncate_rich @zine.user.bio %></p>
+      </div>
     </div>
   </div>
 </div>

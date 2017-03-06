@@ -24,13 +24,15 @@
 }
 
 .zine-link {
-  font-size: 1.2rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  color: #222;
-  text-shadow: 0 0 3px #eee;
-  display: block;
   text-align: center;
+
+  p a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #222;
+    text-shadow: 0 0 3px #eee;
+  }
 }
 
 .post-footer {
@@ -45,6 +47,34 @@
   }
 }
 
-.pager {
-  margin-bottom: 0;
+.comment {
+  border-top: 1px solid $default-border-color;
+  margin: 40px 0 20px;
+  padding-top: 20px;
+
+  .user {
+    text-align: center;
+
+    a {
+      font-weight: bold;
+      display: block;
+    }
+
+    img {
+      margin-bottom: 10px;
+    }
+  }
+
+  .content {
+    min-height: 80px;
+  }
+
+  .meta {
+    @include clearfix;
+
+    time {
+      font-size: .7rem;
+      color: #999;
+    }
+  }
 }

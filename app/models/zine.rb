@@ -15,8 +15,6 @@ class Zine < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  scope :with_posts, -> { joins(:posts).distinct }
-
   def to_param
     slug
   end

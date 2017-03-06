@@ -3,40 +3,14 @@
 
 <h1><%= t '.title' %></h1>
 
-<div class="row">
-  <div class="col-md-8">
-    <% @zines.each do |zine| %>
-      <div class="list-item-with-image zine-list-item">
-        <% post = zine.posts.order(created_at: :desc).first %>
-
-        <%= link_to [zine, post] do %>
-          <%= image_tag post.image.small.url %>
-        <% end %>
-
-        <h4><%= link_to post, zine_post_path(zine, post) %></h4>
-        <p><em><%= link_to zine, zine_path(zine) %></em></p>
-        <p>
-          <%= truncate_rich(post.content, length: 150) do %>
-            <%= link_to t('.more'), [zine, post] %>
-          <% end %>
-        </p>
+<div class="list-group">
+  <% @zines.each do |zine| %>
+    <%= link_to zine, class: 'list-group-item list-group-item-action flex-column align-items-start' do %>
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"><%= zine %></h5>
+        <small><%= pluralize zine.posts.count, 'post', plural: 'posts' %></small>
       </div>
+      <p class="mb-1">Por <%= zine.user %></p>
     <% end %>
-
-    <%= paginate @zines %>
-  </div>
-
-  <div class="col-md-4">
-    <h4><%= t '.most_read' %></h4>
-
-    <div class="list-group">
-      <% @most_read_posts.each do |post| %>
-        <%= link_to [post.zine, post], class: 'list-group-item list-item-with-image' do %>
-          <%= image_tag post.image.thumb.url %>
-          <h6><%= post %></h6>
-          <%= truncate_rich post.content, length: 100 %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+  <% end %>
 </div>

@@ -1,14 +1,10 @@
 class ZinesController < ApplicationController
   def index
-    @zines = Zine.with_posts.order(
-      last_post_at: :desc
-    ).page(params[:page])
-
-    @most_read_posts = Post.order(views: :desc).limit(5)
+    @zines = Zine.all.order(:name)
   end
 
   def show
     @zine = Zine.find_by!(slug: params[:id])
-    @posts = @zine.posts.order(created_at: :desc).page(params[:page])
+    @posts = @zine.posts.order(created_at: :desc)
   end
 end
