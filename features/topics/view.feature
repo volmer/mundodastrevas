@@ -15,10 +15,3 @@ Feature: View topics
     When I go to the "Knights" forum
     Then I see "Who is your favorite knight?" on the page
     And I see "Did anyone already beat the Mountain?" on the page
-
-  Scenario: Paginate topics
-    Given there are 25 topics on the "Knights" forum
-    When I go to the "Knights" forum
-    Then I see 3 pages
-    And I see 10 topics
-    And I see 5 topics in the page 3

@@ -1,13 +1,10 @@
 class ForumsController < ApplicationController
   def show
     @forum = Forum.find_by!(slug: params[:id])
-    @topics = @forum.topics.recent.page(params[:page])
+    @topics = @forum.topics.recent
   end
 
   def index
-    @forums = Forum.order(updated_at: :desc)
-
-    @topics = Topic.order(created_at: :desc).limit(5)
-    @posts = ForumPost.order(created_at: :desc).limit(5)
+    @forums = Forum.order(:name)
   end
 end

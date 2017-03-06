@@ -2,43 +2,11 @@
 
 <h1><%= t '.title' %></h1>
 
-<div class="row">
-  <div class="col-md-8 forums-list">
-    <% @forums.each do |forum| %>
-      <div class="forum">
-        <h3><%= link_to forum, forum %></h3>
-
-        <%= simple_text forum.description %>
-
-        <%= render 'topics/index', topics: forum.topics.recent.limit(5), forum: forum %>
-
-        <%= link_to t('.more'), forum %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="col-md-4">
-    <h4><%= t '.recent_topics' %></h4>
-
-    <div class="list-group">
-      <% @topics.each do |topic| %>
-        <%= link_to [topic.forum, topic], class: 'list-group-item' do %>
-          <h5><%= topic %></h2>
-          <%= topic.forum %>
-        <% end %>
-      <% end %>
-    </div>
-
-    <h4><%= t '.recent_forum_posts' %></h4>
-
-    <div class="list-group">
-      <% @posts.each do |post| %>
-        <%= link_to [post.topic.forum, post.topic], class: 'list-group-item' do %>
-          <%= image_tag post.user.avatar.thumb.url, class: 'avatar-left mini-avatar' %>
-          <h6><%= post.user %>:</h5>
-          <%= truncate_rich post.content, length: 100 %>
-        <% end %>
-      <% end %>
+<% @forums.each do |forum| %>
+  <div class="card mb-3">
+    <div class="card-block">
+      <h3 class="card-title"><%= link_to forum, forum %></h3>
+      <p class="card-text"><%= simple_text forum.description %></p>
     </div>
   </div>
-</div>
+<% end %>

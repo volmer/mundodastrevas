@@ -1,54 +1,45 @@
 <% content_for :page_title, @topic %>
-<% content_for :page_description, truncate_rich(@topic.forum_posts.first.content) %>
+<% content_for :page_description, truncate_rich(@topic.forum_posts.first.content) if @topic.forum_posts.first %>
 <% content_for :page_author, @topic.user %>
 <% content_for :page_keywords, @forum %>
 
-<div class="forum-topic">
-  <h1><%= @topic %></h1>
+<h1><%= @topic %></h1>
 
-  <div class="clearfix">
-    <%= t '.created_by_html', user: @topic.user %>
-    <span class="text-muted">·</span>
-    <%= t '.forum_posts', count: @topic.forum_posts.count %>
-  </div>
+<p>
+  <%= t '.created_by', user: @topic.user %>
+  <span class="text-muted">·</span>
+  <%= t '.forum_posts', count: @topic.forum_posts.count %>
+</p>
 
-  <ol class="breadcrumb">
-    <li><%= link_to @forum, @forum %></li>
-    <li class="active"><%= @topic %></li>
-  </ol>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><%= link_to @forum, @forum %></li>
+  <li class="breadcrumb-item active"><%= @topic %></li>
+</ol>
 
-  <% @forum_posts.each do |forum_post| %>
-    <div class="forum-post">
-      <div class="row">
-        <div class="col-md-2 user">
-          <%= image_tag(forum_post.user.avatar.small.url, class: 'img-responsive img-thumbnail img-circle') %>
+<% @forum_posts.each do |forum_post| %>
+  <div class="forum-post">
+    <div class="row">
+      <div class="col-lg-2 col-md-4 user">
+        <%= image_tag(forum_post.user.avatar.small.url, class: 'img-fluid img-thumbnail rounded-circle') %>
 
-          <div class="name"><%= forum_post.user %></div>
-        </div>
+        <p><%= forum_post.user %></p>
+      </div>
 
-        <div class="col-md-10 post">
-          <div class="row">
-            <div class="col-md-10 content">
-              <%= sanitize forum_post.content %>
-            </div>
-          </div>
+      <div class="col-lg-10 col-md-8 post">
+        <div class="content"><%= sanitize forum_post.content %></div>
 
-          <div class="meta clearfix">
-            <%= time_tag forum_post.created_at, format: :short %>
+        <div class="meta">
+          <%= time_tag forum_post.created_at, format: :short %>
 
-            <% if forum_post.created_at != forum_post.updated_at %>
-              -
-              <em>
-                <%= t '.post_updated_at' %>
-
-                <%= time_tag forum_post.updated_at, format: :short %>
-              </em>
-            <% end %>
-          </div>
+          <% if forum_post.created_at != forum_post.updated_at %>
+            -
+            <em>
+              <%= t '.post_updated_at' %>
+              <%= time_tag forum_post.updated_at, format: :short %>
+            </em>
+          <% end %>
         </div>
       </div>
     </div>
-  <% end %>
-
-  <%= paginate @forum_posts %>
-</div>
+  </div>
+<% end %>

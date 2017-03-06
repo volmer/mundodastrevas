@@ -1,16 +1,14 @@
 .forum-post {
   margin-bottom: 20px;
   background-color: $gray-lighter;
-  padding: 10px 0;
+  padding: $spacer;
 
   .user {
     text-align: center;
-    border-right: 1px solid #f0f0f0;
+    border-right: 1px solid #f7f7f7;
 
-    a {
-      font-size: 15px;
+    p {
       font-weight: bold;
-      display: block;
     }
 
     img {
@@ -26,10 +24,6 @@
   .meta {
     border-top: 1px solid #f0f0f0;
     padding: 10px 10px 0 0;
-
-    .actions {
-      float: right;
-    }
 
     time {
       font-size: .7rem;

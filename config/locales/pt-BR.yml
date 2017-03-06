@@ -29,24 +29,13 @@ pt-BR:
   forums:
     index:
       title: 'Fóruns'
-      more: 'Ver mais'
-      recent_topics: 'Tópicos recentes'
-      recent_forum_posts: 'Postagens recentes'
     show:
-      new: 'Novo tópico'
-      invite: 'Deseja participar deste fórum? Entre aqui!'
-  topics:
-    index:
-      topic: 'Últimos tópics'
-      forum_posts: 'Postagens'
+      topic: 'Tópics'
+      forum_posts: 'Posts'
       last_post: 'Última atividade'
-    new:
-      title: 'Novo tópico'
-      submit: 'Criar tópico'
+  topics:
     show:
-      edit: 'Editar'
-      invite: 'Deseja postar neste tópico? Entre aqui!'
-      created_by_html: 'Criado por %{user}'
+      created_by: 'Criado por %{user}'
       forum_posts:
         one: '1 postagem'
         other: '%{count} postagens'
@@ -59,21 +48,21 @@ pt-BR:
     list:
       more: '(continuar lendo)'
     show:
-      edit: 'Editar'
-      new_post: 'Novo post'
       posts: 'Posts em %{zine}'
       empty: 'Ainda não existem posts neste zine.'
       more: '(continuar lendo)'
       author: 'O Autor'
   posts:
     show:
-      edit: 'Editar'
       author_and_date:
         html: '<em>por</em> %{user} <em>em %{date}</em>'
       previous: 'Anterior'
       next: 'Próximo'
       index: 'Índice'
       comment_updated_at: 'Atualizado em'
+  searches:
+    show:
+      title: 'Pesquisa'
   descriptive_name:
     comment: 'Comentário de %{user} em %{post}'
     forum_post: 'Postagem de %{user} em %{topic}'

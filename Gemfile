@@ -9,7 +9,6 @@ gem 'coffee-rails'
 gem 'cucumber-rails', require: false
 gem 'font-awesome-sass'
 gem 'jquery-rails'
-gem 'kaminari'
 gem 'mini_magick'
 gem 'pg'
 gem 'rails', '~> 5.0'
