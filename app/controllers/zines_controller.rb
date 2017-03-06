@@ -1,6 +1,6 @@
 class ZinesController < ApplicationController
   def index
-    @zines = Zine.all.order(:name)
+    @zines = Zine.all.includes(:posts, :user).order(:name)
   end
 
   def show

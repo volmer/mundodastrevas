@@ -5,7 +5,7 @@ Mundodastrevas::Application.routes.draw do
   root 'home#index'
 
   resources :zines, only: [:index, :show] do
-    resources :posts, only: [:index, :show]
+    resources :posts, only: [:show]
   end
 
   resources :forums, only: [:show, :index] do

@@ -12,8 +12,6 @@ class Topic < ActiveRecord::Base
 
   after_create :touch_forum
 
-  scope :recent, -> { order(updated_at: :desc) }
-
   def to_param
     "#{id}-#{name.parameterize}"
   end
