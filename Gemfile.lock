@@ -216,8 +216,6 @@ GEM
     rainbow (2.2.1)
     raindrops (0.17.0)
     rake (12.0.0)
-    recaptcha (4.1.0)
-      json
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -313,7 +311,6 @@ DEPENDENCIES
   rails (~> 5.0)
   rails-assets-tether
   rails_autolink
-  recaptcha
   rspec-rails
   rubocop
   sass-rails

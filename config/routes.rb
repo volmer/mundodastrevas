@@ -1,7 +1,6 @@
 Mundodastrevas::Application.routes.draw do
   resource :search, only: [:show]
   resources :pages, only: [:show]
-  resources :contacts, only: [:new, :create]
 
   root 'home#index'
 

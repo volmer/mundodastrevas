@@ -28,10 +28,6 @@
         </div>
       </nav>
 
-      <% flash.each do |type, msg| %>
-        <%= content_tag :div, msg, class: "alert alert-#{ type.to_s == 'alert' ? 'danger' : 'info' }" %>
-      <% end %>
-
       <% if content_for?(:layout_top) %>
         <div class="layout-top"><%= content_for :layout_top %></div>
       <% end %>
@@ -57,7 +53,7 @@
             <h1>Sobre nós</h1>
 
             <ul class="list-unstyled">
-              <li><%= link_to 'Entre em contato', new_contact_path %></li>
+              <li><%= mail_to 'contato@mundodastrevas.com', 'Entre em contato' %></li>
               <li><%= link_to 'Termos de Uso', '/pages/terms' %></li>
             </ul>
           </div>

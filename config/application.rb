@@ -36,11 +36,5 @@ module Mundodastrevas
 
     # The name of your app. It is used in views and mailers.
     config.app_name = 'Mundo das Trevas'
-
-    # The email address used by mailers as the `from` header.
-    config.default_from = 'admin@mundodastrevas.com'
-
-    # The email address where all contact messages will be sent to.
-    config.contacts_destination = 'contato@mundodastrevas.com'
   end
 end

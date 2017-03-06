@@ -15,9 +15,6 @@ pt-BR:
       active: 'Ativo'
       blocked: 'Bloqueado'
   save: 'Salvar'
-  mailers:
-    contact:
-      subject: 'Novo contato de %{name}'
   views:
     pagination:
       first_html: '&laquo;'

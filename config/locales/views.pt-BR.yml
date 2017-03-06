@@ -1,8 +1,4 @@
 pt-BR:
-  layouts:
-    mailer:
-      automatic: 'Este é um email automático. Por favor não responda para este endereço.'
-      contact: 'Clique aqui para falar conosco'
   users:
     passwords:
       change:
@@ -35,11 +31,6 @@ pt-BR:
         title: 'Entrar'
         submit: 'Entrar'
         forgot_password: 'Esqueceu sua senha?'
-  contacts:
-    new:
-      title: 'Fale conosco'
-      submit: 'Enviar mensagem'
-      description: 'Tem alguma dúvida, sugestão, reclamação ou deseja comunicar um problema? Entre em contato conosco através do formulário abaixo que responderemos o mais breve possível por email.'
   searches:
     show:
       title: 'Pesquisa'

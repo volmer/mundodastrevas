@@ -2,7 +2,6 @@ pt-BR:
   activerecord:
     models:
       comment: 'Comentário'
-      contact: 'Contato'
       forum: 'Fórum'
       forum_post: 'Post em fórum'
       page: 'Página'
@@ -52,9 +51,3 @@ pt-BR:
         contet: 'Conteúdo'
         created_at: 'Data de criação'
         updated_at: 'Última modificação'
-  activemodel:
-    attributes:
-      contact:
-        name: 'Nome'
-        email: 'Email'
-        message: 'Mensagem'

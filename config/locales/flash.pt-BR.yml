@@ -8,8 +8,6 @@ pt-BR:
       sessions:
         blocked: 'Sua conta está bloqueada. Entre em contato conosco.'
     unauthorized: 'Você não pode acessar isso.'
-    contacts:
-      create: 'Muito obrigado pela sua mensagem. Vamos te responder por email em breve.'
     zines:
       create: 'Zine criado!'
       update: 'Zine atualizado!'
