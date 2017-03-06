@@ -8,7 +8,6 @@ gem 'carrierwave'
 gem 'coffee-rails'
 gem 'cucumber-rails', require: false
 gem 'font-awesome-sass'
-gem 'jbuilder'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'mini_magick'

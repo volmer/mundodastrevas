@@ -8,8 +8,6 @@ Mundodastrevas::Application.routes.draw do
   get '/pubs/:id', to: redirect('/zines/%{id}')
   get '/pubs/:zine_id/stuffs/:id', to: redirect('/zines/%{zine_id}/posts/%{id}')
 
-  resources :posts, path: '/feed', only: [:index], defaults: { format: 'atom' }
-
   resources :zines, only: [:index, :show] do
     resources :posts, only: [:index, :show]
   end
