@@ -2,8 +2,6 @@ class Post < ActiveRecord::Base
   belongs_to :zine
   belongs_to :user
 
-  has_many :comments, dependent: :destroy
-
   validates :name, presence: true, length: { maximum: 100 }
   validates :content, presence: true, length: { maximum: 66_000 }
   validates :zine_id, presence: true

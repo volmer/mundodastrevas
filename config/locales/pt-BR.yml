@@ -63,5 +63,4 @@ pt-BR:
     show:
       title: 'Pesquisa'
   descriptive_name:
-    comment: 'Comentário de %{user} em %{post}'
     forum_post: 'Postagem de %{user} em %{topic}'

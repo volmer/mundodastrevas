@@ -1,12 +1,10 @@
 pt-BR:
   activerecord:
     models:
-      comment: 'Comentário'
       forum: 'Fórum'
       forum_post: 'Post em fórum'
       page: 'Página'
       post: 'Post'
-      setting: 'Configuração'
       topic: 'Tópico'
       user: 'Usuário'
       zine: 'Zine'
@@ -22,8 +20,6 @@ pt-BR:
         slug: 'URL amigável'
         content: 'Conteúdo'
         image: 'Imagem'
-      comment:
-        content: 'Conteúdo'
       forum:
         name: 'Nome'
         slug: 'Url amigável'
