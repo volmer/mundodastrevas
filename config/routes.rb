@@ -4,6 +4,8 @@ Mundodastrevas::Application.routes.draw do
 
   root 'home#index'
 
+  get 'disqus' => 'posts#disqus'
+
   resources :zines, only: [:index, :show] do
     resources :posts, only: [:show]
   end

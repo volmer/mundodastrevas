@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dsq="http://www.disqus.com/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:wp="http://wordpress.org/export/1.0/"
+>
+  <channel>
+    <% @posts.each do |post| %>
+      <item>
+        <title><%= post %></title>
+        <link><%= zine_post_url post.zine, post, protocol: 'https', port: nil, host: 'mundodastrevas.com' %></link>
+        <content:encoded><![CDATA[<%= sanitize post.content %>]]></content:encoded>
+        <dsq:thread_identifier><%= post.to_param %></dsq:thread_identifier>
+        <wp:post_date_gmt><%= post.created_at.utc.to_s(:db) %></wp:post_date_gmt>
+        <wp:comment_status>open</wp:comment_status>
+
+        <% post.comments.each do |comment| %>
+          <wp:comment>
+            <wp:comment_id><%= comment.id %></wp:comment_id>
+            <wp:comment_author><%= comment.user %></wp:comment_author>
+            <wp:comment_author_email><%= comment.user.email %></wp:comment_author_email>
+            <wp:comment_author_IP><%= comment.user.last_sign_in_ip %></wp:comment_author_IP>
+            <wp:comment_date_gmt><%= comment.created_at.utc.to_s(:db) %></wp:comment_date_gmt>
+            <wp:comment_content><![CDATA[<%= simple_text comment.content %>]]></wp:comment_content>
+            <wp:comment_approved>1</wp:comment_approved>
+            <wp:comment_parent>0</wp:comment_parent>
+          </wp:comment>
+        <% end %>
+      </item>
+    <% end %>
+  </channel>
+</rss>

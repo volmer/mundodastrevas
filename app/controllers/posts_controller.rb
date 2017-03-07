@@ -2,6 +2,10 @@ class PostsController < ApplicationController
   def show
     @zine = Zine.find_by!(slug: params[:zine_id])
     @post = @zine.posts.find_by!(slug: params[:id])
-    @comments = @post.comments.includes(:user).order(created_at: :asc)
+  end
+
+  def disqus
+    @posts = Post.includes(:zine, comments: [:user])
+    render layout: false
   end
 end
