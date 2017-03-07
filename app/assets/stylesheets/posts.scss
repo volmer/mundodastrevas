@@ -46,35 +46,3 @@
     margin-bottom: $spacer;
   }
 }
-
-.comment {
-  border-top: 1px solid $default-border-color;
-  margin: 40px 0 20px;
-  padding-top: 20px;
-
-  .user {
-    text-align: center;
-
-    a {
-      font-weight: bold;
-      display: block;
-    }
-
-    img {
-      margin-bottom: 10px;
-    }
-  }
-
-  .content {
-    min-height: 80px;
-  }
-
-  .meta {
-    @include clearfix;
-
-    time {
-      font-size: .7rem;
-      color: #999;
-    }
-  }
-}

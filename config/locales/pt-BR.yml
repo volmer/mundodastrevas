@@ -59,7 +59,6 @@ pt-BR:
       previous: 'Anterior'
       next: 'Próximo'
       index: 'Índice'
-      comment_updated_at: 'Atualizado em'
   searches:
     show:
       title: 'Pesquisa'
